@@ -13,7 +13,7 @@ expression text when its resource limits are kept at appropriate values.
 > confirmed brand and root-namespace collision with the established
 > `markrogoyski/math-php` package. This is an explicit, documented decision and
 > does not imply affiliation. See
-> [the identity record](docs/IDENTITY-GATE.md).
+> [the identity record](https://github.com/mathphp/mathphp-specs/blob/main/IDENTITY-GATE.md).
 
 ## Installation
 
@@ -70,7 +70,7 @@ The repository also includes a small companion site with an overview, reference
 docs, and an interactive evaluator backed by this same package:
 
 ```console
-php -S 127.0.0.1:8080 -t website/public
+php -S 127.0.0.1:8080 -t public
 ```
 
 Open <http://127.0.0.1:8080/> after starting the local server.
@@ -113,7 +113,7 @@ of this free package or its release archive.
 ## Language
 
 The complete grammar and numeric rules live in the
-[normative v0.1 contract](docs/V0.1-CONTRACT.md). The supported surface is:
+[normative v0.1 contract](https://github.com/mathphp/mathphp-specs/blob/main/V0.1-CONTRACT.md). The supported surface is:
 
 - integers, decimals, and scientific notation;
 - ASCII variable names and the reserved constants `pi` and `e`;
@@ -254,7 +254,7 @@ try {
 Invalid host API inputs, such as a non-numeric variable or invalid limit, throw
 `InvalidArgumentException` because they have no expression source location.
 The exhaustive code and span contract is in
-[section 7 of the v0.1 contract](docs/V0.1-CONTRACT.md#7-errors-and-source-spans).
+[section 7 of the v0.1 contract](https://github.com/mathphp/mathphp-specs/blob/main/V0.1-CONTRACT.md#7-errors-and-source-spans).
 
 ## Explicit limitations
 
@@ -293,7 +293,7 @@ composer audit --locked
 It covers strict manifest validation, optimized strict PSR-4 generation, syntax
 linting, PHPUnit, PHPStan at maximum level against PHP 8.2, and PSR-12.
 The requirement-to-source/test evidence and exact local verification record are
-in [the v0.1 traceability audit](docs/V0.1-TRACEABILITY.md).
+in [the v0.1 traceability audit](https://github.com/mathphp/mathphp-specs/blob/main/V0.1-TRACEABILITY.md).
 
 ## Roadmap
 
