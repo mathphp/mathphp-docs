@@ -21,3 +21,27 @@ The result is a finite `int` or `float`. Catch `MathPHP\Exception\MathException`
 to expose stable error codes and source spans to your application.
 
 Next: [grammar and precedence](grammar.md) or [the PHP API](php-api.md).
+
+## Choose the boundary
+
+Treat the expression as untrusted text. Pass application values as the second
+argument, keep the result local, and return the error code—not a raw exception
+trace—to the caller. The evaluator never reads globals and never calls `eval()`.
+
+## A production-shaped adapter
+
+```php
+$payload = ['expression' => $request->input('formula'), 'variables' => $request->input('values', [])];
+try {
+    $value = Math::evaluate($payload['expression'], $payload['variables']);
+    return ['ok' => true, 'value' => $value, 'type' => get_debug_type($value)];
+} catch (MathException $error) {
+    return ['ok' => false, 'code' => $error->errorCode(), 'span' => $error->span()->toArray()];
+}
+```
+
+## What to read next
+
+- Need to define accepted input? Start with [grammar](grammar.md).
+- Need editor feedback? Read [errors](errors.md) and [limits](limits.md).
+- Need a teaching UI? Add the private [Explaining package](addons/explaining-steps.md).

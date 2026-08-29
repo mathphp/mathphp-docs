@@ -22,6 +22,23 @@ then consult [REFERENCE.md](REFERENCE.md) for the complete reference.
 - [Explaining: translations and observers](addons/explaining-translations.md)
 - [Visuals: plots and sampling](addons/visuals-plots.md)
 - [Visuals: equations, matrices, and calculus](addons/visuals-analysis.md)
+- [Explaining: equations](addons/explaining-equations.md)
+- [Explaining: linear systems](addons/explaining-systems.md)
+- [Explaining: matrices](addons/explaining-matrices.md)
+- [Explaining: calculus](addons/explaining-calculus.md)
+- [Explaining: areas](addons/explaining-area.md)
+- [Explaining: roots](addons/explaining-roots.md)
+- [Explaining: statistics](addons/explaining-statistics.md)
+- [Visuals: rendering pipeline](addons/visuals-rendering.md)
+
+## Reading paths
+
+For a first integration, follow Getting started → Grammar → Errors → PHP API.
+For an educational product, add Explaining steps → translations → analyzers.
+For a charting product, add Visuals plots → rendering → analysis models.
+
+The website playground exposes the same API shapes as these guides and is useful
+for checking examples before writing application code.
 
 - Website: https://mathphp.diderichsen.com
 - Specs: https://github.com/mathphp/mathphp-specs

@@ -18,3 +18,23 @@ Common codes include `lex.malformed_number`, `parse.unexpected_token`,
 evaluation subclasses preserve the phase for logging and UI decisions.
 
 Next: [resource limits](limits.md).
+
+## Handling phases differently
+
+Lex errors mean the input cannot be tokenized; parse errors mean the token
+sequence cannot form an expression; evaluation errors mean the expression is
+valid but its values are not. Log the phase for operators, show the span to
+users, and avoid exposing internal class names in API responses.
+
+```php
+$span = $error->span();
+$response = [
+    'code' => $error->errorCode(),
+    'message' => $error->getMessage(),
+    'start' => $span->start,
+    'end' => $span->end,
+];
+```
+
+The source span uses the original expression offsets, so a client can underline
+the exact token even when whitespace or parentheses are present.
