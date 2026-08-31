@@ -52,8 +52,11 @@ $distance->format();        // 0.025 km
 
 Adding metres to seconds raises `UnitException` with
 `units.incompatible_addition`. Other stable codes cover unknown units,
-division by zero, invalid exponents, and malformed input. The exception also
-includes the source position so an editor can highlight the failing token.
+division by zero, invalid exponents, non-finite numbers/results, and malformed
+input. The exception also includes the source position so an editor can
+highlight the failing token. Signed affine temperatures are interpreted before
+conversion (`-20C` is a valid negative Celsius reading, not a negated Kelvin
+base value).
 
 ## Custom catalogs and variables
 
