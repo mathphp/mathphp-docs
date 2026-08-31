@@ -17,15 +17,21 @@ expression text when its resource limits are kept at appropriate values.
 
 ## Installation
 
-The package has not been published. For development in this checkout:
+Core `v0.1.0` is tagged. Install the stable `0.1` line from your configured
+Composer source:
+
+```console
+composer require mathphp/mathphp:^0.1
+```
+
+For development in this checkout:
 
 ```console
 composer install
 composer quality
 ```
 
-To use this checkout from another Composer project before publication, declare
-it as a path repository:
+To use a local checkout while developing, declare it as a path repository:
 
 ```json
 {
@@ -41,8 +47,9 @@ it as a path repository:
 }
 ```
 
-Publishing, tagging, pushing, and repository initialization are deliberately
-outside the scope of this checkout and require separate approval.
+The public Core release is tagged independently from the optional private
+packages. Use a tag or commit for production; use `@dev` only for local
+development.
 
 ## Quick start
 

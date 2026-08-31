@@ -7,7 +7,7 @@ scalar-only `mathphp/mathphp` evaluator.
 ## Install and evaluate
 
 ```bash
-composer require mathphp/mathphp-units
+composer require mathphp/mathphp-units:^0.1
 ```
 
 ```php
