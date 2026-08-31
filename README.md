@@ -3,6 +3,9 @@
 User-facing documentation for the [MathPHP](https://github.com/mathphp/mathphp)
 core library and its optional extensions.
 
+For maintainers, [RELEASING.md](RELEASING.md) defines the package tag order,
+validation gates, and production verification checklist.
+
 This repository is intentionally separate from the implementation and the
 normative specification. Use the feature guides below for focused examples,
 then consult [REFERENCE.md](REFERENCE.md) for the complete reference.
