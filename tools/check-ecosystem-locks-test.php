@@ -24,6 +24,7 @@ $lock = static function (string $path, array $packages): void {
     file_put_contents($path . '/composer.lock', json_encode(['packages' => array_map(
         static fn (string $name, string $reference): array => [
             'name' => $name,
+            'version' => 'dev-main',
             'source' => ['reference' => $reference],
         ],
         array_keys($packages),
@@ -58,5 +59,51 @@ $lock($paths['explaining'], [
 $mismatch = auditEcosystemLocks($paths, $resolver);
 assertCheck(!$mismatch['ok'], 'stale Visuals lock reference should fail');
 assertCheck(str_contains(implode("\n", $mismatch['errors']), 'Visuals HEAD'), 'failure should name the expected Visuals HEAD');
+
+$lock($paths['explaining'], [
+    'mathphp/mathphp' => $coreHead,
+    'mathphp/mathphp-visuals' => $visualsHead,
+]);
+$releaseReference = str_repeat('d', 40);
+$lockWithoutVersion = static function (string $path, array $packages): void {
+    file_put_contents($path . '/composer.lock', json_encode(['packages' => array_map(
+        static fn (string $name, string $reference): array => [
+            'name' => $name,
+            'source' => ['reference' => $reference],
+        ],
+        array_keys($packages),
+        array_values($packages),
+    )], JSON_THROW_ON_ERROR));
+};
+$lockWithoutVersion($paths['units'], ['mathphp/mathphp' => $releaseReference]);
+$stable = auditEcosystemLocks(
+    $paths,
+    $resolver,
+    static function (string $path, string $reference) use ($releaseReference): ?string {
+        return $reference === $releaseReference ? 'v0.1.0' : null;
+    },
+);
+assertCheck(!$stable['ok'], 'a stable lock should still fail when its version metadata is absent');
+
+$stableLock = static function (string $path, array $packages): void {
+    file_put_contents($path . '/composer.lock', json_encode(['packages' => array_map(
+        static fn (string $name, string $reference): array => [
+            'name' => $name,
+            'version' => 'v0.1.0',
+            'source' => ['reference' => $reference],
+        ],
+        array_keys($packages),
+        array_values($packages),
+    )], JSON_THROW_ON_ERROR));
+};
+$stableLock($paths['units'], ['mathphp/mathphp' => $releaseReference]);
+$stable = auditEcosystemLocks(
+    $paths,
+    $resolver,
+    static function (string $path, string $reference) use ($releaseReference): ?string {
+        return $reference === $releaseReference ? 'v0.1.0' : null;
+    },
+);
+assertCheck($stable['ok'], 'a lock pinned to a valid stable tag should pass after main advances');
 
 echo "ecosystem lock checks passed\n";

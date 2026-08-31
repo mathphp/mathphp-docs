@@ -17,11 +17,12 @@ declare(strict_types=1);
  */
 
 /** @return array{ok:bool,checks:list<string>,errors:list<string>} */
-function auditEcosystemLocks(array $paths, ?callable $headResolver = null): array
+function auditEcosystemLocks(array $paths, ?callable $headResolver = null, ?callable $tagResolver = null): array
 {
     $checks = [];
     $errors = [];
     $headResolver ??= static fn (string $path): string => gitHead($path);
+    $tagResolver ??= static fn (string $path, string $reference): ?string => gitTagForReference($path, $reference);
 
     $heads = [];
     foreach (['core', 'units', 'visuals', 'explaining'] as $name) {
@@ -50,9 +51,9 @@ function auditEcosystemLocks(array $paths, ?callable $headResolver = null): arra
 
         $lockReferences[$name] = [];
         foreach (['mathphp/mathphp', 'mathphp/mathphp-visuals'] as $package) {
-            $reference = lockedReference($lockPath, $package);
-            if ($reference !== null) {
-                $lockReferences[$name][$package] = $reference;
+            $metadata = lockedPackageMetadata($lockPath, $package);
+            if ($metadata !== null) {
+                $lockReferences[$name][$package] = $metadata;
             }
         }
     }
@@ -66,16 +67,28 @@ function auditEcosystemLocks(array $paths, ?callable $headResolver = null): arra
     foreach ($relations as [$lockOwner, $package, $headName, $label]) {
         $locked = $lockReferences[$lockOwner][$package] ?? null;
         $expected = $heads[$headName] ?? null;
-        $description = $lockOwner . ' locks ' . $package . ' to ' . ($locked ?? '(missing)');
+        $lockedReference = is_array($locked) ? ($locked['reference'] ?? null) : null;
+        $lockedVersion = is_array($locked) ? ($locked['version'] ?? null) : null;
+        $description = $lockOwner . ' locks ' . $package . ' to ' . ($lockedReference ?? '(missing)');
         if ($locked === null) {
             $errors[] = $description . '; expected ' . $label . ' HEAD ' . ($expected ?? '(missing)');
             continue;
         }
-        if ($expected === null || !referencesMatch($locked, $expected)) {
-            $errors[] = $description . '; expected ' . $label . ' HEAD ' . ($expected ?? '(missing)');
+        if ($expected !== null && is_string($lockedReference) && referencesMatch($lockedReference, $expected)) {
+            $checks[] = $description . ' (matches ' . $label . ' HEAD)';
             continue;
         }
-        $checks[] = $description . ' (matches ' . $label . ' HEAD)';
+        $tag = null;
+        if (is_string($lockedReference) && is_string($lockedVersion) && isStableVersion($lockedVersion)) {
+            $tag = $tagResolver((string) ($paths[$headName] ?? ''), $lockedReference);
+        }
+        if ($tag !== null) {
+            $checks[] = $description . ' (pins stable tag ' . $tag . ')';
+            continue;
+        }
+        if ($expected === null || !is_string($lockedReference) || !referencesMatch($lockedReference, $expected)) {
+            $errors[] = $description . '; expected ' . $label . ' HEAD ' . ($expected ?? '(missing)');
+        }
     }
 
     return ['ok' => $errors === [], 'checks' => $checks, 'errors' => $errors];
@@ -95,7 +108,8 @@ function gitHead(string $path): string
     return strtolower($head);
 }
 
-function lockedReference(string $lockPath, string $package): ?string
+/** @return array{reference:string,version:string}|null */
+function lockedPackageMetadata(string $lockPath, string $package): ?array
 {
     $contents = file_get_contents($lockPath);
     if ($contents === false) {
@@ -116,9 +130,36 @@ function lockedReference(string $lockPath, string $package): ?string
             $dist = is_array($installed['dist'] ?? null) ? $installed['dist'] : [];
             $reference = $source['reference'] ?? $dist['reference'] ?? null;
 
-            return is_string($reference) && preg_match('/^[0-9a-f]{7,64}$/i', $reference) === 1
-                ? strtolower($reference)
+            return is_string($reference)
+                && preg_match('/^[0-9a-f]{7,64}$/i', $reference) === 1
+                && is_string($installed['version'] ?? null)
+                ? ['reference' => strtolower($reference), 'version' => $installed['version']]
                 : null;
+        }
+    }
+
+    return null;
+}
+
+function isStableVersion(string $version): bool
+{
+    return preg_match('/^v?\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?$/', trim($version)) === 1;
+}
+
+function gitTagForReference(string $path, string $reference): ?string
+{
+    $command = 'git -C ' . escapeshellarg($path) . ' tag --points-at ' . escapeshellarg($reference) . ' 2>&1';
+    $output = [];
+    $exitCode = 0;
+    exec($command, $output, $exitCode);
+    if ($exitCode !== 0) {
+        return null;
+    }
+
+    foreach ($output as $tag) {
+        $tag = trim($tag);
+        if (isStableVersion($tag)) {
+            return $tag;
         }
     }
 

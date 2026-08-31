@@ -30,8 +30,9 @@ php tools/check-ecosystem-locks.php \
   --explaining=/path/to/mathphp-explaining
 ```
 
-It verifies that Units, Visuals, and Explaining lock the current core commit,
-and that Explaining locks the current Visuals commit. It only reads local Git
+It verifies that development locks match the current dependency commits, while
+release locks may pin a valid SemVer tag such as `v0.1.0`. It also checks that
+Explaining locks the intended Visuals revision/tag. It only reads local Git
 metadata and lockfiles; it does not fetch repositories or manage access.
 
 ## Checklist
