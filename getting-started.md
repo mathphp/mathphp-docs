@@ -46,3 +46,27 @@ try {
 - Need editor feedback? Read [errors](errors.md) and [limits](limits.md).
 - Need a teaching UI? Add the private [Explaining package](addons/explaining-steps.md).
 - Need dimensional calculations? Add the private [Units package](addons/units.md).
+
+## Installing private add-ons
+
+The add-ons are private VCS packages, so a consumer must declare an approved
+Composer repository (or use the organization’s private Composer mirror) before
+requiring one. Use a tag or commit in production; `dev-main` is shown only as a
+development example:
+
+```sh
+composer config repositories.mathphp-units vcs https://github.com/mathphp/mathphp-units.git
+composer require mathphp/mathphp-units:dev-main
+```
+
+For the teaching layer, declare both repositories because Explaining uses
+Visuals at runtime:
+
+```sh
+composer config repositories.mathphp-visuals vcs https://github.com/mathphp/mathphp-visuals.git
+composer config repositories.mathphp-explaining vcs https://github.com/mathphp/mathphp-explaining.git
+composer require mathphp/mathphp-visuals:dev-main mathphp/mathphp-explaining:dev-main
+```
+
+Authenticate through your normal Composer/Git policy. The MathPHP website and
+packages do not issue tokens, grant access, process payment, or revoke access.
