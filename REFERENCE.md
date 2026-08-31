@@ -109,7 +109,9 @@ The immutable options and registry are the supported way to customize an
 evaluation.
 
 The optional `Math::evaluateWithObserver()` method is the public instrumentation
-seam for separately distributed tooling. The step-by-step explanation layer is
+seam for separately distributed tooling. Its observer may be passed directly as
+the second argument when variables are not needed; the array-first form remains
+available for variable-bound expressions. The step-by-step explanation layer is
 maintained as the private `mathphp/mathphp-explaining` package and is not part
 of this free package or its release archive.
 

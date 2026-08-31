@@ -20,8 +20,15 @@ try {
 ```
 
 Use `Math::evaluateWithObserver()` when a separately distributed layer needs
-evaluation events. The [Explaining add-on](addons/explaining-steps.md) uses
-this seam without changing Core semantics.
+evaluation events. Pass the observer as the second argument when no variables
+are needed, or pass `variables` followed by the observer. The
+[Explaining add-on](addons/explaining-steps.md) uses this seam without
+changing Core semantics:
+
+```php
+$result = Math::evaluateWithObserver('2 * (3 + 4)', $observer);
+$result = Math::evaluateWithObserver('gross * tax', ['gross' => 42, 'tax' => 0.2], $observer);
+```
 
 ## Compatibility promise
 
