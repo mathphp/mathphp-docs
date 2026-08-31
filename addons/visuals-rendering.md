@@ -5,12 +5,19 @@ produce portable data; `VisualRepresentation` carries the kind and metadata;
 `SvgRenderer` creates an embeddable fallback.
 
 ```php
-$representation = new VisualRepresentation('line-plot', ['points' => $points]);
-$svg = (new SvgRenderer())->render($representation);
+$plot = (new Plotter())->plot('sin(x)', 'x', 0, 6.28);
+
+$model = $plot->toArray(); // kind, metadata, points, SVG, and SVG data URI
+$svg = $plot->svg;         // use as an <img> source or trusted inline markup
 ```
 
 Add a title, axis labels, and a text summary for accessibility. Serialize the
 representation over JSON when the frontend is a separate service.
+
+Undefined samples are part of the representation contract. Line plots split SVG
+paths at `y: null`; area fallbacks omit shaded fill across a gap and label the
+condition for assistive technology. Do not interpolate or silently replace null
+samples with zero in a custom renderer.
 
 ## Supported visual vocabulary
 
