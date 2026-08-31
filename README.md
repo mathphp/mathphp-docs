@@ -45,6 +45,10 @@ For measurement-aware products, add the Units guide before the explaining or vis
 The website playground exposes the same API shapes as these guides and is useful
 for checking examples before writing application code.
 
+Documentation CI checks every relative Markdown link without requiring network
+access; external links remain informational and are not treated as release
+gates.
+
 - Website: https://mathphp.diderichsen.com
 - Specs: https://github.com/mathphp/mathphp-specs
 - Private explaining add-on: https://github.com/mathphp/mathphp-explaining

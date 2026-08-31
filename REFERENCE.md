@@ -312,4 +312,4 @@ releases and records notable changes in [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 
-[MIT](LICENSE)
+[MIT license for the public core](https://github.com/mathphp/mathphp/blob/main/LICENSE)
