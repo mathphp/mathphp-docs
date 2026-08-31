@@ -19,6 +19,21 @@ The core tag is the compatibility anchor. Add-on lockfiles should be refreshed
 to the intended core tag or commit before their tags are created. Explaining
 must also be checked against the visuals and units revisions it supports.
 
+Run the dependency-free lock checker from a workspace containing all four
+checkouts before tagging:
+
+```sh
+php tools/check-ecosystem-locks.php \
+  --core=/path/to/mathphp \
+  --units=/path/to/mathphp-units \
+  --visuals=/path/to/mathphp-visuals \
+  --explaining=/path/to/mathphp-explaining
+```
+
+It verifies that Units, Visuals, and Explaining lock the current core commit,
+and that Explaining locks the current Visuals commit. It only reads local Git
+metadata and lockfiles; it does not fetch repositories or manage access.
+
 ## Checklist
 
 For each package:

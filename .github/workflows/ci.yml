@@ -21,3 +21,5 @@ jobs:
           coverage: none
       - name: Check local Markdown links
         run: php tools/check-links.php
+      - name: Check ecosystem lock-checker fixture
+        run: php tools/check-ecosystem-locks-test.php
