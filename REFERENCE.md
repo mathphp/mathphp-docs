@@ -77,18 +77,21 @@ Open <http://127.0.0.1:8080/> after starting the local server.
 
 ## Optional private extensions
 
-The core evaluator does not require teaching or presentation features. Two
-optional private packages extend it without changing the public evaluator:
+The core evaluator does not require teaching, presentation, or measurement
+features. Three optional private packages extend it without changing the
+public evaluator:
 
 - `mathphp/mathphp-explaining` teaches the evaluation order with detailed,
   translatable steps and partial-result explanations.
 - `mathphp/mathphp-visuals` turns formulas, plots, graphs, charts, and analysis
   data into renderer-neutral models with accessible SVG and image-ready data
   URIs.
+- `mathphp/mathphp-units` adds quantities, dimensional arithmetic, compatible
+  conversions, and stable unit errors while keeping Core scalar-only.
 
-The explaining package depends on the visuals package only when both layers
-are needed; applications that only need charts can install the visuals package
-directly.
+The explaining package also understands quantities when Units is installed.
+Visuals can label quantities and axes, but does not infer or validate units.
+Install only the add-ons your application needs.
 
 ## Supported public API
 

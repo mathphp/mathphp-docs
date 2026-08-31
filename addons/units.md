@@ -16,12 +16,15 @@ use MathPHP\Units\UnitMath;
 $result = UnitMath::evaluate('2m * 6 + 200cm');
 
 $result->format(); // 14 m
-$result->toArray(); // value, unit, dimensions, formatted
+$result->toArray(); // value, displayValue, unit, dimensions, formatted
 ```
 
 The default catalog includes length (`m`, `cm`, `mm`, `km`, `in`, `ft`, `yd`,
 `mi`), mass (`kg`, `g`, `mg`, `lb`, `oz`), time (`s`, `ms`, `min`, `h`, `d`),
-temperature (`K`, `C`, `F`), and angle (`rad`, `deg`).
+temperature (`K`, `C`, `F`), angle (`rad`, `deg`), square/cubic lengths,
+litres, and common speeds (`mps`, `kmh`, `mph`). Spelled aliases and separated
+forms such as `metres`, `liters`, `metres per second`, and `m/s` are accepted.
+The short symbols `m` (metre) and `min` (minute) remain distinct.
 
 ## Dimensional arithmetic
 
@@ -32,6 +35,19 @@ result keeps the left-hand display unit when possible:
 UnitMath::evaluate('2m + 200cm')->format(); // 4 m
 UnitMath::evaluate('60km / 2h')->format();  // 8.33333333333 m/s
 UnitMath::evaluate('3m ^ 2')->format();     // 9 m^2
+UnitMath::evaluate('1L + 500mL')->format();  // 1.5 L
+UnitMath::evaluate('25m to km')->format();   // 0.025 km
+UnitMath::evaluate('1 mile per hour to km/h')->format(); // 1.609344 kmh
+```
+
+Use `to` when the output needs a specific compatible display unit. Conversion
+changes the display unit while preserving the normalized `value`:
+
+```php
+$distance = UnitMath::evaluate('25m to km');
+$distance->value;           // 25.0 (base metres)
+$distance->displayValue();  // 0.025 (display kilometres)
+$distance->format();        // 0.025 km
 ```
 
 Adding metres to seconds raises `UnitException` with
@@ -44,6 +60,10 @@ includes the source position so an editor can highlight the failing token.
 Register domain units without modifying the package defaults:
 
 ```php
+use MathPHP\Units\UnitCatalog;
+use MathPHP\Units\UnitDefinition;
+use MathPHP\Units\UnitMath;
+
 $catalog = UnitCatalog::default()->register(
     new UnitDefinition('px', 'pixel', ['length' => 1], 0.000264583),
 );
@@ -54,8 +74,9 @@ $result = UnitMath::evaluate('width + 10px', [
 ```
 
 Variables may be scalar numbers or `Quantity` objects. Keep quantities in your
-API response by using `toArray()`; it contains both the normalized value and a
-human-readable label.
+API response by using `toArray()`; it contains the normalized base `value`, the
+selected unit's `displayValue`, dimensions, and a human-readable `formatted`
+label.
 
 ## Explaining and visuals
 
@@ -65,10 +86,11 @@ package exposes `UnitLabels::quantity()` and `UnitLabels::axis()` for chart
 legends and axes. Both integrations are optional; applications can use the
 units package alone.
 
-## Distribution
+## Distribution status
 
-This package is distributed under the MathPHP Commercial Add-on License. Access
-is granted to named GitHub accounts while a sponsorship or license is active.
-An obtained copy may remain in use after access ends, but repository access and
-updates stop when the license ends. Do not redistribute the source or remove
+This package is private and uses the MathPHP Commercial Add-on License. The
+long-term payment, sponsorship, account-access, and repository-distribution
+workflow is intentionally undecided and is not automated by this project.
+Until that model is chosen, treat the repository and license text as the
+authoritative distribution boundary; do not redistribute the source or remove
 MathPHP branding and notices.

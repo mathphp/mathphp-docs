@@ -45,3 +45,4 @@ try {
 - Need to define accepted input? Start with [grammar](grammar.md).
 - Need editor feedback? Read [errors](errors.md) and [limits](limits.md).
 - Need a teaching UI? Add the private [Explaining package](addons/explaining-steps.md).
+- Need dimensional calculations? Add the private [Units package](addons/units.md).

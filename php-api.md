@@ -33,6 +33,12 @@ only documented values (`result`, `type`, error `code`, and `span`).
 ## Add-on composition
 
 Install Core first, then load private packages in the application that needs
-them. Explaining consumes observer events and emits lesson models; Visuals
-consumes analysis/plot models and emits renderer-neutral representations. Neither
-package changes the numerical result returned by Core.
+them. Explaining consumes observer events and emits lesson models; Units
+evaluates a separate quantity grammar; Visuals consumes analysis/plot models
+and emits renderer-neutral representations. Neither add-on changes the scalar
+result returned by Core.
+
+When Units is present, pass `Quantity::toArray()` through your API. Its
+`value` is the normalized base value, while `displayValue` is the number in the
+selected display unit; `formatted` is the human-readable label. Explaining and
+Visuals preserve those fields when they serialize quantities.
