@@ -435,7 +435,7 @@ symbolic/global PDE solutions remain outside this numerical contract.
 ## Two-dimensional wave equations
 
 `NumericalWavePde2DAnalyzer` supports a bounded rectangular hyperbolic problem
-with initial displacement, initial velocity, and four fixed Dirichlet edges:
+with initial displacement, initial velocity, and four edge expressions:
 
 ```text
 u_tt = c^2 * (u_xx + u_yy)
@@ -456,12 +456,26 @@ $analysis = (new NumericalWavePde2DAnalyzer())->analyze(
 );
 ```
 
+The positional edges are Dirichlet defaults. The optional
+`boundaryConditions` map adds per-edge Neumann or Robin conditions using
+one-sided finite differences:
+
+```php
+$analysis = (new NumericalWavePde2DAnalyzer())->analyze(
+    'u_tt = u_xx + u_yy',
+    '1', '0', '1', '1', '1', '1',
+    boundaryConditions: [
+        'left' => ['type' => 'neumann', 'value' => '0'],
+    ],
+);
+```
+
 The solver uses a centered leapfrog stencil and chooses substeps from a
 conservative two-dimensional CFL bound. `solution['points']` contains
 time-stamped grids and the visual model has kind `pde-wave-2d`. A `solved`
 result means only that the requested finite trajectory completed; it remains
 `complete: false` because it is a numerical approximation. Nonlinear or mixed
-derivative terms, non-Dirichlet boundaries, unstable coefficients, higher
+derivative terms, periodic/nonlocal edges, unstable coefficients, higher
 dimensions, and symbolic general solutions are reported as `unsupported` or
 `partial`.
 
