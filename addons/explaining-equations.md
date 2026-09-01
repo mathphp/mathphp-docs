@@ -420,12 +420,12 @@ are reported as `unsupported` or `partial` rather than guessed.
 
 `NumericalCoupledParabolicPdeAnalyzer` handles bounded systems of fields sharing
 one spatial grid. Each equation has one time derivative, and the right side may
-couple all field values while remaining affine in their spatial second
-derivatives:
+couple all field values while remaining affine in their spatial first and
+second derivatives:
 
 ```text
-u_t = u_xx + v
-v_t = v_xx - u
+u_t = a*u_x + u_xx + v
+v_t = b*v_x + v_xx - u
 ```
 
 Provide one initial profile and two edge expressions per field. Positional
@@ -436,11 +436,12 @@ expressions remain Dirichlet defaults, while the optional edge-first
 use MathPHP\Explaining\NumericalCoupledParabolicPdeAnalyzer;
 
 $analysis = (new NumericalCoupledParabolicPdeAnalyzer())->analyze(
-    'u_t = u_xx + v; v_t = v_xx - u',
+    'u_t = a*u_x + u_xx + v; v_t = b*v_x + v_xx - u',
     ['u', 'v'],
     ['u' => 'sin(pi()*x)', 'v' => '0'],
     ['u' => '0', 'v' => '0'], // left edges
     ['u' => '0', 'v' => '0'], // right edges
+    known: ['a' => 0.2, 'b' => -0.1],
     boundaryConditions: [
         'left' => ['u' => ['type' => 'neumann', 'value' => '0']],
         'right' => ['v' => ['type' => 'robin', 'alpha' => 1, 'beta' => 0, 'value' => '0']],
@@ -450,7 +451,8 @@ $analysis = (new NumericalCoupledParabolicPdeAnalyzer())->analyze(
 );
 ```
 
-The explicit update integrates all components at the same time level and
+The explicit update integrates all components at the same time level, using
+centered advection and diffusion stencils, and
 retains per-field snapshots in `solution['points']`. Cross-diffusion terms are
 accepted when they are affine and non-negative under the conservative CFL
 bound. Normalized edge conditions are returned in
