@@ -34,5 +34,22 @@ $analysis = (new CalculusAnalyzer())->integral('sqrt(x) + 2*x');
 Non-elementary integrals, products requiring substitution, and branch-sensitive
 complex antiderivatives remain `partial` rather than being guessed.
 
+## Complex-valued expressions
+
+Use `ComplexExpressionEvaluator` when the expression itself is complex. The
+real evaluator is intentionally unchanged:
+
+```php
+use MathPHP\Explaining\ComplexExpressionEvaluator;
+
+$value = (new ComplexExpressionEvaluator())->evaluate('exp(i * pi) + sqrt(-1)');
+// $value is a ComplexNumber with explicit real and imaginary components.
+```
+
+The evaluator supports Core arithmetic, the imaginary unit `i`, principal
+branches for `sqrt`, `exp`, `ln`, `sin`, `cos`, and two-argument `log`.
+Modulo, factorial of non-real values, and unsupported custom functions are
+rejected explicitly rather than coerced to real numbers.
+
 For sampled curves, label numerical approximations and show the variable and
 operation beside the formula. See [plots](visuals-plots.md) for presentation.
