@@ -458,7 +458,9 @@ this numerical contract.
 ## Two-dimensional wave equations
 
 `NumericalWavePde2DAnalyzer` supports a bounded rectangular hyperbolic problem
-with initial displacement, initial velocity, and four edge expressions:
+with initial displacement, initial velocity, and four edge expressions. The
+spatial operator may include affine `u_xy` terms when its principal part is
+positive-semidefinite:
 
 ```text
 u_tt = c^2 * (u_xx + u_yy)
@@ -493,12 +495,13 @@ $analysis = (new NumericalWavePde2DAnalyzer())->analyze(
 );
 ```
 
-The solver uses a centered leapfrog stencil and chooses substeps from a
-conservative two-dimensional CFL bound. `solution['points']` contains
+The solver uses a centered leapfrog stencil (including diagonal mixed-term
+coupling when present) and chooses substeps from a conservative two-dimensional
+CFL bound. `solution['points']` contains
 time-stamped grids and the visual model has kind `pde-wave-2d`. A `solved`
 result means only that the requested finite trajectory completed; it remains
-`complete: false` because it is a numerical approximation. Nonlinear or mixed
-derivative terms, periodic/nonlocal edges, unstable coefficients, higher
+`complete: false` because it is a numerical approximation. Nonlinear derivative
+terms, periodic/nonlocal edges, unstable coefficients, higher
 dimensions, and symbolic general solutions are reported as `unsupported` or
 `partial`.
 
