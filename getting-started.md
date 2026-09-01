@@ -66,7 +66,7 @@ Visuals at runtime:
 ```sh
 composer config repositories.mathphp-visuals vcs https://github.com/mathphp/mathphp-visuals.git
 composer config repositories.mathphp-explaining vcs https://github.com/mathphp/mathphp-explaining.git
-composer require mathphp/mathphp-visuals:^0.3 mathphp/mathphp-explaining:^0.19
+composer require mathphp/mathphp-visuals:^0.3 mathphp/mathphp-explaining:^0.23
 ```
 
 Authenticate through your normal Composer/Git policy. The MathPHP website and
