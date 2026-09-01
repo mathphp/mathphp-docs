@@ -76,6 +76,23 @@ Durand–Kerner approximations with separate `real`, `imaginary`, and
 `formatted` fields. These are numerical approximations, not proof objects;
 inspect the convergence metadata before presenting them as final values.
 
+Rational equalities are solved exactly when cross-multiplication produces a
+linear or quadratic polynomial. The analyzer preserves the original domain:
+denominator zeros are returned in `solutions['excludedValues']` and are never
+reintroduced as roots after cancellation:
+
+```php
+$analysis = (new RationalEquationAnalyzer())->analyze('1 / x = 2');
+// roots: [0.5], excludedValues: [0], complete: true
+
+$cancelled = (new RationalEquationAnalyzer())->analyze('(x^2 - 1) / (x - 1) = 0');
+// roots: [-1], excludedValues: [1]
+```
+
+`EquationAnalyzer::analyze()` dispatches these rational forms automatically.
+Higher-degree rational expressions remain available through bounded numerical
+solving when a domain is supplied.
+
 ## Inequalities and larger systems
 
 Use `InequalityAnalyzer` for bounded real relations. Linear and quadratic
@@ -92,6 +109,9 @@ $analysis = (new InequalityAnalyzer())->analyze('x^2 < 4', 'x', -3, 3);
 
 $strict = (new InequalityAnalyzer())->analyze('x^2 > 0', 'x', -2, 2);
 // complete: true, intervals: [-2, 0) and (0, 2]
+
+$rational = (new RationalInequalityAnalyzer())->analyze('1 / x > 0', 'x', -1, 1);
+// complete: true, intervals: (0, 1], excludedValues: [0]
 ```
 
 `LinearSystemAnalyzer` generalizes the two-equation helper to arbitrary affine
