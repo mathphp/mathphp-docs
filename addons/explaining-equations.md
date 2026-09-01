@@ -226,6 +226,25 @@ the trajectory. A nonlinear `u_xx` term, higher-dimensional domain, Neumann or
 periodic boundary condition, or symbolic closed-form request is reported as
 `unsupported`. Numerical completion is never a proof for every PDE solution.
 
+The same analyzer accepts mixed boundary types through the optional
+`boundaryConditions` map. A Neumann edge prescribes the first spatial
+derivative; a Robin edge prescribes `alpha*u + beta*u_x = value`:
+
+```php
+$analysis = (new NumericalPdeAnalyzer())->analyze(
+    'u_t = u_xx', '0', '0', '0',
+    boundaryConditions: [
+        'left' => ['type' => 'neumann', 'value' => '0'],
+        'right' => ['type' => 'robin', 'alpha' => 1, 'beta' => 0, 'value' => '0'],
+    ],
+);
+```
+
+The solver uses one-sided finite-difference edge formulas and retains the
+normalized boundary types and coefficients in `solution['boundaryConditions']`.
+Unknown types, singular Robin coefficients, undefined values, and unsupported
+periodic/nonlocal conditions are reported explicitly.
+
 ## Second-order boundary-value ODEs
 
 `NumericalBoundaryValueOdeAnalyzer` handles a bounded scalar second-order

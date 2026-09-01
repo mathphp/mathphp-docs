@@ -25,6 +25,8 @@
   solver, reaction–diffusion systems, and explicit stability limits.
 - Documented the Explaining `v0.42.0` bounded two-dimensional wave solver,
   centered leapfrog stencil, CFL guard, and finite-domain scope.
+- Documented the Explaining `v0.43.0` Neumann/Robin mixed-boundary support for
+  bounded one-dimensional parabolic PDEs.
 
 Notable documentation changes are recorded here. This file describes the
 documentation repository; package release notes remain in their own
