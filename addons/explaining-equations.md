@@ -18,6 +18,33 @@ $json = $analysis->toArray();
 Render the model as a prompt, a hint, or an audit record. Pair it with the
 [translation layer](explaining-translations.md) for learner-facing copy.
 
+## Conditional and piecewise expressions
+
+For a numeric result selected by conditions, use `PiecewiseEvaluator`. It
+evaluates conditions from top to bottom, evaluates only the selected branch,
+and returns the branch number plus ordered explanation steps:
+
+```php
+use MathPHP\Explaining\PiecewiseEvaluator;
+
+$result = (new PiecewiseEvaluator())->explain(
+    'piecewise(x < 0: -x; otherwise: x)',
+    ['x' => -3],
+);
+
+// $result->value === 3
+// $result->branch === 1
+// $result->toArray()['steps'] describes the selection.
+```
+
+The `if(condition, whenTrue, whenFalse)` shorthand is also accepted. Conditions
+support `<`, `<=`, `>`, `>=`, `=`, `!=`, numeric truthiness, and bounded `and`,
+`or`, and `not` combinations. Up to 64 branches and 100,000 source characters
+are accepted; branch values still use Core's scalar grammar, domains, and
+resource limits. A missing match is a `DomainException`, not a guessed value.
+Piecewise selection is an evaluation feature, not a global proof of continuity,
+limits, or every possible solution of a discontinuous equation.
+
 ## General single-variable equations
 
 For equations outside the closed-form linear, quadratic, and power patterns,
