@@ -306,6 +306,42 @@ guard or boundary/domain failure interrupted it. This focused contract does
 not cover higher dimensions, Neumann/periodic edges, arbitrary nonlinear wave
 operators, or symbolic general solutions.
 
+## Two-dimensional parabolic PDEs
+
+`NumericalParabolicPdeAnalyzer` covers bounded rectangular heat and diffusion
+initial-boundary problems for a field `u(x, y, t)`:
+
+```text
+u_t = F(x, y, t, u, u_xx, u_yy)
+```
+
+The right-hand side must be affine in the two spatial second derivatives, with
+non-negative diffusion coefficients. Supply an initial profile and fixed
+Dirichlet expressions for the left, right, bottom, and top edges:
+
+```php
+use MathPHP\Explaining\NumericalParabolicPdeAnalyzer;
+
+$analysis = (new NumericalParabolicPdeAnalyzer())->analyze(
+    'u_t = alpha*u_xx + beta*u_yy',
+    '1',                // u(x, y, 0)
+    '1', '1', '1', '1', // left, right, bottom, top
+    known: ['alpha' => 0.1, 'beta' => 0.1],
+    firstPoints: 25,
+    secondPoints: 25,
+    timeSteps: 100,
+);
+```
+
+The analyzer applies an explicit five-point diffusion stencil, chooses a
+conservative two-dimensional CFL time step, and retains time-stamped grids in
+`solution['points']`. The visual model has kind `pde-heatmap-2d`. A `solved`
+status means the finite grid completed under the stability guard; the solution
+still has `complete: false` because it is a numerical approximation. Undefined
+boundaries, backward diffusion, nonlinear or mixed derivative terms, unstable
+time steps, incompatible corners, Neumann/Robin/periodic conditions, and higher
+dimensions are reported as `unsupported` or `partial` rather than guessed.
+
 ## Normalized polynomial equations
 
 `PolynomialEquationAnalyzer` collects coefficients from the Core AST before
