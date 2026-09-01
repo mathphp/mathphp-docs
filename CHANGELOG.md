@@ -2,6 +2,8 @@
 
 ## 2026-09-01
 
+- Documented Explaining `v0.78.0` seeded scalar Itô SDE simulation,
+  Euler–Maruyama paths, and explicit stochastic-scope semantics.
 - Documented Explaining `v0.77.0` bounded nonlinear Volterra equations,
   causal row-wise Picard iteration, and partial-result semantics.
 - Documented Explaining `v0.76.0` bounded nonlinear Fredholm equations,

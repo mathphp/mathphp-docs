@@ -277,6 +277,32 @@ the current cell is solved with scalar Picard updates. `rowHistory` records
 the updates and convergence of every midpoint, while non-convergent or
 undefined rows keep the overall result `partial`.
 
+## Scalar Itô stochastic differential equations
+
+`NumericalSdeAnalyzer` simulates bounded stochastic equations of the form
+`dX = a(t,X)dt + b(t,X)dW` with seeded Euler–Maruyama paths:
+
+```php
+use MathPHP\Explaining\NumericalSdeAnalyzer;
+
+$analysis = (new NumericalSdeAnalyzer())->analyze(
+    '0.2*x',   // drift a(t,x)
+    '0.5',     // diffusion b(t,x)
+    0, 1, 1,   // initial time, initial value, target time
+    steps: 200,
+    paths: 32,
+    seed: 42,
+);
+// solutions['paths'] contains every trajectory and endpoint statistics.
+```
+
+The drift and diffusion expressions use Core's evaluator with `t` and `x`
+bound at each step. Results retain the seed, step size, completed and failed
+paths, endpoint mean/variance, and `scheme: euler-maruyama`. Stochastic
+simulation is an approximation, so `complete` is always `false`; domain exits
+are `partial`, while invalid time ranges or oversized batches are
+`unsupported`.
+
 ## Numerical higher-order ODEs
 
 `NumericalHigherOrderOdeAnalyzer` gives scalar third- through eighth-order
