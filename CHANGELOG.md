@@ -41,6 +41,8 @@
   nonlinear systems, including bounded backtracking and residual evidence.
 - Documented the Explaining `v0.50.0` affine mixed-spatial-derivative support
   for bounded two-dimensional elliptic PDEs.
+- Documented the Explaining `v0.51.0` affine mixed-spatial-derivative support
+  for bounded two-dimensional parabolic PDEs.
 
 Notable documentation changes are recorded here. This file describes the
 documentation repository; package release notes remain in their own

@@ -360,11 +360,12 @@ remain outside this focused contract.
 initial-boundary problems for a field `u(x, y, t)`:
 
 ```text
-u_t = F(x, y, t, u, u_xx, u_yy)
+u_t = F(x, y, t, u, u_xx, u_yy, u_xy)
 ```
 
-The right-hand side must be affine in the two spatial second derivatives, with
-non-negative diffusion coefficients. Supply an initial profile and the four
+The right-hand side must be affine in the spatial second derivatives, with
+non-negative diffusion coefficients and a positive-semidefinite principal part.
+This includes an affine mixed derivative such as `gamma*u_xy`. Supply an initial profile and the four
 positional edge expressions (which remain Dirichlet defaults):
 
 ```php
@@ -381,7 +382,8 @@ $analysis = (new NumericalParabolicPdeAnalyzer())->analyze(
 );
 ```
 
-The analyzer applies an explicit five-point diffusion stencil, chooses a
+The analyzer applies an explicit five-point diffusion stencil plus a diagonal
+mixed-derivative stencil when `u_xy` is present, chooses a
 conservative two-dimensional CFL time step, and retains time-stamped grids in
 `solution['points']`. The visual model has kind `pde-heatmap-2d`. A `solved`
 status means the finite grid completed under the stability guard; the solution
@@ -405,8 +407,8 @@ $analysis = (new NumericalParabolicPdeAnalyzer())->analyze(
 
 Normalized edge types and Robin coefficients are returned in
 `solution['boundaryConditions']`. Undefined values, singular Robin
-coefficients, incompatible Dirichlet corners, backward diffusion, nonlinear or
-mixed derivative terms, periodic/nonlocal conditions, and higher dimensions
+coefficients, incompatible Dirichlet corners, backward diffusion, nonlinear
+derivative terms, periodic/nonlocal conditions, and higher dimensions
 are reported as `unsupported` or `partial` rather than guessed.
 
 ## Coupled one-dimensional parabolic systems
