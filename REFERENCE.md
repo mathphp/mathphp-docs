@@ -5,7 +5,7 @@ mathematical expressions. It parses an explicit language into an immutable AST
 and evaluates that AST; it never uses PHP `eval` or resolves expression names
 to arbitrary PHP callables.
 
-The v0.2 implementation targets PHP `^8.2` and is suitable for untrusted
+The v0.3 implementation targets PHP `^8.2` and is suitable for untrusted
 expression text when its resource limits are kept at appropriate values.
 
 > **Package identity:** this project intentionally retains the `MathPHP` name,
@@ -17,11 +17,11 @@ expression text when its resource limits are kept at appropriate values.
 
 ## Installation
 
-Core `v0.2.0` is tagged. Install the stable `0.2` line from your configured
+Core `v0.3.0` is tagged. Install the stable `0.3` line from your configured
 Composer source:
 
 ```console
-composer require mathphp/mathphp:^0.2
+composer require mathphp/mathphp:^0.3
 ```
 
 For development in this checkout:
@@ -102,7 +102,7 @@ Install only the add-ons your application needs.
 
 ## Supported public API
 
-The supported v0.2 API consists of:
+The supported v0.3 API consists of:
 
 - `MathPHP\Math`;
 - `MathPHP\Configuration\EvaluationOptions` and `ResourceLimits`;
@@ -282,7 +282,7 @@ The exhaustive code and span contract is in
 
 ## Explicit limitations
 
-The Core `v0.2` language intentionally does not support:
+The Core `v0.3` language intentionally does not support:
 
 - assignment, comparisons, or logical operators;
 - symbolic algebra, simplification, or derivatives;
