@@ -99,7 +99,8 @@ $analysis = (new LinearSystemAnalyzer())->analyze(
 ```
 
 For nonlinear multivariable equations, use `NonlinearSystemAnalyzer` with one
-initial estimate per variable:
+initial estimate per variable. Square systems use Newton's method; systems
+with redundant equations use a Gauss–Newton least-squares update:
 
 ```php
 use MathPHP\Explaining\NonlinearSystemAnalyzer;
@@ -112,12 +113,15 @@ $analysis = (new NonlinearSystemAnalyzer())->analyze(
 // solutions['values'] is approximately ['x' => 2, 'y' => 1].
 ```
 
-This is a bounded Newton iteration using finite-difference Jacobians. The
+This is a bounded Newton/Gauss–Newton iteration using finite-difference
+Jacobians. The
 serialized result includes each iterate and residual norm, and returns
 `partial` when the Jacobian is singular, an expression leaves its domain, or
 the configured iteration limit is reached. A converged starting point finds
 one nearby solution; it does not establish that every solution exists or has
-been found. Partial differential equations, arbitrary complex systems, and
+been found. Underdetermined systems are reported as unsupported because they
+need a free-variable or constraint-set representation rather than a unique
+Newton update. Partial differential equations, arbitrary complex systems, and
 global piecewise/discontinuous proofs remain outside this general-purpose
 numeric analyzer and are reported as unsupported or partial.
 
