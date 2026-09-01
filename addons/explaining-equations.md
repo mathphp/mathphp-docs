@@ -4,6 +4,12 @@
 text, known values, unknown symbols, and solving status. It deliberately keeps
 partial solutions honest when a closed form is unavailable.
 
+The general `analyze()` entry point recognizes the original linear, quadratic,
+and power teaching forms, then delegates normalized univariate polynomial
+equalities (including factored and rearranged forms) to the polynomial analyzer.
+Use the specialized numerical or system analyzers when the equation has a
+bounded domain, multiple variables, or no polynomial closed form.
+
 ```php
 $analysis = (new EquationAnalyzer())->analyze('x^2 + 1 = 5', ['x' => 2]);
 $json = $analysis->toArray();
