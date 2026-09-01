@@ -173,3 +173,25 @@ $analysis = (new NumericalOdeAnalyzer())->analyze(
 The integration is intentionally bounded and numerical. It does not claim a
 closed form or global stability; undefined slopes and non-finite states return
 `partial` with the successfully integrated prefix.
+
+Coupled equations can be integrated as a first-order system. This is also the
+usual representation for higher-order ODEs:
+
+```php
+use MathPHP\Explaining\NumericalOdeSystemAnalyzer;
+
+$analysis = (new NumericalOdeSystemAnalyzer())->analyze(
+    "x' = v; v' = -x",
+    variables: ['x', 'v'],
+    independent: 't',
+    initial: ['x' => 1, 'v' => 0],
+    initialIndependent: 0,
+    targetIndependent: pi() / 2,
+    steps: 200,
+);
+// solution['final']['values'] contains x ≈ 0 and v ≈ -1.
+```
+
+Every component is evaluated at the same RK4 intermediate state. The result
+contains the complete vector trajectory and remains numerical rather than
+claiming a symbolic solution.
