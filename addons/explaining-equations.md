@@ -485,10 +485,11 @@ u_t = F(x, y, z, t, u, u_xx, u_yy, u_zz)
 
 Affine diffusion coefficients must be non-negative. Nonlinear combinations of
 the three pure second derivatives, centered mixed derivatives (`u_xy`, `u_xz`,
-`u_yz`), and centered first derivatives (`u_x`, `u_y`, `u_z`) are evaluated
-directly when all stencil samples remain finite, with local sensitivity
-estimates used for the explicit time-step guard. Derivative aliases such as
-`d2u/dxdy` and `du/dx` are accepted:
+`u_yz`), centered first derivatives (`u_x`, `u_y`, `u_z`), and pure third
+derivatives (`u_xxx`, `u_yyy`, `u_zzz`) are evaluated directly when all stencil
+samples remain finite, with local sensitivity estimates used for the explicit
+time-step guard. Third derivatives use a wider centered stencil. Derivative
+aliases such as `d3u/dx3`, `d2u/dxdy`, and `du/dx` are accepted:
 
 ```php
 use MathPHP\Explaining\NumericalParabolicPde3DAnalyzer;
@@ -511,8 +512,8 @@ six normalized face conditions, grid spacing, effective time step, and
 `solution['operatorMode']`. Neumann faces use one-sided outward finite
 differences; Robin faces enforce `alpha*u + beta*u_n = value` and reject
 singular coefficients. Periodic faces wrap to the opposite interior stencil.
-Nonlocal boundaries, larger dimensions, and symbolic general solutions remain
-outside this focused contract.
+Nonlocal boundaries, larger dimensions, arbitrary mixed third derivatives, and
+symbolic general solutions remain outside this focused contract.
 
 ## Three-dimensional wave equations
 
@@ -526,10 +527,12 @@ u_tt = F(x, y, z, t, u, u_xx, u_yy, u_zz)
 ```
 
 Affine wave coefficients must be non-negative. Nonlinear combinations of the
-three pure and three centered mixed second derivatives, plus centered first
-derivatives (`u_x`, `u_y`, `u_z`), are evaluated directly when stencil samples
-remain finite, with local sensitivity estimates used for the CFL guard.
-Derivative aliases such as `d2u/dxdy` and `du/dx` are accepted:
+three pure and three centered mixed second derivatives, centered first
+derivatives (`u_x`, `u_y`, `u_z`), and pure third derivatives (`u_xxx`, `u_yyy`,
+`u_zzz`) are evaluated directly when stencil samples remain finite, with local
+sensitivity estimates used for the CFL guard. Third derivatives use a wider
+centered stencil. Derivative aliases such as `d3u/dx3`, `d2u/dxdy`, and `du/dx`
+are accepted:
 
 ```php
 use MathPHP\Explaining\NumericalWavePde3DAnalyzer;
@@ -546,14 +549,15 @@ $analysis = (new NumericalWavePde3DAnalyzer())->analyze(
 The result contains `pde-wave-3d` snapshots, normalized face conditions, grid
 spacing, effective time step, and `solution['operatorMode']`. Periodic faces
 wrap to the opposite interior stencil; nonlocal boundaries, larger dimensions,
-and symbolic general solutions remain outside this focused solver.
+arbitrary mixed third derivatives, and symbolic general solutions remain outside
+this focused solver.
 
 ## Coupled three-dimensional parabolic systems
 
 `NumericalCoupledParabolicPde3DAnalyzer` integrates up to eight dependent
 fields on one shared rectangular grid. Provide one time-derivative equality per
 field; right-hand sides may reference any field value and its first, pure
-second, or mixed spatial derivatives:
+second, mixed, or pure third spatial derivatives (`u_xxx`, `u_yyy`, `u_zzz`):
 
 ```text
 u_t = u_xx + v
@@ -581,8 +585,10 @@ Robin, or periodic data. A periodic face wraps to the opposite interior
 stencil; omitted faces retain their Dirichlet defaults. Results retain
 per-field 3D snapshots, normalized conditions, operator modes, grid spacing,
 and explicit stability metadata under the `pde-system-heatmap-3d` visual kind.
-This remains a bounded explicit approximation; nonlocal boundaries, arbitrary
-higher dimensions, and symbolic general solutions are not implied.
+Pure third derivatives use a wider centered stencil and sensitivity-aware
+stability bounds. This remains a bounded explicit approximation; arbitrary mixed
+third derivatives, nonlocal boundaries, higher dimensions, and symbolic general
+solutions are not implied.
 
 ## Two-dimensional wave equations
 
