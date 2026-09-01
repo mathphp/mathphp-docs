@@ -195,3 +195,24 @@ $analysis = (new NumericalOdeSystemAnalyzer())->analyze(
 Every component is evaluated at the same RK4 intermediate state. The result
 contains the complete vector trajectory and remains numerical rather than
 claiming a symbolic solution.
+
+For exact constant-coefficient second-order equations, use
+`SecondOrderOdeAnalyzer`:
+
+```php
+use MathPHP\Explaining\SecondOrderOdeAnalyzer;
+
+$analysis = (new SecondOrderOdeAnalyzer())->analyze(
+    "y'' + 3*y' + 2*y = 0",
+    dependent: 'y',
+    independent: 'x',
+    initialIndependent: 0,
+    initialValue: 1,
+    initialDerivative: 0,
+);
+// Distinct real characteristic roots -1 and -2 are reported with C1/C2.
+```
+
+The analyzer also handles repeated and complex-conjugate characteristic roots,
+plus constant forcing. More complicated higher-order equations should be
+rewritten as first-order systems and passed to the numerical system analyzer.
