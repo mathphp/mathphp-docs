@@ -3,7 +3,7 @@
 Install the public core package:
 
 ```sh
-composer require mathphp/mathphp:^0.1
+composer require mathphp/mathphp:^0.2
 ```
 
 Evaluate an expression through the single public facade:
@@ -51,12 +51,13 @@ try {
 
 The add-ons are private VCS packages, so a consumer must declare an approved
 Composer repository (or use the organization’s private Composer mirror) before
-requiring one. The examples below use the stable `v0.1.0` release; use
-`dev-main` only when developing against unreleased changes:
+requiring one. The examples below use the current stable release lines
+(`v0.2.0` for Core, Units, and Visuals; `v0.18.0` for Explaining); use
+`dev-main` only when developing against unreleased changes.
 
 ```sh
 composer config repositories.mathphp-units vcs https://github.com/mathphp/mathphp-units.git
-composer require mathphp/mathphp-units:^0.1
+composer require mathphp/mathphp-units:^0.2
 ```
 
 For the teaching layer, declare both repositories because Explaining uses
@@ -65,7 +66,7 @@ Visuals at runtime:
 ```sh
 composer config repositories.mathphp-visuals vcs https://github.com/mathphp/mathphp-visuals.git
 composer config repositories.mathphp-explaining vcs https://github.com/mathphp/mathphp-explaining.git
-composer require mathphp/mathphp-visuals:^0.1 mathphp/mathphp-explaining:^0.1
+composer require mathphp/mathphp-visuals:^0.2 mathphp/mathphp-explaining:^0.18
 ```
 
 Authenticate through your normal Composer/Git policy. The MathPHP website and

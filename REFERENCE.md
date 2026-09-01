@@ -5,7 +5,7 @@ mathematical expressions. It parses an explicit language into an immutable AST
 and evaluates that AST; it never uses PHP `eval` or resolves expression names
 to arbitrary PHP callables.
 
-The v0.1 implementation targets PHP `^8.2` and is suitable for untrusted
+The v0.2 implementation targets PHP `^8.2` and is suitable for untrusted
 expression text when its resource limits are kept at appropriate values.
 
 > **Package identity:** this project intentionally retains the `MathPHP` name,
@@ -17,11 +17,11 @@ expression text when its resource limits are kept at appropriate values.
 
 ## Installation
 
-Core `v0.1.0` is tagged. Install the stable `0.1` line from your configured
+Core `v0.2.0` is tagged. Install the stable `0.2` line from your configured
 Composer source:
 
 ```console
-composer require mathphp/mathphp:^0.1
+composer require mathphp/mathphp:^0.2
 ```
 
 For development in this checkout:
@@ -102,7 +102,7 @@ Install only the add-ons your application needs.
 
 ## Supported public API
 
-The supported v0.1 API consists of:
+The supported v0.2 API consists of:
 
 - `MathPHP\Math`;
 - `MathPHP\Configuration\EvaluationOptions` and `ResourceLimits`;
@@ -124,8 +124,9 @@ of this free package or its release archive.
 
 ## Language
 
-The complete grammar and numeric rules live in the
-[normative v0.1 contract](https://github.com/mathphp/mathphp-specs/blob/main/V0.1-CONTRACT.md). The supported surface is:
+The numeric, security, and error invariants build on the
+[normative v0.1 contract](https://github.com/mathphp/mathphp-specs/blob/main/V0.1-CONTRACT.md);
+the v0.2 grammar additions are documented here. The supported surface is:
 
 - integers, decimals, and scientific notation;
 - ASCII variable names and the reserved constants `pi`, `e`, `tau`, and `phi`;
@@ -281,16 +282,17 @@ The exhaustive code and span contract is in
 
 ## Explicit limitations
 
-v0.1 intentionally does not support:
+The Core `v0.2` language intentionally does not support:
 
-- implicit multiplication;
 - assignment, comparisons, or logical operators;
 - symbolic algebra, simplification, or derivatives;
 - units, currency, matrices, complex numbers, or formatting;
 - arbitrary precision; or
 - arbitrary PHP functions.
 
-Inputs such as `2pi`, `2(3)`, `3!!`, `1 < 2`, and `sqrt 4` are rejected.
+Inputs such as `3!!`, `1 < 2`, and `sqrt 4` are rejected. Standard implicit
+multiplication is accepted for `2pi`, `2(x + 1)`, and `(x + 1)(x - 1)`;
+identifiers remain atomic, so `xy` is a single variable rather than `x * y`.
 Integer overflow is an error rather than a silent promotion to a lossy float.
 
 ## Compatibility and verification
