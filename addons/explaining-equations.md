@@ -207,6 +207,32 @@ undefined cell is `partial`; malformed input or a wholly unevaluable domain is
 `unsupported`. Every result includes `complete: false`: grid sampling cannot
 prove that a curve has no additional branches or singular points.
 
+## Bounded Fredholm integral equations
+
+`NumericalIntegralEquationAnalyzer` adds a finite collocation solver for linear
+Fredholm equations of the second kind:
+
+```php
+use MathPHP\Explaining\NumericalIntegralEquationAnalyzer;
+
+$analysis = (new NumericalIntegralEquationAnalyzer())->analyze(
+    '1',                 // K(x,t)
+    '1',                 // f(x)
+    0.5,                 // lambda
+    0, 1,                // integration interval
+    points: 32,
+);
+// u(x) = 2 for this constant example; values are midpoint samples.
+```
+
+The solver forms `Aᵢⱼ = δᵢⱼ − λhK(xᵢ,tⱼ)` on midpoint nodes and uses
+partial-pivot Gaussian elimination. Results include the nodes, approximate
+function values, reconstructed residual infinity norm, and a normalized pivot
+diagnostic. `complete` is always `false`: finite collocation does not prove a
+continuous solution, uniqueness, or accuracy outside the sampled interval.
+Undefined expressions and singular or ill-conditioned operators return
+`partial`; malformed or invalid bounds return `unsupported`.
+
 ## Numerical higher-order ODEs
 
 `NumericalHigherOrderOdeAnalyzer` gives scalar third- through eighth-order
