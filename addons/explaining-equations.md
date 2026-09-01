@@ -461,13 +461,14 @@ $analysis = (new NumericalCoupledParabolicPdeAnalyzer())->analyze(
 ```
 
 The explicit update integrates all components at the same time level, using
-centered advection and diffusion stencils, and
-retains per-field snapshots in `solution['points']`. Cross-diffusion terms are
-accepted when they are affine and non-negative under the conservative CFL
-bound. Normalized edge conditions are returned in
-`solution['boundaryConditions']`. `solved` means only that the requested finite
-grid completed; the serialized result remains `complete: false`. Nonlinear
-derivative terms, backward diffusion, periodic/nonlocal edges,
+centered advection and diffusion stencils, and retains per-field snapshots in
+`solution['points']`. Cross-diffusion terms are accepted when they are affine
+and non-negative under the conservative CFL bound. A field may instead use a
+directly evaluated nonlinear spatial operator when its stencil samples remain
+finite; per-field modes are returned in `solution['operatorModes']`.
+Normalized edge conditions are returned in `solution['boundaryConditions']`.
+`solved` means only that the requested finite grid completed; the serialized
+result remains `complete: false`. Backward diffusion, periodic/nonlocal edges,
 higher-dimensional systems, and symbolic/global PDE solutions remain outside
 this numerical contract.
 
