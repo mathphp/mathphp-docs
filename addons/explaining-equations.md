@@ -39,3 +39,7 @@ bracket converged without a domain gap; `partial` means roots may have been
 missed or the interval contained undefined samples; `unsupported` means the
 input could not be evaluated. Numerical sampling never claims a global proof
 of completeness, especially for oscillatory functions or tangent roots.
+
+Pass `EvaluationOptions` when an equation uses an explicitly registered Core
+function; both sides are then evaluated through the same function registry and
+resource limits as the rest of your application.
