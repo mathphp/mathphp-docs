@@ -199,9 +199,10 @@ for a dependent field `u(x,t)`:
 u_t = F(x, t, u, u_x, u_xx)
 ```
 
-The right-hand side must be affine in the first and second spatial derivatives.
-This covers advection–diffusion forms as well as pure heat equations. Supply an
-initial profile and fixed (Dirichlet) values at the left and right spatial
+Affine right-hand sides cover advection–diffusion forms and pure heat
+equations. Nonlinear spatial operators are also evaluated directly on the
+finite-difference stencil when their local sensitivity remains finite. Supply
+an initial profile and fixed (Dirichlet) values at the left and right spatial
 boundaries:
 
 ```php
@@ -220,13 +221,16 @@ $analysis = (new NumericalPdeAnalyzer())->analyze(
 
 The solver uses centered first- and second-derivative finite-difference
 stencils, a combined advection/diffusion stability bound, and retains field
-snapshots in `solution['points']`. The visual model
+snapshots in `solution['points']`. For nonlinear operators, the result includes
+`solution['operatorMode'] = 'direct-nonlinear'` and a local sensitivity-based
+stability guard. The visual model
 has kind `pde-heatmap` so a private renderer can draw a space-time heat map.
 `solved` means the requested bounded grid completed; `partial` means a
 stability cap, undefined boundary, or non-finite state interrupted or weakened
-the trajectory. A nonlinear spatial-derivative term, higher-dimensional domain,
-periodic boundary condition, or symbolic closed-form request is reported as
-`unsupported`. Numerical completion is never a proof for every PDE solution.
+the trajectory. Undefined/non-finite operators, higher-dimensional domains,
+periodic boundary conditions, or symbolic closed-form requests are reported as
+`unsupported` or `partial`. Numerical completion is never a proof for every PDE
+solution.
 
 The same analyzer accepts mixed boundary types through the optional
 `boundaryConditions` map. A Neumann edge prescribes the first spatial
