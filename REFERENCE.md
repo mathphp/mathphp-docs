@@ -128,7 +128,7 @@ The complete grammar and numeric rules live in the
 [normative v0.1 contract](https://github.com/mathphp/mathphp-specs/blob/main/V0.1-CONTRACT.md). The supported surface is:
 
 - integers, decimals, and scientific notation;
-- ASCII variable names and the reserved constants `pi` and `e`;
+- ASCII variable names and the reserved constants `pi`, `e`, `tau`, and `phi`;
 - grouping with parentheses;
 - binary `+`, `-`, `*`, `/`, `%`, and `^`;
 - unary `+` and `-`;
@@ -152,9 +152,20 @@ The default function allowlist is:
 | `abs(x)` | 1 | finite; preserves integer/float type |
 | `sqrt(x)` | 1 | `x >= 0`; float |
 | `sin(x)`, `cos(x)` | 1 | float |
+| `tan(x)` | 1 | finite where cosine is non-zero; float |
+| `asin(x)`, `acos(x)` | 1 | `-1 <= x <= 1`; float |
+| `atan(x)` | 1 | float |
+| `sinh(x)`, `cosh(x)`, `tanh(x)` | 1 | float |
+| `asinh(x)` | 1 | float |
+| `acosh(x)` | 1 | `x >= 1`; float |
+| `atanh(x)` | 1 | `-1 < x < 1`; float |
 | `exp(x)` | 1 | finite result; float |
 | `ln(x)` | 1 | `x > 0`; float |
 | `log(x, base)` | 2 | `x > 0`, `base > 0`, `base != 1`; float |
+| `log10(x)` | 1 | `x > 0`; float |
+| `hypot(x, y)` | 2 | finite Euclidean norm; float |
+| `sign(x)` | 1 | `-1`, `0`, or `1`; int |
+| `min(...)`, `max(...)` | 1–16 | finite aggregate; preserves numeric type |
 | `floor(x)`, `ceil(x)`, `round(x)` | 1 | float |
 
 Names are case-sensitive. Function names are never looked up in PHP's global
@@ -172,7 +183,7 @@ $area = Math::evaluate('pi * radius^2', ['radius' => 3]);
 // $area is approximately 28.274333882308138
 ```
 
-`pi` and `e` are reserved and cannot be overridden. Numeric strings, booleans,
+`pi`, `e`, `tau`, and `phi` are reserved and cannot be overridden. Numeric strings, booleans,
 NaN, and Infinity are rejected rather than coerced.
 
 ## Resource limits
