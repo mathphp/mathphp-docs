@@ -2,9 +2,9 @@
 
 MathPHP accepts numbers, ASCII variable names, `pi`, `e`, `tau`, and `phi`,
 parentheses, unary signs, factorial, six binary operators, implicit products,
-and explicitly registered functions. The common Unicode aliases `×`, `÷`,
-`−`, `π`, `τ`, and `φ` are accepted for multiplication, division, subtraction,
-and the corresponding constants.
+and explicitly registered functions. The common Unicode aliases `×`, `÷`, `−`,
+`π`, `τ`, `φ`, `√`, and superscript digits are accepted for multiplication,
+division, subtraction, constants, square roots, and single-digit powers.
 
 | Operator | Meaning | Example |
 | --- | --- | --- |
@@ -51,6 +51,7 @@ optional explaining package.
 | `2^3^2` | `512` (right associative) |
 | `2x + 1` with `x = 4` | `9` |
 | `2(3 + 4)` | `14` |
+| `2² + √9` | `7.0` |
 | `2 × π` | `2π` |
 | `6 ÷ 2` | `3.0` |
 | `−2 + 5` | `3` |

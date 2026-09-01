@@ -135,6 +135,7 @@ the v0.3 grammar additions are documented here. The supported surface is:
 - binary `+`, `-`, `*`, `/`, `%`, and `^`;
 - Unicode aliases `×`, `÷`, and `−` for multiplication, division, and
   subtraction;
+- superscript single-digit powers and the square-root prefix `√`;
 - unary `+` and `-`;
 - one postfix factorial per postfix expression; and
 - calls to explicitly registered functions.
