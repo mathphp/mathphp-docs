@@ -196,7 +196,7 @@ symbolic higher-order ODE proof or a complete family of solutions.
 for a dependent field `u(x,t)`:
 
 ```text
-u_t = F(x, t, u, u_x, u_xx)
+u_t = F(x, t, u, u_x, u_xx, u_xxx, ...)
 ```
 
 Affine right-hand sides cover advection–diffusion forms and pure heat
@@ -220,7 +220,8 @@ $analysis = (new NumericalPdeAnalyzer())->analyze(
 ```
 
 The solver uses centered first- and second-derivative finite-difference
-stencils, a combined advection/diffusion stability bound, and retains field
+stencils plus a wider centered third-derivative stencil (`u_xxx` or
+`d3u/dx3`), a combined advection/diffusion stability bound, and retains field
 snapshots in `solution['points']`. For nonlinear operators, the result includes
 `solution['operatorMode'] = 'direct-nonlinear'` and a local sensitivity-based
 stability guard. The visual model
@@ -327,7 +328,9 @@ complete PDE solution.
 ## One-dimensional wave equations
 
 `NumericalWavePdeAnalyzer` supports a bounded hyperbolic initial-boundary
-problem with displacement and velocity data:
+problem with displacement and velocity data. Pure third spatial derivatives
+(`u_xxx` and `d3u/dx3`) are supported through the wider direct-evaluation
+stencil:
 
 ```php
 use MathPHP\Explaining\NumericalWavePdeAnalyzer;
@@ -370,14 +373,16 @@ contract.
 initial-boundary problems for a field `u(x, y, t)`:
 
 ```text
-u_t = F(x, y, t, u, u_x, u_y, u_xx, u_yy, u_xy)
+u_t = F(x, y, t, u, u_x, u_y, u_xx, u_yy, u_xy, u_xxx, u_yyy, ...)
 ```
 
 Affine right-hand sides may include `u_x`, `u_y`, `u_xx`, `u_yy`, and `u_xy`,
 with non-negative diffusion coefficients and a positive-semidefinite principal
-part. Nonlinear spatial operators are evaluated directly with local sensitivity
-estimates when all stencil samples remain finite. Supply an initial profile and the four
-positional edge expressions (which remain Dirichlet defaults):
+part. Pure third derivatives (`u_xxx`, `u_yyy`, and `d3u/dx3`-style aliases) are
+evaluated directly with wider centered stencils. Nonlinear spatial operators
+are evaluated directly with local sensitivity estimates when all stencil samples
+remain finite. Supply an initial profile and the four positional edge
+expressions (which remain Dirichlet defaults):
 
 ```php
 use MathPHP\Explaining\NumericalParabolicPdeAnalyzer;
@@ -394,8 +399,9 @@ $analysis = (new NumericalParabolicPdeAnalyzer())->analyze(
 ```
 
 The analyzer applies centered advection stencils, an explicit five-point
-diffusion stencil, plus a diagonal mixed-derivative stencil when `u_xy` is
-present. It chooses a combined advection/diffusion CFL time step and retains
+diffusion stencil, plus diagonal mixed-derivative stencils when `u_xy` is
+present. Third derivatives use a wider centered stencil. It chooses a combined
+advection/diffusion CFL time step and retains
 time-stamped grids in
 `solution['points']`. The visual model has kind `pde-heatmap-2d`. A `solved`
 status means the finite grid completed under the stability guard; nonlinear
@@ -595,8 +601,9 @@ solutions are not implied.
 `NumericalWavePde2DAnalyzer` supports a bounded rectangular hyperbolic problem
 with initial displacement, initial velocity, and four edge expressions. The
 spatial operator may include affine `u_xy` terms when its principal part is
-positive-semidefinite, or nonlinear combinations of `u_xx`, `u_yy`, and
-`u_xy` evaluated directly with local sensitivity estimates:
+positive-semidefinite, or nonlinear combinations of `u_xx`, `u_yy`, `u_xy`,
+`u_xxx`, and `u_yyy` evaluated directly with local sensitivity estimates. Pure
+third derivatives use wider centered stencils:
 
 ```text
 u_tt = c^2 * (u_xx + u_yy)
@@ -638,7 +645,7 @@ time-stamped grids and the visual model has kind `pde-wave-2d`. A `solved`
 result means only that the requested finite trajectory completed; it remains
 `complete: false` because it is a numerical approximation. Nonlinear runs
 expose `solution['operatorMode'] = 'direct-nonlinear'`. Periodic/nonlocal
-edges, unstable coefficients, higher dimensions, and symbolic general
+edges, unstable coefficients, arbitrary mixed third derivatives, higher dimensions, and symbolic general
 solutions are reported as `unsupported` or `partial`.
 
 ## Normalized polynomial equations
