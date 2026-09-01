@@ -64,3 +64,25 @@ Linear and quadratic polynomials are solved directly. For degree three and
 above, the analyzer derives a Cauchy root bound and uses sampled bisection for
 real roots; complex roots and proof-level completeness require a dedicated
 complex/symbolic solver.
+
+## Inequalities and larger systems
+
+Use `InequalityAnalyzer` for bounded real relations. It returns interval
+endpoints, open/closed flags, sampled points, and a `complete: false` marker so
+clients do not present a finite sample as a global proof:
+
+```php
+$analysis = (new InequalityAnalyzer())->analyze('x^2 < 4', 'x', -3, 3);
+// intervals: approximately (-2, 2)
+```
+
+`LinearSystemAnalyzer` generalizes the two-equation helper to arbitrary affine
+systems. It uses Gaussian elimination and distinguishes a unique solution,
+inconsistency, and free-variable families:
+
+```php
+$analysis = (new LinearSystemAnalyzer())->analyze(
+    'x + y + z = 6; 2*x - y + z = 3; x + 2*y - z = 3',
+);
+// solutions['values'] contains the unique x, y, and z values.
+```
