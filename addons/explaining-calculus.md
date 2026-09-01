@@ -25,8 +25,8 @@ The analyzer returns a symbolic expression; it does not claim a domain-wide
 proof for branch-sensitive complex functions.
 
 Antiderivatives also use an AST fallback for elementary forms such as grouped
-powers, square roots, constant multiples, reciprocals, `sin`, `cos`, and
-`exp`:
+powers, square roots, constant multiples, reciprocals, trigonometric and
+inverse-trigonometric functions, hyperbolic functions, `exp`, and `log10`:
 
 ```php
 $analysis = (new CalculusAnalyzer())->integral('sqrt(x) + 2*x');
