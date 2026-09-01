@@ -49,7 +49,8 @@ $value = (new ComplexExpressionEvaluator())->evaluate('exp(i * pi) + sqrt(-1)');
 ```
 
 The evaluator supports Core arithmetic, the imaginary unit `i`, principal
-branches for `sqrt`, `exp`, `ln`, `sin`, `cos`, and two-argument `log`.
+branches for `sqrt`, `exp`, `ln`, `sin`, `cos`, `asin`, `acos`, `atan`,
+`sinh`, `cosh`, `tanh`, `asinh`, `acosh`, `atanh`, and two-argument `log`.
 Modulo, factorial of non-real values, and unsupported custom functions are
 rejected explicitly rather than coerced to real numbers.
 
