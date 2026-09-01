@@ -36,6 +36,10 @@ $analysis = (new CalculusAnalyzer())->integral('sqrt(x) + 2*x');
 Non-elementary integrals, products requiring substitution, and branch-sensitive
 complex antiderivatives remain `partial` rather than being guessed.
 
+Variable arguments use Core's portable aliases. An expression containing `α`
+can be analyzed by passing `α` as the variable; both are normalized to the
+ASCII identifier `alpha` internally.
+
 ## Complex-valued expressions
 
 Use `ComplexExpressionEvaluator` when the expression itself is complex. The
