@@ -91,3 +91,26 @@ $analysis = (new LinearSystemAnalyzer())->analyze(
 );
 // solutions['values'] contains the unique x, y, and z values.
 ```
+
+For nonlinear multivariable equations, use `NonlinearSystemAnalyzer` with one
+initial estimate per variable:
+
+```php
+use MathPHP\Explaining\NonlinearSystemAnalyzer;
+
+$analysis = (new NonlinearSystemAnalyzer())->analyze(
+    'x^2 + y^2 = 5; x - y = 1',
+    ['x', 'y'],
+    ['x' => 1.5, 'y' => 0.5],
+);
+// solutions['values'] is approximately ['x' => 2, 'y' => 1].
+```
+
+This is a bounded Newton iteration using finite-difference Jacobians. The
+serialized result includes each iterate and residual norm, and returns
+`partial` when the Jacobian is singular, an expression leaves its domain, or
+the configured iteration limit is reached. A converged starting point finds
+one nearby solution; it does not establish that every solution exists or has
+been found. Partial differential equations, arbitrary complex systems, and
+global piecewise/discontinuous proofs remain outside this general-purpose
+numeric analyzer and are reported as unsupported or partial.
