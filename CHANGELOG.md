@@ -2,6 +2,8 @@
 
 ## 2026-09-01
 
+- Documented Explaining `v0.75.0` bounded Volterra second-kind integral
+  equations and causal midpoint collocation semantics.
 - Documented Explaining `v0.74.0` bounded Fredholm integral-equation
   collocation, residual diagnostics, and explicit numerical scope.
 - Documented Explaining `v0.73.0` bounded implicit two-variable equations,

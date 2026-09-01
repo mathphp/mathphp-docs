@@ -233,6 +233,20 @@ continuous solution, uniqueness, or accuracy outside the sampled interval.
 Undefined expressions and singular or ill-conditioned operators return
 `partial`; malformed or invalid bounds return `unsupported`.
 
+The same class supports causal Volterra equations with an upper limit of `x`:
+
+```php
+$analysis = (new NumericalIntegralEquationAnalyzer())->analyzeVolterra(
+    '1', '1', 1.0, 0, 1, points: 64,
+);
+// Approximates u(x) = 1 + ∫₀ˣu(t)dt, whose exact solution is eˣ.
+```
+
+Volterra collocation uses full weights for prior cells and a half weight for
+the current cell, producing a causal lower-triangular operator. The returned
+`equationType` is `volterra-second-kind`; values, residuals, pivot diagnostics,
+and `complete: false` semantics are retained.
+
 ## Numerical higher-order ODEs
 
 `NumericalHigherOrderOdeAnalyzer` gives scalar third- through eighth-order
