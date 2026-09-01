@@ -227,6 +227,31 @@ When a system may have several nearby roots, call `analyzeMany()` with several
 initial maps. It deduplicates converged values but keeps failed or partial runs
 so callers can show which starting points were inconclusive.
 
+## Nonlinear second-order initial-value problems
+
+`NumericalSecondOrderOdeAnalyzer` covers second-order IVPs whose acceleration is
+an arbitrary Core expression. It accepts `y'' = f(x, y, velocity)` (or the
+equivalent `d2y/dx2` notation), integrates with bounded RK4 steps, and returns
+both position and first-derivative samples:
+
+```php
+use MathPHP\Explaining\NumericalSecondOrderOdeAnalyzer;
+
+$trajectory = (new NumericalSecondOrderOdeAnalyzer())->analyze(
+    "y'' = -y - 0.1*velocity",
+    dependent: 'y',
+    independent: 'x',
+    initialValue: 1,
+    initialDerivative: 0,
+    targetIndependent: 10,
+    steps: 1000,
+);
+```
+
+This is a numerical initial-value trajectory, not a closed-form or global
+existence proof. Domain failures, overflow, and unstable trajectories return
+`partial` with the completed points preserved.
+
 ## First-order linear ODEs
 
 `DifferentialEquationAnalyzer` handles constant-coefficient first-order
