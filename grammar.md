@@ -1,10 +1,13 @@
 # Grammar and precedence
 
-MathPHP accepts numbers, ASCII variable names, `pi`, `e`, `tau`, and `phi`,
+MathPHP accepts numbers, ASCII variable names, common Greek variable aliases,
+`pi`, `e`, `tau`, and `phi`,
 parentheses, unary signs, factorial, six binary operators, implicit products,
 and explicitly registered functions. The common Unicode aliases `×`, `÷`, `−`,
 `π`, `τ`, `φ`, `√`, and superscript digits are accepted for multiplication,
-division, subtraction, constants, square roots, and single-digit powers.
+division, subtraction, constants, square roots, and single-digit powers. Greek
+variables such as `α`, `λ`, and `ω` normalize to `alpha`, `lambda`, and `omega`
+when values are supplied by the host application.
 
 | Operator | Meaning | Example |
 | --- | --- | --- |

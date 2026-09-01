@@ -130,7 +130,8 @@ the v0.3 grammar additions are documented here. The supported surface is:
 
 - integers, decimals, and scientific notation;
 - ASCII variable names and the reserved constants `pi`, `e`, `tau`, and `phi`,
-  including Unicode aliases `π`, `τ`, and `φ`;
+  including Unicode aliases `π`, `τ`, and `φ`; common Greek variable symbols
+  such as `α` and `λ` normalize to portable ASCII names;
 - grouping with parentheses;
 - binary `+`, `-`, `*`, `/`, `%`, and `^`;
 - Unicode aliases `×`, `÷`, and `−` for multiplication, division, and
