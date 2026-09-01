@@ -129,9 +129,12 @@ The numeric, security, and error invariants build on the
 the v0.2 grammar additions are documented here. The supported surface is:
 
 - integers, decimals, and scientific notation;
-- ASCII variable names and the reserved constants `pi`, `e`, `tau`, and `phi`;
+- ASCII variable names and the reserved constants `pi`, `e`, `tau`, and `phi`,
+  including Unicode aliases `π`, `τ`, and `φ`;
 - grouping with parentheses;
 - binary `+`, `-`, `*`, `/`, `%`, and `^`;
+- Unicode aliases `×`, `÷`, and `−` for multiplication, division, and
+  subtraction;
 - unary `+` and `-`;
 - one postfix factorial per postfix expression; and
 - calls to explicitly registered functions.
