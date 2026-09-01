@@ -472,6 +472,38 @@ result remains `complete: false`. Backward diffusion, periodic/nonlocal edges,
 higher-dimensional systems, and symbolic/global PDE solutions remain outside
 this numerical contract.
 
+## Three-dimensional parabolic PDEs
+
+`NumericalParabolicPde3DAnalyzer` covers a resource-capped rectangular heat or
+diffusion field `u(x, y, z, t)` with six positional Dirichlet faces:
+
+```text
+u_t = F(x, y, z, t, u, u_xx, u_yy, u_zz)
+```
+
+Affine diffusion coefficients must be non-negative. Nonlinear combinations of
+the three second derivatives are evaluated directly when all stencil samples
+remain finite, with local sensitivity estimates used for the explicit time
+step guard:
+
+```php
+use MathPHP\Explaining\NumericalParabolicPde3DAnalyzer;
+
+$analysis = (new NumericalParabolicPde3DAnalyzer())->analyze(
+    'u_t = alpha*u_xx + beta*u_yy + gamma*u_zz',
+    '1', '1', '1', '1', '1', '1', '1',
+    known: ['alpha' => 0.05, 'beta' => 0.05, 'gamma' => 0.05],
+    firstPoints: 9, secondPoints: 9, thirdPoints: 9,
+    timeSteps: 10,
+);
+```
+
+The result contains bounded 3D snapshots with visual kind `pde-heatmap-3d`,
+six face expressions, grid spacing, effective time step, and
+`solution['operatorMode']`. Mixed derivatives, non-Dirichlet faces,
+periodic/nonlocal boundaries, larger dimensions, and symbolic general
+solutions remain outside this focused contract.
+
 ## Two-dimensional wave equations
 
 `NumericalWavePde2DAnalyzer` supports a bounded rectangular hyperbolic problem
