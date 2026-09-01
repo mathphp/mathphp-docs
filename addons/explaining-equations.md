@@ -40,7 +40,8 @@ $analysis = (new NumericalEquationAnalyzer())->analyze(
 ```
 
 The analyzer samples a finite interval, records undefined/non-finite points,
-and uses bisection for sign-changing brackets. `solved` means every discovered
+uses bisection for sign-changing brackets, and applies guarded Newton
+refinement to finite local minima so repeated roots can be detected. `solved` means every discovered
 bracket converged without a domain gap; `partial` means roots may have been
 missed or the interval contained undefined samples; `unsupported` means the
 input could not be evaluated. Numerical sampling never claims a global proof
