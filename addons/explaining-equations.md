@@ -43,3 +43,24 @@ of completeness, especially for oscillatory functions or tangent roots.
 Pass `EvaluationOptions` when an equation uses an explicitly registered Core
 function; both sides are then evaluated through the same function registry and
 resource limits as the rest of your application.
+
+## Normalized polynomial equations
+
+`PolynomialEquationAnalyzer` collects coefficients from the Core AST before
+solving. This means equivalent algebraic forms do not need a special regular
+expression:
+
+```php
+use MathPHP\Explaining\PolynomialEquationAnalyzer;
+
+$analysis = (new PolynomialEquationAnalyzer())->analyze(
+    '(x + 1) * (x - 2) = 0',
+);
+
+// roots: 2 and -1; coefficients are included in the serialized model.
+```
+
+Linear and quadratic polynomials are solved directly. For degree three and
+above, the analyzer derives a Cauchy root bound and uses sampled bisection for
+real roots; complex roots and proof-level completeness require a dedicated
+complex/symbolic solver.
