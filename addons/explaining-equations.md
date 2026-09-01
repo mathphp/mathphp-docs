@@ -276,7 +276,8 @@ boundary conditions.
 
 `NumericalEllipticPdeAnalyzer` adds a bounded rectangular solver for equations
 whose residual is affine in `u_xx`, `u_yy`, and `u_xy`, such as Laplace, Poisson,
-and rotated-coordinate forms:
+rotated-coordinate forms, and semilinear value equations. Value-dependent
+coefficients and source terms are re-evaluated with a Picard-style update:
 
 ```php
 use MathPHP\Explaining\NumericalEllipticPdeAnalyzer;
@@ -304,8 +305,9 @@ $analysis = (new NumericalEllipticPdeAnalyzer())->analyze(
 );
 ```
 
-The solver derives the affine stencil, iterates interior nodes with Gauss–Seidel
-updates, includes a diagonal stencil for the mixed derivative, reapplies edge
+The solver derives the affine spatial stencil, iterates interior nodes with
+Gauss–Seidel updates, re-evaluates value terms at the current iterate, includes
+a diagonal stencil for the mixed derivative, reapplies edge
 conditions, and retains grids in
 `solution['snapshots']` for a heat map or surface renderer. Normalized edge
 types and coefficients are returned in `solution['boundaryConditions']`.
