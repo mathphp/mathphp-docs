@@ -364,10 +364,10 @@ remain outside this focused contract.
 initial-boundary problems for a field `u(x, y, t)`:
 
 ```text
-u_t = F(x, y, t, u, u_xx, u_yy, u_xy)
+u_t = F(x, y, t, u, u_x, u_y, u_xx, u_yy, u_xy)
 ```
 
-The right-hand side must be affine in the spatial second derivatives, with
+The right-hand side must be affine in the spatial first and second derivatives, with
 non-negative diffusion coefficients and a positive-semidefinite principal part.
 This includes an affine mixed derivative such as `gamma*u_xy`. Supply an initial profile and the four
 positional edge expressions (which remain Dirichlet defaults):
@@ -376,19 +376,20 @@ positional edge expressions (which remain Dirichlet defaults):
 use MathPHP\Explaining\NumericalParabolicPdeAnalyzer;
 
 $analysis = (new NumericalParabolicPdeAnalyzer())->analyze(
-    'u_t = alpha*u_xx + beta*u_yy',
+    'u_t = vx*u_x + vy*u_y + alpha*u_xx + beta*u_yy',
     '1',                // u(x, y, 0)
     '1', '1', '1', '1', // left, right, bottom, top
-    known: ['alpha' => 0.1, 'beta' => 0.1],
+    known: ['vx' => 0.2, 'vy' => -0.1, 'alpha' => 0.1, 'beta' => 0.1],
     firstPoints: 25,
     secondPoints: 25,
     timeSteps: 100,
 );
 ```
 
-The analyzer applies an explicit five-point diffusion stencil plus a diagonal
-mixed-derivative stencil when `u_xy` is present, chooses a
-conservative two-dimensional CFL time step, and retains time-stamped grids in
+The analyzer applies centered advection stencils, an explicit five-point
+diffusion stencil, plus a diagonal mixed-derivative stencil when `u_xy` is
+present. It chooses a combined advection/diffusion CFL time step and retains
+time-stamped grids in
 `solution['points']`. The visual model has kind `pde-heatmap-2d`. A `solved`
 status means the finite grid completed under the stability guard; the solution
 still has `complete: false` because it is a numerical approximation.
