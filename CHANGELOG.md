@@ -21,6 +21,8 @@
   initial velocity contract, and CFL-limited numerical scope.
 - Documented the Explaining `v0.40.0` bounded two-dimensional parabolic PDE
   solver, explicit diffusion stencil, CFL checks, and unsupported scope.
+- Documented the Explaining `v0.41.0` coupled one-dimensional parabolic PDE
+  solver, reaction–diffusion systems, and explicit stability limits.
 
 Notable documentation changes are recorded here. This file describes the
 documentation repository; package release notes remain in their own
