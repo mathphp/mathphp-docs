@@ -8,6 +8,7 @@
   its RK4 trajectory contract.
 - Documented nested piecewise wrappers in Explaining `v0.31.0`.
 - Documented bounded recurrence expansion in Explaining `v0.32.0`.
+- Documented bounded numerical limit estimates in Explaining `v0.33.0`.
 
 Notable documentation changes are recorded here. This file describes the
 documentation repository; package release notes remain in their own

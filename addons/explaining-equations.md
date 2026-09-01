@@ -90,6 +90,34 @@ of `n` for forcing terms. Forward references, missing initial values, domain
 errors, and requests beyond the finite term limit return `unsupported` or
 `partial`; no infinite sequence or closed form is implied.
 
+## Finite numerical limits
+
+`LimitAnalyzer` estimates a finite one-sided or two-sided limit by evaluating
+geometrically shrinking distances from a finite point. It is intentionally a
+numerical aid for explanations, not a symbolic algebra system or a proof:
+
+```php
+use MathPHP\Explaining\LimitAnalyzer;
+
+$analysis = (new LimitAnalyzer())->analyze(
+    'sin(x) / x',
+    'x',
+    point: 0,
+    direction: 'both',
+);
+
+// status: solved; limit is approximately 1
+// $analysis->solution['complete'] === false
+```
+
+Use `direction: 'left'` or `direction: 'right'` for a one-sided estimate.
+Undefined samples, side disagreement, non-finite values, and non-convergence
+remain explicit `partial` results. The analyzer preserves sampled points and
+steps in `LimitAnalysis::toArray()` and includes a renderer-neutral
+`limit-approach` visual model. It does not certify a symbolic limit, infer a
+value through a removable hole without samples, or prove divergence/global
+continuity.
+
 ## General single-variable equations
 
 For equations outside the closed-form linear, quadratic, and power patterns,
