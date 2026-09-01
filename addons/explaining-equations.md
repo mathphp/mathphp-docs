@@ -504,6 +504,37 @@ six face expressions, grid spacing, effective time step, and
 periodic/nonlocal boundaries, larger dimensions, and symbolic general
 solutions remain outside this focused contract.
 
+## Three-dimensional wave equations
+
+`NumericalWavePde3DAnalyzer` covers a resource-capped rectangular hyperbolic
+field `u(x, y, z, t)` with initial displacement, initial velocity, and six
+positional Dirichlet faces:
+
+```text
+u_tt = F(x, y, z, t, u, u_xx, u_yy, u_zz)
+```
+
+Affine wave coefficients must be non-negative. Nonlinear combinations of the
+three second derivatives are evaluated directly when stencil samples remain
+finite, with local sensitivity estimates used for the CFL guard:
+
+```php
+use MathPHP\Explaining\NumericalWavePde3DAnalyzer;
+
+$analysis = (new NumericalWavePde3DAnalyzer())->analyze(
+    'u_tt = c2*u_xx + c2*u_yy + c2*u_zz',
+    '1', '0', '1', '1', '1', '1', '1', '1',
+    known: ['c2' => 1],
+    firstPoints: 9, secondPoints: 9, thirdPoints: 9,
+    timeSteps: 10,
+);
+```
+
+The result contains `pde-wave-3d` snapshots, grid spacing, effective time
+step, and `solution['operatorMode']`. Mixed derivatives, non-Dirichlet faces,
+periodic/nonlocal boundaries, larger dimensions, and symbolic general
+solutions remain outside this focused contract.
+
 ## Two-dimensional wave equations
 
 `NumericalWavePde2DAnalyzer` supports a bounded rectangular hyperbolic problem
