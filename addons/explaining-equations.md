@@ -196,10 +196,11 @@ symbolic higher-order ODE proof or a complete family of solutions.
 for a dependent field `u(x,t)`:
 
 ```text
-u_t = F(x, t, u, u_xx)
+u_t = F(x, t, u, u_x, u_xx)
 ```
 
-The right-hand side must be affine in the spatial second derivative. Supply an
+The right-hand side must be affine in the first and second spatial derivatives.
+This covers advection–diffusion forms as well as pure heat equations. Supply an
 initial profile and fixed (Dirichlet) values at the left and right spatial
 boundaries:
 
@@ -207,22 +208,23 @@ boundaries:
 use MathPHP\Explaining\NumericalPdeAnalyzer;
 
 $analysis = (new NumericalPdeAnalyzer())->analyze(
-    'u_t = k*u_xx',
+    'u_t = v*u_x + k*u_xx',
     'sin(pi()*x)', // u(x, 0)
     '0',           // u(0, t)
     '0',           // u(1, t)
-    known: ['k' => 0.1],
+    known: ['v' => 0.4, 'k' => 0.1],
     spacePoints: 41,
     timeSteps: 100,
 );
 ```
 
-The solver uses an explicit finite-difference Laplacian, stability-controlled
-substeps, and retains field snapshots in `solution['points']`. The visual model
+The solver uses centered first- and second-derivative finite-difference
+stencils, a combined advection/diffusion stability bound, and retains field
+snapshots in `solution['points']`. The visual model
 has kind `pde-heatmap` so a private renderer can draw a space-time heat map.
 `solved` means the requested bounded grid completed; `partial` means a
 stability cap, undefined boundary, or non-finite state interrupted or weakened
-the trajectory. A nonlinear `u_xx` term, higher-dimensional domain, Neumann or
+the trajectory. A nonlinear spatial-derivative term, higher-dimensional domain,
 periodic boundary condition, or symbolic closed-form request is reported as
 `unsupported`. Numerical completion is never a proof for every PDE solution.
 
