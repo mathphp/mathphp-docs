@@ -118,6 +118,21 @@ steps in `LimitAnalysis::toArray()` and includes a renderer-neutral
 value through a removable hole without samples, or prove divergence/global
 continuity.
 
+## Chained inequalities
+
+`InequalityAnalyzer` also accepts a bounded chained relation such as
+`1 < x ≤ 3`. It analyzes both component relations and intersects their
+intervals, preserving whether each endpoint is open or closed:
+
+```php
+$analysis = (new InequalityAnalyzer())->analyze('1 < x ≤ 3', 'x', -5, 5);
+// one solved interval: (1, 3]
+```
+
+The result is still scoped to the requested finite domain. If either component
+contains undefined samples or a non-polynomial relation, the combined result
+keeps the appropriate `partial` status.
+
 ## General single-variable equations
 
 For equations outside the closed-form linear, quadratic, and power patterns,
