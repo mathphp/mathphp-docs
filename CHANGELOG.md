@@ -17,6 +17,8 @@
   analyzer and its local residual semantics.
 - Documented the Explaining `v0.38.0` bounded two-dimensional elliptic PDE
   solver, Gauss–Seidel snapshots, and unsupported boundary conditions.
+- Documented the Explaining `v0.39.0` bounded one-dimensional wave PDE solver,
+  initial velocity contract, and CFL-limited numerical scope.
 
 Notable documentation changes are recorded here. This file describes the
 documentation repository; package release notes remain in their own

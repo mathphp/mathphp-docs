@@ -280,6 +280,32 @@ terms, incompatible corners, Neumann/periodic conditions, and higher
 dimensions are outside this focused contract, and convergence does not prove a
 unique or complete PDE solution.
 
+## One-dimensional wave equations
+
+`NumericalWavePdeAnalyzer` supports a bounded hyperbolic initial-boundary
+problem with displacement and velocity data:
+
+```php
+use MathPHP\Explaining\NumericalWavePdeAnalyzer;
+
+$analysis = (new NumericalWavePdeAnalyzer())->analyze(
+    'u_tt = c^2*u_xx',
+    'sin(pi()*x)', // u(x, 0)
+    '0',           // u_t(x, 0)
+    '0',           // u(0, t)
+    '0',           // u(1, t)
+    known: ['c' => 1],
+);
+```
+
+The solver applies a centered explicit finite-difference update and chooses
+substeps from a conservative CFL bound. It returns time-stamped field
+snapshots, the effective step size, and explicit stability/finite-range
+diagnostics. `solved` means the finite trajectory completed; `partial` means a
+guard or boundary/domain failure interrupted it. This focused contract does
+not cover higher dimensions, Neumann/periodic edges, arbitrary nonlinear wave
+operators, or symbolic general solutions.
+
 ## Normalized polynomial equations
 
 `PolynomialEquationAnalyzer` collects coefficients from the Core AST before
