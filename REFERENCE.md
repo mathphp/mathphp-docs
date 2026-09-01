@@ -126,7 +126,7 @@ of this free package or its release archive.
 
 The numeric, security, and error invariants build on the
 [normative v0.1 contract](https://github.com/mathphp/mathphp-specs/blob/main/V0.1-CONTRACT.md);
-the v0.2 grammar additions are documented here. The supported surface is:
+the v0.3 grammar additions are documented here. The supported surface is:
 
 - integers, decimals, and scientific notation;
 - ASCII variable names and the reserved constants `pi`, `e`, `tau`, and `phi`,
