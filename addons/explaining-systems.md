@@ -4,10 +4,7 @@
 substitution or elimination without reparsing strings.
 
 ```php
-$analysis = (new SystemAnalyzer())->analyze([
-    '2*x + 3*y = 8',
-    'x - y = 1',
-]);
+$analysis = (new SystemAnalyzer())->analyze('2x + 3y = 8; x - y = 1');
 ```
 
 The returned array is safe to serialize. Use explicit status text for unique,

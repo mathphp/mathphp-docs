@@ -52,7 +52,7 @@ try {
 The add-ons are private VCS packages, so a consumer must declare an approved
 Composer repository (or use the organization’s private Composer mirror) before
 requiring one. The examples below use the current stable release lines
-(`v0.3.0` for Core, Units, and Visuals; `v0.19.2` for Explaining); use
+(`v0.3.0` for Core, Units, and Visuals; `v0.19.3` for Explaining); use
 `dev-main` only when developing against unreleased changes.
 
 ```sh
