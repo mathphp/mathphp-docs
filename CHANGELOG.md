@@ -2,6 +2,8 @@
 
 ## 2026-09-01
 
+- Documented Explaining `v0.73.0` bounded implicit two-variable equations,
+  marching-squares segments, and explicit contour completeness semantics.
 - Documented Explaining `v0.72.0` opt-in dyadic refinement for oscillatory
   single-variable numerical equations and its non-completeness guarantee.
 - Documented Explaining `v0.71.0` bounded grid exploration for nonlinear

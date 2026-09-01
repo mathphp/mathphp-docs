@@ -179,6 +179,34 @@ Pass `EvaluationOptions` when an equation uses an explicitly registered Core
 function; both sides are then evaluated through the same function registry and
 resource limits as the rest of your application.
 
+## Implicit two-variable equations
+
+A single equality in two unknowns usually describes a curve rather than a
+finite list of roots. `NumericalImplicitEquationAnalyzer` samples a bounded
+rectangle and returns marching-squares segments for the approximate zero
+contour:
+
+```php
+use MathPHP\Explaining\NumericalImplicitEquationAnalyzer;
+
+$analysis = (new NumericalImplicitEquationAnalyzer())->analyze(
+    'x^2 + y^2 = 1',
+    'x', 'y',
+    -1.5, 1.5,
+    -1.5, 1.5,
+    firstPoints: 96,
+    secondPoints: 96,
+);
+// solutions['segments'] contains {start: {x, y}, end: {x, y}} records.
+```
+
+The analyzer accepts Core-compatible expressions and optional known scalar
+values, caps each axis at 256 samples, and retains undefined-cell counts. A
+finite contour without domain gaps is marked `solved`; no contour or any
+undefined cell is `partial`; malformed input or a wholly unevaluable domain is
+`unsupported`. Every result includes `complete: false`: grid sampling cannot
+prove that a curve has no additional branches or singular points.
+
 ## Numerical higher-order ODEs
 
 `NumericalHigherOrderOdeAnalyzer` gives scalar third- through eighth-order
