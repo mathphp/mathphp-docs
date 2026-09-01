@@ -484,9 +484,10 @@ u_t = F(x, y, z, t, u, u_xx, u_yy, u_zz)
 ```
 
 Affine diffusion coefficients must be non-negative. Nonlinear combinations of
-the three second derivatives are evaluated directly when all stencil samples
-remain finite, with local sensitivity estimates used for the explicit time
-step guard:
+the three pure second derivatives and centered mixed derivatives (`u_xy`,
+`u_xz`, `u_yz`) are evaluated directly when all stencil samples remain finite,
+with local sensitivity estimates used for the explicit time-step guard. Mixed
+aliases such as `d2u/dxdy` are accepted:
 
 ```php
 use MathPHP\Explaining\NumericalParabolicPde3DAnalyzer;
@@ -508,9 +509,9 @@ The result contains bounded 3D snapshots with visual kind `pde-heatmap-3d`,
 six normalized face conditions, grid spacing, effective time step, and
 `solution['operatorMode']`. Neumann faces use one-sided outward finite
 differences; Robin faces enforce `alpha*u + beta*u_n = value` and reject
-singular coefficients. Mixed derivatives, advection, periodic/nonlocal
-boundaries, larger dimensions, and symbolic general solutions remain outside
-this focused contract.
+singular coefficients. Advection, periodic/nonlocal boundaries, larger
+dimensions, and symbolic general solutions remain outside this focused
+contract.
 
 ## Three-dimensional wave equations
 
@@ -524,8 +525,9 @@ u_tt = F(x, y, z, t, u, u_xx, u_yy, u_zz)
 ```
 
 Affine wave coefficients must be non-negative. Nonlinear combinations of the
-three second derivatives are evaluated directly when stencil samples remain
-finite, with local sensitivity estimates used for the CFL guard:
+three pure and three centered mixed second derivatives are evaluated directly
+when stencil samples remain finite, with local sensitivity estimates used for
+the CFL guard. Mixed aliases such as `d2u/dxdy` are accepted:
 
 ```php
 use MathPHP\Explaining\NumericalWavePde3DAnalyzer;
@@ -540,9 +542,9 @@ $analysis = (new NumericalWavePde3DAnalyzer())->analyze(
 ```
 
 The result contains `pde-wave-3d` snapshots, normalized face conditions, grid
-spacing, effective time step, and `solution['operatorMode']`. Mixed
-derivatives, advection, periodic/nonlocal boundaries, larger dimensions, and
-symbolic general solutions remain outside this focused solver.
+spacing, effective time step, and `solution['operatorMode']`. Advection,
+periodic/nonlocal boundaries, larger dimensions, and symbolic general
+solutions remain outside this focused solver.
 
 ## Two-dimensional wave equations
 
