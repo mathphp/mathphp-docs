@@ -547,6 +547,41 @@ spacing, effective time step, and `solution['operatorMode']`. Periodic/nonlocal
 boundaries, larger dimensions, and symbolic general solutions remain outside
 this focused solver.
 
+## Coupled three-dimensional parabolic systems
+
+`NumericalCoupledParabolicPde3DAnalyzer` integrates up to eight dependent
+fields on one shared rectangular grid. Provide one time-derivative equality per
+field; right-hand sides may reference any field value and its first, pure
+second, or mixed spatial derivatives:
+
+```text
+u_t = u_xx + v
+v_t = v_yy - u
+```
+
+```php
+use MathPHP\Explaining\NumericalCoupledParabolicPde3DAnalyzer;
+
+$analysis = (new NumericalCoupledParabolicPde3DAnalyzer())->analyze(
+    'u_t = u_xx + v; v_t = v_yy - u',
+    ['u', 'v'],
+    ['u' => '1', 'v' => '0'],
+    ['u' => '1', 'v' => '0'], ['u' => '1', 'v' => '0'],
+    ['u' => '1', 'v' => '0'], ['u' => '1', 'v' => '0'],
+    ['u' => '1', 'v' => '0'], ['u' => '1', 'v' => '0'],
+    firstPoints: 9, secondPoints: 9, thirdPoints: 9,
+    timeSteps: 10,
+);
+```
+
+The six face arguments are per-field Dirichlet expressions. The optional
+edge-first `boundaryConditions` map can replace any field face with Neumann or
+Robin data. Results retain per-field 3D snapshots, normalized conditions,
+operator modes, grid spacing, and explicit stability metadata under the
+`pde-system-heatmap-3d` visual kind. This remains a bounded explicit
+approximation; periodic/nonlocal boundaries, arbitrary higher dimensions, and
+symbolic general solutions are not implied.
+
 ## Two-dimensional wave equations
 
 `NumericalWavePde2DAnalyzer` supports a bounded rectangular hyperbolic problem
