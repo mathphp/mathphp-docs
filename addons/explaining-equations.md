@@ -263,6 +263,20 @@ tolerance or the iteration cap. The history and final residual are returned;
 non-contractive, divergent, or undefined iterations remain `partial`, and
 `complete` is always `false`.
 
+The causal nonlinear form is available through `analyzeNonlinearVolterra()`:
+
+```php
+$analysis = (new NumericalIntegralEquationAnalyzer())->analyzeNonlinearVolterra(
+    'u', '1', 1.0, 0, 1, points: 48, iterations: 80,
+);
+// Approximates u(x) = 1 + ∫₀ˣu(t)dt, whose exact solution is eˣ.
+```
+
+Rows advance from left to right. Prior-cell integrands use completed values;
+the current cell is solved with scalar Picard updates. `rowHistory` records
+the updates and convergence of every midpoint, while non-convergent or
+undefined rows keep the overall result `partial`.
+
 ## Numerical higher-order ODEs
 
 `NumericalHigherOrderOdeAnalyzer` gives scalar third- through eighth-order
