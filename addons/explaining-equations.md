@@ -152,3 +152,24 @@ Equivalent `y' + p*y = q` and `dy/dx = a*y + b` notation is accepted. Nonlinear,
 higher-order, and partial differential equations are deliberately reported as
 unsupported until a solver with the required domain and boundary-condition
 semantics is added.
+
+For nonlinear first-order initial-value problems, use `NumericalOdeAnalyzer`:
+
+```php
+use MathPHP\Explaining\NumericalOdeAnalyzer;
+
+$analysis = (new NumericalOdeAnalyzer())->analyze(
+    "y' = sin(x) + y",
+    dependent: 'y',
+    independent: 'x',
+    initialIndependent: 0,
+    initialValue: 1,
+    targetIndependent: 2,
+    steps: 200,
+);
+// solution['points'] contains the complete RK4 trajectory.
+```
+
+The integration is intentionally bounded and numerical. It does not claim a
+closed form or global stability; undefined slopes and non-finite states return
+`partial` with the successfully integrated prefix.
