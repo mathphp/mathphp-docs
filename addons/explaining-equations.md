@@ -62,8 +62,13 @@ $analysis = (new PolynomialEquationAnalyzer())->analyze(
 
 Linear and quadratic polynomials are solved directly. For degree three and
 above, the analyzer derives a Cauchy root bound and uses sampled bisection for
-real roots; complex roots and proof-level completeness require a dedicated
-complex/symbolic solver.
+real roots; proof-level completeness still requires a dedicated symbolic
+solver.
+
+For degree three and above, `solutions['complexRoots']` also contains
+Durand–Kerner approximations with separate `real`, `imaginary`, and
+`formatted` fields. These are numerical approximations, not proof objects;
+inspect the convergence metadata before presenting them as final values.
 
 ## Inequalities and larger systems
 
