@@ -475,7 +475,9 @@ this numerical contract.
 ## Three-dimensional parabolic PDEs
 
 `NumericalParabolicPde3DAnalyzer` covers a resource-capped rectangular heat or
-diffusion field `u(x, y, z, t)` with six positional Dirichlet faces:
+diffusion field `u(x, y, z, t)` with six positional faces. Each face defaults
+to Dirichlet; an optional `boundaryConditions` map can replace any face with a
+normal-derivative (Neumann) or mixed (Robin) condition:
 
 ```text
 u_t = F(x, y, z, t, u, u_xx, u_yy, u_zz)
@@ -493,22 +495,29 @@ $analysis = (new NumericalParabolicPde3DAnalyzer())->analyze(
     'u_t = alpha*u_xx + beta*u_yy + gamma*u_zz',
     '1', '1', '1', '1', '1', '1', '1',
     known: ['alpha' => 0.05, 'beta' => 0.05, 'gamma' => 0.05],
+    boundaryConditions: [
+        'front' => ['type' => 'neumann', 'value' => '0'],
+        'back' => ['type' => 'robin', 'alpha' => 1, 'beta' => 0.5, 'value' => '1'],
+    ],
     firstPoints: 9, secondPoints: 9, thirdPoints: 9,
     timeSteps: 10,
 );
 ```
 
 The result contains bounded 3D snapshots with visual kind `pde-heatmap-3d`,
-six face expressions, grid spacing, effective time step, and
-`solution['operatorMode']`. Mixed derivatives, non-Dirichlet faces,
-periodic/nonlocal boundaries, larger dimensions, and symbolic general
-solutions remain outside this focused contract.
+six normalized face conditions, grid spacing, effective time step, and
+`solution['operatorMode']`. Neumann faces use one-sided outward finite
+differences; Robin faces enforce `alpha*u + beta*u_n = value` and reject
+singular coefficients. Mixed derivatives, advection, periodic/nonlocal
+boundaries, larger dimensions, and symbolic general solutions remain outside
+this focused contract.
 
 ## Three-dimensional wave equations
 
 `NumericalWavePde3DAnalyzer` covers a resource-capped rectangular hyperbolic
 field `u(x, y, z, t)` with initial displacement, initial velocity, and six
-positional Dirichlet faces:
+positional faces (Dirichlet by default). The same `boundaryConditions` map
+supports per-face Neumann and Robin data:
 
 ```text
 u_tt = F(x, y, z, t, u, u_xx, u_yy, u_zz)
@@ -530,10 +539,10 @@ $analysis = (new NumericalWavePde3DAnalyzer())->analyze(
 );
 ```
 
-The result contains `pde-wave-3d` snapshots, grid spacing, effective time
-step, and `solution['operatorMode']`. Mixed derivatives, non-Dirichlet faces,
-periodic/nonlocal boundaries, larger dimensions, and symbolic general
-solutions remain outside this focused contract.
+The result contains `pde-wave-3d` snapshots, normalized face conditions, grid
+spacing, effective time step, and `solution['operatorMode']`. Mixed
+derivatives, advection, periodic/nonlocal boundaries, larger dimensions, and
+symbolic general solutions remain outside this focused solver.
 
 ## Two-dimensional wave equations
 
