@@ -33,6 +33,8 @@
   bounded two-dimensional elliptic PDEs.
 - Documented the Explaining `v0.46.0` Neumann/Robin mixed-boundary support for
   bounded two-dimensional wave PDEs.
+- Documented the Explaining `v0.47.0` Neumann/Robin mixed-boundary support for
+  bounded one-dimensional wave PDEs.
 
 Notable documentation changes are recorded here. This file describes the
 documentation repository; package release notes remain in their own

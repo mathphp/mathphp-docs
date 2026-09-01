@@ -333,13 +333,25 @@ $analysis = (new NumericalWavePdeAnalyzer())->analyze(
 );
 ```
 
+The positional edges are Dirichlet defaults. The optional
+`boundaryConditions` map adds a Neumann or Robin condition to either edge;
+one-sided finite differences are used and normalized edge metadata is retained.
+
+```php
+$analysis = (new NumericalWavePdeAnalyzer())->analyze(
+    'u_tt = c^2*u_xx', '1', '0', '1', '1',
+    known: ['c' => 2],
+    boundaryConditions: ['left' => ['type' => 'neumann', 'value' => '0']],
+);
+```
+
 The solver applies a centered explicit finite-difference update and chooses
 substeps from a conservative CFL bound. It returns time-stamped field
 snapshots, the effective step size, and explicit stability/finite-range
 diagnostics. `solved` means the finite trajectory completed; `partial` means a
-guard or boundary/domain failure interrupted it. This focused contract does
-not cover higher dimensions, Neumann/periodic edges, arbitrary nonlinear wave
-operators, or symbolic general solutions.
+guard or boundary/domain failure interrupted it. Nonlinear operators,
+periodic/nonlocal edges, higher dimensions, or symbolic general solutions
+remain outside this focused contract.
 
 ## Two-dimensional parabolic PDEs
 
