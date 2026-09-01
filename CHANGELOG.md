@@ -39,6 +39,8 @@
   support for bounded coupled one-dimensional parabolic PDE systems.
 - Documented the Explaining `v0.49.0` damped Newton/Gauss–Newton iteration for
   nonlinear systems, including bounded backtracking and residual evidence.
+- Documented the Explaining `v0.50.0` affine mixed-spatial-derivative support
+  for bounded two-dimensional elliptic PDEs.
 
 Notable documentation changes are recorded here. This file describes the
 documentation repository; package release notes remain in their own

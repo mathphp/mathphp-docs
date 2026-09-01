@@ -275,8 +275,8 @@ boundary conditions.
 ## Two-dimensional elliptic PDEs
 
 `NumericalEllipticPdeAnalyzer` adds a bounded rectangular solver for equations
-whose residual is affine in the two spatial second derivatives, such as Laplace
-and Poisson forms:
+whose residual is affine in `u_xx`, `u_yy`, and `u_xy`, such as Laplace, Poisson,
+and rotated-coordinate forms:
 
 ```php
 use MathPHP\Explaining\NumericalEllipticPdeAnalyzer;
@@ -305,12 +305,13 @@ $analysis = (new NumericalEllipticPdeAnalyzer())->analyze(
 ```
 
 The solver derives the affine stencil, iterates interior nodes with Gauss–Seidel
-updates, reapplies edge conditions, and retains grids in
+updates, includes a diagonal stencil for the mixed derivative, reapplies edge
+conditions, and retains grids in
 `solution['snapshots']` for a heat map or surface renderer. Normalized edge
 types and coefficients are returned in `solution['boundaryConditions']`.
 `solved` means the finite grid met the requested update and residual tolerances;
 `partial` means the iteration limit was reached or a field update failed.
-Non-elliptic signs, nonlinear derivative terms, singular Robin coefficients,
+Non-elliptic principal parts, nonlinear derivative terms, singular Robin coefficients,
 incompatible corners, periodic/nonlocal conditions, and higher dimensions are
 outside this focused contract, and convergence does not prove a unique or
 complete PDE solution.
