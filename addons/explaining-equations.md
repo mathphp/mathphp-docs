@@ -93,6 +93,27 @@ $cancelled = (new RationalEquationAnalyzer())->analyze('(x^2 - 1) / (x - 1) = 0'
 Higher-degree rational expressions remain available through bounded numerical
 solving when a domain is supplied.
 
+## Elementary inverse equations
+
+`ElementaryEquationAnalyzer` solves inverse-function forms in which the unknown
+appears in one affine input. Exponentials, `ln`, base-`log`, principal `sqrt`,
+`abs`, and `sin`/`cos` are supported, with domain checks and exact principal
+roots. Trigonometric results also include complete periodic families using
+`k ∈ ℤ`:
+
+```php
+$power = (new ElementaryEquationAnalyzer())->analyze('2^(x + 1) = 8');
+// roots: [2], complete: true
+
+$periodic = (new ElementaryEquationAnalyzer())->analyze('sin(x) = 0');
+// families: x = 2πk and x = π + 2πk, complete: true
+```
+
+`EquationAnalyzer::analyze()` dispatches these forms after identifying the
+actual unknown (built-in function names are not treated as variables). Mixed
+nonlinear expressions still need a bounded numerical analyzer; its result is
+marked partial when sampling cannot prove global completeness.
+
 ## Inequalities and larger systems
 
 Use `InequalityAnalyzer` for bounded real relations. Linear and quadratic
