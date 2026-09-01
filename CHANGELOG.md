@@ -23,6 +23,8 @@
   solver, explicit diffusion stencil, CFL checks, and unsupported scope.
 - Documented the Explaining `v0.41.0` coupled one-dimensional parabolic PDE
   solver, reaction–diffusion systems, and explicit stability limits.
+- Documented the Explaining `v0.42.0` bounded two-dimensional wave solver,
+  centered leapfrog stencil, CFL guard, and finite-domain scope.
 
 Notable documentation changes are recorded here. This file describes the
 documentation repository; package release notes remain in their own

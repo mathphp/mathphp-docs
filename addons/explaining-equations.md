@@ -378,6 +378,39 @@ serialized result remains `complete: false`. Nonlinear derivative terms,
 backward diffusion, non-Dirichlet boundaries, higher-dimensional systems, and
 symbolic/global PDE solutions remain outside this numerical contract.
 
+## Two-dimensional wave equations
+
+`NumericalWavePde2DAnalyzer` supports a bounded rectangular hyperbolic problem
+with initial displacement, initial velocity, and four fixed Dirichlet edges:
+
+```text
+u_tt = c^2 * (u_xx + u_yy)
+```
+
+```php
+use MathPHP\Explaining\NumericalWavePde2DAnalyzer;
+
+$analysis = (new NumericalWavePde2DAnalyzer())->analyze(
+    'u_tt = c^2*(u_xx + u_yy)',
+    'sin(pi()*x)*sin(pi()*y)', // displacement at t = 0
+    '0',                       // velocity at t = 0
+    '0', '0', '0', '0',        // left, right, bottom, top
+    known: ['c' => 1],
+    firstPoints: 25,
+    secondPoints: 25,
+    timeSteps: 100,
+);
+```
+
+The solver uses a centered leapfrog stencil and chooses substeps from a
+conservative two-dimensional CFL bound. `solution['points']` contains
+time-stamped grids and the visual model has kind `pde-wave-2d`. A `solved`
+result means only that the requested finite trajectory completed; it remains
+`complete: false` because it is a numerical approximation. Nonlinear or mixed
+derivative terms, non-Dirichlet boundaries, unstable coefficients, higher
+dimensions, and symbolic general solutions are reported as `unsupported` or
+`partial`.
+
 ## Normalized polynomial equations
 
 `PolynomialEquationAnalyzer` collects coefficients from the Core AST before
