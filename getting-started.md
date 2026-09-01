@@ -52,7 +52,7 @@ try {
 The add-ons are private VCS packages, so a consumer must declare an approved
 Composer repository (or use the organization’s private Composer mirror) before
 requiring one. The examples below use the current stable release lines
-(`v0.3.5` for Core; `v0.3.6` for Units and Visuals; `v0.35.0` for Explaining); use
+(`v0.3.5` for Core; `v0.3.6` for Units and Visuals; `v0.36.0` for Explaining); use
 `dev-main` only when developing against unreleased changes.
 
 ```sh
@@ -66,7 +66,7 @@ Visuals at runtime:
 ```sh
 composer config repositories.mathphp-visuals vcs https://github.com/mathphp/mathphp-visuals.git
 composer config repositories.mathphp-explaining vcs https://github.com/mathphp/mathphp-explaining.git
-composer require mathphp/mathphp-visuals:^0.3 mathphp/mathphp-explaining:^0.33
+composer require mathphp/mathphp-visuals:^0.3 mathphp/mathphp-explaining:^0.36
 ```
 
 Authenticate through your normal Composer/Git policy. The MathPHP website and

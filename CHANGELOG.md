@@ -11,6 +11,8 @@
 - Documented bounded numerical limit estimates in Explaining `v0.33.0`.
 - Documented chained inequality interval intersection in Explaining `v0.34.0`.
 - Documented direct numerical higher-order ODE integration in Explaining `v0.35.0`.
+- Documented the Explaining `v0.36.0` bounded one-dimensional parabolic PDE
+  analyzer, finite-difference snapshots, and explicit unsupported scope.
 
 Notable documentation changes are recorded here. This file describes the
 documentation repository; package release notes remain in their own
