@@ -29,6 +29,8 @@
   bounded one-dimensional parabolic PDEs.
 - Documented the Explaining `v0.44.0` Neumann/Robin mixed-boundary support for
   bounded two-dimensional parabolic PDEs.
+- Documented the Explaining `v0.45.0` Neumann/Robin mixed-boundary support for
+  bounded two-dimensional elliptic PDEs.
 
 Notable documentation changes are recorded here. This file describes the
 documentation repository; package release notes remain in their own

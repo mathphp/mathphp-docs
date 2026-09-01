@@ -274,9 +274,9 @@ boundary conditions.
 
 ## Two-dimensional elliptic PDEs
 
-`NumericalEllipticPdeAnalyzer` adds a bounded rectangular Dirichlet solver for
-equations whose residual is affine in the two spatial second derivatives, such
-as Laplace and Poisson forms:
+`NumericalEllipticPdeAnalyzer` adds a bounded rectangular solver for equations
+whose residual is affine in the two spatial second derivatives, such as Laplace
+and Poisson forms:
 
 ```php
 use MathPHP\Explaining\NumericalEllipticPdeAnalyzer;
@@ -290,14 +290,30 @@ $analysis = (new NumericalEllipticPdeAnalyzer())->analyze(
 ```
 
 The four boundary expressions define the left, right, bottom, and top
-Dirichlet edges. The solver derives the affine stencil, iterates interior
-nodes with Gauss–Seidel updates, and retains grids in `solution['snapshots']`
-for a heat map or surface renderer. `solved` means the finite grid met the
-requested update and residual tolerances; `partial` means the iteration limit
-was reached or a field update failed. Non-elliptic signs, nonlinear derivative
-terms, incompatible corners, Neumann/periodic conditions, and higher
-dimensions are outside this focused contract, and convergence does not prove a
-unique or complete PDE solution.
+Dirichlet edges by default. The optional `boundaryConditions` map can replace
+any edge with a one-sided Neumann or Robin condition:
+
+```php
+$analysis = (new NumericalEllipticPdeAnalyzer())->analyze(
+    'u_xx + u_yy = 0',
+    '0', '1', '1', '1',
+    boundaryConditions: [
+        'left' => ['type' => 'neumann', 'value' => '0'],
+        'right' => ['type' => 'robin', 'alpha' => 1, 'beta' => 0, 'value' => '1'],
+    ],
+);
+```
+
+The solver derives the affine stencil, iterates interior nodes with Gauss–Seidel
+updates, reapplies edge conditions, and retains grids in
+`solution['snapshots']` for a heat map or surface renderer. Normalized edge
+types and coefficients are returned in `solution['boundaryConditions']`.
+`solved` means the finite grid met the requested update and residual tolerances;
+`partial` means the iteration limit was reached or a field update failed.
+Non-elliptic signs, nonlinear derivative terms, singular Robin coefficients,
+incompatible corners, periodic/nonlocal conditions, and higher dimensions are
+outside this focused contract, and convergence does not prove a unique or
+complete PDE solution.
 
 ## One-dimensional wave equations
 
