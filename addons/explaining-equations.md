@@ -78,13 +78,20 @@ inspect the convergence metadata before presenting them as final values.
 
 ## Inequalities and larger systems
 
-Use `InequalityAnalyzer` for bounded real relations. It returns interval
-endpoints, open/closed flags, sampled points, and a `complete: false` marker so
-clients do not present a finite sample as a global proof:
+Use `InequalityAnalyzer` for bounded real relations. Linear and quadratic
+polynomials are certified with an exact sign chart over the supplied domain;
+the result has `method: exact-polynomial-sign-chart` and `complete: true`.
+Rational, transcendental, and higher-degree expressions use sampled intervals
+and remain `partial` when undefined points or finite sampling prevent a proof.
+Every result includes interval endpoints, open/closed flags, and critical
+points:
 
 ```php
 $analysis = (new InequalityAnalyzer())->analyze('x^2 < 4', 'x', -3, 3);
-// intervals: approximately (-2, 2)
+// method: exact-polynomial-sign-chart, complete: true, intervals: (-2, 2)
+
+$strict = (new InequalityAnalyzer())->analyze('x^2 > 0', 'x', -2, 2);
+// complete: true, intervals: [-2, 0) and (0, 2]
 ```
 
 `LinearSystemAnalyzer` generalizes the two-equation helper to arbitrary affine
