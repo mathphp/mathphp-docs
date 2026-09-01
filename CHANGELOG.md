@@ -27,6 +27,8 @@
   centered leapfrog stencil, CFL guard, and finite-domain scope.
 - Documented the Explaining `v0.43.0` Neumann/Robin mixed-boundary support for
   bounded one-dimensional parabolic PDEs.
+- Documented the Explaining `v0.44.0` Neumann/Robin mixed-boundary support for
+  bounded two-dimensional parabolic PDEs.
 
 Notable documentation changes are recorded here. This file describes the
 documentation repository; package release notes remain in their own

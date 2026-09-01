@@ -335,8 +335,8 @@ u_t = F(x, y, t, u, u_xx, u_yy)
 ```
 
 The right-hand side must be affine in the two spatial second derivatives, with
-non-negative diffusion coefficients. Supply an initial profile and fixed
-Dirichlet expressions for the left, right, bottom, and top edges:
+non-negative diffusion coefficients. Supply an initial profile and the four
+positional edge expressions (which remain Dirichlet defaults):
 
 ```php
 use MathPHP\Explaining\NumericalParabolicPdeAnalyzer;
@@ -356,10 +356,29 @@ The analyzer applies an explicit five-point diffusion stencil, chooses a
 conservative two-dimensional CFL time step, and retains time-stamped grids in
 `solution['points']`. The visual model has kind `pde-heatmap-2d`. A `solved`
 status means the finite grid completed under the stability guard; the solution
-still has `complete: false` because it is a numerical approximation. Undefined
-boundaries, backward diffusion, nonlinear or mixed derivative terms, unstable
-time steps, incompatible corners, Neumann/Robin/periodic conditions, and higher
-dimensions are reported as `unsupported` or `partial` rather than guessed.
+still has `complete: false` because it is a numerical approximation.
+
+Each edge can instead be configured with the optional `boundaryConditions`
+map. Neumann edges prescribe the outward first derivative and Robin edges
+prescribe `alpha*u + beta*u_n = value`, using one-sided finite differences:
+
+```php
+$analysis = (new NumericalParabolicPdeAnalyzer())->analyze(
+    'u_t = alpha*u_xx + beta*u_yy',
+    '1', '1', '1', '1', '1',
+    known: ['alpha' => 0.1, 'beta' => 0.1],
+    boundaryConditions: [
+        'left' => ['type' => 'neumann', 'value' => '0'],
+        'right' => ['type' => 'robin', 'alpha' => 1, 'beta' => 0, 'value' => '1'],
+    ],
+);
+```
+
+Normalized edge types and Robin coefficients are returned in
+`solution['boundaryConditions']`. Undefined values, singular Robin
+coefficients, incompatible Dirichlet corners, backward diffusion, nonlinear or
+mixed derivative terms, periodic/nonlocal conditions, and higher dimensions
+are reported as `unsupported` or `partial` rather than guessed.
 
 ## Coupled one-dimensional parabolic systems
 
