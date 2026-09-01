@@ -129,3 +129,26 @@ numeric analyzer and are reported as unsupported or partial.
 When a system may have several nearby roots, call `analyzeMany()` with several
 initial maps. It deduplicates converged values but keeps failed or partial runs
 so callers can show which starting points were inconclusive.
+
+## First-order linear ODEs
+
+`DifferentialEquationAnalyzer` handles constant-coefficient first-order
+ordinary differential equations and optional initial conditions:
+
+```php
+use MathPHP\Explaining\DifferentialEquationAnalyzer;
+
+$analysis = (new DifferentialEquationAnalyzer())->analyze(
+    "y' = 2*y + 3",
+    dependent: 'y',
+    independent: 'x',
+    initialIndependent: 0,
+    initialValue: 1,
+);
+// solution['general'] and solution['particular'] contain the closed forms.
+```
+
+Equivalent `y' + p*y = q` and `dy/dx = a*y + b` notation is accepted. Nonlinear,
+higher-order, and partial differential equations are deliberately reported as
+unsupported until a solver with the required domain and boundary-condition
+semantics is added.
