@@ -371,9 +371,10 @@ initial-boundary problems for a field `u(x, y, t)`:
 u_t = F(x, y, t, u, u_x, u_y, u_xx, u_yy, u_xy)
 ```
 
-The right-hand side must be affine in the spatial first and second derivatives, with
-non-negative diffusion coefficients and a positive-semidefinite principal part.
-This includes an affine mixed derivative such as `gamma*u_xy`. Supply an initial profile and the four
+Affine right-hand sides may include `u_x`, `u_y`, `u_xx`, `u_yy`, and `u_xy`,
+with non-negative diffusion coefficients and a positive-semidefinite principal
+part. Nonlinear spatial operators are evaluated directly with local sensitivity
+estimates when all stencil samples remain finite. Supply an initial profile and the four
 positional edge expressions (which remain Dirichlet defaults):
 
 ```php
@@ -395,8 +396,9 @@ diffusion stencil, plus a diagonal mixed-derivative stencil when `u_xy` is
 present. It chooses a combined advection/diffusion CFL time step and retains
 time-stamped grids in
 `solution['points']`. The visual model has kind `pde-heatmap-2d`. A `solved`
-status means the finite grid completed under the stability guard; the solution
-still has `complete: false` because it is a numerical approximation.
+status means the finite grid completed under the stability guard; nonlinear
+operator runs expose `solution['operatorMode'] = 'direct-nonlinear'`. The
+solution still has `complete: false` because it is a numerical approximation.
 
 Each edge can instead be configured with the optional `boundaryConditions`
 map. Neumann edges prescribe the outward first derivative and Robin edges
@@ -416,9 +418,10 @@ $analysis = (new NumericalParabolicPdeAnalyzer())->analyze(
 
 Normalized edge types and Robin coefficients are returned in
 `solution['boundaryConditions']`. Undefined values, singular Robin
-coefficients, incompatible Dirichlet corners, backward diffusion, nonlinear
-derivative terms, periodic/nonlocal conditions, and higher dimensions
-are reported as `unsupported` or `partial` rather than guessed.
+coefficients, incompatible Dirichlet corners, backward diffusion, periodic or
+nonlocal conditions, and higher dimensions are reported as `unsupported` or
+`partial` rather than guessed. Nonlinear derivative operators are evaluated
+directly only when their local stencil samples remain finite.
 
 ## Coupled one-dimensional parabolic systems
 
@@ -471,7 +474,8 @@ this numerical contract.
 `NumericalWavePde2DAnalyzer` supports a bounded rectangular hyperbolic problem
 with initial displacement, initial velocity, and four edge expressions. The
 spatial operator may include affine `u_xy` terms when its principal part is
-positive-semidefinite:
+positive-semidefinite, or nonlinear combinations of `u_xx`, `u_yy`, and
+`u_xy` evaluated directly with local sensitivity estimates:
 
 ```text
 u_tt = c^2 * (u_xx + u_yy)
@@ -511,10 +515,10 @@ coupling when present) and chooses substeps from a conservative two-dimensional
 CFL bound. `solution['points']` contains
 time-stamped grids and the visual model has kind `pde-wave-2d`. A `solved`
 result means only that the requested finite trajectory completed; it remains
-`complete: false` because it is a numerical approximation. Nonlinear derivative
-terms, periodic/nonlocal edges, unstable coefficients, higher
-dimensions, and symbolic general solutions are reported as `unsupported` or
-`partial`.
+`complete: false` because it is a numerical approximation. Nonlinear runs
+expose `solution['operatorMode'] = 'direct-nonlinear'`. Periodic/nonlocal
+edges, unstable coefficients, higher dimensions, and symbolic general
+solutions are reported as `unsupported` or `partial`.
 
 ## Normalized polynomial equations
 
