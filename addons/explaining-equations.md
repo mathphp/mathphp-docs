@@ -358,9 +358,11 @@ The solver applies a centered explicit finite-difference update and chooses
 substeps from a conservative CFL bound. It returns time-stamped field
 snapshots, the effective step size, and explicit stability/finite-range
 diagnostics. `solved` means the finite trajectory completed; `partial` means a
-guard or boundary/domain failure interrupted it. Nonlinear operators,
-periodic/nonlocal edges, higher dimensions, or symbolic general solutions
-remain outside this focused contract.
+guard or boundary/domain failure interrupted it. Nonlinear spatial operators
+are evaluated directly with local sensitivity-based CFL estimates and expose
+`solution['operatorMode'] = 'direct-nonlinear'`. Periodic/nonlocal edges,
+higher dimensions, or symbolic general solutions remain outside this focused
+contract.
 
 ## Two-dimensional parabolic PDEs
 
