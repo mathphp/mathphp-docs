@@ -68,6 +68,28 @@ Piecewise wrappers can also be nested inside ordinary arithmetic, for example
 `2 * piecewise(x < 0: -x; otherwise: x) + 1`. Nested wrappers are resolved
 inside-out and retain the same domain and resource limits.
 
+## Discrete recurrences
+
+`RecurrenceAnalyzer` expands a finite sequence from supplied initial values.
+Both function and bracket notation are accepted, and prior terms may be used
+in the right-hand side:
+
+```php
+use MathPHP\Explaining\RecurrenceAnalyzer;
+
+$sequence = (new RecurrenceAnalyzer())->analyze(
+    'u[n+2] = u[n+1] + u[n]',
+    [0 => 0, 1 => 1],
+    terms: 8,
+);
+// sequence: 0, 1, 1, 2, 3, 5, 8, 13
+```
+
+The analyzer performs bounded forward substitution and can use Core functions
+of `n` for forcing terms. Forward references, missing initial values, domain
+errors, and requests beyond the finite term limit return `unsupported` or
+`partial`; no infinite sequence or closed form is implied.
+
 ## General single-variable equations
 
 For equations outside the closed-form linear, quadratic, and power patterns,
