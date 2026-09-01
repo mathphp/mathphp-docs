@@ -117,7 +117,9 @@ marked partial when sampling cannot prove global completeness.
 
 ## Inequalities and larger systems
 
-Use `InequalityAnalyzer` for bounded real relations. Linear and quadratic
+Use `InequalityAnalyzer` for bounded real relations. ASCII relations (`<`,
+`<=`, `>`, `>=`) and Unicode aliases (`≤`, `≥`, `≠`) are accepted. Linear and
+quadratic
 polynomials are certified with an exact sign chart over the supplied domain;
 the result has `method: exact-polynomial-sign-chart` and `complete: true`.
 Rational, transcendental, and higher-degree expressions use sampled intervals
