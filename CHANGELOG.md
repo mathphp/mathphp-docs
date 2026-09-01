@@ -37,6 +37,8 @@
   bounded one-dimensional wave PDEs.
 - Documented the Explaining `v0.48.0` per-field Neumann/Robin mixed-boundary
   support for bounded coupled one-dimensional parabolic PDE systems.
+- Documented the Explaining `v0.49.0` damped Newton/Gauss–Newton iteration for
+  nonlinear systems, including bounded backtracking and residual evidence.
 
 Notable documentation changes are recorded here. This file describes the
 documentation repository; package release notes remain in their own

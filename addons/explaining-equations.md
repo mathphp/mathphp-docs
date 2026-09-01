@@ -598,7 +598,7 @@ $analysis = (new LinearSystemAnalyzer())->analyze(
 ```
 
 For nonlinear multivariable equations, use `NonlinearSystemAnalyzer` with one
-initial estimate per variable. Square systems use Newton's method; systems
+initial estimate per variable. Square systems use damped Newton's method; systems
 with redundant equations use a Gauss–Newton least-squares update; and systems
 with fewer equations than unknowns use a minimum-norm update:
 
@@ -614,8 +614,9 @@ $analysis = (new NonlinearSystemAnalyzer())->analyze(
 ```
 
 This is a bounded Newton/Gauss–Newton iteration using finite-difference
-Jacobians. The
-serialized result includes each iterate and residual norm, and returns
+Jacobians. Each update is backtracked by up to ten halvings when a full step
+increases the residual or leaves the evaluable domain. The serialized result
+includes each iterate and residual norm, and returns
 `partial` when the Jacobian is singular, an expression leaves its domain, or
 the configured iteration limit is reached. A converged starting point finds
 one nearby solution; it does not establish that every solution exists or has
