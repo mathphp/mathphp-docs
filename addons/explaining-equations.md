@@ -779,6 +779,23 @@ When a system may have several nearby roots, call `analyzeMany()` with several
 initial maps. It deduplicates converged values but keeps failed or partial runs
 so callers can show which starting points were inconclusive.
 
+For bounded discovery without manually choosing starts, use `analyzeGrid()`:
+
+```php
+$runs = (new NonlinearSystemAnalyzer())->analyzeGrid(
+    'x^2 + y^2 = 5; x - y = 1',
+    ['x', 'y'],
+    ['x' => -3, 'y' => -3],
+    ['x' => 3, 'y' => 3],
+    pointsPerDimension: 5,
+);
+```
+
+The helper creates evenly spaced starts in the finite box, caps the batch at
+4096 starts, and reuses the same damped Newton/Gauss–Newton iteration. It is a
+search aid rather than a completeness proof: each returned run retains its
+own convergence status, residual history, and local-root limitations.
+
 ## Nonlinear second-order initial-value problems
 
 `NumericalSecondOrderOdeAnalyzer` covers second-order IVPs whose acceleration is

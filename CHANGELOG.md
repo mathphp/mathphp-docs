@@ -2,6 +2,9 @@
 
 ## 2026-09-01
 
+- Documented Explaining `v0.71.0` bounded grid exploration for nonlinear
+  multivariable systems, including its 4096-start cap and local convergence
+  semantics.
 - Documented the Explaining `v0.28.0` piecewise evaluator, including
   conditional syntax, branch metadata, boolean conditions, and bounded scope.
 - Documented the Explaining `v0.30.0` numerical second-order ODE analyzer and
