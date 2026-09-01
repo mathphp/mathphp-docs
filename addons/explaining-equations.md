@@ -26,6 +26,7 @@ and returns the branch number plus ordered explanation steps:
 
 ```php
 use MathPHP\Explaining\PiecewiseEvaluator;
+use MathPHP\Explaining\PiecewiseEquationAnalyzer;
 
 $result = (new PiecewiseEvaluator())->explain(
     'piecewise(x < 0: -x; otherwise: x)',
@@ -44,6 +45,24 @@ are accepted; branch values still use Core's scalar grammar, domains, and
 resource limits. A missing match is a `DomainException`, not a guessed value.
 Piecewise selection is an evaluation feature, not a global proof of continuity,
 limits, or every possible solution of a discontinuous equation.
+
+To find roots of a piecewise equality on a finite interval, use
+`PiecewiseEquationAnalyzer`:
+
+```php
+$analysis = (new PiecewiseEquationAnalyzer())->analyze(
+    'piecewise(x < 0: -x; otherwise: x) = 3',
+    'x',
+    -5,
+    5,
+);
+// roots are approximately -3 and 3; status is partial because the branch
+// transition is observed and no finite sample can prove global completeness.
+```
+
+The solver only bisects sign changes that remain within the same selected
+branch. A jump, undefined sample, or missing root evidence is reported as
+`partial`; a branch discontinuity is never presented as a zero.
 
 ## General single-variable equations
 
