@@ -7,13 +7,13 @@ scalar-only `mathphp/mathphp` evaluator.
 ## Install and evaluate
 
 ```bash
-composer require mathphp/mathphp-units:^0.1
+composer require mathphp/mathphp-units:^0.3
 ```
 
 ```php
 use MathPHP\Units\UnitMath;
 
-$result = UnitMath::evaluate('2m * 6 + 200cm');
+$result = UnitMath::evaluate('2m × 6 + 200cm');
 
 $result->format(); // 14 m
 $result->toArray(); // value, displayValue, unit, dimensions, formatted
@@ -25,6 +25,9 @@ temperature (`K`, `C`, `F`), angle (`rad`, `deg`), square/cubic lengths,
 litres, and common speeds (`mps`, `kmh`, `mph`). Spelled aliases and separated
 forms such as `metres`, `liters`, `metres per second`, and `m/s` are accepted.
 The short symbols `m` (metre) and `min` (minute) remain distinct.
+The quantity grammar accepts `×`, `·`, `÷`, and `−` as Unicode aliases for
+the arithmetic operators, plus `π`, `τ`, and `φ` for the corresponding scalar
+constants.
 
 ## Dimensional arithmetic
 
