@@ -247,6 +247,22 @@ the current cell, producing a causal lower-triangular operator. The returned
 `equationType` is `volterra-second-kind`; values, residuals, pivot diagnostics,
 and `complete: false` semantics are retained.
 
+For nonlinear Fredholm equations, use `analyzeNonlinear()` and provide the
+full integrand as `F(x,t,u(t))` (the expression is evaluated with `u` bound to
+the current iterate):
+
+```php
+$analysis = (new NumericalIntegralEquationAnalyzer())->analyzeNonlinear(
+    'u', '1', 0.5, 0, 1, points: 32, iterations: 80,
+);
+// Solves the contractive equation u(x) = 1 + 0.5∫₀¹u(t)dt approximately.
+```
+
+Picard updates stop when the infinity-norm change reaches the requested
+tolerance or the iteration cap. The history and final residual are returned;
+non-contractive, divergent, or undefined iterations remain `partial`, and
+`complete` is always `false`.
+
 ## Numerical higher-order ODEs
 
 `NumericalHigherOrderOdeAnalyzer` gives scalar third- through eighth-order
