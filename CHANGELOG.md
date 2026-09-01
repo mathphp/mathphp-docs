@@ -13,6 +13,10 @@
 - Documented direct numerical higher-order ODE integration in Explaining `v0.35.0`.
 - Documented the Explaining `v0.36.0` bounded one-dimensional parabolic PDE
   analyzer, finite-difference snapshots, and explicit unsupported scope.
+- Documented the Explaining `v0.37.0` second-order boundary-value ODE shooting
+  analyzer and its local residual semantics.
+- Documented the Explaining `v0.38.0` bounded two-dimensional elliptic PDE
+  solver, Gauss–Seidel snapshots, and unsupported boundary conditions.
 
 Notable documentation changes are recorded here. This file describes the
 documentation repository; package release notes remain in their own

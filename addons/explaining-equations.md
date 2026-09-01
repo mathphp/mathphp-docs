@@ -226,6 +226,60 @@ the trajectory. A nonlinear `u_xx` term, higher-dimensional domain, Neumann or
 periodic boundary condition, or symbolic closed-form request is reported as
 `unsupported`. Numerical completion is never a proof for every PDE solution.
 
+## Second-order boundary-value ODEs
+
+`NumericalBoundaryValueOdeAnalyzer` handles a bounded scalar second-order
+boundary-value problem with two fixed endpoint values:
+
+```php
+use MathPHP\Explaining\NumericalBoundaryValueOdeAnalyzer;
+
+$analysis = (new NumericalBoundaryValueOdeAnalyzer())->analyze(
+    "y'' = -k*y",
+    '0',
+    '1',
+    known: ['k' => 1],
+    steps: 100,
+);
+```
+
+The analyzer treats the unknown initial slope as a shooting parameter, solves
+each trial with bounded RK4 integration, then refines a sign-changing endpoint
+residual with bisection and guarded secant steps. The returned model includes
+the selected slope, endpoint residual, trajectory, and iteration count. A
+`solved` result means the residual met the requested tolerance for one found
+trajectory (`complete: false`); a `partial` result means no trial met it or an
+integration became undefined. This focused method does not prove uniqueness,
+find every branch, or cover higher-order/multi-point, singular, or derivative
+boundary conditions.
+
+## Two-dimensional elliptic PDEs
+
+`NumericalEllipticPdeAnalyzer` adds a bounded rectangular Dirichlet solver for
+equations whose residual is affine in the two spatial second derivatives, such
+as Laplace and Poisson forms:
+
+```php
+use MathPHP\Explaining\NumericalEllipticPdeAnalyzer;
+
+$analysis = (new NumericalEllipticPdeAnalyzer())->analyze(
+    'u_xx + u_yy = 0',
+    'y', '1 + y', 'x', 'x + 1',
+    firstPoints: 25,
+    secondPoints: 25,
+);
+```
+
+The four boundary expressions define the left, right, bottom, and top
+Dirichlet edges. The solver derives the affine stencil, iterates interior
+nodes with Gauss–Seidel updates, and retains grids in `solution['snapshots']`
+for a heat map or surface renderer. `solved` means the finite grid met the
+requested update and residual tolerances; `partial` means the iteration limit
+was reached or a field update failed. Non-elliptic signs, nonlinear derivative
+terms, incompatible corners, Neumann/periodic conditions, and higher
+dimensions are outside this focused contract, and convergence does not prove a
+unique or complete PDE solution.
+
 ## Normalized polynomial equations
 
 `PolynomialEquationAnalyzer` collects coefficients from the Core AST before
