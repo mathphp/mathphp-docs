@@ -114,3 +114,7 @@ one nearby solution; it does not establish that every solution exists or has
 been found. Partial differential equations, arbitrary complex systems, and
 global piecewise/discontinuous proofs remain outside this general-purpose
 numeric analyzer and are reported as unsupported or partial.
+
+When a system may have several nearby roots, call `analyzeMany()` with several
+initial maps. It deduplicates converged values but keeps failed or partial runs
+so callers can show which starting points were inconclusive.
