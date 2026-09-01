@@ -162,6 +162,19 @@ missed or the interval contained undefined samples; `unsupported` means the
 input could not be evaluated. Numerical sampling never claims a global proof
 of completeness, especially for oscillatory functions or tangent roots.
 
+For rapidly oscillating expressions, opt into bounded dyadic refinement:
+
+```php
+$analysis = (new NumericalEquationAnalyzer())->analyze(
+    'sin(40*x) = 0', 'x', 0, pi(), samples: 8, refinementDepth: 4,
+);
+// solutions['samples'] is 128 after four doublings.
+```
+
+`refinementDepth` is clamped to 0–6 and the effective sample count is retained
+in the result. More samples improve the chance of finding narrow or oscillatory
+roots, but do not establish that every root in the interval was found.
+
 Pass `EvaluationOptions` when an equation uses an explicitly registered Core
 function; both sides are then evaluated through the same function registry and
 resource limits as the rest of your application.
