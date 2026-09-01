@@ -510,15 +510,16 @@ The result contains bounded 3D snapshots with visual kind `pde-heatmap-3d`,
 six normalized face conditions, grid spacing, effective time step, and
 `solution['operatorMode']`. Neumann faces use one-sided outward finite
 differences; Robin faces enforce `alpha*u + beta*u_n = value` and reject
-singular coefficients. Periodic/nonlocal boundaries, larger dimensions, and
-symbolic general solutions remain outside this focused contract.
+singular coefficients. Periodic faces wrap to the opposite interior stencil.
+Nonlocal boundaries, larger dimensions, and symbolic general solutions remain
+outside this focused contract.
 
 ## Three-dimensional wave equations
 
 `NumericalWavePde3DAnalyzer` covers a resource-capped rectangular hyperbolic
 field `u(x, y, z, t)` with initial displacement, initial velocity, and six
 positional faces (Dirichlet by default). The same `boundaryConditions` map
-supports per-face Neumann and Robin data:
+supports per-face Neumann, Robin, and periodic data:
 
 ```text
 u_tt = F(x, y, z, t, u, u_xx, u_yy, u_zz)
@@ -543,9 +544,9 @@ $analysis = (new NumericalWavePde3DAnalyzer())->analyze(
 ```
 
 The result contains `pde-wave-3d` snapshots, normalized face conditions, grid
-spacing, effective time step, and `solution['operatorMode']`. Periodic/nonlocal
-boundaries, larger dimensions, and symbolic general solutions remain outside
-this focused solver.
+spacing, effective time step, and `solution['operatorMode']`. Periodic faces
+wrap to the opposite interior stencil; nonlocal boundaries, larger dimensions,
+and symbolic general solutions remain outside this focused solver.
 
 ## Coupled three-dimensional parabolic systems
 
@@ -575,12 +576,13 @@ $analysis = (new NumericalCoupledParabolicPde3DAnalyzer())->analyze(
 ```
 
 The six face arguments are per-field Dirichlet expressions. The optional
-edge-first `boundaryConditions` map can replace any field face with Neumann or
-Robin data. Results retain per-field 3D snapshots, normalized conditions,
-operator modes, grid spacing, and explicit stability metadata under the
-`pde-system-heatmap-3d` visual kind. This remains a bounded explicit
-approximation; periodic/nonlocal boundaries, arbitrary higher dimensions, and
-symbolic general solutions are not implied.
+edge-first `boundaryConditions` map can replace any field face with Neumann,
+Robin, or periodic data. A periodic face wraps to the opposite interior
+stencil; omitted faces retain their Dirichlet defaults. Results retain
+per-field 3D snapshots, normalized conditions, operator modes, grid spacing,
+and explicit stability metadata under the `pde-system-heatmap-3d` visual kind.
+This remains a bounded explicit approximation; nonlocal boundaries, arbitrary
+higher dimensions, and symbolic general solutions are not implied.
 
 ## Two-dimensional wave equations
 
