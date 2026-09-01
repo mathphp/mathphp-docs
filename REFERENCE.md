@@ -156,8 +156,12 @@ The default function allowlist is:
 |---|---:|---|
 | `abs(x)` | 1 | finite; preserves integer/float type |
 | `sqrt(x)` | 1 | `x >= 0`; float |
+| `cbrt(x)` | 1 | finite real cube root; float |
 | `sin(x)`, `cos(x)` | 1 | float |
 | `tan(x)` | 1 | finite where cosine is non-zero; float |
+| `sec(x)` | 1 | finite where cosine is non-zero; float |
+| `csc(x)` | 1 | finite where sine is non-zero; float |
+| `cot(x)` | 1 | finite where sine is non-zero; float |
 | `asin(x)`, `acos(x)` | 1 | `-1 <= x <= 1`; float |
 | `atan(x)` | 1 | float |
 | `sinh(x)`, `cosh(x)`, `tanh(x)` | 1 | float |

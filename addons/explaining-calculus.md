@@ -9,7 +9,7 @@ $analysis = (new CalculusAnalyzer())->analyze('x^2 + 3*x', 'derivative', 'x');
 
 Derivative requests first use the compact teaching rules and then fall back to
 an AST-based symbolic differentiator. Products, quotients, nested elementary
-functions (`sin`, `cos`, `tan`, inverse trigonometric, hyperbolic,
+functions (`sin`, `cos`, `tan`, `sec`, `csc`, `cot`, `cbrt`, inverse trigonometric, hyperbolic,
 inverse-hyperbolic, `exp`, `ln`, `log10`, and `sqrt`), constant powers, and
 general powers are handled with product, quotient, chain, and
 logarithmic-differentiation rules:
