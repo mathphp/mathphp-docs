@@ -6,6 +6,7 @@
   conditional syntax, branch metadata, boolean conditions, and bounded scope.
 - Documented the Explaining `v0.30.0` numerical second-order ODE analyzer and
   its RK4 trajectory contract.
+- Documented nested piecewise wrappers in Explaining `v0.31.0`.
 
 Notable documentation changes are recorded here. This file describes the
 documentation repository; package release notes remain in their own

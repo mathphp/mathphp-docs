@@ -64,6 +64,10 @@ The solver only bisects sign changes that remain within the same selected
 branch. A jump, undefined sample, or missing root evidence is reported as
 `partial`; a branch discontinuity is never presented as a zero.
 
+Piecewise wrappers can also be nested inside ordinary arithmetic, for example
+`2 * piecewise(x < 0: -x; otherwise: x) + 1`. Nested wrappers are resolved
+inside-out and retain the same domain and resource limits.
+
 ## General single-variable equations
 
 For equations outside the closed-form linear, quadratic, and power patterns,
