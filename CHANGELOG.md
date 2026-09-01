@@ -35,6 +35,8 @@
   bounded two-dimensional wave PDEs.
 - Documented the Explaining `v0.47.0` Neumann/Robin mixed-boundary support for
   bounded one-dimensional wave PDEs.
+- Documented the Explaining `v0.48.0` per-field Neumann/Robin mixed-boundary
+  support for bounded coupled one-dimensional parabolic PDE systems.
 
 Notable documentation changes are recorded here. This file describes the
 documentation repository; package release notes remain in their own

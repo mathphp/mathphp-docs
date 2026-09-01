@@ -420,7 +420,9 @@ u_t = u_xx + v
 v_t = v_xx - u
 ```
 
-Provide one initial profile and two Dirichlet edge expressions per field:
+Provide one initial profile and two edge expressions per field. Positional
+expressions remain Dirichlet defaults, while the optional edge-first
+`boundaryConditions` map can configure each field independently:
 
 ```php
 use MathPHP\Explaining\NumericalCoupledParabolicPdeAnalyzer;
@@ -431,6 +433,10 @@ $analysis = (new NumericalCoupledParabolicPdeAnalyzer())->analyze(
     ['u' => 'sin(pi()*x)', 'v' => '0'],
     ['u' => '0', 'v' => '0'], // left edges
     ['u' => '0', 'v' => '0'], // right edges
+    boundaryConditions: [
+        'left' => ['u' => ['type' => 'neumann', 'value' => '0']],
+        'right' => ['v' => ['type' => 'robin', 'alpha' => 1, 'beta' => 0, 'value' => '0']],
+    ],
     spacePoints: 41,
     timeSteps: 100,
 );
@@ -439,10 +445,12 @@ $analysis = (new NumericalCoupledParabolicPdeAnalyzer())->analyze(
 The explicit update integrates all components at the same time level and
 retains per-field snapshots in `solution['points']`. Cross-diffusion terms are
 accepted when they are affine and non-negative under the conservative CFL
-bound. `solved` means only that the requested finite grid completed; the
-serialized result remains `complete: false`. Nonlinear derivative terms,
-backward diffusion, non-Dirichlet boundaries, higher-dimensional systems, and
-symbolic/global PDE solutions remain outside this numerical contract.
+bound. Normalized edge conditions are returned in
+`solution['boundaryConditions']`. `solved` means only that the requested finite
+grid completed; the serialized result remains `complete: false`. Nonlinear
+derivative terms, backward diffusion, periodic/nonlocal edges,
+higher-dimensional systems, and symbolic/global PDE solutions remain outside
+this numerical contract.
 
 ## Two-dimensional wave equations
 
