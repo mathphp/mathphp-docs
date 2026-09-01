@@ -10,6 +10,7 @@
 - Documented bounded recurrence expansion in Explaining `v0.32.0`.
 - Documented bounded numerical limit estimates in Explaining `v0.33.0`.
 - Documented chained inequality interval intersection in Explaining `v0.34.0`.
+- Documented direct numerical higher-order ODE integration in Explaining `v0.35.0`.
 
 Notable documentation changes are recorded here. This file describes the
 documentation repository; package release notes remain in their own

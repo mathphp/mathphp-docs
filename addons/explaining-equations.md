@@ -166,6 +166,30 @@ Pass `EvaluationOptions` when an equation uses an explicitly registered Core
 function; both sides are then evaluated through the same function registry and
 resource limits as the rest of your application.
 
+## Numerical higher-order ODEs
+
+`NumericalHigherOrderOdeAnalyzer` gives scalar third- through eighth-order
+initial-value equations a direct interface. It reduces the equation to a
+first-order state system and integrates it with bounded RK4 steps:
+
+```php
+use MathPHP\Explaining\NumericalHigherOrderOdeAnalyzer;
+
+$analysis = (new NumericalHigherOrderOdeAnalyzer())->analyze(
+    "y''' = -y'",
+    [0, 1, 0], // y, y', y'' at the initial coordinate
+    targetIndependent: pi() / 2,
+);
+// final state[0] is approximately 1 for y = sin(x)
+```
+
+Apostrophe notation (`y'''`) and d-notation (`d3y/dx3`) are accepted. The
+right-hand side can reference the dependent value and lower derivatives, plus
+known finite parameters. Every state sample is retained; undefined slopes,
+overflow, or malformed initial state return `partial` or `unsupported` rather
+than a fabricated trajectory. This is numerical IVP integration, not a
+symbolic higher-order ODE proof or a complete family of solutions.
+
 ## Normalized polynomial equations
 
 `PolynomialEquationAnalyzer` collects coefficients from the Core AST before
