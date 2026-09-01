@@ -51,5 +51,22 @@ branches for `sqrt`, `exp`, `ln`, `sin`, `cos`, and two-argument `log`.
 Modulo, factorial of non-real values, and unsupported custom functions are
 rejected explicitly rather than coerced to real numbers.
 
+For a complex equality, `ComplexEquationAnalyzer` applies bounded Newton
+iteration from a caller-supplied complex starting value:
+
+```php
+use MathPHP\Explaining\ComplexEquationAnalyzer;
+use MathPHP\Explaining\ComplexNumber;
+
+$analysis = (new ComplexEquationAnalyzer())->analyze(
+    'z^2 + 1 = 0',
+    initial: new ComplexNumber(0.6, 0.6),
+);
+// solution['root'] contains one nearby root and its residual history.
+```
+
+This is a local numerical method. Different starting values can converge to
+different roots, and singular or non-convergent runs are reported as `partial`.
+
 For sampled curves, label numerical approximations and show the variable and
 operation beside the formula. See [plots](visuals-plots.md) for presentation.
