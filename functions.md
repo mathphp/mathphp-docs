@@ -13,7 +13,8 @@ Math::evaluate('sqrt(area) + log(minimum, 10)', [
 The default catalogue includes the common elementary, trigonometric,
 hyperbolic, logarithmic, aggregate, and rounding functions: `abs`, `sqrt`,
 `cbrt`, `sin`, `cos`, `tan`, `sec`, `csc`, `cot`, `asin`, `acos`, `atan`, `sinh`, `cosh`, `tanh`, `asinh`,
-`acosh`, `atanh`, `exp`, `ln`, `log`, `log10`, `hypot`, `sign`, `min`, `max`,
+`acosh`, `atanh`, `exp`, `ln`, `log`, `log10`, `log2`, `log1p`, `expm1`,
+`atan2`, `hypot`, `gcd`, `lcm`, `sign`, `min`, `max`,
 `floor`, `ceil`, and `round`. `log(value, base)` and `hypot(x, y)` take two
 arguments; `min` and `max` accept one through sixteen; the other built-ins
 take one. Names are case-sensitive and never resolve against PHP's global

@@ -173,7 +173,13 @@ The default function allowlist is:
 | `ln(x)` | 1 | `x > 0`; float |
 | `log(x, base)` | 2 | `x > 0`, `base > 0`, `base != 1`; float |
 | `log10(x)` | 1 | `x > 0`; float |
+| `log2(x)` | 1 | `x > 0`; float |
+| `log1p(x)` | 1 | `x > -1`; float |
+| `expm1(x)` | 1 | finite result; float |
+| `atan2(y, x)` | 2 | undefined when both arguments are zero; float |
 | `hypot(x, y)` | 2 | finite Euclidean norm; float |
+| `gcd(a, b)` | 2 | finite integer arguments; int |
+| `lcm(a, b)` | 2 | finite integer arguments; int, overflow checked |
 | `sign(x)` | 1 | `-1`, `0`, or `1`; int |
 | `min(...)`, `max(...)` | 1–16 | finite aggregate; preserves numeric type |
 | `floor(x)`, `ceil(x)`, `round(x)` | 1 | float |
