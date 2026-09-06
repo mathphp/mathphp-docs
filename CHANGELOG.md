@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.113.0` corrected per-field paired periodic faces
+  for coupled 3D parabolic systems and unpaired-face limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.112.0` paired periodic edges for 2D wave problems,
   post-update wrapping, and unpaired/nonlocal scope limits.
 

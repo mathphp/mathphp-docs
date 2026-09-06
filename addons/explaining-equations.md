@@ -939,14 +939,15 @@ $analysis = (new NumericalCoupledParabolicPde3DAnalyzer())->analyze(
 
 The six face arguments are per-field Dirichlet expressions. The optional
 edge-first `boundaryConditions` map can replace any field face with Neumann,
-Robin, or periodic data. A periodic face wraps to the opposite interior
-stencil; omitted faces retain their Dirichlet defaults. Results retain
+Robin, or paired periodic data. Pair opposite faces independently for each
+field; periodic faces wrap to the opposite interior planes before each update,
+while omitted faces retain their Dirichlet defaults. Results retain
 per-field 3D snapshots, normalized conditions, operator modes, grid spacing,
 and explicit stability metadata under the `pde-system-heatmap-3d` visual kind.
 Pure third derivatives use a wider centered stencil and sensitivity-aware
 stability bounds. This remains a bounded explicit approximation; arbitrary mixed
-third derivatives, nonlocal boundaries, higher dimensions, and symbolic general
-solutions are not implied.
+third derivatives, unpaired periodic faces, nonlocal boundaries, higher
+dimensions, and symbolic general solutions are not implied.
 
 ## Two-dimensional wave equations
 
