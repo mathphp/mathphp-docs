@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.138.0` coupled one-dimensional wave systems with
+  initial displacement/velocity maps, typed boundaries, and CFL diagnostics.
+
+## 2026-09-07
+
 - Documented Explaining `v0.137.0` bounded 2D/3D variable-order fractional
   waves with initial velocity fields and local/nonlocal spatial operators.
 

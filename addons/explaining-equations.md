@@ -818,6 +818,44 @@ solutions remain outside this numerical contract.
 result remains `complete: false`. Backward diffusion and higher-dimensional
 systems remain outside this contract.
 
+## Coupled one-dimensional wave systems
+
+`NumericalCoupledWavePdeAnalyzer` covers bounded systems of second-time-
+derivative equations on one shared spatial grid:
+
+```text
+u_tt = c^2*u_xx + v
+v_tt = c^2*v_xx - u
+```
+
+Provide displacement and velocity maps for every field, plus left/right edge
+expressions. Values may couple all fields; spatial first, second, and pure
+third-derivative aliases are evaluated on centered stencils. The centered
+leapfrog update uses the supplied initial velocity on its first step, retains
+synchronized per-field snapshots, and reports a conservative CFL guard:
+
+```php
+use MathPHP\Explaining\NumericalCoupledWavePdeAnalyzer;
+
+$analysis = (new NumericalCoupledWavePdeAnalyzer())->analyze(
+    'u_tt = 0.1*u_xx + v; v_tt = 0.1*v_xx - u',
+    ['u', 'v'],
+    ['u' => 'sin(pi*x)', 'v' => '0'],
+    ['u' => '0', 'v' => '1'],
+    ['u' => '0', 'v' => '0'],
+    ['u' => '0', 'v' => '0'],
+    spacePoints: 41,
+    timeSteps: 100,
+);
+```
+
+Use the optional edge-first `boundaryConditions` map for independent
+Dirichlet, Neumann, Robin, or paired-periodic conditions. `solution['operatorModes']`
+identifies affine versus directly evaluated nonlinear spatial operators, and
+the visual payload is `pde-system-wave`. This is a bounded explicit numerical
+approximation; higher-dimensional coupled waves, nonlocal boundaries, and
+symbolic/global wave-system solutions remain outside this contract.
+
 ## Three-dimensional parabolic PDEs
 
 `NumericalParabolicPde3DAnalyzer` covers a resource-capped rectangular heat or
