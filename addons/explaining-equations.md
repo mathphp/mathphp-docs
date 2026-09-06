@@ -1929,6 +1929,36 @@ nonlocal fractional spatial operators, dimensions
 beyond the bounded 3D diffusion contract, and symbolic fractional solutions
 remain outside this focused contract.
 
+## Variable-order two-dimensional fractional diffusion
+
+`NumericalVariableOrderFractionalPde2DAnalyzer` extends the explicit bounded
+Caputo approximation to rectangular fields whose order is evaluated at every
+grid node:
+`D_t^(α(x,y,t,u)) u = κ(u_xx + u_yy) + s(x,y,t,u)`.
+
+```php
+use MathPHP\Explaining\NumericalVariableOrderFractionalPde2DAnalyzer;
+
+$field = (new NumericalVariableOrderFractionalPde2DAnalyzer())->analyze(
+    '0',
+    '0.5 + 0.05*t + 0.02*u',
+    0.01,
+    'x + 2*y',
+    '0', '0', '0', '0',
+    firstPoints: 17,
+    secondPoints: 17,
+    timeSteps: 30,
+);
+```
+
+Each snapshot retains both the field values and its two-dimensional order
+field, so explanations can show how the memory exponent changes over space,
+time, and state. The result exposes the `pde-heatmap-2d` visual and supports
+Dirichlet, Neumann, Robin, or paired-periodic edges on both axes. Every
+evaluated order must remain strictly within `0 < α < 1`; variable-order 3D
+diffusion, nonlocal fractional spatial operators, fractional wave equations,
+and symbolic fractional solutions remain outside this focused contract.
+
 For exact constant-coefficient second-order equations, use
 `SecondOrderOdeAnalyzer`:
 

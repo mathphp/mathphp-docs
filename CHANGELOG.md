@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.122.0` bounded 2D variable-order Caputo diffusion,
+  per-node order fields, periodic axes, and explicit order limits.
+
+## 2026-09-07
+
 - Documented Explaining `v0.121.0` bounded variable-order 1D fractional
   diffusion, per-grid order fields, and explicit order-range limits.
 
