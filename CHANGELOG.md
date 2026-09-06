@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.119.0` scalar variable-order Caputo IVPs,
+  per-step order history, and explicit order-range limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.118.0` bounded 3D Caputo diffusion, six-face
   boundaries, volume memory history, and explicit nonlocal limits.
 

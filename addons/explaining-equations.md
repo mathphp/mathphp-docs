@@ -1748,6 +1748,29 @@ result. It is a bounded numerical approximation (`complete: false`), not a
 symbolic fractional solver; variable-order operators remain outside this
 scalar contract.
 
+## Variable-order Caputo fractional ODEs
+
+`NumericalVariableOrderFractionalOdeAnalyzer` evaluates an explicit order
+expression at each target coordinate, allowing bounded equations such as
+`D_C^(0.5 + 0.1t) y = f(t,y)`:
+
+```php
+use MathPHP\Explaining\NumericalVariableOrderFractionalOdeAnalyzer;
+
+$analysis = (new NumericalVariableOrderFractionalOdeAnalyzer())->analyze(
+    '1',
+    '0.5 + 0.1*t',
+    0,
+    targetIndependent: 1,
+    steps: 200,
+);
+```
+
+The result retains the per-step order history, forcing history, and trajectory.
+The explicit contract requires every evaluated order to stay strictly within
+`0 < α < 1`; mixed-order systems and symbolic fractional solutions remain
+unsupported.
+
 ## Coupled Caputo fractional ODE systems
 
 `NumericalFractionalOdeSystemAnalyzer` extends the same order range to a
