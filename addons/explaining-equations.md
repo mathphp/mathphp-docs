@@ -303,6 +303,37 @@ simulation is an approximation, so `complete` is always `false`; domain exits
 are `partial`, while invalid time ranges or oversized batches are
 `unsupported`.
 
+## Coupled vector Itô systems
+
+`NumericalSdeSystemAnalyzer` applies the same bounded contract to a vector of
+coupled state variables. Pass one drift and one diffusion expression per
+variable; every component is evaluated from the same previous state and then
+advanced on a shared grid:
+
+```php
+use MathPHP\Explaining\NumericalSdeSystemAnalyzer;
+
+$analysis = (new NumericalSdeSystemAnalyzer())->analyze(
+    ['x', 'v'],
+    ['v', '-x'],       // dx = v dt, dv = -x dt
+    ['0', '0'],        // deterministic oscillator in this example
+    ['x' => 1, 'v' => 0],
+    targetTime: 1.5708,
+    steps: 200,
+    paths: 32,
+    seed: 42,
+);
+```
+
+The system contract is
+`dX_i = a_i(t, X)dt + b_i(t, X)dW_i`, with independent Brownian components.
+Results retain synchronized paths, per-variable endpoint means and variances,
+the exact step size, failed-path counts, and the seed. `complete` remains
+`false` because Euler–Maruyama is a finite stochastic approximation; undefined
+paths become `partial`. Correlated Brownian covariance, jump processes,
+stochastic algebraic constraints, and other SDE families are intentionally
+reported as unsupported until they have their own explicit numerical contract.
+
 ## Numerical higher-order ODEs
 
 `NumericalHigherOrderOdeAnalyzer` gives scalar third- through eighth-order

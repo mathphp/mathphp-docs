@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-06
+
+- Documented Explaining `v0.79.0` coupled vector Itô SDE simulation, including
+  synchronized Euler–Maruyama paths, endpoint statistics, and explicit
+  independent-noise scope.
+
 ## 2026-09-01
 
 - Documented Explaining `v0.78.0` seeded scalar Itô SDE simulation,
