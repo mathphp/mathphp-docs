@@ -538,9 +538,22 @@ types and coefficients are returned in `solution['boundaryConditions']`.
 `solved` means the finite grid met the requested update and residual tolerances;
 `partial` means the iteration limit was reached or a field update failed.
 Non-elliptic principal parts, nonlinear derivative terms, singular Robin coefficients,
-incompatible corners, periodic/nonlocal conditions, and higher dimensions are
-outside this focused contract, and convergence does not prove a unique or
-complete PDE solution.
+incompatible corners, nonlocal conditions, and higher dimensions are outside
+this focused contract, and convergence does not prove a unique or complete PDE
+solution. For periodicity, set both edges of an axis to
+`['type' => 'periodic']`; the solver wraps opposite interior edges into the
+centered stencil and rejects an unpaired periodic edge:
+
+```php
+$analysis = (new NumericalEllipticPdeAnalyzer())->analyze(
+    'u_xx + u_yy = 0',
+    '0', '0', '0', '1',
+    boundaryConditions: [
+        'left' => ['type' => 'periodic'],
+        'right' => ['type' => 'periodic'],
+    ],
+);
+```
 
 ## Three-dimensional elliptic PDEs
 
