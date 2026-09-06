@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.131.0` one-dimensional Caputo fractional waves,
+  initial velocity, local/nonlocal spatial operators, and memory metadata.
+
+## 2026-09-07
+
 - Documented Explaining `v0.130.0` variable-order 3D diffusion with bounded
   nonlocal volume interaction, `spatialOrder`, and combined operator metadata.
 

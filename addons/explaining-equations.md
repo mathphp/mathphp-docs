@@ -1961,6 +1961,37 @@ unbounded or singular spatial kernels, dimensions beyond the bounded 3D
 diffusion contract, and symbolic fractional solutions remain outside this
 focused contract.
 
+## One-dimensional Caputo fractional waves
+
+`NumericalFractionalWavePdeAnalyzer` covers bounded one-dimensional Caputo wave
+equations with `1 < α ≤ 2`:
+`D_t^α u = c²u_xx + s(x,t,u)`. It retains both the initial displacement and
+initial velocity, then applies the explicit memory integral to every spatial
+forcing field:
+
+```php
+use MathPHP\Explaining\NumericalFractionalWavePdeAnalyzer;
+
+$wave = (new NumericalFractionalWavePdeAnalyzer())->analyze(
+    '0',
+    1.5,                 // Caputo wave order
+    0.1,                 // wave speed c
+    'x*(1-x)',           // initial displacement
+    '0',                 // initial velocity
+    '0', '0',             // left/right boundaries
+    spacePoints: 41,
+    timeSteps: 100,
+);
+```
+
+The same Dirichlet, Neumann, Robin, and paired-periodic boundary map is
+available as diffusion. Pass `spatialOrder` between `0` and `2` to select the
+bounded symmetric nonlocal kernel; `spatialOrder: 2.0` preserves the centered
+second derivative. Results expose `caputo-explicit-fractional-wave` (or its
+nonlocal variant), the order, operator mode, stability number, forcing history,
+and `pde-heatmap` snapshots. Fractional wave systems and 2D/3D fractional waves
+remain outside this focused contract.
+
 ## Variable-order two-dimensional fractional diffusion
 
 `NumericalVariableOrderFractionalPde2DAnalyzer` extends the explicit bounded
@@ -1991,9 +2022,9 @@ evaluated order must remain strictly within `0 < α < 1`; variable-order 3D
 diffusion is documented below. Pass `spatialOrder` between `0` and `2` to
 combine the variable temporal order with the bounded symmetric nonlocal
 spatial kernel; `spatialOrder: 2.0` preserves the local five-point operator.
-Both order and operator histories remain in the solution metadata. Fractional
-wave equations and symbolic fractional solutions remain outside this focused
-contract.
+Both order and operator histories remain in the solution metadata. Variable-
+order fractional waves and symbolic fractional solutions remain outside this
+focused contract.
 
 ## Variable-order three-dimensional fractional diffusion
 
