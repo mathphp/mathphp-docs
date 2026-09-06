@@ -1844,6 +1844,26 @@ $periodic = (new NumericalFractionalPdeAnalyzer())->analyze(
 );
 ```
 
+For a bounded nonlocal spatial operator, pass a fractional spatial order
+`0 < β < 2` with `spatialOrder`. The solver evaluates the symmetric
+finite-grid interaction
+`L_βu(x_i) = Δx Σⱼ≠ᵢ (u(x_j) − u(x_i)) / |x_j − x_i|^(1+β)` and retains its
+operator mode and stability estimate:
+
+```php
+$nonlocal = (new NumericalFractionalPdeAnalyzer())->analyze(
+    '0', 0.8, 0.002, 'x*(1-x)', '0', '0',
+    spacePoints: 41,
+    timeSteps: 100,
+    spatialOrder: 1.25,
+);
+```
+
+`spatialOrder: 2.0` uses the existing local centered second derivative. The
+nonlocal path is a bounded symmetric finite-grid approximation; singular
+integrals, unbounded domains, and higher-dimensional nonlocal kernels remain
+outside this focused contract.
+
 ### Two-dimensional time-fractional diffusion
 
 `NumericalFractionalPde2DAnalyzer` applies the same bounded constant-order

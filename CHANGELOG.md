@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.125.0` bounded nonlocal spatial fractional
+  diffusion, `spatialOrder`, operator metadata, and explicit limits.
+
+## 2026-09-07
+
 - Documented Explaining `v0.124.0` higher-order ODE coverage through 32nd order
   and caret derivative notation.
 
