@@ -1748,6 +1748,30 @@ result. It is a bounded numerical approximation (`complete: false`), not a
 symbolic fractional solver; variable-order operators remain outside this
 scalar contract.
 
+## Coupled Caputo fractional ODE systems
+
+`NumericalFractionalOdeSystemAnalyzer` extends the same order range to a
+coupled vector system. Each component shares the memory quadrature while its
+forcing can reference every component of the current state:
+
+```php
+use MathPHP\Explaining\NumericalFractionalOdeSystemAnalyzer;
+
+$analysis = (new NumericalFractionalOdeSystemAnalyzer())->analyze(
+    "x' = y; y' = -x",
+    ['x', 'y'],
+    0.8,
+    initial: ['x' => 1, 'y' => 0],
+    targetIndependent: 1,
+    steps: 200,
+);
+```
+
+The result retains vector forcing history, component trajectories, and the
+shared fractional order. It remains a bounded explicit approximation; mixed
+orders, variable-order systems, and symbolic fractional solutions are not
+silently treated as supported.
+
 ## One-dimensional time-fractional diffusion
 
 `NumericalFractionalPdeAnalyzer` covers a bounded constant-order diffusion

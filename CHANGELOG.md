@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.117.0` coupled vector Caputo systems, shared
+  memory history, and explicit mixed/variable-order limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.116.0` bounded two-dimensional Caputo diffusion,
   retained field memory, heat-map snapshots, and explicit dimensional/nonlocal
   limits.
