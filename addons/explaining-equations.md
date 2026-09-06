@@ -385,7 +385,7 @@ vector jump processes need a separate contract.
 
 ## Numerical higher-order ODEs
 
-`NumericalHigherOrderOdeAnalyzer` gives scalar third- through eighth-order
+`NumericalHigherOrderOdeAnalyzer` gives scalar third- through 32nd-order
 initial-value equations a direct interface. It reduces the equation to a
 first-order state system and integrates it with bounded RK4 steps:
 
@@ -400,12 +400,13 @@ $analysis = (new NumericalHigherOrderOdeAnalyzer())->analyze(
 // final state[0] is approximately 1 for y = sin(x)
 ```
 
-Apostrophe notation (`y'''`) and d-notation (`d3y/dx3`) are accepted. The
-right-hand side can reference the dependent value and lower derivatives, plus
-known finite parameters. Every state sample is retained; undefined slopes,
-overflow, or malformed initial state return `partial` or `unsupported` rather
-than a fabricated trajectory. This is numerical IVP integration, not a
-symbolic higher-order ODE proof or a complete family of solutions.
+Apostrophe notation (`y'''`), d-notation (`d3y/dx3`), and caret notation
+(`d^9y/dx^9`) are accepted. The right-hand side can reference the dependent
+value and lower derivatives, plus known finite parameters. Every state sample
+is retained; undefined slopes, overflow, or malformed initial state return
+`partial` or `unsupported` rather than a fabricated trajectory. This is
+numerical IVP integration, not a symbolic higher-order ODE proof or a complete
+family of solutions.
 
 ## Bounded one-dimensional parabolic PDEs
 

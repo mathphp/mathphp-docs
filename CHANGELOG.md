@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.124.0` higher-order ODE coverage through 32nd order
+  and caret derivative notation.
+
+## 2026-09-07
+
 - Documented Explaining `v0.123.0` bounded 3D variable-order Caputo
   diffusion, six-face boundaries, and per-node order histories.
 
