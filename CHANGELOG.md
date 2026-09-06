@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.81.0` correlated Brownian covariance support for
+  coupled Itô systems and its positive-semidefinite validation.
+
+## 2026-09-06
+
 - Documented Explaining `v0.80.0` bounded synchronous coupled recurrence
   systems, including cross-variable references and partial-result semantics.
 

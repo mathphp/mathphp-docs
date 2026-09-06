@@ -345,14 +345,16 @@ $analysis = (new NumericalSdeSystemAnalyzer())->analyze(
 );
 ```
 
-The system contract is
+The default system contract is
 `dX_i = a_i(t, X)dt + b_i(t, X)dW_i`, with independent Brownian components.
-Results retain synchronized paths, per-variable endpoint means and variances,
-the exact step size, failed-path counts, and the seed. `complete` remains
-`false` because Euler–Maruyama is a finite stochastic approximation; undefined
-paths become `partial`. Correlated Brownian covariance, jump processes,
-stochastic algebraic constraints, and other SDE families are intentionally
-reported as unsupported until they have their own explicit numerical contract.
+For correlated components, pass a finite symmetric positive-semidefinite
+covariance matrix using the `covariance:` named argument; the analyzer validates
+it and generates increments with a Cholesky factor. Results retain synchronized
+paths, per-variable endpoint means and variances, the exact step size,
+failed-path counts, covariance, and the seed. `complete` remains `false`
+because Euler–Maruyama is a finite stochastic approximation; undefined paths
+become `partial`. Jump processes, stochastic algebraic constraints, and other
+SDE families remain unsupported until they have their own explicit contract.
 
 ## Numerical higher-order ODEs
 
