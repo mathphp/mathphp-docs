@@ -2,6 +2,12 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.116.0` bounded two-dimensional Caputo diffusion,
+  retained field memory, heat-map snapshots, and explicit dimensional/nonlocal
+  limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.115.0` mixed and paired periodic boundaries for
   constant-order fractional diffusion, including unpaired/nonlocal limits.
 

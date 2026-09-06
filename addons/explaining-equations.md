@@ -1784,6 +1784,32 @@ $periodic = (new NumericalFractionalPdeAnalyzer())->analyze(
 );
 ```
 
+### Two-dimensional time-fractional diffusion
+
+`NumericalFractionalPde2DAnalyzer` applies the same bounded constant-order
+Caputo memory rule to rectangular fields of the form
+`D_t^α u = κ(u_xx + u_yy) + s(x,y,t,u)`:
+
+```php
+use MathPHP\Explaining\NumericalFractionalPde2DAnalyzer;
+
+$field = (new NumericalFractionalPde2DAnalyzer())->analyze(
+    '0', 0.8, 0.01,
+    'sin(pi*x)*sin(pi*y)',
+    '0', '0', '0', '0',
+    firstPoints: 33,
+    secondPoints: 33,
+    timeSteps: 40,
+);
+```
+
+The result retains every two-dimensional forcing field, final values, and
+intermediate snapshots, and exposes a `pde-heatmap-2d` visual representation.
+Each axis accepts Dirichlet, Neumann, Robin, or paired periodic edges. The
+implementation is an explicit bounded diffusion approximation: fractional
+wave equations, nonlocal fractional spatial operators, dimensions beyond this
+2D contract, and symbolic fractional solutions remain unsupported.
+
 Neumann edges prescribe the outward first derivative; Robin edges prescribe
 `alpha*u + beta*u_n = value`. Opposite periodic endpoints must be paired;
 unpaired periodic or nonlocal spatial conditions remain unsupported.
@@ -1791,8 +1817,9 @@ unpaired periodic or nonlocal spatial conditions remain unsupported.
 The solver retains every spatial forcing field used by the Caputo memory
 quadrature, reports the fractional diffusion stability number, and marks runs
 that exceed its explicit guard as `partial`. Variable-order operators,
-fractional wave equations, higher-dimensional fractional PDEs, and symbolic
-fractional solutions remain outside this focused contract.
+fractional wave equations, nonlocal fractional spatial operators, dimensions
+beyond the bounded 2D diffusion contract, and symbolic fractional solutions
+remain outside this focused contract.
 
 For exact constant-coefficient second-order equations, use
 `SecondOrderOdeAnalyzer`:
