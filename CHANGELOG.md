@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.97.0` mixed complementarity bounds, active-set
+  states, facade usage, and explicit variational-inequality scope limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.96.0` complementarity differential systems,
   active-set projection, retained diagnostics, and explicit scope limits.
 

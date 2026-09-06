@@ -1098,9 +1098,35 @@ At each projected-Euler step it enumerates the bounded active sets, fixes
 active variables to zero, solves inactive residuals with finite-difference
 Newton updates, and retains the selected `activeSet` and complementarity
 `residual` alongside the state. The result is a transparent numerical
-approximation, not a global certificate: mixed complementarity formulations,
+approximation, not a global certificate: generalized mixed complementarity formulations,
 higher-index DAEs, unbounded active-set searches, and non-paired inequality
 constraints remain outside this focused contract.
+
+### Mixed complementarity bounds
+
+For box-constrained pairs, use `analyzeMixed()` with one finite lower and upper
+bound per algebraic variable. The active-set rule is:
+
+- `z = lower` implies `g >= 0`;
+- `lower < z < upper` implies `g = 0`;
+- `z = upper` implies `g <= 0`.
+
+```php
+$analysis = (new NumericalComplementarityAnalyzer())->analyzeMixed(
+    ['x'], ['1'], ['z'], ['z - x'],
+    ['x' => -1, 'z' => 0],
+    [0], [1],
+    targetIndependent: 3,
+    steps: 200,
+);
+// z follows x in the interior, then remains at its upper bound of 1.
+```
+
+The result retains `activeSet` labels such as `z@upper` and the maximum bound
+or residual violation at every point. This remains a bounded active-set
+approximation; generalized variational inequalities, coupled nonsmooth
+normal-cone operators, and globally certified solutions require a specialized
+solver outside this package.
 
 When a system may have several nearby roots, call `analyzeMany()` with several
 initial maps. It deduplicates converged values but keeps failed or partial runs
