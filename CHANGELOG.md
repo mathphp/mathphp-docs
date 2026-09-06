@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.91.0` one-dimensional time-fractional diffusion,
+  retained field memory, stability diagnostics, and scope limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.90.0` variable mass-matrix expressions for DAEs,
   per-step evaluation, diagnostics, and API exclusivity rules.
 

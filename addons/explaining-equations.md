@@ -1273,8 +1273,35 @@ $analysis = (new NumericalFractionalOdeAnalyzer())->analyze(
 The explicit fractional Adams–Bashforth rule retains every forcing sample and
 its power-law memory weight, so the nonlocal dependency is visible in the
 result. It is a bounded numerical approximation (`complete: false`), not a
-symbolic fractional solver; variable-order operators and fractional PDEs are
-outside this contract.
+symbolic fractional solver; variable-order operators remain outside this
+scalar contract.
+
+## One-dimensional time-fractional diffusion
+
+`NumericalFractionalPdeAnalyzer` covers a bounded constant-order diffusion
+model, `D_t^α u = κu_xx + s(x,t,u)`, with explicit spatial stencils and
+Dirichlet boundary expressions:
+
+```php
+use MathPHP\Explaining\NumericalFractionalPdeAnalyzer;
+
+$analysis = (new NumericalFractionalPdeAnalyzer())->analyze(
+    '0',                 // source s(x,t,u)
+    0.8,                 // Caputo order
+    0.01,                // diffusivity κ
+    'x*(1-x)',           // initial profile
+    '0',                 // left boundary
+    '0',                 // right boundary
+    spacePoints: 41,
+    timeSteps: 100,
+);
+```
+
+The solver retains every spatial forcing field used by the Caputo memory
+quadrature, reports the fractional diffusion stability number, and marks runs
+that exceed its explicit guard as `partial`. Variable-order operators,
+fractional wave equations, higher-dimensional fractional PDEs, and symbolic
+fractional solutions remain outside this focused contract.
 
 For exact constant-coefficient second-order equations, use
 `SecondOrderOdeAnalyzer`:
