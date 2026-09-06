@@ -977,8 +977,8 @@ $analysis = (new NumericalWavePde2DAnalyzer())->analyze(
 ```
 
 The positional edges are Dirichlet defaults. The optional
-`boundaryConditions` map adds per-edge Neumann or Robin conditions using
-one-sided finite differences:
+`boundaryConditions` map adds per-edge Neumann, Robin, or paired periodic
+conditions using one-sided finite differences for Neumann/Robin edges:
 
 ```php
 $analysis = (new NumericalWavePde2DAnalyzer())->analyze(
@@ -990,15 +990,30 @@ $analysis = (new NumericalWavePde2DAnalyzer())->analyze(
 );
 ```
 
+Pair opposite edges as periodic to wrap duplicate edges to the opposite
+interior values before and after each wave update:
+
+```php
+$periodic = (new NumericalWavePde2DAnalyzer())->analyze(
+    'u_tt = u_xx + u_yy',
+    'x + 2*y', '0', '0', '0', '0', '0',
+    boundaryConditions: [
+        'left' => ['type' => 'periodic'], 'right' => ['type' => 'periodic'],
+        'bottom' => ['type' => 'periodic'], 'top' => ['type' => 'periodic'],
+    ],
+);
+```
+
 The solver uses a centered leapfrog stencil (including diagonal mixed-term
 coupling when present) and chooses substeps from a conservative two-dimensional
 CFL bound. `solution['points']` contains
 time-stamped grids and the visual model has kind `pde-wave-2d`. A `solved`
 result means only that the requested finite trajectory completed; it remains
 `complete: false` because it is a numerical approximation. Nonlinear runs
-expose `solution['operatorMode'] = 'direct-nonlinear'`. Periodic/nonlocal
-edges, unstable coefficients, arbitrary mixed third derivatives, higher dimensions, and symbolic general
-solutions are reported as `unsupported` or `partial`.
+expose `solution['operatorMode'] = 'direct-nonlinear'`. Unpaired periodic
+edges, nonlocal conditions, unstable coefficients, arbitrary mixed third
+derivatives, higher dimensions, and symbolic general solutions are reported as
+`unsupported` or `partial`.
 
 ## Normalized polynomial equations
 

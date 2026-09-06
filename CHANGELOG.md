@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.112.0` paired periodic edges for 2D wave problems,
+  post-update wrapping, and unpaired/nonlocal scope limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.111.0` corrected paired periodic faces for 3D wave
   problems, wrapped planes, and unpaired-face limits.
 
