@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.126.0` bounded 2D nonlocal spatial fractional
+  diffusion and its explicit 3D kernel boundary.
+
+## 2026-09-07
+
 - Documented Explaining `v0.125.0` bounded nonlocal spatial fractional
   diffusion, `spatialOrder`, operator metadata, and explicit limits.
 

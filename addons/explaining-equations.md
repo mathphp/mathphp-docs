@@ -1861,7 +1861,7 @@ $nonlocal = (new NumericalFractionalPdeAnalyzer())->analyze(
 
 `spatialOrder: 2.0` uses the existing local centered second derivative. The
 nonlocal path is a bounded symmetric finite-grid approximation; singular
-integrals, unbounded domains, and higher-dimensional nonlocal kernels remain
+integrals, unbounded domains, and three-dimensional nonlocal kernels remain
 outside this focused contract.
 
 ### Two-dimensional time-fractional diffusion
@@ -1886,9 +1886,12 @@ $field = (new NumericalFractionalPde2DAnalyzer())->analyze(
 The result retains every two-dimensional forcing field, final values, and
 intermediate snapshots, and exposes a `pde-heatmap-2d` visual representation.
 Each axis accepts Dirichlet, Neumann, Robin, or paired periodic edges. The
-implementation is an explicit bounded diffusion approximation: fractional
-wave equations, nonlocal fractional spatial operators, dimensions beyond this
-3D contract, and symbolic fractional solutions remain unsupported.
+implementation is an explicit bounded diffusion approximation. Pass
+`spatialOrder` between `0` and `2` to use the same bounded symmetric nonlocal
+kernel as the one-dimensional solver; `spatialOrder: 2.0` keeps the local
+five-point Laplacian. Fractional wave equations, three-dimensional nonlocal
+kernels, dimensions beyond this 3D contract, and symbolic fractional
+solutions remain unsupported.
 
 ### Three-dimensional time-fractional diffusion
 
