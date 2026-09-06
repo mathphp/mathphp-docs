@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.110.0` paired periodic endpoints for the 1D wave
+  solver, wrapped stencils, and unpaired/nonlocal scope limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.109.0` corrected paired periodic faces for 3D
   parabolic problems, wrapped planes, and unpaired-face limits.
 

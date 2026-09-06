@@ -635,8 +635,9 @@ $analysis = (new NumericalWavePdeAnalyzer())->analyze(
 ```
 
 The positional edges are Dirichlet defaults. The optional
-`boundaryConditions` map adds a Neumann or Robin condition to either edge;
-one-sided finite differences are used and normalized edge metadata is retained.
+`boundaryConditions` map adds a Neumann, Robin, or paired periodic condition;
+one-sided finite differences are used for Neumann/Robin edges and normalized
+edge metadata is retained.
 
 ```php
 $analysis = (new NumericalWavePdeAnalyzer())->analyze(
@@ -646,15 +647,29 @@ $analysis = (new NumericalWavePdeAnalyzer())->analyze(
 );
 ```
 
+Set both endpoints to periodic to wrap the duplicate endpoints to the
+opposite interior points before each wave update:
+
+```php
+$periodic = (new NumericalWavePdeAnalyzer())->analyze(
+    'u_tt = u_xx',
+    'x', '0', '0', '0',
+    boundaryConditions: [
+        'left' => ['type' => 'periodic'],
+        'right' => ['type' => 'periodic'],
+    ],
+);
+```
+
 The solver applies a centered explicit finite-difference update and chooses
 substeps from a conservative CFL bound. It returns time-stamped field
 snapshots, the effective step size, and explicit stability/finite-range
 diagnostics. `solved` means the finite trajectory completed; `partial` means a
 guard or boundary/domain failure interrupted it. Nonlinear spatial operators
 are evaluated directly with local sensitivity-based CFL estimates and expose
-`solution['operatorMode'] = 'direct-nonlinear'`. Periodic/nonlocal edges,
-higher dimensions, or symbolic general solutions remain outside this focused
-contract.
+`solution['operatorMode'] = 'direct-nonlinear'`. Unpaired periodic endpoints,
+nonlocal edges, higher dimensions, or symbolic general solutions remain outside
+this focused contract.
 
 ## Two-dimensional parabolic PDEs
 
