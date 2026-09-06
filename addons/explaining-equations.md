@@ -1180,6 +1180,32 @@ envelopes as `partial`. An inclusion generally has many solutions, so this is
 an explanatory bounded approximation—not a rigorous reachable-set enclosure
 or a uniqueness theorem for state-dependent fields.
 
+## Coupled differential inclusions
+
+For a coupled set-valued system,
+`x'_i(t) ∈ [f^-_i(t,x), f^+_i(t,x)]`, use
+`NumericalDifferentialInclusionSystemAnalyzer`:
+
+```php
+use MathPHP\Explaining\NumericalDifferentialInclusionSystemAnalyzer;
+
+$analysis = (new NumericalDifferentialInclusionSystemAnalyzer())->analyze(
+    ['x', 'y'],
+    ['-1', '0'],       // lower component slopes
+    ['1', '2'],        // upper component slopes
+    ['x' => 0, 'y' => 1],
+    targetTime: 1,
+    steps: 100,
+    selection: 'midpoint',
+);
+```
+
+The result retains lower, upper, and selected values and slopes for every
+component at every time sample. A component with an empty interval, a
+non-finite field, or crossed Euler envelopes yields `partial`; this is a
+bounded explanatory approximation, not a rigorous multidimensional
+reachable-set computation.
+
 When a system may have several nearby roots, call `analyzeMany()` with several
 initial maps. It deduplicates converged values but keeps failed or partial runs
 so callers can show which starting points were inconclusive.

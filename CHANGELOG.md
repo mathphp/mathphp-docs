@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.101.0` coupled interval differential inclusions,
+  component envelopes, selected trajectories, and scope limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.100.0` scalar interval differential inclusions,
   envelope diagnostics, selectable trajectories, and scope limits.
 
