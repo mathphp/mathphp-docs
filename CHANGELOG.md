@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.123.0` bounded 3D variable-order Caputo
+  diffusion, six-face boundaries, and per-node order histories.
+
+## 2026-09-07
+
 - Documented Explaining `v0.122.0` bounded 2D variable-order Caputo diffusion,
   per-node order fields, periodic axes, and explicit order limits.
 

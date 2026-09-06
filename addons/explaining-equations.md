@@ -1956,8 +1956,39 @@ field, so explanations can show how the memory exponent changes over space,
 time, and state. The result exposes the `pde-heatmap-2d` visual and supports
 Dirichlet, Neumann, Robin, or paired-periodic edges on both axes. Every
 evaluated order must remain strictly within `0 < α < 1`; variable-order 3D
-diffusion, nonlocal fractional spatial operators, fractional wave equations,
-and symbolic fractional solutions remain outside this focused contract.
+diffusion is documented below. Nonlocal fractional spatial operators,
+fractional wave equations, and symbolic fractional solutions remain outside
+this focused contract.
+
+## Variable-order three-dimensional fractional diffusion
+
+`NumericalVariableOrderFractionalPde3DAnalyzer` extends the same explicit
+contract to bounded rectangular boxes with an order expression evaluated at
+each volume node:
+`D_t^(α(x,y,z,t,u))u = κ(u_xx + u_yy + u_zz) + s(x,y,z,t,u)`.
+
+```php
+use MathPHP\Explaining\NumericalVariableOrderFractionalPde3DAnalyzer;
+
+$volume = (new NumericalVariableOrderFractionalPde3DAnalyzer())->analyze(
+    '0',
+    '0.5 + 0.02*t + 0.01*u',
+    0.01,
+    'x + 2*y + 3*z',
+    '0', '0', '0', '0', '0', '0',
+    firstPoints: 7,
+    secondPoints: 7,
+    thirdPoints: 7,
+    timeSteps: 20,
+);
+```
+
+The result retains a three-dimensional order field and forcing history for
+every snapshot and exposes the `pde-heatmap-3d` visual. All six faces accept
+Dirichlet, Neumann, Robin, or paired-periodic conditions; every evaluated
+order must remain strictly within `0 < α < 1`. This remains an explicit
+bounded approximation: nonlocal spatial operators, fractional wave equations,
+and symbolic fractional solutions are outside the contract.
 
 For exact constant-coefficient second-order equations, use
 `SecondOrderOdeAnalyzer`:
