@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.118.0` bounded 3D Caputo diffusion, six-face
+  boundaries, volume memory history, and explicit nonlocal limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.117.0` coupled vector Caputo systems, shared
   memory history, and explicit mixed/variable-order limits.
 

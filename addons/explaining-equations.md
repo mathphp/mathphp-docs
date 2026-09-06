@@ -1832,7 +1832,31 @@ intermediate snapshots, and exposes a `pde-heatmap-2d` visual representation.
 Each axis accepts Dirichlet, Neumann, Robin, or paired periodic edges. The
 implementation is an explicit bounded diffusion approximation: fractional
 wave equations, nonlocal fractional spatial operators, dimensions beyond this
-2D contract, and symbolic fractional solutions remain unsupported.
+3D contract, and symbolic fractional solutions remain unsupported.
+
+### Three-dimensional time-fractional diffusion
+
+`NumericalFractionalPde3DAnalyzer` extends the bounded Caputo diffusion model
+to `D_t^α u = κ(u_xx + u_yy + u_zz) + s(x,y,z,t,u)` on a rectangular box:
+
+```php
+use MathPHP\Explaining\NumericalFractionalPde3DAnalyzer;
+
+$volume = (new NumericalFractionalPde3DAnalyzer())->analyze(
+    '0', 0.8, 0.01,
+    'sin(pi*x)*sin(pi*y)*sin(pi*z)',
+    '0', '0', '0', '0', '0', '0',
+    firstPoints: 9,
+    secondPoints: 9,
+    thirdPoints: 9,
+    timeSteps: 20,
+);
+```
+
+The six faces accept Dirichlet, Neumann, Robin, or paired periodic conditions;
+the result retains volume forcing history and exposes `pde-heatmap-3d` data.
+This remains an explicit bounded approximation, not a symbolic or nonlocal
+fractional PDE solver.
 
 Neumann edges prescribe the outward first derivative; Robin edges prescribe
 `alpha*u + beta*u_n = value`. Opposite periodic endpoints must be paired;
@@ -1842,7 +1866,7 @@ The solver retains every spatial forcing field used by the Caputo memory
 quadrature, reports the fractional diffusion stability number, and marks runs
 that exceed its explicit guard as `partial`. Variable-order operators,
 fractional wave equations, nonlocal fractional spatial operators, dimensions
-beyond the bounded 2D diffusion contract, and symbolic fractional solutions
+beyond the bounded 3D diffusion contract, and symbolic fractional solutions
 remain outside this focused contract.
 
 For exact constant-coefficient second-order equations, use
