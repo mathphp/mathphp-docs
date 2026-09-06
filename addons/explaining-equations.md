@@ -1132,6 +1132,34 @@ When a system may have several nearby roots, call `analyzeMany()` with several
 initial maps. It deduplicates converged values but keeps failed or partial runs
 so callers can show which starting points were inconclusive.
 
+## Box-constrained variational inequalities
+
+A variational inequality seeks `z` in a feasible set `K` such that
+`F(z)·(w−z) >= 0` for every `w` in `K`. For a box
+`K = [lower, upper]`, `NumericalVariationalInequalityAnalyzer` uses the
+projected-gradient fixed-point condition
+`z = P_K(z − αF(z))`:
+
+```php
+use MathPHP\Explaining\NumericalVariationalInequalityAnalyzer;
+
+$analysis = (new NumericalVariationalInequalityAnalyzer())->analyze(
+    ['z'],
+    ['z - 2'],                 // F(z)
+    ['z' => 0],
+    [0], [1],                  // feasible box
+    stepSize: 0.5,
+    tolerance: 1e-9,
+);
+// The solution is z = 1, where the upper-bound VI sign condition holds.
+```
+
+Each iterate retains the mapping value, box-projected candidate, step size,
+and projected residual. The analyzer reports `solved` only when the residual
+reaches the configured tolerance; otherwise it reports `partial`. This is a
+bounded numerical method, not a proof of existence, uniqueness, monotonicity,
+or global convergence for arbitrary nonsmooth/nonmonotone mappings.
+
 ## Complex equation systems
 
 `ComplexSystemAnalyzer` solves a square system of up to eight complex
