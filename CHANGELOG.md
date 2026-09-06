@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.90.0` variable mass-matrix expressions for DAEs,
+  per-step evaluation, diagnostics, and API exclusivity rules.
+
+## 2026-09-06
+
 - Documented Explaining `v0.89.0` first-differentiated constraints for
   index-2-style DAE systems and their explicit scope limits.
 

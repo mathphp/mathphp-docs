@@ -1028,8 +1028,25 @@ $analysis = (new NumericalDaeAnalyzer())->analyze(
 
 The matrix is validated as square and nonsingular, and is retained in the
 result. This remains a finite approximation for locally nonsingular index-1
-systems; higher-index, variable-mass, complementarity, and inconsistent
-systems are reported as `partial` or `unsupported`.
+systems; higher-index, complementarity, and inconsistent systems are reported
+as `partial` or `unsupported`.
+
+For a variable mass matrix, provide expressions instead of numeric values. The
+expressions may reference the independent coordinate and all current state
+variables:
+
+```php
+$analysis = (new NumericalDaeAnalyzer())->analyze(
+    ['x'], ['1'], ['z'], ['z = x'],
+    ['x' => 0, 'z' => 0],
+    targetIndependent: 1,
+    massMatrixExpressions: [['1 + t']],
+);
+```
+
+`M(t,x,z)` is evaluated before each slope solve, checked for finite values and
+non-singularity, and retained in each trajectory point. Numeric
+`massMatrix` and `massMatrixExpressions` are mutually exclusive.
 
 ### First-differentiated constraints
 
