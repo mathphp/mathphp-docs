@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.115.0` mixed and paired periodic boundaries for
+  constant-order fractional diffusion, including unpaired/nonlocal limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.114.0` paired periodic endpoints for coupled 1D
   parabolic systems, per-field wrapping, and unpaired-edge limits.
 

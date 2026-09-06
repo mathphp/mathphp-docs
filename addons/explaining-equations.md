@@ -1752,7 +1752,7 @@ scalar contract.
 
 `NumericalFractionalPdeAnalyzer` covers a bounded constant-order diffusion
 model, `D_t^α u = κu_xx + s(x,t,u)`, with explicit spatial stencils and
-Dirichlet boundary expressions:
+configurable Dirichlet, Neumann, Robin, or paired periodic boundaries:
 
 ```php
 use MathPHP\Explaining\NumericalFractionalPdeAnalyzer;
@@ -1768,6 +1768,25 @@ $analysis = (new NumericalFractionalPdeAnalyzer())->analyze(
     timeSteps: 100,
 );
 ```
+
+Use the optional boundary map for mixed conditions or a periodic interval. A
+periodic pair wraps the duplicate endpoints to the opposite interior values
+before each memory update:
+
+```php
+$periodic = (new NumericalFractionalPdeAnalyzer())->analyze(
+    '0', 0.8, 0.01, 'x', '0', '0',
+    spacePoints: 41,
+    boundaryConditions: [
+        'left' => ['type' => 'periodic'],
+        'right' => ['type' => 'periodic'],
+    ],
+);
+```
+
+Neumann edges prescribe the outward first derivative; Robin edges prescribe
+`alpha*u + beta*u_n = value`. Opposite periodic endpoints must be paired;
+unpaired periodic or nonlocal spatial conditions remain unsupported.
 
 The solver retains every spatial forcing field used by the Caputo memory
 quadrature, reports the fractional diffusion stability number, and marks runs
