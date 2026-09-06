@@ -446,9 +446,19 @@ has kind `pde-heatmap` so a private renderer can draw a space-time heat map.
 `solved` means the requested bounded grid completed; `partial` means a
 stability cap, undefined boundary, or non-finite state interrupted or weakened
 the trajectory. Undefined/non-finite operators, higher-dimensional domains,
-periodic boundary conditions, or symbolic closed-form requests are reported as
-`unsupported` or `partial`. Numerical completion is never a proof for every PDE
-solution.
+or symbolic closed-form requests are reported as `unsupported` or `partial`.
+Numerical completion is never a proof for every PDE solution. Paired periodic
+boundaries are supported by setting both edges to `['type' => 'periodic']`:
+
+```php
+$periodic = (new NumericalPdeAnalyzer())->analyze(
+    'u_t = u_xx', '1', '1', '1',
+    boundaryConditions: [
+        'left' => ['type' => 'periodic'],
+        'right' => ['type' => 'periodic'],
+    ],
+);
+```
 
 The same analyzer accepts mixed boundary types through the optional
 `boundaryConditions` map. A Neumann edge prescribes the first spatial
@@ -466,8 +476,10 @@ $analysis = (new NumericalPdeAnalyzer())->analyze(
 
 The solver uses one-sided finite-difference edge formulas and retains the
 normalized boundary types and coefficients in `solution['boundaryConditions']`.
-Unknown types, singular Robin coefficients, undefined values, and unsupported
-periodic/nonlocal conditions are reported explicitly.
+Periodic endpoints wrap opposite interior points before each update and are
+retained in the normalized metadata. Unknown types, unpaired periodic edges,
+singular Robin coefficients, undefined values, and nonlocal conditions are
+reported explicitly.
 
 ## Second-order boundary-value ODEs
 
