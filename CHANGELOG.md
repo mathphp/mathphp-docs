@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.128.0` combined variable-order temporal and
+  bounded nonlocal spatial diffusion in 1D.
+
+## 2026-09-07
+
 - Documented Explaining `v0.127.0` bounded 3D nonlocal spatial fractional
   diffusion, resource-aware caps, and explicit kernel limits.
 

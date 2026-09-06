@@ -1949,6 +1949,11 @@ forcing history. Every evaluated order must remain strictly within
 symbolic fractional PDE solver. For constant-order nonlocal spatial kernels,
 use the `spatialOrder` option on the fractional 1D, 2D, or 3D analyzers.
 
+The variable-order 1D analyzer also accepts `spatialOrder` between `0` and `2`,
+so the temporal order field and bounded symmetric nonlocal kernel can be used
+together. `spatialOrder: 2.0` preserves the local centered derivative; the
+result records `operatorMode` and the variable-order history together.
+
 The solver retains every spatial forcing field used by the Caputo memory
 quadrature, reports the fractional diffusion stability number, and marks runs
 that exceed its explicit guard as `partial`. Fractional wave equations,
