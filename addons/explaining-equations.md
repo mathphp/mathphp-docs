@@ -1331,6 +1331,33 @@ counts and accumulated jump sums, and endpoint means/variances are reported.
 Correlated jump measures and state-dependent intensities remain outside this
 focused contract.
 
+## State-dependent-delay ODEs
+
+`NumericalStateDependentDelayOdeAnalyzer` covers scalar retarded equations
+whose lag depends on the current time and state:
+
+`y′(t) = f(t,y,yd)`, with `yd = y(t − τ(t,y))`.
+
+```php
+use MathPHP\Explaining\NumericalStateDependentDelayOdeAnalyzer;
+
+$analysis = (new NumericalStateDependentDelayOdeAnalyzer())->analyze(
+    'yd',              // RHS receives the delayed value as yd
+    '1',               // history for t <= t0
+    '0.5 + 0.1*y',     // τ(t,y)
+    1.0,               // maximum allowed lag
+    targetIndependent: 1,
+    steps: 200,
+);
+```
+
+The lag expression is reevaluated at every step and must remain finite,
+strictly positive, and no greater than `maximumDelay`. Delayed samples use
+history evaluation before the initial time and linear interpolation afterward;
+the evaluated lag and delayed value are retained in each point. Advanced,
+discontinuous, and neutral state-dependent delays remain outside this focused
+contract.
+
 ## Scalar Caputo fractional ODEs
 
 `NumericalFractionalOdeAnalyzer` covers scalar Caputo initial-value equations

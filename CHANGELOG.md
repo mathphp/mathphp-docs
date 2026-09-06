@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.95.0` state-dependent-delay ODEs, dynamic lag
+  validation, retained diagnostics, and explicit scope limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.94.0` coupled marked jump-diffusions, seeded marks,
   per-component intensities, retained jump metadata, and scope limits.
 
