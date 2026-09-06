@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.99.0` generalized feasible-set inequalities,
+  finite-difference projection diagnostics, and scope limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.98.0` box-constrained variational inequalities,
   projected-gradient diagnostics, and convergence scope limits.
 

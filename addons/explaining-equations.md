@@ -1098,7 +1098,7 @@ At each projected-Euler step it enumerates the bounded active sets, fixes
 active variables to zero, solves inactive residuals with finite-difference
 Newton updates, and retains the selected `activeSet` and complementarity
 `residual` alongside the state. The result is a transparent numerical
-approximation, not a global certificate: generalized mixed complementarity formulations,
+approximation, not a global certificate: generalized mixed complementarity formulations beyond the supported box rules,
 higher-index DAEs, unbounded active-set searches, and non-paired inequality
 constraints remain outside this focused contract.
 
@@ -1127,6 +1127,30 @@ or residual violation at every point. This remains a bounded active-set
 approximation; generalized variational inequalities, coupled nonsmooth
 normal-cone operators, and globally certified solutions require a specialized
 solver outside this package.
+
+### Generalized feasible-set inequalities
+
+`analyzeGeneralized()` extends the projected method to a box intersected with
+up to eight nonlinear residual constraints `c_j(z) <= 0`:
+
+```php
+$analysis = (new NumericalVariationalInequalityAnalyzer())->analyzeGeneralized(
+    ['x'],
+    ['x - 1'],
+    ['x' => 0.2],
+    [0], [1],
+    ['x <= limit'],
+    known: ['limit' => 0.5],
+    stepSize: 0.5,
+);
+```
+
+Each candidate is first projected to the box, then corrected by bounded
+finite-difference linearizations of the violated constraints. The result keeps
+constraint values and the maximum positive constraint residual at every
+iterate. This is a local convex/regular-set approximation; nonconvex sets,
+nonsmooth normal-cone operators, and global convergence certificates remain
+outside the focused contract.
 
 When a system may have several nearby roots, call `analyzeMany()` with several
 initial maps. It deduplicates converged values but keeps failed or partial runs
