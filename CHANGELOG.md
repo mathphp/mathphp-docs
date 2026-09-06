@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.80.0` bounded synchronous coupled recurrence
+  systems, including cross-variable references and partial-result semantics.
+
+## 2026-09-06
+
 - Documented Explaining `v0.79.0` coupled vector Itô SDE simulation, including
   synchronized Euler–Maruyama paths, endpoint statistics, and explicit
   independent-noise scope.

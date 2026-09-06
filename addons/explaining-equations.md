@@ -90,6 +90,26 @@ of `n` for forcing terms. Forward references, missing initial values, domain
 errors, and requests beyond the finite term limit return `unsupported` or
 `partial`; no infinite sequence or closed form is implied.
 
+For mutually dependent sequences, use `RecurrenceSystemAnalyzer` with one
+equation per variable. Updates are synchronous: every right-hand side reads
+the prior index before all target values are committed.
+
+```php
+use MathPHP\Explaining\RecurrenceSystemAnalyzer;
+
+$system = (new RecurrenceSystemAnalyzer())->analyze(
+    ['x[n+1] = y[n] + 1', 'y[n+1] = x[n]'],
+    ['x' => [0 => 0], 'y' => [0 => 2]],
+    terms: 6,
+);
+// $system->sequences['x'] and ['y'] contain synchronized finite terms.
+```
+
+The system requires one shared target offset and earlier-index references. It
+retains per-variable sequences, generated-term steps, and a `complete` flag;
+missing terms or undefined updates are reported as `partial` rather than being
+silently substituted.
+
 ## Finite numerical limits
 
 `LimitAnalyzer` estimates a finite one-sided or two-sided limit by evaluating
