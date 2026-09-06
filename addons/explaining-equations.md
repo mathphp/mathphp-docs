@@ -1069,6 +1069,39 @@ retains the supplied derivative residuals, and reports the original constraint
 residual at every trajectory point. This is a bounded first-differentiation
 pathway, not a general arbitrary-index or complementarity DAE solver.
 
+## Complementarity differential systems
+
+Some contact, switching, and constrained dynamical models use complementarity
+pairs rather than equality-only algebraic constraints:
+
+`0 <= z_i ⟂ g_i(t,x,z) >= 0`, meaning `z_i >= 0`, `g_i >= 0`, and
+`z_i * g_i = 0`.
+
+`NumericalComplementarityAnalyzer` provides a bounded active-set method for
+coupled differential states and up to eight algebraic pairs:
+
+```php
+use MathPHP\Explaining\NumericalComplementarityAnalyzer;
+
+$analysis = (new NumericalComplementarityAnalyzer())->analyze(
+    ['x'],
+    ['1'],
+    ['z'],
+    ['z + x'],             // 0 <= z ⟂ z + x >= 0
+    ['x' => -1, 'z' => 1],
+    targetIndependent: 2,
+    steps: 200,
+);
+```
+
+At each projected-Euler step it enumerates the bounded active sets, fixes
+active variables to zero, solves inactive residuals with finite-difference
+Newton updates, and retains the selected `activeSet` and complementarity
+`residual` alongside the state. The result is a transparent numerical
+approximation, not a global certificate: mixed complementarity formulations,
+higher-index DAEs, unbounded active-set searches, and non-paired inequality
+constraints remain outside this focused contract.
+
 When a system may have several nearby roots, call `analyzeMany()` with several
 initial maps. It deduplicates converged values but keeps failed or partial runs
 so callers can show which starting points were inconclusive.

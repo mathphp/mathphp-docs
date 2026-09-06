@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.96.0` complementarity differential systems,
+  active-set projection, retained diagnostics, and explicit scope limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.95.0` state-dependent-delay ODEs, dynamic lag
   validation, retained diagnostics, and explicit scope limits.
 
