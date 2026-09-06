@@ -1768,9 +1768,24 @@ $analysis = (new NumericalVariableOrderFractionalOdeAnalyzer())->analyze(
 ```
 
 The result retains the per-step order history, forcing history, and trajectory.
-The explicit contract requires every evaluated order to stay strictly within
-`0 < α < 1`; mixed-order systems and symbolic fractional solutions remain
-unsupported.
+Orders may stay in `0 < α < 1` for diffusion memory or `1 < α ≤ 2` for wave
+memory. Wave mode adds the initial velocity:
+
+```php
+use MathPHP\Explaining\EquationAnalyzer;
+
+$wave = (new EquationAnalyzer())->analyzeNumericalVariableOrderFractionalWaveOde(
+    '0',
+    '1.5 + 0.1*y',
+    0,
+    2,                    // initial velocity
+    targetIndependent: 1,
+    steps: 200,
+);
+```
+
+The order must not cross `α = 1` during a run; such a trajectory is reported
+`partial`. Symbolic fractional solutions remain unsupported.
 
 ## Coupled Caputo fractional ODE systems
 

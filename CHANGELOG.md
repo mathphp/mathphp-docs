@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.135.0` scalar variable-order Caputo waves with
+  initial velocity, mode-boundary checks, and facade support.
+
+## 2026-09-07
+
 - Documented Explaining `v0.134.0` coupled Caputo wave systems with mixed
   diffusion/wave orders and per-component initial velocities.
 
