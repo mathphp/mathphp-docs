@@ -547,7 +547,8 @@ complete PDE solution.
 `NumericalEllipticPde3DAnalyzer` extends the elliptic contract to a bounded
 rectangular volume. It accepts diagonal second derivatives `u_xx`, `u_yy`, and
 `u_zz`, affine mixed derivatives `u_xy`, `u_xz`, and `u_yz`, six face
-expressions, and optional per-face Dirichlet, Neumann, or Robin conditions:
+expressions, and optional per-face Dirichlet, Neumann, Robin, or paired
+periodic conditions:
 
 ```php
 use MathPHP\Explaining\NumericalEllipticPde3DAnalyzer;
@@ -568,7 +569,24 @@ stencil, re-evaluates nonlinear value terms with Picard updates, checks the
 full symmetric principal-part matrix for positive or negative definiteness,
 and retains volumetric snapshots in `solution['snapshots']`. `solved` means the
 finite grid reached the configured update and residual tolerances for one run.
-Periodic or nonlocal faces, nonlinear derivative operators, and
+For periodicity, set both faces of an axis to `['type' => 'periodic']`; the
+solver wraps the opposite interior planes into the centered stencil and keeps
+the normalized pair in `solution['boundaryConditions']`:
+
+```php
+$analysis = (new NumericalEllipticPde3DAnalyzer())->analyze(
+    'u_xx + u_yy + u_zz = 0',
+    '0', '0', '0', '1', '0', '0',
+    boundaryConditions: [
+        'left' => ['type' => 'periodic'],
+        'right' => ['type' => 'periodic'],
+        'front' => ['type' => 'periodic'],
+        'back' => ['type' => 'periodic'],
+    ],
+);
+```
+
+Unpaired periodic faces, nonlocal faces, nonlinear derivative operators, and
 uniqueness/completeness proofs remain outside this focused numerical contract.
 
 ## One-dimensional wave equations

@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.105.0` paired periodic faces for 3D elliptic
+  problems, wrapped stencil planes, and unpaired/nonlocal scope limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.104.0` mixed 3D elliptic derivatives, centered
   diagonal stencils, and full principal-part definiteness checks.
 
