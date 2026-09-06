@@ -1303,6 +1303,34 @@ and slope for delayed times and retaining them in every trajectory point.
 Advanced, state-dependent, and neutral equations with discontinuous or
 distributed derivative histories remain outside this focused contract.
 
+## Coupled marked jump-diffusions
+
+`NumericalJumpSdeSystemAnalyzer` extends vector Euler–Maruyama systems with a
+marked compound-Poisson jump term for each component:
+
+`dX_i = a_i(t,X)dt + b_i(t,X)dW_i + Σ J_i(t,X,m_k)`.
+
+```php
+use MathPHP\Explaining\NumericalJumpSdeSystemAnalyzer;
+
+$analysis = (new NumericalJumpSdeSystemAnalyzer())->analyze(
+    ['x', 'y'],
+    ['0', '0'],
+    ['0', '0'],
+    ['m', '2*m'],       // jump expressions; m is a seeded uniform mark
+    [4, 2],             // component Poisson intensities
+    ['x' => 0, 'y' => 0],
+    steps: 200,
+    paths: 16,
+);
+```
+
+Each component receives independent Poisson counts; every event gets a
+reproducible mark under the supplied seed. Trajectory points retain jump
+counts and accumulated jump sums, and endpoint means/variances are reported.
+Correlated jump measures and state-dependent intensities remain outside this
+focused contract.
+
 ## Scalar Caputo fractional ODEs
 
 `NumericalFractionalOdeAnalyzer` covers scalar Caputo initial-value equations
