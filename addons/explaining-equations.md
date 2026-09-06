@@ -1957,7 +1957,7 @@ result records `operatorMode` and the variable-order history together.
 The solver retains every spatial forcing field used by the Caputo memory
 quadrature, reports the fractional diffusion stability number, and marks runs
 that exceed its explicit guard as `partial`. Fractional wave systems,
-three-dimensional fractional waves, unbounded or singular spatial kernels, dimensions beyond the bounded 3D
+three-dimensional nonlocal kernels, unbounded or singular spatial kernels, dimensions beyond the bounded 3D
 diffusion contract, and symbolic fractional solutions remain outside this
 focused contract.
 
@@ -2018,8 +2018,37 @@ The result retains the initial-velocity contribution, every two-dimensional
 forcing field, and `pde-heatmap-2d` snapshots. Dirichlet, Neumann, Robin, and
 paired-periodic edges are supported. Set `spatialOrder` below `2` for the
 bounded symmetric nonlocal kernel; `spatialOrder: 2.0` keeps the local five-point
-Laplacian. Fractional wave systems and 3D fractional waves remain outside this
-focused contract.
+Laplacian. Fractional wave systems remain outside this focused contract.
+
+## Three-dimensional Caputo fractional waves
+
+`NumericalFractionalWavePde3DAnalyzer` extends the same Caputo wave memory rule
+to a bounded rectangular box with six typed faces:
+`D_t^α u = c²(u_xx + u_yy + u_zz) + s(x,y,z,t,u)`, `1 < α ≤ 2`.
+
+```php
+use MathPHP\Explaining\NumericalFractionalWavePde3DAnalyzer;
+
+$volume = (new NumericalFractionalWavePde3DAnalyzer())->analyze(
+    '0',
+    1.5,                         // Caputo wave order
+    0.1,                         // wave speed c
+    'x*(1-x)*y*(1-y)*z*(1-z)',   // initial displacement
+    '0',                         // initial velocity
+    '0', '0', '0', '0', '0', '0',
+    firstPoints: 9,
+    secondPoints: 9,
+    thirdPoints: 9,
+    timeSteps: 20,
+);
+```
+
+The six faces accept Dirichlet, Neumann, Robin, or paired-periodic conditions.
+The result retains initial-velocity and volume-forcing histories and exposes
+`pde-heatmap-3d` snapshots. Set `spatialOrder` below `2` for the bounded
+symmetric nonlocal volume kernel; `spatialOrder: 2.0` keeps the local seven-point
+Laplacian. Fractional wave systems and symbolic fractional solutions remain
+outside this focused contract.
 
 ## Variable-order two-dimensional fractional diffusion
 

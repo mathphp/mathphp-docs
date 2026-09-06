@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.133.0` bounded three-dimensional Caputo waves with
+  six typed faces, initial velocity, and local/nonlocal spatial operators.
+
+## 2026-09-07
+
 - Documented Explaining `v0.132.0` bounded two-dimensional Caputo waves with
   initial velocity, typed boundaries, and local/nonlocal spatial operators.
 
