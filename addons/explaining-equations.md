@@ -863,7 +863,7 @@ focused contract.
 `NumericalWavePde3DAnalyzer` covers a resource-capped rectangular hyperbolic
 field `u(x, y, z, t)` with initial displacement, initial velocity, and six
 positional faces (Dirichlet by default). The same `boundaryConditions` map
-supports per-face Neumann, Robin, and periodic data:
+supports per-face Neumann, Robin, and paired periodic data:
 
 ```text
 u_tt = F(x, y, z, t, u, u_xx, u_yy, u_zz)
@@ -890,10 +890,25 @@ $analysis = (new NumericalWavePde3DAnalyzer())->analyze(
 ```
 
 The result contains `pde-wave-3d` snapshots, normalized face conditions, grid
-spacing, effective time step, and `solution['operatorMode']`. Periodic faces
-wrap to the opposite interior stencil; nonlocal boundaries, larger dimensions,
-arbitrary mixed third derivatives, and symbolic general solutions remain outside
-this focused solver.
+spacing, effective time step, and `solution['operatorMode']`. Pair opposite
+faces on an axis as periodic to wrap duplicate faces to the opposite interior
+planes before each update:
+
+```php
+$periodic = (new NumericalWavePde3DAnalyzer())->analyze(
+    'u_tt = u_xx + u_yy + u_zz',
+    '1', '0', '1', '1', '1', '1', '1', '1',
+    boundaryConditions: [
+        'left' => ['type' => 'periodic'], 'right' => ['type' => 'periodic'],
+        'bottom' => ['type' => 'periodic'], 'top' => ['type' => 'periodic'],
+        'front' => ['type' => 'periodic'], 'back' => ['type' => 'periodic'],
+    ],
+);
+```
+
+Unpaired periodic faces, nonlocal boundaries, larger dimensions, arbitrary
+mixed third derivatives, and symbolic general solutions remain outside this
+focused solver.
 
 ## Coupled three-dimensional parabolic systems
 
