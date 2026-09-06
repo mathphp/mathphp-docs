@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.88.0` constant dense mass-matrix support for
+  index-1 DAEs, including `M·x′ = f` usage and explicit scope limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.87.0` coupled ODE boundary-value shooting,
   terminal residual history, and local-branch semantics.
 

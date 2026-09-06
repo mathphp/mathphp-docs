@@ -1014,8 +1014,21 @@ $analysis = (new NumericalDaeAnalyzer())->analyze(
 The analyzer advances differential variables with projected Euler steps and
 uses a finite-difference Newton solve to enforce the algebraic constraints at
 the initial point and after every step. Constraint residuals are retained in
-each trajectory point. This is a finite approximation for locally nonsingular
-index-1 systems; mass-matrix, higher-index, complementarity, and inconsistent
+each trajectory point. For coupled differential blocks, pass a finite constant
+dense `massMatrix` to solve `M·x′ = f`:
+
+```php
+$analysis = (new NumericalDaeAnalyzer())->analyze(
+    ['x', 'y'], ['1', '2'], ['z'], ['z = x'],
+    ['x' => 0, 'y' => 0, 'z' => 0],
+    targetIndependent: 1,
+    massMatrix: [[2, 1], [1, 2]],
+);
+```
+
+The matrix is validated as square and nonsingular, and is retained in the
+result. This remains a finite approximation for locally nonsingular index-1
+systems; higher-index, variable-mass, complementarity, and inconsistent
 systems are reported as `partial` or `unsupported`.
 
 When a system may have several nearby roots, call `analyzeMany()` with several
