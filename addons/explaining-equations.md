@@ -1805,8 +1805,27 @@ $mixed = (new NumericalFractionalOdeSystemAnalyzer())->analyze(
 ```
 
 Each component retains its own order history and memory weights. The bounded
-explicit approximation still requires every evaluated order to remain in
-`0 < α_i < 1`; symbolic fractional solutions are unsupported.
+explicit approximation supports either diffusion memory `0 < α_i < 1` or wave
+memory `1 < α_i ≤ 2`. Wave components require a finite initial-velocity map:
+
+```php
+use MathPHP\Explaining\EquationAnalyzer;
+
+$waveSystem = (new EquationAnalyzer())->analyzeNumericalFractionalWaveOdeSystem(
+    "x' = y; y' = -x",
+    ['x', 'y'],
+    1.5,
+    ['x' => 0, 'y' => 1],
+    initial: ['x' => 1, 'y' => 0],
+    targetIndependent: 1,
+    steps: 200,
+);
+```
+
+Mixed component orders are allowed as long as an order does not cross the
+first-order boundary during integration. The result identifies wave components
+and retains their velocity contribution; symbolic fractional solutions remain
+unsupported.
 
 ## One-dimensional time-fractional diffusion
 

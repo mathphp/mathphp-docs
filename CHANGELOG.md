@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.134.0` coupled Caputo wave systems with mixed
+  diffusion/wave orders and per-component initial velocities.
+
+## 2026-09-07
+
 - Documented Explaining `v0.133.0` bounded three-dimensional Caputo waves with
   six typed faces, initial velocity, and local/nonlocal spatial operators.
 
