@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.92.0` distributed-delay ODE quadrature, kernel
+  expressions, retained samples, and explicit scope limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.91.0` one-dimensional time-fractional diffusion,
   retained field memory, stability diagnostics, and scope limits.
 

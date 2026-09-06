@@ -1249,8 +1249,35 @@ $analysis = (new NumericalDelayOdeAnalyzer())->analyze(
 The analyzer uses method-of-steps Euler integration. History is evaluated for
 delayed times at or before the initial coordinate; later delayed values are
 linearly interpolated from completed trajectory samples and exposed as `yd`.
-The finite trajectory is numerical (`complete: false`); neutral, advanced,
-distributed-delay, and state-dependent-delay equations remain unsupported.
+The finite trajectory is numerical (`complete: false`); neutral, advanced, and
+state-dependent-delay equations remain unsupported by this discrete-lag
+analyzer.
+
+## Distributed-delay ODEs
+
+`NumericalDistributedDelayOdeAnalyzer` covers a bounded scalar retarded
+distributed-delay equation:
+
+`y′(t) = f(t,y,yd)`, where `yd = ∫₀^τ K(s)y(t−s) ds`.
+
+```php
+use MathPHP\Explaining\NumericalDistributedDelayOdeAnalyzer;
+
+$analysis = (new NumericalDistributedDelayOdeAnalyzer())->analyze(
+    'yd',       // RHS receives the quadrature result as yd
+    '1',        // history for t <= t0
+    'exp(-s)',  // kernel K(s), with lag variable s
+    0.5,        // maximum delay τ
+    quadraturePoints: 32,
+    steps: 200,
+);
+```
+
+The analyzer uses composite-trapezoid quadrature over the lag interval and
+method-of-steps Euler updates, retaining the distributed value at every
+trajectory point. This is a finite numerical approximation; neutral, advanced,
+state-dependent, and higher-dimensional distributed-delay equations remain
+outside this focused contract.
 
 ## Scalar Caputo fractional ODEs
 
