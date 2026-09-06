@@ -1791,9 +1791,21 @@ $analysis = (new NumericalFractionalOdeSystemAnalyzer())->analyze(
 ```
 
 The result retains vector forcing history, component trajectories, and the
-shared fractional order. It remains a bounded explicit approximation; mixed
-orders, variable-order systems, and symbolic fractional solutions are not
-silently treated as supported.
+shared fractional order. Mixed orders can be supplied as a numeric/order-
+expression map per component:
+
+```php
+$mixed = (new NumericalFractionalOdeSystemAnalyzer())->analyze(
+    "x' = 1; y' = 2",
+    ['x', 'y'],
+    ['x' => 0.5, 'y' => '0.6 + 0.1*t'],
+    initial: ['x' => 0, 'y' => 0],
+);
+```
+
+Each component retains its own order history and memory weights. The bounded
+explicit approximation still requires every evaluated order to remain in
+`0 < α_i < 1`; symbolic fractional solutions are unsupported.
 
 ## One-dimensional time-fractional diffusion
 

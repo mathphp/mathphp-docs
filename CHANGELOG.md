@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-07
+
+- Documented Explaining `v0.120.0` mixed-order coupled Caputo systems,
+  component-wise memory weights, and order-history diagnostics.
+
 ## 2026-09-06
 
 - Documented Explaining `v0.119.0` scalar variable-order Caputo IVPs,
