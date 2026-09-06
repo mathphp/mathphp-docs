@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.87.0` coupled ODE boundary-value shooting,
+  terminal residual history, and local-branch semantics.
+
+## 2026-09-06
+
 - Documented Explaining `v0.86.0` bounded scalar Caputo fractional ODEs,
   fractional Adams–Bashforth memory quadrature, and explicit scope limits.
 

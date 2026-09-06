@@ -1153,6 +1153,30 @@ Every component is evaluated at the same RK4 intermediate state. The result
 contains the complete vector trajectory and remains numerical rather than
 claiming a symbolic solution.
 
+## Coupled ODE boundary-value systems
+
+`NumericalOdeSystemBvpAnalyzer` finds an unknown initial vector whose RK4
+trajectory reaches specified terminal values:
+
+```php
+use MathPHP\Explaining\NumericalOdeSystemBvpAnalyzer;
+
+$analysis = (new NumericalOdeSystemBvpAnalyzer())->analyze(
+    "x' = v; v' = -x",
+    ['x', 'v'],
+    ['x' => 0, 'v' => 0],
+    ['x' => 0, 'v' => -1],
+    targetIndependent: pi() / 2,
+    steps: 100,
+);
+// The shooting result recovers an initial state near x=1, v=0.
+```
+
+The terminal-state map is finite-differenced and solved with bounded Newton
+shooting. Each trial initial state, terminal residual, and final trajectory
+summary is retained. This finds one local branch only; failed integrations,
+singular shooting maps, and iteration limits are reported as `partial`.
+
 ## Retarded delay differential equations
 
 `NumericalDelayOdeAnalyzer` covers scalar retarded equations whose derivative
