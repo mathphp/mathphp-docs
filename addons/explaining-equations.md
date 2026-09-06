@@ -542,6 +542,35 @@ incompatible corners, periodic/nonlocal conditions, and higher dimensions are
 outside this focused contract, and convergence does not prove a unique or
 complete PDE solution.
 
+## Three-dimensional elliptic PDEs
+
+`NumericalEllipticPde3DAnalyzer` extends the elliptic contract to a bounded
+rectangular volume. It accepts diagonal second derivatives `u_xx`, `u_yy`, and
+`u_zz`, six face expressions, and optional per-face Dirichlet, Neumann, or
+Robin conditions:
+
+```php
+use MathPHP\Explaining\NumericalEllipticPde3DAnalyzer;
+
+$analysis = (new NumericalEllipticPde3DAnalyzer())->analyze(
+    'u_xx + u_yy + u_zz = 0',
+    'y + z', '1 + y + z',
+    'x + z', 'x + 1 + z',
+    'x + y', 'x + y + 1',
+    firstPoints: 15,
+    secondPoints: 15,
+    thirdPoints: 15,
+);
+```
+
+The solver uses a seven-point Gauss–Seidel stencil, re-evaluates nonlinear
+value terms with Picard updates, checks that all diagonal principal
+coefficients have a common elliptic sign, and retains volumetric snapshots in
+`solution['snapshots']`. `solved` means the finite grid reached the configured
+update and residual tolerances for one run. Mixed derivatives, periodic or
+nonlocal faces, nonlinear derivative operators, and uniqueness/completeness
+proofs remain outside this focused numerical contract.
+
 ## One-dimensional wave equations
 
 `NumericalWavePdeAnalyzer` supports a bounded hyperbolic initial-boundary
