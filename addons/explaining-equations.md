@@ -1152,6 +1152,34 @@ iterate. This is a local convex/regular-set approximation; nonconvex sets,
 nonsmooth normal-cone operators, and global convergence certificates remain
 outside the focused contract.
 
+## Scalar differential inclusions
+
+An inclusion permits a set of slopes rather than one right-hand side:
+
+`y'(t) ∈ [f_lower(t,y), f_upper(t,y)]`.
+
+`NumericalDifferentialInclusionAnalyzer` retains lower and upper Euler envelope
+samples and one selectable trajectory. Use `lower`, `midpoint`, or `upper` to
+choose the demonstrative path:
+
+```php
+use MathPHP\Explaining\NumericalDifferentialInclusionAnalyzer;
+
+$analysis = (new NumericalDifferentialInclusionAnalyzer())->analyze(
+    '-1', '1',             // admissible slopes
+    0,
+    targetIndependent: 1,
+    steps: 100,
+    selection: 'midpoint',
+);
+// Lower path: -1, upper path: 1, midpoint path: 0.
+```
+
+The result reports an empty interval, non-finite field, or crossed Euler
+envelopes as `partial`. An inclusion generally has many solutions, so this is
+an explanatory bounded approximation—not a rigorous reachable-set enclosure
+or a uniqueness theorem for state-dependent fields.
+
 When a system may have several nearby roots, call `analyzeMany()` with several
 initial maps. It deduplicates converged values but keeps failed or partial runs
 so callers can show which starting points were inconclusive.

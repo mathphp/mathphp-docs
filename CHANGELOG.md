@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.100.0` scalar interval differential inclusions,
+  envelope diagnostics, selectable trajectories, and scope limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.99.0` generalized feasible-set inequalities,
   finite-difference projection diagnostics, and scope limits.
 
