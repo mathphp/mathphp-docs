@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.129.0` combined variable-order temporal and
+  bounded nonlocal spatial diffusion in 2D.
+
+## 2026-09-07
+
 - Documented Explaining `v0.128.0` combined variable-order temporal and
   bounded nonlocal spatial diffusion in 1D.
 

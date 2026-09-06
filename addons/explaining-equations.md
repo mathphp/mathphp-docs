@@ -1988,9 +1988,12 @@ field, so explanations can show how the memory exponent changes over space,
 time, and state. The result exposes the `pde-heatmap-2d` visual and supports
 Dirichlet, Neumann, Robin, or paired-periodic edges on both axes. Every
 evaluated order must remain strictly within `0 < α < 1`; variable-order 3D
-diffusion is documented below. Nonlocal fractional spatial operators,
-fractional wave equations, and symbolic fractional solutions remain outside
-this focused contract.
+diffusion is documented below. Pass `spatialOrder` between `0` and `2` to
+combine the variable temporal order with the bounded symmetric nonlocal
+spatial kernel; `spatialOrder: 2.0` preserves the local five-point operator.
+Both order and operator histories remain in the solution metadata. Fractional
+wave equations and symbolic fractional solutions remain outside this focused
+contract.
 
 ## Variable-order three-dimensional fractional diffusion
 
