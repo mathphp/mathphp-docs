@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.114.0` paired periodic endpoints for coupled 1D
+  parabolic systems, per-field wrapping, and unpaired-edge limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.113.0` corrected per-field paired periodic faces
   for coupled 3D parabolic systems and unpaired-face limits.
 

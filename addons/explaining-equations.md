@@ -795,10 +795,27 @@ and non-negative under the conservative CFL bound. A field may instead use a
 directly evaluated nonlinear spatial operator when its stencil samples remain
 finite; per-field modes are returned in `solution['operatorModes']`.
 Normalized edge conditions are returned in `solution['boundaryConditions']`.
+Pair the left and right periodic endpoints independently for each field to
+wrap duplicate endpoints to the opposite interior values:
+
+```php
+$periodic = (new NumericalCoupledParabolicPdeAnalyzer())->analyze(
+    'u_t = u_xx; v_t = v_xx',
+    ['u', 'v'],
+    ['u' => 'x', 'v' => '2*x'],
+    ['u' => '0', 'v' => '0'], ['u' => '0', 'v' => '0'],
+    boundaryConditions: [
+        'left' => ['u' => ['type' => 'periodic'], 'v' => ['type' => 'periodic']],
+        'right' => ['u' => ['type' => 'periodic'], 'v' => ['type' => 'periodic']],
+    ],
+);
+```
+
+Unpaired periodic endpoints, nonlocal boundaries, and symbolic/global PDE
+solutions remain outside this numerical contract.
 `solved` means only that the requested finite grid completed; the serialized
-result remains `complete: false`. Backward diffusion, periodic/nonlocal edges,
-higher-dimensional systems, and symbolic/global PDE solutions remain outside
-this numerical contract.
+result remains `complete: false`. Backward diffusion and higher-dimensional
+systems remain outside this contract.
 
 ## Three-dimensional parabolic PDEs
 
