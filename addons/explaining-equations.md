@@ -356,6 +356,33 @@ because Euler–Maruyama is a finite stochastic approximation; undefined paths
 become `partial`. Jump processes, stochastic algebraic constraints, and other
 SDE families remain unsupported until they have their own explicit contract.
 
+## Scalar compound-Poisson jump diffusions
+
+`NumericalJumpSdeAnalyzer` adds a seeded scalar jump-diffusion contract:
+`dX = a(t,X)dt + b(t,X)dW + j(t,X)dN`, where `N` has a supplied intensity.
+
+```php
+use MathPHP\Explaining\NumericalJumpSdeAnalyzer;
+
+$analysis = (new NumericalJumpSdeAnalyzer())->analyze(
+    '0.1*x',  // drift
+    '0.2',    // diffusion
+    '1',      // jump size expression
+    2.0,      // Poisson intensity
+    0, 0, 1,
+    steps: 200,
+    paths: 32,
+    seed: 42,
+);
+```
+
+Each interval draws a normal diffusion increment and an exact bounded Poisson
+count, retaining per-step counts, total jumps, endpoint statistics, and the
+seed. The method marks itself `complete: false` because this is a finite
+stochastic approximation. For deterministic performance bounds, the exact
+inversion sampler requires intensity × step size ≤ 50; high-rate, marked, and
+vector jump processes need a separate contract.
+
 ## Numerical higher-order ODEs
 
 `NumericalHigherOrderOdeAnalyzer` gives scalar third- through eighth-order

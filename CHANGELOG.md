@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.84.0` seeded scalar compound-Poisson
+  jump-diffusion simulation and bounded Poisson sampling semantics.
+
+## 2026-09-06
+
 - Documented Explaining `v0.83.0` bounded index-1 DAE support, projected Euler
   integration, algebraic Newton projection, and residual diagnostics.
 
