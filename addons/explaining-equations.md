@@ -2021,10 +2021,13 @@ $volume = (new NumericalVariableOrderFractionalPde3DAnalyzer())->analyze(
 The result retains a three-dimensional order field and forcing history for
 every snapshot and exposes the `pde-heatmap-3d` visual. All six faces accept
 Dirichlet, Neumann, Robin, or paired-periodic conditions; every evaluated
-order must remain strictly within `0 < α < 1`. This remains an explicit
-bounded local-spatial approximation: variable-order nonlocal kernels,
-fractional wave equations, and symbolic fractional solutions are outside the
-contract.
+order must remain strictly within `0 < α < 1`. Pass `spatialOrder` between `0`
+and `2` to combine the variable temporal order with a bounded symmetric
+nonlocal volume kernel; `spatialOrder: 2.0` preserves the local seven-point
+operator. The solution records the combined operator mode and retains both
+histories, while nonlocal runs use a resource-aware grid cap. This remains an
+explicit bounded approximation: unbounded or singular kernels, fractional wave
+equations, and symbolic fractional solutions are outside the contract.
 
 For exact constant-coefficient second-order equations, use
 `SecondOrderOdeAnalyzer`:

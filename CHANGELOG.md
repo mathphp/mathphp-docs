@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.130.0` variable-order 3D diffusion with bounded
+  nonlocal volume interaction, `spatialOrder`, and combined operator metadata.
+
+## 2026-09-07
+
 - Documented Explaining `v0.129.0` combined variable-order temporal and
   bounded nonlocal spatial diffusion in 2D.
 
