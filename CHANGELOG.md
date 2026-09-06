@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.108.0` paired periodic edges for 2D parabolic
+  problems, wrapped stencils, and unpaired/nonlocal scope limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.107.0` paired periodic boundaries for the scalar
   parabolic solver, wrapped endpoints, and nonlocal scope limits.
 

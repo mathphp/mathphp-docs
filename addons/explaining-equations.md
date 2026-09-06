@@ -713,12 +713,30 @@ $analysis = (new NumericalParabolicPdeAnalyzer())->analyze(
 );
 ```
 
+Opposite edges can be paired as periodic boundaries. The solver wraps each
+duplicate endpoint to the opposite interior edge before every update, so the
+centered stencil sees a continuous periodic field in that axis:
+
+```php
+$periodic = (new NumericalParabolicPdeAnalyzer())->analyze(
+    'u_t = alpha*u_xx + beta*u_yy',
+    '1', '1', '1', '1', '1',
+    known: ['alpha' => 0.1, 'beta' => 0.1],
+    boundaryConditions: [
+        'left' => ['type' => 'periodic'],
+        'right' => ['type' => 'periodic'],
+        'bottom' => ['type' => 'periodic'],
+        'top' => ['type' => 'periodic'],
+    ],
+);
+```
+
 Normalized edge types and Robin coefficients are returned in
 `solution['boundaryConditions']`. Undefined values, singular Robin
-coefficients, incompatible Dirichlet corners, backward diffusion, periodic or
-nonlocal conditions, and higher dimensions are reported as `unsupported` or
-`partial` rather than guessed. Nonlinear derivative operators are evaluated
-directly only when their local stencil samples remain finite.
+coefficients, incompatible Dirichlet corners, backward diffusion, unpaired
+periodic edges, nonlocal conditions, and higher dimensions are reported as
+`unsupported` or `partial` rather than guessed. Nonlinear derivative operators
+are evaluated directly only when their local stencil samples remain finite.
 
 ## Coupled one-dimensional parabolic systems
 
