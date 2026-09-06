@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.83.0` bounded index-1 DAE support, projected Euler
+  integration, algebraic Newton projection, and residual diagnostics.
+
+## 2026-09-06
+
 - Documented Explaining `v0.82.0` bounded complex Newton systems, including
   finite-difference Jacobians, Gaussian elimination, and local-root limits.
 

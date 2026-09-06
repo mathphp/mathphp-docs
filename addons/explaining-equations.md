@@ -965,6 +965,32 @@ needed for the full family. Partial differential equations, jump SDEs, and
 global piecewise/discontinuous proofs remain outside this general-purpose
 numeric analyzer and are reported as unsupported or partial.
 
+## Index-1 differential-algebraic equations
+
+`NumericalDaeAnalyzer` covers a bounded index-1 contract with explicit
+differential variables and algebraic variables:
+
+```php
+use MathPHP\Explaining\NumericalDaeAnalyzer;
+
+$analysis = (new NumericalDaeAnalyzer())->analyze(
+    ['x'],                 // differential variables
+    ['1'],                 // x' = 1
+    ['z'],                 // algebraic variables
+    ['z = x'],             // algebraic constraint
+    ['x' => 0, 'z' => 4],  // z is projected to the constraint initially
+    targetIndependent: 1,
+    steps: 100,
+);
+```
+
+The analyzer advances differential variables with projected Euler steps and
+uses a finite-difference Newton solve to enforce the algebraic constraints at
+the initial point and after every step. Constraint residuals are retained in
+each trajectory point. This is a finite approximation for locally nonsingular
+index-1 systems; mass-matrix, higher-index, complementarity, and inconsistent
+systems are reported as `partial` or `unsupported`.
+
 When a system may have several nearby roots, call `analyzeMany()` with several
 initial maps. It deduplicates converged values but keeps failed or partial runs
 so callers can show which starting points were inconclusive.
