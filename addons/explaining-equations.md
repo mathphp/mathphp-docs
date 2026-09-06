@@ -1177,6 +1177,30 @@ linearly interpolated from completed trajectory samples and exposed as `yd`.
 The finite trajectory is numerical (`complete: false`); neutral, advanced,
 distributed-delay, and state-dependent-delay equations remain unsupported.
 
+## Scalar Caputo fractional ODEs
+
+`NumericalFractionalOdeAnalyzer` covers scalar Caputo initial-value equations
+with order `0 < α < 1`:
+
+```php
+use MathPHP\Explaining\NumericalFractionalOdeAnalyzer;
+
+$analysis = (new NumericalFractionalOdeAnalyzer())->analyze(
+    '1',
+    order: 0.5,
+    initialValue: 0,
+    initialIndependent: 0,
+    targetIndependent: 1,
+    steps: 200,
+);
+```
+
+The explicit fractional Adams–Bashforth rule retains every forcing sample and
+its power-law memory weight, so the nonlocal dependency is visible in the
+result. It is a bounded numerical approximation (`complete: false`), not a
+symbolic fractional solver; variable-order operators and fractional PDEs are
+outside this contract.
+
 For exact constant-coefficient second-order equations, use
 `SecondOrderOdeAnalyzer`:
 

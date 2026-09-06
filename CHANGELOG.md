@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.86.0` bounded scalar Caputo fractional ODEs,
+  fractional Adams–Bashforth memory quadrature, and explicit scope limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.85.0` bounded retarded delay-ODE integration,
   method-of-steps history handling, and delayed-state interpolation.
 
