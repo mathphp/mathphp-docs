@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.127.0` bounded 3D nonlocal spatial fractional
+  diffusion, resource-aware caps, and explicit kernel limits.
+
+## 2026-09-07
+
 - Documented Explaining `v0.126.0` bounded 2D nonlocal spatial fractional
   diffusion and its explicit 3D kernel boundary.
 

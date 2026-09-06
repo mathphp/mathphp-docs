@@ -1914,8 +1914,10 @@ $volume = (new NumericalFractionalPde3DAnalyzer())->analyze(
 
 The six faces accept Dirichlet, Neumann, Robin, or paired periodic conditions;
 the result retains volume forcing history and exposes `pde-heatmap-3d` data.
-This remains an explicit bounded approximation, not a symbolic or nonlocal
-fractional PDE solver.
+This remains an explicit bounded approximation, not a symbolic fractional PDE
+solver. Pass `spatialOrder` between `0` and `2` to select the bounded symmetric
+nonlocal volume kernel; `spatialOrder: 2.0` preserves the local seven-point
+Laplacian. Unbounded and singular kernels remain outside this contract.
 
 Neumann edges prescribe the outward first derivative; Robin edges prescribe
 `alpha*u + beta*u_n = value`. Opposite periodic endpoints must be paired;
@@ -1944,14 +1946,15 @@ $field = (new NumericalVariableOrderFractionalPdeAnalyzer())->analyze(
 The result retains a complete order field for every snapshot alongside the
 forcing history. Every evaluated order must remain strictly within
 `0 < α < 1`; the implementation is an explicit bounded approximation, not a
-symbolic or nonlocal fractional PDE solver.
+symbolic fractional PDE solver. For constant-order nonlocal spatial kernels,
+use the `spatialOrder` option on the fractional 1D, 2D, or 3D analyzers.
 
 The solver retains every spatial forcing field used by the Caputo memory
 quadrature, reports the fractional diffusion stability number, and marks runs
 that exceed its explicit guard as `partial`. Fractional wave equations,
-nonlocal fractional spatial operators, dimensions
-beyond the bounded 3D diffusion contract, and symbolic fractional solutions
-remain outside this focused contract.
+unbounded or singular spatial kernels, dimensions beyond the bounded 3D
+diffusion contract, and symbolic fractional solutions remain outside this
+focused contract.
 
 ## Variable-order two-dimensional fractional diffusion
 
@@ -2011,8 +2014,9 @@ The result retains a three-dimensional order field and forcing history for
 every snapshot and exposes the `pde-heatmap-3d` visual. All six faces accept
 Dirichlet, Neumann, Robin, or paired-periodic conditions; every evaluated
 order must remain strictly within `0 < α < 1`. This remains an explicit
-bounded approximation: nonlocal spatial operators, fractional wave equations,
-and symbolic fractional solutions are outside the contract.
+bounded local-spatial approximation: variable-order nonlocal kernels,
+fractional wave equations, and symbolic fractional solutions are outside the
+contract.
 
 For exact constant-coefficient second-order equations, use
 `SecondOrderOdeAnalyzer`:
