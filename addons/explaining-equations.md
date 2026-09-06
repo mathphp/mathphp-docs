@@ -1031,6 +1031,27 @@ result. This remains a finite approximation for locally nonsingular index-1
 systems; higher-index, variable-mass, complementarity, and inconsistent
 systems are reported as `partial` or `unsupported`.
 
+### First-differentiated constraints
+
+Some index-2-style systems do not expose the algebraic variables in the
+original constraint, so its algebraic Jacobian is singular. Supply one
+first-differentiated residual per algebraic variable to select the algebraic
+state during projection:
+
+```php
+$analysis = (new NumericalDaeAnalyzer())->analyze(
+    ['x'], ['z'], ['z'], ['x - t = 0'],
+    ['x' => 0, 'z' => 0],
+    targetIndependent: 1,
+    differentiatedAlgebraicEquations: ['z - 1 = 0'],
+);
+```
+
+The result identifies the `projected-euler-differentiated-constraint` method,
+retains the supplied derivative residuals, and reports the original constraint
+residual at every trajectory point. This is a bounded first-differentiation
+pathway, not a general arbitrary-index or complementarity DAE solver.
+
 When a system may have several nearby roots, call `analyzeMany()` with several
 initial maps. It deduplicates converged values but keeps failed or partial runs
 so callers can show which starting points were inconclusive.

@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.89.0` first-differentiated constraints for
+  index-2-style DAE systems and their explicit scope limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.88.0` constant dense mass-matrix support for
   index-1 DAEs, including `M·x′ = f` usage and explicit scope limits.
 
