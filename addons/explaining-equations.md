@@ -1978,15 +1978,39 @@ $field = (new NumericalVariableOrderFractionalPdeAnalyzer())->analyze(
 ```
 
 The result retains a complete order field for every snapshot alongside the
-forcing history. Every evaluated order must remain strictly within
-`0 < α < 1`; the implementation is an explicit bounded approximation, not a
-symbolic fractional PDE solver. For constant-order nonlocal spatial kernels,
+forcing history. Diffusion mode keeps every evaluated order strictly within
+`0 < α < 1`; wave mode is documented below for `1 < α ≤ 2`. The implementation
+is an explicit bounded approximation, not a symbolic fractional PDE solver. For constant-order nonlocal spatial kernels,
 use the `spatialOrder` option on the fractional 1D, 2D, or 3D analyzers.
 
 The variable-order 1D analyzer also accepts `spatialOrder` between `0` and `2`,
 so the temporal order field and bounded symmetric nonlocal kernel can be used
 together. `spatialOrder: 2.0` preserves the local centered derivative; the
 result records `operatorMode` and the variable-order history together.
+
+For variable-order waves, use `1 < α(x,t,u) ≤ 2` and provide an initial
+velocity expression:
+
+```php
+use MathPHP\Explaining\NumericalVariableOrderFractionalWavePdeAnalyzer;
+
+$wave = (new NumericalVariableOrderFractionalWavePdeAnalyzer())->analyze(
+    '0',
+    '1.5 + 0.05*t',
+    0.1,
+    'x*(1-x)',
+    '1',
+    '0', '0',
+    spacePoints: 41,
+    timeSteps: 100,
+);
+```
+
+Wave nodes retain the velocity contribution and are identified by
+`temporalMode: variable-wave-memory`; the order must not cross `α = 1` during
+integration. Local and bounded nonlocal spatial operators use the same
+`spatialOrder` range. Variable-order wave fields in 2D/3D remain outside this
+focused contract.
 
 The solver retains every spatial forcing field used by the Caputo memory
 quadrature, reports the fractional diffusion stability number, and marks runs

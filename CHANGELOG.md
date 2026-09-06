@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.136.0` bounded 1D variable-order fractional waves
+  with initial velocity, temporal-mode metadata, and local/nonlocal operators.
+
+## 2026-09-07
+
 - Documented Explaining `v0.135.0` scalar variable-order Caputo waves with
   initial velocity, mode-boundary checks, and facade support.
 
