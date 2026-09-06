@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.121.0` bounded variable-order 1D fractional
+  diffusion, per-grid order fields, and explicit order-range limits.
+
+## 2026-09-07
+
 - Documented Explaining `v0.120.0` mixed-order coupled Caputo systems,
   component-wise memory weights, and order-history diagnostics.
 

@@ -1897,10 +1897,35 @@ Neumann edges prescribe the outward first derivative; Robin edges prescribe
 `alpha*u + beta*u_n = value`. Opposite periodic endpoints must be paired;
 unpaired periodic or nonlocal spatial conditions remain unsupported.
 
+## Variable-order one-dimensional fractional diffusion
+
+`NumericalVariableOrderFractionalPdeAnalyzer` evaluates an order expression at
+each spatial grid point and time step for bounded problems of the form
+`D_t^(α(x,t,u)) u = κu_xx + s(x,t,u)`:
+
+```php
+use MathPHP\Explaining\NumericalVariableOrderFractionalPdeAnalyzer;
+
+$field = (new NumericalVariableOrderFractionalPdeAnalyzer())->analyze(
+    '0',
+    '0.5 + 0.1*t',
+    0.01,
+    'x*(1-x)',
+    '0', '0',
+    spacePoints: 41,
+    timeSteps: 100,
+);
+```
+
+The result retains a complete order field for every snapshot alongside the
+forcing history. Every evaluated order must remain strictly within
+`0 < α < 1`; the implementation is an explicit bounded approximation, not a
+symbolic or nonlocal fractional PDE solver.
+
 The solver retains every spatial forcing field used by the Caputo memory
 quadrature, reports the fractional diffusion stability number, and marks runs
-that exceed its explicit guard as `partial`. Variable-order operators,
-fractional wave equations, nonlocal fractional spatial operators, dimensions
+that exceed its explicit guard as `partial`. Fractional wave equations,
+nonlocal fractional spatial operators, dimensions
 beyond the bounded 3D diffusion contract, and symbolic fractional solutions
 remain outside this focused contract.
 
