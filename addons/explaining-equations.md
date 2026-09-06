@@ -2009,8 +2009,8 @@ $wave = (new NumericalVariableOrderFractionalWavePdeAnalyzer())->analyze(
 Wave nodes retain the velocity contribution and are identified by
 `temporalMode: variable-wave-memory`; the order must not cross `α = 1` during
 integration. Local and bounded nonlocal spatial operators use the same
-`spatialOrder` range. Variable-order wave fields in 2D/3D remain outside this
-focused contract.
+`spatialOrder` range. Dedicated 2D and 3D variable-order wave facades are
+documented below.
 
 The solver retains every spatial forcing field used by the Caputo memory
 quadrature, reports the fractional diffusion stability number, and marks runs
@@ -2138,9 +2138,20 @@ evaluated order must remain strictly within `0 < α < 1`; variable-order 3D
 diffusion is documented below. Pass `spatialOrder` between `0` and `2` to
 combine the variable temporal order with the bounded symmetric nonlocal
 spatial kernel; `spatialOrder: 2.0` preserves the local five-point operator.
-Both order and operator histories remain in the solution metadata. Variable-
-order fractional waves and symbolic fractional solutions remain outside this
-focused contract.
+Both order and operator histories remain in the solution metadata. For wave
+memory with `1 < α ≤ 2`, use
+`NumericalVariableOrderFractionalWavePde2DAnalyzer` with an initial velocity:
+
+```php
+$wave = (new NumericalVariableOrderFractionalWavePde2DAnalyzer())->analyze(
+    '0', '1.5 + 0.05*t', 0.1,
+    'x*(1-x)*y*(1-y)', '1', '0', '0', '0', '0',
+    firstPoints: 17, secondPoints: 17, timeSteps: 30,
+);
+```
+
+The order mode is retained in `temporalMode` and cannot cross `α = 1` during
+the run. Symbolic fractional solutions remain outside this focused contract.
 
 ## Variable-order three-dimensional fractional diffusion
 
@@ -2168,13 +2179,15 @@ $volume = (new NumericalVariableOrderFractionalPde3DAnalyzer())->analyze(
 The result retains a three-dimensional order field and forcing history for
 every snapshot and exposes the `pde-heatmap-3d` visual. All six faces accept
 Dirichlet, Neumann, Robin, or paired-periodic conditions; every evaluated
-order must remain strictly within `0 < α < 1`. Pass `spatialOrder` between `0`
-and `2` to combine the variable temporal order with a bounded symmetric
-nonlocal volume kernel; `spatialOrder: 2.0` preserves the local seven-point
-operator. The solution records the combined operator mode and retains both
-histories, while nonlocal runs use a resource-aware grid cap. This remains an
-explicit bounded approximation: unbounded or singular kernels, fractional wave
-equations, and symbolic fractional solutions are outside the contract.
+diffusion order must remain strictly within `0 < α < 1`. Pass `spatialOrder`
+between `0` and `2` to combine the variable temporal order with a bounded
+symmetric nonlocal volume kernel; `spatialOrder: 2.0` preserves the local
+seven-point operator. For wave memory with `1 < α ≤ 2`, use
+`NumericalVariableOrderFractionalWavePde3DAnalyzer` and provide an initial
+velocity field. The solution records `temporalMode`, the combined operator
+mode, and both histories, while nonlocal runs use a resource-aware grid cap.
+This remains an explicit bounded approximation: unbounded or singular kernels
+and symbolic fractional solutions are outside the contract.
 
 For exact constant-coefficient second-order equations, use
 `SecondOrderOdeAnalyzer`:

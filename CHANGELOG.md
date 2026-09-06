@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.137.0` bounded 2D/3D variable-order fractional
+  waves with initial velocity fields and local/nonlocal spatial operators.
+
+## 2026-09-07
+
 - Documented Explaining `v0.136.0` bounded 1D variable-order fractional waves
   with initial velocity, temporal-mode metadata, and local/nonlocal operators.
 
