@@ -1279,6 +1279,30 @@ trajectory point. This is a finite numerical approximation; neutral, advanced,
 state-dependent, and higher-dimensional distributed-delay equations remain
 outside this focused contract.
 
+## Neutral-delay ODEs
+
+`NumericalNeutralDelayOdeAnalyzer` covers bounded scalar neutral retarded
+equations where the RHS uses both a delayed state and delayed derivative:
+
+`y′(t) = f(t,y,yd,ydd)`, with `yd = y(t−τ)` and `ydd = y′(t−τ)`.
+
+```php
+use MathPHP\Explaining\NumericalNeutralDelayOdeAnalyzer;
+
+$analysis = (new NumericalNeutralDelayOdeAnalyzer())->analyze(
+    '0.5*ydd',  // RHS receives the delayed derivative as ydd
+    '1',        // history y(t)
+    '1',        // history derivative y′(t)
+    0.5,
+    steps: 200,
+);
+```
+
+The analyzer uses method-of-steps Euler integration, interpolating both state
+and slope for delayed times and retaining them in every trajectory point.
+Advanced, state-dependent, and neutral equations with discontinuous or
+distributed derivative histories remain outside this focused contract.
+
 ## Scalar Caputo fractional ODEs
 
 `NumericalFractionalOdeAnalyzer` covers scalar Caputo initial-value equations

@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.93.0` neutral-delay ODE support, history
+  derivatives, delayed-slope interpolation, and scope limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.92.0` distributed-delay ODE quadrature, kernel
   expressions, retained samples, and explicit scope limits.
 
