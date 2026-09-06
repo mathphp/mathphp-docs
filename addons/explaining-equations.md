@@ -1889,7 +1889,7 @@ Each axis accepts Dirichlet, Neumann, Robin, or paired periodic edges. The
 implementation is an explicit bounded diffusion approximation. Pass
 `spatialOrder` between `0` and `2` to use the same bounded symmetric nonlocal
 kernel as the one-dimensional solver; `spatialOrder: 2.0` keeps the local
-five-point Laplacian. Fractional wave equations, three-dimensional nonlocal
+five-point Laplacian. Fractional wave systems, three-dimensional nonlocal
 kernels, dimensions beyond this 3D contract, and symbolic fractional
 solutions remain unsupported.
 
@@ -1956,8 +1956,8 @@ result records `operatorMode` and the variable-order history together.
 
 The solver retains every spatial forcing field used by the Caputo memory
 quadrature, reports the fractional diffusion stability number, and marks runs
-that exceed its explicit guard as `partial`. Fractional wave equations,
-unbounded or singular spatial kernels, dimensions beyond the bounded 3D
+that exceed its explicit guard as `partial`. Fractional wave systems,
+three-dimensional fractional waves, unbounded or singular spatial kernels, dimensions beyond the bounded 3D
 diffusion contract, and symbolic fractional solutions remain outside this
 focused contract.
 
@@ -1990,7 +1990,36 @@ bounded symmetric nonlocal kernel; `spatialOrder: 2.0` preserves the centered
 second derivative. Results expose `caputo-explicit-fractional-wave` (or its
 nonlocal variant), the order, operator mode, stability number, forcing history,
 and `pde-heatmap` snapshots. Fractional wave systems and 2D/3D fractional waves
-remain outside this focused contract.
+remain outside this focused 1D contract.
+
+## Two-dimensional Caputo fractional waves
+
+`NumericalFractionalWavePde2DAnalyzer` extends the Caputo wave contract to a
+bounded rectangle with four typed edges:
+`D_t^α u = c²(u_xx + u_yy) + s(x,y,t,u)`, `1 < α ≤ 2`.
+
+```php
+use MathPHP\Explaining\NumericalFractionalWavePde2DAnalyzer;
+
+$field = (new NumericalFractionalWavePde2DAnalyzer())->analyze(
+    '0',
+    1.5,                 // Caputo wave order
+    0.1,                 // wave speed c
+    'x*(1-x)*y*(1-y)',   // initial displacement
+    '0',                 // initial velocity
+    '0', '0', '0', '0',  // left/right/bottom/top
+    firstPoints: 25,
+    secondPoints: 25,
+    timeSteps: 100,
+);
+```
+
+The result retains the initial-velocity contribution, every two-dimensional
+forcing field, and `pde-heatmap-2d` snapshots. Dirichlet, Neumann, Robin, and
+paired-periodic edges are supported. Set `spatialOrder` below `2` for the
+bounded symmetric nonlocal kernel; `spatialOrder: 2.0` keeps the local five-point
+Laplacian. Fractional wave systems and 3D fractional waves remain outside this
+focused contract.
 
 ## Variable-order two-dimensional fractional diffusion
 

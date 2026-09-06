@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.132.0` bounded two-dimensional Caputo waves with
+  initial velocity, typed boundaries, and local/nonlocal spatial operators.
+
+## 2026-09-07
+
 - Documented Explaining `v0.131.0` one-dimensional Caputo fractional waves,
   initial velocity, local/nonlocal spatial operators, and memory metadata.
 
