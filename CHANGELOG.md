@@ -2,6 +2,12 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.102.0` bounded nonsmooth normal-cone analysis,
+  projected subgradient steps, finite-difference kink diagnostics, and scope
+  limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.101.0` coupled interval differential inclusions,
   component envelopes, selected trajectories, and scope limits.
 

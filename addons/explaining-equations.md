@@ -1152,6 +1152,39 @@ iterate. This is a local convex/regular-set approximation; nonconvex sets,
 nonsmooth normal-cone operators, and global convergence certificates remain
 outside the focused contract.
 
+## Nonsmooth normal-cone inclusions
+
+For a bounded nonsmooth potential, use
+`NumericalNonsmoothNormalConeAnalyzer` for the local inclusion
+`0 ∈ F(z) + ∂φ(z) + N_K(z)`, where `K` is a finite box. This is useful for
+absolute values, hinge-like penalties, and other scalar potentials whose
+classical derivative is unavailable at a kink:
+
+```php
+use MathPHP\Explaining\NumericalNonsmoothNormalConeAnalyzer;
+
+$analysis = (new NumericalNonsmoothNormalConeAnalyzer())->analyze(
+    ['x'],
+    ['x - 2'],                 // F(x)
+    'abs(x)',                  // scalar potential φ(x)
+    ['x' => 0],
+    [-1], [1],                 // box K
+    stepSize: 0.5,
+    tolerance: 1e-9,
+);
+// The bounded candidate is x = 1; the upper normal-cone condition is active.
+```
+
+The analyzer estimates one-sided slopes with centered finite differences. A
+material slope mismatch is retained as a `kinked` diagnostic, and the midpoint
+is used as one admissible subgradient candidate. Every iterate records the
+mapping, subgradient, total residual, potential value, projected candidate,
+and residual. `solved` means only that the configured projected residual was
+reached from the supplied initial value; arbitrary nonconvex potentials,
+multi-valued subdifferentials, global convergence, and exact generalized
+derivative certificates require a specialized solver and are reported outside
+this focused contract.
+
 ## Scalar differential inclusions
 
 An inclusion permits a set of slopes rather than one right-hand side:
