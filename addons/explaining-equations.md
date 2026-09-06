@@ -961,13 +961,36 @@ the configured iteration limit is reached. A converged starting point finds
 one nearby solution; it does not establish that every solution exists or has
 been found. Underdetermined systems return one minimum-norm member with
 `partial` status because a free-variable or constraint-set representation is
-needed for the full family. Partial differential equations, arbitrary complex systems, and
+needed for the full family. Partial differential equations, jump SDEs, and
 global piecewise/discontinuous proofs remain outside this general-purpose
 numeric analyzer and are reported as unsupported or partial.
 
 When a system may have several nearby roots, call `analyzeMany()` with several
 initial maps. It deduplicates converged values but keeps failed or partial runs
 so callers can show which starting points were inconclusive.
+
+## Complex equation systems
+
+`ComplexSystemAnalyzer` solves a square system of up to eight complex
+equalities with a local Newton iteration:
+
+```php
+use MathPHP\Explaining\ComplexSystemAnalyzer;
+
+$analysis = (new ComplexSystemAnalyzer())->analyze(
+    ['z + w = 1', 'z - w = i'],
+    ['z', 'w'],
+    ['z' => 0, 'w' => 0],
+);
+// z ≈ 0.5 + 0.5i, w ≈ 0.5 − 0.5i
+```
+
+The solver approximates a complex Jacobian with centered finite differences,
+solves each Newton linear system with complex Gaussian elimination, and keeps
+the full iterate/residual history. It reports one nearby root from the supplied
+initial values; singular Jacobians, undefined expressions, and iteration limits
+remain `partial`, so convergence is not a proof that all complex roots were
+found.
 
 For bounded discovery without manually choosing starts, use `analyzeGrid()`:
 

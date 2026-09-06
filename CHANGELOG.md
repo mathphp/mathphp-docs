@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.82.0` bounded complex Newton systems, including
+  finite-difference Jacobians, Gaussian elimination, and local-root limits.
+
+## 2026-09-06
+
 - Documented Explaining `v0.81.0` correlated Brownian covariance support for
   coupled Itô systems and its positive-semidefinite validation.
 
