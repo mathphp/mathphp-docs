@@ -1153,6 +1153,30 @@ Every component is evaluated at the same RK4 intermediate state. The result
 contains the complete vector trajectory and remains numerical rather than
 claiming a symbolic solution.
 
+## Retarded delay differential equations
+
+`NumericalDelayOdeAnalyzer` covers scalar retarded equations whose derivative
+depends on a fixed delayed state:
+
+```php
+use MathPHP\Explaining\NumericalDelayOdeAnalyzer;
+
+$analysis = (new NumericalDelayOdeAnalyzer())->analyze(
+    'yd',       // y'(t) = y(t - τ)
+    '1',        // history for t <= 0
+    delay: 0.5,
+    initialIndependent: 0,
+    targetIndependent: 2,
+    steps: 200,
+);
+```
+
+The analyzer uses method-of-steps Euler integration. History is evaluated for
+delayed times at or before the initial coordinate; later delayed values are
+linearly interpolated from completed trajectory samples and exposed as `yd`.
+The finite trajectory is numerical (`complete: false`); neutral, advanced,
+distributed-delay, and state-dependent-delay equations remain unsupported.
+
 For exact constant-coefficient second-order equations, use
 `SecondOrderOdeAnalyzer`:
 

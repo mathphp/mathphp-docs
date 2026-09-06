@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.85.0` bounded retarded delay-ODE integration,
+  method-of-steps history handling, and delayed-state interpolation.
+
+## 2026-09-06
+
 - Documented Explaining `v0.84.0` seeded scalar compound-Poisson
   jump-diffusion simulation and bounded Poisson sampling semantics.
 
