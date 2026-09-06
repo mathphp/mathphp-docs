@@ -790,7 +790,7 @@ this numerical contract.
 `NumericalParabolicPde3DAnalyzer` covers a resource-capped rectangular heat or
 diffusion field `u(x, y, z, t)` with six positional faces. Each face defaults
 to Dirichlet; an optional `boundaryConditions` map can replace any face with a
-normal-derivative (Neumann) or mixed (Robin) condition:
+normal-derivative (Neumann), mixed (Robin), or paired periodic condition:
 
 ```text
 u_t = F(x, y, z, t, u, u_xx, u_yy, u_zz)
@@ -824,9 +824,24 @@ The result contains bounded 3D snapshots with visual kind `pde-heatmap-3d`,
 six normalized face conditions, grid spacing, effective time step, and
 `solution['operatorMode']`. Neumann faces use one-sided outward finite
 differences; Robin faces enforce `alpha*u + beta*u_n = value` and reject
-singular coefficients. Periodic faces wrap to the opposite interior stencil.
-Nonlocal boundaries, larger dimensions, arbitrary mixed third derivatives, and
-symbolic general solutions remain outside this focused contract.
+singular coefficients. Pair opposite faces on an axis as periodic to wrap
+duplicate faces to the opposite interior planes before each update:
+
+```php
+$periodic = (new NumericalParabolicPde3DAnalyzer())->analyze(
+    'u_t = u_xx + u_yy + u_zz',
+    '1', '1', '1', '1', '1', '1', '1',
+    boundaryConditions: [
+        'left' => ['type' => 'periodic'], 'right' => ['type' => 'periodic'],
+        'bottom' => ['type' => 'periodic'], 'top' => ['type' => 'periodic'],
+        'front' => ['type' => 'periodic'], 'back' => ['type' => 'periodic'],
+    ],
+);
+```
+
+Unpaired periodic faces, nonlocal boundaries, larger dimensions, arbitrary
+mixed third derivatives, and symbolic general solutions remain outside this
+focused contract.
 
 ## Three-dimensional wave equations
 
