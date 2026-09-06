@@ -546,8 +546,8 @@ complete PDE solution.
 
 `NumericalEllipticPde3DAnalyzer` extends the elliptic contract to a bounded
 rectangular volume. It accepts diagonal second derivatives `u_xx`, `u_yy`, and
-`u_zz`, six face expressions, and optional per-face Dirichlet, Neumann, or
-Robin conditions:
+`u_zz`, affine mixed derivatives `u_xy`, `u_xz`, and `u_yz`, six face
+expressions, and optional per-face Dirichlet, Neumann, or Robin conditions:
 
 ```php
 use MathPHP\Explaining\NumericalEllipticPde3DAnalyzer;
@@ -563,13 +563,13 @@ $analysis = (new NumericalEllipticPde3DAnalyzer())->analyze(
 );
 ```
 
-The solver uses a seven-point Gauss–Seidel stencil, re-evaluates nonlinear
-value terms with Picard updates, checks that all diagonal principal
-coefficients have a common elliptic sign, and retains volumetric snapshots in
-`solution['snapshots']`. `solved` means the finite grid reached the configured
-update and residual tolerances for one run. Mixed derivatives, periodic or
-nonlocal faces, nonlinear derivative operators, and uniqueness/completeness
-proofs remain outside this focused numerical contract.
+The solver uses a seven-point plus diagonal mixed-derivative Gauss–Seidel
+stencil, re-evaluates nonlinear value terms with Picard updates, checks the
+full symmetric principal-part matrix for positive or negative definiteness,
+and retains volumetric snapshots in `solution['snapshots']`. `solved` means the
+finite grid reached the configured update and residual tolerances for one run.
+Periodic or nonlocal faces, nonlinear derivative operators, and
+uniqueness/completeness proofs remain outside this focused numerical contract.
 
 ## One-dimensional wave equations
 

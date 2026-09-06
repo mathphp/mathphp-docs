@@ -2,6 +2,11 @@
 
 ## 2026-09-06
 
+- Documented Explaining `v0.104.0` mixed 3D elliptic derivatives, centered
+  diagonal stencils, and full principal-part definiteness checks.
+
+## 2026-09-06
+
 - Documented Explaining `v0.103.0` bounded three-dimensional elliptic PDEs,
   six-face boundary conditions, seven-point iteration, and explicit scope
   limits.
