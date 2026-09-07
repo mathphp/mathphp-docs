@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.169.0` automatic scalar Itô SDE dispatch,
+  compact stochastic syntax, and seeded-path metadata.
+
+## 2026-09-07
+
 - Documented Explaining `v0.168.0` automatic bounded Fredholm and Volterra
   dispatch, including nonlinear Picard selection and compact syntax.
 

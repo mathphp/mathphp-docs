@@ -545,6 +545,25 @@ simulation is an approximation, so `complete` is always `false`; domain exits
 are `partial`, while invalid time ranges or oversized batches are
 `unsupported`.
 
+The generic `EquationAnalyzer::analyze()` entry point recognizes a compact
+scalar form when the stochastic clauses are included:
+
+```php
+use MathPHP\Explaining\EquationAnalyzer;
+
+$analysis = (new EquationAnalyzer())->analyze(
+    'dX = 0.2*x*dt + 0.5*dW; X(0) = 1; target = 1; steps = 128; paths = 16; seed = 42',
+);
+// solutions['method'] === 'automatic-euler-maruyama-sde'
+// solutions['automaticInitial'] === ['t' => 0.0, 'x' => 1.0]
+```
+
+The compact form requires the state name `X`, binds drift and diffusion
+expressions to `t` and `x`, and uses seeded Euler–Maruyama paths. The default
+bounded run uses 128 steps, 16 paths, and seed `12345`; add `steps`, `paths`,
+or `seed` clauses to override those defaults. Results remain stochastic finite
+approximations with `complete: false`.
+
 ## Coupled vector Itô systems
 
 `NumericalSdeSystemAnalyzer` applies the same bounded contract to a vector of
