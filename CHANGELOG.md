@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact products of distinct affine square roots with domain and
+  unsquared residual filtering.
+
+## 2026-09-07
+
 - Documented exact reduction of repeated affine fractional-power products to
   rational-power equations with complete real-domain branch handling.
 

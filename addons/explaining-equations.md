@@ -310,6 +310,24 @@ explicit rational exponents. It delegates real branch and domain decisions to
 the rational-power analyzer, so even-denominator roots enforce non-negative
 bases and odd-denominator cube-root branches retain negative solutions.
 
+## Products of distinct affine radicals
+
+Products of two principal square roots with different affine radicands are
+also solved exactly:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('sqrt(x)*sqrt(x + 1) = 2');
+
+// solutions['method'] === 'exact-radical-product'
+// solutions['roots'] === [(sqrt(17) - 1) / 2]
+// solutions['complete'] === true
+```
+
+The analyzer squares the product into a quadratic, rejects candidates with a
+negative radicand, and substitutes each survivor back into the unsquared
+principal-root equation. Scaling, shifted radicands, zero targets, and
+negative-target rejection are retained explicitly in the explanation steps.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative
