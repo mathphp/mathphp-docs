@@ -2670,6 +2670,25 @@ limited to rectangular Dirichlet edges; use the explicit analyzer below for
 mixed or periodic boundaries, nonlocal spatial operators, variable order, or
 custom evaluation options.
 
+The same compact dispatcher supports bounded three-dimensional fields with a
+canonical Laplacian, six Dirichlet faces, and `thirdPoints`:
+
+```php
+$volume = (new EquationAnalyzer())->analyze(
+    'D^0.5_t u = 0.1*(u_xx + u_yy + u_zz); u(x,y,z,0) = 0; ' .
+    'u(0,y,z,t) = 0; u(1,y,z,t) = 0; u(x,0,z,t) = 0; u(x,1,z,t) = 0; ' .
+    'u(x,y,0,t) = 0; u(x,y,1,t) = 0; x = {0,1}; y = {0,1}; z = {0,1}; ' .
+    't = {0,0.2}; firstPoints = 15; secondPoints = 15; thirdPoints = 15'
+);
+// solutions['method'] === 'automatic-caputo-fractional-3d-pde'
+```
+
+For `1 < α ≤ 2`, add `u_t(x,y,z,0) = velocity` to select
+`automatic-caputo-fractional-wave-3d-pde`. The compact route is intentionally
+limited to rectangular Dirichlet faces and canonical Laplacians; use the
+explicit 3D analyzer for mixed or periodic faces, nonlocal operators, or
+custom evaluation options.
+
 `NumericalFractionalPde2DAnalyzer` applies the same bounded constant-order
 Caputo memory rule to rectangular fields of the form
 `D_t^α u = κ(u_xx + u_yy) + s(x,y,t,u)`:
