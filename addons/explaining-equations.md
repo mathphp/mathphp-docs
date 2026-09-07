@@ -2580,6 +2580,23 @@ $analysis = (new NumericalFractionalPdeAnalyzer())->analyze(
 );
 ```
 
+The generic dispatcher accepts the canonical one-dimensional compact form as
+well:
+
+```php
+$field = (new EquationAnalyzer())->analyze(
+    'D^0.5_t u = 0.1*u_xx; u(x,0) = 0; u(0,t) = 0; u(1,t) = 0; ' .
+    'x = {0,1}; t = {0,0.2}; spacePoints = 32; timeSteps = 16'
+);
+// solutions['method'] === 'automatic-caputo-fractional-pde'
+```
+
+Orders `1 < α ≤ 2` use the wave solver and require an initial velocity clause
+such as `u_t(x,0) = 1`, returning
+`automatic-caputo-fractional-wave-pde`. The compact route assumes Dirichlet
+endpoints and a canonical `κ*u_xx` operator; use the explicit facade for mixed
+or periodic boundaries, nonlocal spatial order, or custom evaluation options.
+
 Use the optional boundary map for mixed conditions or a periodic interval. A
 periodic pair wraps the duplicate endpoints to the opposite interior values
 before each memory update:

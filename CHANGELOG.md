@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.184.0` automatic generic dispatch for bounded
+  one-dimensional constant-order fractional diffusion and wave PDE syntax.
+
+## 2026-09-07
+
 - Documented Explaining `v0.183.0` automatic generic dispatch for scalar
   differential inclusions, interval envelopes, and trajectory selection.
 
