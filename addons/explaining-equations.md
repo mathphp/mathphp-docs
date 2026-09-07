@@ -18,6 +18,27 @@ $json = $analysis->toArray();
 Render the model as a prompt, a hint, or an audit record. Pair it with the
 [translation layer](explaining-translations.md) for learner-facing copy.
 
+## Generic calculus expressions
+
+The same entry point recognizes compact symbolic derivative and antiderivative
+requests and preserves the calculus steps and result metadata:
+
+```php
+$derivative = (new EquationAnalyzer())->analyze('d/dx (x^2 + sin(x))');
+// solutions['method'] === 'automatic-calculus-derivative'
+// solutions['result'] === '2x + cos(x)'
+
+$integral = (new EquationAnalyzer())->analyze('∫ x^2 dx');
+// solutions['method'] === 'automatic-calculus-integral'
+// solutions['result'] === '0.33333333333333x^3 + C'
+```
+
+`derivative(expression, variable)` and `integral(expression, variable)` are
+equivalent function forms. This is symbolic coverage for supported elementary
+operations; branch-sensitive, non-elementary, or otherwise unsupported terms
+remain explicitly `partial` or `unsupported`. See
+[explaining calculus](explaining-calculus.md) for the direct analyzer API.
+
 ## Conditional and piecewise expressions
 
 For a numeric result selected by conditions, use `PiecewiseEvaluator`. It

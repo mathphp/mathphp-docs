@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.194.0` automatic generic dispatch for symbolic
+  derivatives and antiderivatives, including supported forms and limitations.
+
+## 2026-09-07
+
 - Documented Explaining `v0.193.0` automatic generic dispatch for numeric
   matrix equations.
 
