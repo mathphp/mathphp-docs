@@ -267,6 +267,13 @@ finite list of roots. `NumericalImplicitEquationAnalyzer` samples a bounded
 rectangle and returns marching-squares segments for the approximate zero
 contour:
 
+The generic `EquationAnalyzer::analyze()` entry point automatically recognizes
+exactly two real unknowns and delegates to the same sampler on the default
+domain `[-10, 10] × [-10, 10]`. It returns
+`method: automatic-bounded-implicit`, `automaticDomain`, and
+`complete: false`; use the explicit analyzer when the curve is larger than
+that window or needs a finer grid.
+
 ```php
 use MathPHP\Explaining\NumericalImplicitEquationAnalyzer;
 

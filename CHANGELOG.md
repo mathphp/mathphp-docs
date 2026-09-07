@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.151.0` automatic bounded implicit-contour dispatch
+  for two-variable equalities and its finite default domain.
+
+## 2026-09-07
+
 - Documented Explaining `v0.150.0` automatic complex-system dispatch for
   square systems containing standalone `i` expressions.
 
