@@ -436,6 +436,10 @@ two-stage squaring. Every candidate is checked against both radicand domains
 and the original unsquared equation, so extraneous roots are removed before
 `complete: true` is returned.
 
+Commensurate exponential sums such as `2^x + 4^x = 6` are normalized with
+`z = 2^x`, producing a polynomial in positive `z`. Its real roots are isolated
+by the polynomial analyzer, then positive branches are mapped back to `x`.
+
 Product-exponential equations of the form `(a*x+b)*exp(a*x+b) = c` are
 dispatched to a real Lambert-W transformation before numerical sampling:
 

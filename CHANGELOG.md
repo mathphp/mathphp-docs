@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact polynomial reduction for commensurate exponential sums and
+  positive-substitution branch filtering.
+
+## 2026-09-07
+
 - Documented exact two-affine-radical solving with domain and residual checks
   after squaring.
 
