@@ -362,6 +362,22 @@ non-finite. This is convenience dispatch, not a global existence theorem; use
 the explicit numerical ODE APIs to select domains, step counts, or richer
 initial-state controls.
 
+Coupled first-order IVPs can be routed automatically as well:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    "x' = v; v' = -x; x(0) = 1; v(0) = 0",
+);
+// solutions['method'] === 'automatic-numerical-ode-system'
+// solutions['final']['values'] contains x and v at the target coordinate
+```
+
+The dispatcher infers the state variables, uses `t` for apostrophe notation,
+and uses the coordinate named by `dx/dt`-style notation when present. Every
+state must have one numeric condition at the same initial coordinate. The
+automatic run uses `[t₀, t₀ + 1]` and 128 vector-RK4 steps; choose
+`analyzeNumericalOdeSystem()` for explicit control or additional configuration.
+
 Second-order constant-coefficient forms are also recognized automatically:
 
 ```php

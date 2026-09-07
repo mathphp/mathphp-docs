@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.159.0` automatic coupled first-order IVP dispatch
+  and bounded vector-RK4 metadata.
+
+## 2026-09-07
+
 - Documented Explaining `v0.158.0` automatic embedded initial-value ODE
   dispatch for first-, second-, and higher-order numerical trajectories.
 
