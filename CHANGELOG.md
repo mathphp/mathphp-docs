@@ -2,6 +2,8 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.212.0` automatic exact routing for affine systems.
+
 - Documented Explaining `v0.211.0` higher-degree polynomial inequality sign
   charts and convergence metadata.
 

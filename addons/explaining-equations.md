@@ -362,11 +362,13 @@ bounded numerical solver on `[-100, 100]`. Such results expose
 depth is required.
 
 The same generic entry point recognizes semicolon- or newline-separated systems
-when every row is an equality. It infers ASCII unknowns and runs one damped
-Newton solve from zero, returning `method: automatic-nonlinear-system` and
-`automaticInitial`. This is intentionally one local solve: use
-`analyzeNonlinearSystemMany()` or `analyzeNonlinearSystemGrid()` to explore
-multiple basins and roots.
+when every row is an equality. It first attempts exact Gaussian elimination for
+affine rows, returning `method: automatic-linear-system` with unique,
+inconsistent, or underdetermined metadata. Nonlinear systems then fall back to
+one damped Newton solve from zero, returning `method:
+automatic-nonlinear-system` and `automaticInitial`. This is intentionally one
+local solve: use `analyzeNonlinearSystemMany()` or
+`analyzeNonlinearSystemGrid()` to explore multiple basins and roots.
 
 Inequalities and chained relations are also recognized by the generic
 `EquationAnalyzer::analyze()` entry point. They delegate to the exact/sampled
