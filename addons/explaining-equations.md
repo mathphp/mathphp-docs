@@ -114,6 +114,25 @@ history is retained, but `complete: false` is intentional: golden-section
 search gives local numerical evidence and does not prove a global optimum for
 multimodal objectives.
 
+## Generic bounded transforms
+
+Bounded numerical Laplace and Fourier transforms can use the generic entry
+point:
+
+```php
+$laplace = (new EquationAnalyzer())->analyze('laplace(t, t, 1, 0, 1)');
+// solutions['method'] === 'automatic-laplace-transform'
+
+$fourier = (new EquationAnalyzer())->analyze('fourier(1, x, 0, 0, 6.283185307179586)');
+// solutions['method'] === 'automatic-fourier-transform'
+// solutions['result'] contains real, imaginary, magnitude, and phase
+```
+
+The dispatcher uses 101-point composite Simpson sampling over the supplied
+finite interval. Results are bounded numerical evidence with `complete: false`;
+infinite-domain convergence, symbolic inversion, and transform theorems are
+not inferred from the finite sample.
+
 ## Conditional and piecewise expressions
 
 For a numeric result selected by conditions, use `PiecewiseEvaluator`. It

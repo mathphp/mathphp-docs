@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.200.0` generic bounded Laplace/Fourier transforms,
+  complex result metadata, and finite-sampling limitations.
+
+## 2026-09-07
+
 - Documented Explaining `v0.199.0` generic 2×2 matrix operations and real or
   complex eigenvalue metadata.
 
