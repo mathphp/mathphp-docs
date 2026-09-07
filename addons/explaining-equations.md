@@ -1023,6 +1023,13 @@ The same substitution covers `log1p(x)` polynomials by normalizing
 `log1p(x) = ln(1 + x)` before mapping roots back, so the strict `x > -1`
 domain remains explicit.
 
+Logarithms whose argument is a polynomial or rational polynomial are reduced
+exactly as well. `ln(x^2 + 1) = 1` becomes `x^2 + 1 = e`, while
+`log(x^2, 10) = 2` returns `x = ±10`. The `exact-log-polynomial` result keeps
+the polynomial root-completeness metadata, rejects non-positive logarithm
+arguments, and reports original denominator poles instead of silently
+cancelling them.
+
 Pairs of affine square roots such as `sqrt(x) + sqrt(x - 1) = 2` are solved by
 two-stage squaring. Every candidate is checked against both radicand domains
 and the original unsquared equation, so extraneous roots are removed before

@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact logarithmic polynomial solving, including rational
+  denominator-pole and positive-domain validation.
+
+## 2026-09-07
+
 - Documented nested square/cube-root equations with up to five independent
   absolute terms and a 32-branch complexity cap.
 
