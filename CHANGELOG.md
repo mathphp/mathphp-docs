@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact shared-phase harmonic trigonometric equations and their
+  complete periodic solution families.
+
+## 2026-09-07
+
 - Documented complete Sturm-sequence real-root isolation for higher-degree
   polynomial equations, repeated roots, and certified no-real-root cases.
 

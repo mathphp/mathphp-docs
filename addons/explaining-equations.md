@@ -402,6 +402,12 @@ bounded numerical solver on `[-100, 100]`. Such results expose
 `analyzeNumerically()` when a different interval, sample count, or refinement
 depth is required.
 
+Shared-phase harmonic equations such as `sin(x) + cos(x) = 1` are solved before
+that numerical fallback. The analyzer rewrites the combination as
+`R·sin(a·x + b + δ)`, proves out-of-range targets have no real solution, and
+returns both principal representatives and complete periodic families. Mixed
+phases such as `sin(x) + cos(2*x) = 0` remain bounded numerical problems.
+
 Product-exponential equations of the form `(a*x+b)*exp(a*x+b) = c` are
 dispatched to a real Lambert-W transformation before numerical sampling:
 
