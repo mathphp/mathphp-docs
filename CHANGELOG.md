@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact mixed affine sine/cosine equalities via cosine-to-sine phase
+  normalization, including sign and equal-magnitude coefficient handling.
+
+## 2026-09-07
+
 - Documented exact product-to-sum factorization for equal-magnitude affine sine
   and cosine sums/differences set to zero.
 

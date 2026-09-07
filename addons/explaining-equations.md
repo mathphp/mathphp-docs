@@ -101,6 +101,22 @@ This covers sums and differences of the same trigonometric function, including
 scaled equal-magnitude terms. Mixed sine/cosine sums and non-zero targets do
 not match this exact reduction and retain their normal partial status.
 
+## Mixed affine sine/cosine equalities
+
+Direct equalities between one affine sine and one affine cosine are normalized
+with `cos(t) = sin(π/2 − t)`:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('sin(x) = cos(2*x)');
+
+// solutions['method'] === 'exact-mixed-trigonometric-equality'
+// solutions['complete'] === true
+```
+
+Relative signs and equal-magnitude scalar coefficients are preserved, and both
+periodic sine branches are returned. Mixed sums such as `sin(x) + cos(2*x)`
+remain outside this direct equality reduction.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative
