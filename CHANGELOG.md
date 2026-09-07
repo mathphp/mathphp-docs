@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.240.0` exact one-variable `hypot()` equation
+  analysis and radius-domain handling.
+
+## 2026-09-07
+
 - Documented Explaining `v0.239.0` integer-congruence analysis for affine
   modulo equalities and explicit modulo domain failures.
 

@@ -546,6 +546,18 @@ Affine dividends retain signed-remainder constraints and complete residue
 classes. Modulo by zero and non-integer operands remain explicit
 `unsupported` results.
 
+One-variable `hypot()` equalities use the Euclidean norm identity directly:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('hypot(x, 3) = 5');
+// solutions['method'] === 'exact-hypot'
+// solutions['roots'] === [-4.0, 4.0]
+// solutions['complete'] === true
+```
+
+Affine components, empty radius domains, and fixed-component metadata are
+preserved. Use `analyzeHypot()` for the explicit facade.
+
 The same generic entry point recognizes semicolon- or newline-separated systems
 when every row is an equality. It first attempts exact Gaussian elimination for
 affine rows, returning `method: automatic-linear-system` with unique,
