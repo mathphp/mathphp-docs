@@ -2,6 +2,11 @@
 
 ## 2026-09-08
 
+- Documented pole-safe bracket refinement and exponential-underflow guards in
+  bounded numerical equation searches.
+
+## 2026-09-08
+
 - Documented relative residual checks that prevent underflow-driven false roots
   in bounded numerical equation searches.
 
