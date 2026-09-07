@@ -274,6 +274,25 @@ and reports complete no-real-solution results when the real argument is below
 `−1/e`. More complicated products, multiple independent logarithms, and
 complex branches remain separate analyzer families.
 
+## Unique-zero fixed-point equations
+
+The generic entry point recognizes fixed-point equalities whose supported real
+function has only the zero fixed point:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('sin(2*x + 1) = 2*x + 1');
+
+// solutions['method'] === 'exact-fixed-point'
+// solutions['roots'] === [-0.5]
+// solutions['complete'] === true
+```
+
+This exact path covers affine `sin`, `sinh`, `tanh`, `asin`, `atan`, `asinh`,
+`atanh`, `expm1`, and `log1p` arguments. Constant fixed points are reported
+as identities on their unrestricted variable domain; functions with additional
+fixed points, such as `cos`, `tan`, `sqrt`, and `cbrt`, remain on their own
+specialized or numerical paths.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative
