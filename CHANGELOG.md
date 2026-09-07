@@ -2,6 +2,12 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.141.0` coupled one-dimensional Caputo wave fields
+  with mixed component orders, typed edges, memory histories, and nonlocal
+  spatial operators.
+
+## 2026-09-07
+
 - Documented Explaining `v0.140.0` coupled three-dimensional wave systems with
   six typed faces, mixed spatial operators, synchronized snapshots, and CFL
   diagnostics.

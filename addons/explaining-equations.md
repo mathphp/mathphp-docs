@@ -2166,8 +2166,8 @@ available as diffusion. Pass `spatialOrder` between `0` and `2` to select the
 bounded symmetric nonlocal kernel; `spatialOrder: 2.0` preserves the centered
 second derivative. Results expose `caputo-explicit-fractional-wave` (or its
 nonlocal variant), the order, operator mode, stability number, forcing history,
-and `pde-heatmap` snapshots. Fractional wave systems and 2D/3D fractional waves
-remain outside this focused 1D contract.
+and `pde-heatmap` snapshots. Coupled fields use the dedicated system analyzer
+below.
 
 ## Two-dimensional Caputo fractional waves
 
@@ -2195,7 +2195,42 @@ The result retains the initial-velocity contribution, every two-dimensional
 forcing field, and `pde-heatmap-2d` snapshots. Dirichlet, Neumann, Robin, and
 paired-periodic edges are supported. Set `spatialOrder` below `2` for the
 bounded symmetric nonlocal kernel; `spatialOrder: 2.0` keeps the local five-point
-Laplacian. Fractional wave systems remain outside this focused contract.
+Laplacian.
+
+## Coupled one-dimensional Caputo fractional waves
+
+`NumericalCoupledFractionalWavePdeAnalyzer` supports several fields on one
+shared bounded grid. Each equation may reference every field and its centered
+spatial derivatives, while each component can use a different constant order:
+
+```text
+D_t^α u = 0.02*u_xx + v
+D_t^β v = 0.02*v_xx - u
+```
+
+```php
+use MathPHP\Explaining\NumericalCoupledFractionalWavePdeAnalyzer;
+
+$system = (new NumericalCoupledFractionalWavePdeAnalyzer())->analyze(
+    'D_t^alpha u = 0.02*u_xx + v; D_t^alpha v = 0.02*v_xx - u',
+    ['u', 'v'],
+    1.6,
+    ['u' => 'sin(pi*x)', 'v' => '0'],
+    ['u' => '0', 'v' => '1'],
+    ['u' => '0', 'v' => '0'],
+    ['u' => '0', 'v' => '0'],
+    spacePoints: 41,
+    timeSteps: 100,
+);
+```
+
+Pass an order map such as `['u' => 0.7, 'v' => 1.8]` for mixed diffusion and
+wave memory. Components with `1 < α ≤ 2` require an initial velocity; all
+forcing histories, temporal modes, operator modes, and synchronized snapshots
+are retained. Typed Dirichlet, Neumann, Robin, and paired-periodic edges plus
+bounded nonlocal spatial order are supported. The visual payload is
+`pde-system-fractional-wave`; symbolic solutions and higher-dimensional
+coupled fractional-wave systems remain outside this focused contract.
 
 ## Three-dimensional Caputo fractional waves
 
