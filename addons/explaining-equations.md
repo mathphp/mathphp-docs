@@ -2263,8 +2263,46 @@ Use an order map for mixed diffusion and wave memory, and set `spatialOrder`
 below `2` for the bounded symmetric nonlocal operator. The result retains
 per-field forcing histories, temporal/operator modes, synchronized snapshots,
 and a `pde-system-fractional-wave-2d` visual. Symbolic solutions, unbounded
-domains, and coupled three-dimensional fractional waves remain outside this
-focused contract.
+domains, and arbitrary higher-dimensional/general-order systems remain outside
+this focused contract.
+
+## Coupled three-dimensional Caputo fractional waves
+
+`NumericalCoupledFractionalWavePde3DAnalyzer` extends the coupled memory
+contract to a bounded box with six typed faces. Each field may use a diffusion
+order (`0 < α < 1`) or wave order (`1 < α ≤ 2`), and equations may couple
+fields through `x`, `y`, `z`, mixed `xy`/`xz`/`yz`, or nonlocal spatial
+operators:
+
+```text
+D_t^α u = 0.01*(u_xx + u_yy + u_zz) + v
+D_t^α v = 0.01*(v_xx + v_yy + v_zz) - u
+```
+
+```php
+use MathPHP\Explaining\NumericalCoupledFractionalWavePde3DAnalyzer;
+
+$volume = (new NumericalCoupledFractionalWavePde3DAnalyzer())->analyze(
+    'D_t^alpha u = 0.01*(u_xx + u_yy + u_zz) + v; D_t^alpha v = 0.01*(v_xx + v_yy + v_zz) - u',
+    ['u', 'v'],
+    ['u' => 0.7, 'v' => 1.8],
+    ['u' => 'sin(pi*x)*sin(pi*y)*sin(pi*z)', 'v' => '0'],
+    ['v' => '0'],
+    ['u' => '0', 'v' => '0'], ['u' => '0', 'v' => '0'],
+    ['u' => '0', 'v' => '0'], ['u' => '0', 'v' => '0'],
+    ['u' => '0', 'v' => '0'], ['u' => '0', 'v' => '0'],
+    firstPoints: 15,
+    secondPoints: 15,
+    thirdPoints: 15,
+    timeSteps: 100,
+);
+```
+
+The same API is available through `EquationAnalyzer`. Six faces support
+Dirichlet, Neumann, Robin, and paired-periodic conditions; `spatialOrder < 2`
+selects a bounded symmetric nonlocal volume operator. Results retain per-field
+Caputo forcing histories, mixed temporal/operator modes, and synchronized
+snapshots with a `pde-system-fractional-wave-3d` visual payload.
 
 ## Three-dimensional Caputo fractional waves
 

@@ -2,6 +2,12 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.143.0` coupled three-dimensional Caputo
+  fractional-wave fields with mixed temporal modes, six typed faces, mixed and
+  nonlocal spatial operators, and synchronized visual snapshots.
+
+## 2026-09-07
+
 - Documented Explaining `v0.142.0` coupled two-dimensional Caputo wave fields
   with mixed orders, typed edges, mixed spatial operators, and retained memory
   histories.
