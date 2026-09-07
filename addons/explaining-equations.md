@@ -114,6 +114,21 @@ history is retained, but `complete: false` is intentional: golden-section
 search gives local numerical evidence and does not prove a global optimum for
 multimodal objectives.
 
+Two-variable bounded objectives use deterministic coarse-grid and local
+refinement search:
+
+```php
+$minimum2d = (new EquationAnalyzer())->analyze(
+    'minimize2d((x - 1)^2 + (y + 2)^2, x, y, -5, 5, -5, 5)'
+);
+// solutions['method'] === 'automatic-bounded-2d-minimize'
+// solutions['optimum'] is approximately ['x' => 1, 'y' => -2]
+```
+
+`maximize2d`, `argmin2d`, and `argmax2d` are accepted aliases. The bounded
+rectangle and refinement history are retained, but `complete: false` is
+intentional because multimodal global optimality is not proven.
+
 ## Generic bounded transforms
 
 Bounded numerical Laplace and Fourier transforms can use the generic entry
