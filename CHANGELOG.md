@@ -2,6 +2,11 @@
 
 ## 2026-09-08
 
+- Documented custom-function propagation through the generic equation
+  dispatcher and its bounded numerical fallback.
+
+## 2026-09-08
+
 - Documented pole-safe sampled inequality boundary refinement and explicit
   `partial` status for unresolved singular boundaries.
 

@@ -973,6 +973,12 @@ Pass `EvaluationOptions` when an equation uses an explicitly registered Core
 function; both sides are then evaluated through the same function registry and
 resource limits as the rest of your application.
 
+The generic `EquationAnalyzer::analyze()` entry point accepts the same optional
+`EvaluationOptions` argument. Registered custom functions therefore remain
+available when the dispatcher falls back to bounded numerical solving, while
+exact analyzers still report `unsupported` or `partial` when no symbolic proof
+is available.
+
 The Core evaluator also provides domain-checked special functions such as
 `erf`, `erfc`, `gamma`, and `lgamma`. They can be used directly in bounded
 equation searches and in any explaining analyzer that evaluates Core
