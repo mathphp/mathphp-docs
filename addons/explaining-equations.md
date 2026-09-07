@@ -2256,6 +2256,22 @@ evaluation limits supplied through `EvaluationOptions` are preserved across
 the automatic parabolic, elliptic, wave, coupled-wave, and fractional-PDE
 routes.
 
+The generic entry point also recognizes a bounded coupled one-dimensional
+parabolic system when every field supplies an initial profile, two Dirichlet
+endpoints, and finite space/time domains:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'u_t = u_xx + v; v_t = v_xx; u(x,0) = 0; v(x,0) = 1; u(0,t) = 0; u(1,t) = 0; v(0,t) = 1; v(1,t) = 1; x = {0,1}; t = {0,0.01}; spacePoints = 41; timeSteps = 10',
+);
+// solutions['method'] === 'automatic-bounded-coupled-parabolic-pde'
+// solutions['automaticVariables'] === ['u', 'v']
+```
+
+The compact route remains Dirichlet-only; use
+`analyzeNumericalCoupledParabolicPde()` for mixed boundary types or advanced
+controls.
+
 The generic dispatcher also recognizes a fully specified bounded two-dimensional
 elliptic Dirichlet problem:
 
@@ -3016,6 +3032,12 @@ Pure third derivatives use a wider centered stencil and sensitivity-aware
 stability bounds. This remains a bounded explicit approximation; arbitrary mixed
 third derivatives, unpaired periodic faces, nonlocal boundaries, higher
 dimensions, and symbolic general solutions are not implied.
+
+The generic entry point also recognizes the compact three-dimensional
+initial-boundary form with per-field profiles, six Dirichlet faces, finite
+x/y/z/t domains, and grid controls. It returns
+`automatic-bounded-coupled-parabolic-3d-pde`; use
+`analyzeNumericalCoupledParabolicPde3D()` for mixed faces or advanced controls.
 
 ## Two-dimensional wave equations
 
