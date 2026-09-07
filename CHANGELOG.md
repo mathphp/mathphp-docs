@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented bounded-degree polynomial substitutions for inverse trigonometric
+  and inverse hyperbolic values, including principal-range filtering.
+
+## 2026-09-07
+
 - Documented normalization of positive constant-base powers such as `e^x` and
   `2^x` into exponential-linear Lambert-W analysis.
 

@@ -475,6 +475,11 @@ gap of secant or cosecant are rejected exactly.
 Hyperbolic polynomials are handled with their real inverse domains as well:
 `sinh(x)^2 = 1`, `cosh(x)^2 = 4`, and `tanh(x)^2 = 0.25` return complete roots,
 while `cosh(x)^2 = 0.25` and `tanh(x)^2 = 1` are proved impossible.
+Polynomial expressions in principal inverse functions are handled with their
+own ranges as well: `asin(x)^2 = 0.25`, `acos(x)^2 = 1`, `atan(x)^2 = 1`,
+`asinh(x)^2 = 1`, `acosh(x)^2 = 1`, and `atanh(x)^2 = 1` map polynomial roots
+through the corresponding direct function. Roots outside a principal inverse
+range are discarded before the affine argument is reconstructed.
 
 Commensurate exponential equations can contain more than two terms. The solver
 substitutes `z = exp(a*x+b)` and delegates bounded-degree polynomials to the
