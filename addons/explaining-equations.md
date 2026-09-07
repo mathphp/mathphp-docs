@@ -534,8 +534,9 @@ reduces the remaining inner radical with a second domain-checked squaring. It
 rejects denominator poles and candidates that fail the original nested residual.
 For chains up to four nested levels, the recursive analyzer applies the same
 reduction inside-out and reports `exact-nested-radical-chain` with a `depth`
-field. Deeper chains and multiple independent nested roots remain partial or
-bounded numerical paths.
+field. Square-root levels enforce nonnegative radicands; real cube-root levels
+retain signed branches. Deeper chains and multiple independent nested roots
+remain partial or bounded numerical paths.
 
 ```php
 $analysis = (new EquationAnalyzer())->analyze(
@@ -545,6 +546,15 @@ $analysis = (new EquationAnalyzer())->analyze(
 // solutions['method'] === 'exact-nested-radical-chain'
 // solutions['roots'] === [64]
 // solutions['depth'] === 2
+```
+
+Mixed chains are supported as well:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('cbrt(1 + sqrt(x)) = 2');
+
+// solutions['method'] === 'exact-nested-radical-chain'
+// solutions['roots'] === [49]
 ```
 
 ## Generic calculus expressions
