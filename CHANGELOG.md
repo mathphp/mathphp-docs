@@ -2,6 +2,11 @@
 
 ## 2026-09-08
 
+- Documented custom-function propagation through automatic bounded integrals,
+  limits, and Laplace/Fourier transforms.
+
+## 2026-09-08
+
 - Documented custom-function propagation through automatic finite sums and
   products.
 
