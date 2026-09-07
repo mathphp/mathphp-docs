@@ -492,7 +492,7 @@ $analysis = (new EquationAnalyzer())->analyze("y' = 2*y + 3");
 ```
 
 `dy/dx = 4` is accepted as well. Elementary forcing is supported for numeric
-constant p:
+or x-dependent p(x):
 
 ```php
 $analysis = (new EquationAnalyzer())->analyze("y' + 2*y = x");
@@ -500,10 +500,10 @@ $analysis = (new EquationAnalyzer())->analyze("y' + 2*y = x");
 // solutions['forcingAntiderivative'] is retained.
 ```
 
-`analyzeElementaryLinearOde()` is the explicit facade. The forcing q(x) must
-use only the independent variable and supported elementary operations. If the
-integrating-factor product is not elementary, the result is `partial`; a q(x)
-that contains y is not treated as linear forcing.
+`analyzeElementaryLinearOde()` is the explicit facade. The coefficient p(x) and
+forcing q(x) must use only the independent variable and supported elementary
+operations. If p(x) or the integrating-factor product is not elementary, the
+result is `partial`; a q(x) that contains y is not treated as linear forcing.
 
 Constant-coefficient Bernoulli forms use the
 `v = y^(1−n)` substitution:

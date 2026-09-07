@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.221.0` variable-coefficient elementary linear ODE
+  support and integrating-factor boundaries.
+
+## 2026-09-07
+
 - Documented Explaining `v0.220.0` elementary-forcing linear ODE analysis with
   integrating-factor metadata.
 
