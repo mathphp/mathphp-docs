@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.198.0` generic bounded optimization dispatch,
+  aliases, golden-section evidence, and local-search limitations.
+
+## 2026-09-07
+
 - Documented Explaining `v0.197.0` generic bounded definite-integral dispatch,
   Simpson-area metadata, and explicit sampling limitations.
 

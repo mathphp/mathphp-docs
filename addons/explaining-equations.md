@@ -94,6 +94,26 @@ Both forms use bounded Simpson sampling and return `complete: false`. If a
 sample is undefined or non-finite, the result is `partial` and the gap is kept
 visible rather than coerced to zero.
 
+## Generic bounded optimization
+
+One-variable bounded objectives can use golden-section search through the same
+entry point:
+
+```php
+$minimum = (new EquationAnalyzer())->analyze('minimize((x - 2)^2, x, -5, 5)');
+// solutions['method'] === 'automatic-bounded-minimize'
+// solutions['optimum'] is approximately 2
+
+$maximum = (new EquationAnalyzer())->analyze('argmax(-(x - 1)^2 + 4, x, -3, 3)');
+// solutions['method'] === 'automatic-bounded-maximize'
+// solutions['value'] is approximately 4
+```
+
+`min`, `max`, `argmin`, and `argmax` are accepted aliases. The iteration
+history is retained, but `complete: false` is intentional: golden-section
+search gives local numerical evidence and does not prove a global optimum for
+multimodal objectives.
+
 ## Conditional and piecewise expressions
 
 For a numeric result selected by conditions, use `PiecewiseEvaluator`. It
