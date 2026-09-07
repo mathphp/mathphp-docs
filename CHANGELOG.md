@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.235.0` bounded discrete factorial analysis and
+  automatic dispatch.
+
+## 2026-09-07
+
 - Documented Explaining `v0.234.0` scoped implicit-multiplication normalization
   for variable-parenthesis equation notation.
 

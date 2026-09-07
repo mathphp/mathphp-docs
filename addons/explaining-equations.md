@@ -478,6 +478,18 @@ Implicit multiplication is accepted in algebraic equation paths, including
 variable immediately before `(`; named calls such as `sin(x)` remain function
 calls, and the original input is preserved in the returned analysis.
 
+Discrete factorial equations are supported on the non-negative integer domain:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('n! = 120');
+// solutions['method'] === 'automatic-factorial'
+// solutions['roots'] === [5]
+```
+
+Use `analyzeFactorial()` for the explicit facade. The result exposes its
+integer search limit, domain note, completeness flag, and duplicate roots for
+`0! = 1! = 1`.
+
 The same generic entry point recognizes semicolon- or newline-separated systems
 when every row is an equality. It first attempts exact Gaussian elimination for
 affine rows, returning `method: automatic-linear-system` with unique,
