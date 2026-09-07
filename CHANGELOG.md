@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact scaled single-log solving with strict positive-domain
+  validation.
+
+## 2026-09-07
+
 - Documented exact product and quotient solving for pairs of affine logarithms
   with matching bases and explicit domain filtering.
 

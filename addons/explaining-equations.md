@@ -428,6 +428,8 @@ as well. For example, `ln(x) + ln(x - 1) = 0` uses the product rule and a
 quadratic, while `ln(x) - ln(x - 1) = ln(2)` uses the quotient rule and a
 linear equation. Roots are retained only when every logarithm argument is
 strictly positive, so the result can safely expose `complete: true`.
+Scaled single-log forms such as `2*ln(x) = ln(4)` use the same isolation path
+and retain the positive-domain check.
 
 Product-exponential equations of the form `(a*x+b)*exp(a*x+b) = c` are
 dispatched to a real Lambert-W transformation before numerical sampling:
