@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact absolute-value branch reduction inside an outer square- or
+  cube-root expression, including optional inner polynomial radicals.
+
+## 2026-09-07
+
 - Documented mixed square- and real cube-root nested chains with degree-aware
   branch reconstruction and domain validation.
 
