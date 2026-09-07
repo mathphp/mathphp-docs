@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.224.0` characteristic-root and closed-form
+  metadata for numeric first- and second-order linear recurrences.
+
+## 2026-09-07
+
 - Documented Explaining `v0.223.0` branch-aware constant-coefficient Riccati
   ODE analysis and automatic dispatch.
 

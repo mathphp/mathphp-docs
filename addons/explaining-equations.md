@@ -239,7 +239,24 @@ $sequence = (new RecurrenceAnalyzer())->analyze(
 The analyzer performs bounded forward substitution and can use Core functions
 of `n` for forcing terms. Forward references, missing initial values, domain
 errors, and requests beyond the finite term limit return `unsupported` or
-`partial`; no infinite sequence or closed form is implied.
+`partial`.
+
+When the rule is a numeric first- or second-order linear recurrence, the same
+result also includes a characteristic equation and a closed form:
+
+```php
+$analysis = (new RecurrenceAnalyzer())->analyze(
+    'a[n+2] = a[n+1] + a[n]',
+    [0 => 0, 1 => 1],
+);
+// $analysis->solution['closedForm'] contains the Fibonacci family.
+// $analysis->solution['characteristicRoots'] contains both roots.
+```
+
+Distinct real roots, repeated roots, and complex-conjugate roots are reported
+with separate branch metadata. Higher-order, nonlinear, variable-coefficient,
+or incomplete-seed recurrences continue to return bounded terms without an
+invented infinite closed form.
 
 For mutually dependent sequences, use `RecurrenceSystemAnalyzer` with one
 equation per variable. Updates are synchronous: every right-hand side reads
