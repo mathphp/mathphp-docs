@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact three-stage elimination for three independent polynomial
+  square-root terms with domain, denominator, and residual validation.
+
+## 2026-09-07
+
 - Documented exact signed cube-root plus absolute-value branch solving,
   including `cbrt(...)` and equivalent fractional-power syntax.
 

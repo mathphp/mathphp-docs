@@ -473,10 +473,27 @@ $analysis = (new EquationAnalyzer())->analyze(
 
 Candidates are checked against both principal-root domains, original rational
 denominator poles, and the unsquared equation. This prevents the second
-squaring step from leaking extraneous roots. More than two independent square
+squaring step from leaking extraneous roots. Four or more independent square
 roots remain on their dedicated affine reductions or bounded numerical paths.
 Equivalent fractional-power syntax with exponents `1/2` and `1/3` is normalized
 to the same exact square- and cube-root paths.
+
+Three independent square-root terms are eliminated by three-stage squaring:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'sqrt(x^2 + 1) + sqrt(x^2 + 4) + sqrt(x^2 + 9) = 6'
+);
+
+// solutions['method'] === 'exact-polynomial-radical-triple'
+// solutions['roots'] === [0]
+// solutions['complete'] === true
+```
+
+Every candidate is checked against all principal-root domains, rational
+denominator poles, and the original unsquared equation. Four or more
+independent roots and nested radical compositions remain on partial or
+bounded numerical paths so completeness is not overstated.
 
 ## Generic calculus expressions
 
