@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.239.0` integer-congruence analysis for affine
+  modulo equalities and explicit modulo domain failures.
+
+## 2026-09-07
+
 - Documented Explaining `v0.238.0` complete interval analysis for affine-vs-
   constant `min()` and `max()` equalities.
 

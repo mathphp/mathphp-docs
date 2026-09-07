@@ -532,6 +532,20 @@ $analysis = (new EquationAnalyzer())->analyze('max(-x, 5) = 5');
 Use `analyzePiecewiseFunction()` for the explicit facade. Singleton roots,
 closed half-lines, and empty sets retain `complete: true` metadata.
 
+Modulo equalities are solved over Core's integer domain:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('x % 2 = 0');
+// solutions['method'] === 'integer-congruence'
+// solutions['variableDomain'] === 'integers'
+// solutions['residue'] === 0
+// solutions['modulus'] === 2
+```
+
+Affine dividends retain signed-remainder constraints and complete residue
+classes. Modulo by zero and non-integer operands remain explicit
+`unsupported` results.
+
 The same generic entry point recognizes semicolon- or newline-separated systems
 when every row is an equality. It first attempts exact Gaussian elimination for
 affine rows, returning `method: automatic-linear-system` with unique,
