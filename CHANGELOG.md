@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.147.0` piecewise/`if(...)` equality dispatch and
+  branch-aware bounded diagnostics in the generic equation entry point.
+
+## 2026-09-07
+
 - Documented Explaining `v0.146.0` automatic bounded inequality dispatch,
   including chained relations and explicit default-domain metadata.
 

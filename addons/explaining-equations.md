@@ -221,6 +221,12 @@ bounded inequality analyzer on `[-100, 100]`, expose
 bounded results rather than global proofs. Use `analyzeInequality()` to choose
 the interval and sampling controls explicitly.
 
+Piecewise and `if(...)` equalities are detected before relation dispatch and
+use `PiecewiseEquationAnalyzer` branch by branch. The generic path reports
+`method: automatic-bounded-piecewise`, records `automaticDomain`, and keeps
+branch jumps or undefined samples as `partial` evidence rather than treating a
+discontinuity as a root.
+
 ## Implicit two-variable equations
 
 A single equality in two unknowns usually describes a curve rather than a
