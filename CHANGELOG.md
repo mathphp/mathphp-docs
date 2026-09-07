@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.226.0` repeated-root recurrence reconstruction with
+  confluent-Vandermonde verification.
+
+## 2026-09-07
+
 - Documented Explaining `v0.225.0` higher-order linear-recurrence roots and
   conservative complex Vandermonde closed-form reconstruction.
 

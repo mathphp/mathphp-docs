@@ -256,8 +256,10 @@ $analysis = (new RecurrenceAnalyzer())->analyze(
 Distinct real roots, repeated roots, and complex-conjugate roots are reported
 with separate branch metadata. Numeric linear recurrences through order eight
 with distinct, well-conditioned roots receive a generalized complex closed
-form reconstructed from the supplied seeds. Near-repeated or ill-conditioned
-roots retain characteristic metadata with `closedFormComplete: false`; higher-
+form reconstructed from the supplied seeds. Repeated roots are reconstructed
+with polynomial-in-index factors when the generated sequence verifies the
+recurrence. Near-repeated or ill-conditioned roots retain characteristic
+metadata with `closedFormComplete: false`; higher-
 order beyond the supported bound, nonlinear, variable-coefficient, or
 incomplete-seed recurrences continue to return bounded terms without an
 invented infinite closed form.
