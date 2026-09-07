@@ -35,9 +35,9 @@ $analysis = (new CalculusAnalyzer())->integral('sqrt(x) + 2*x');
 // status: solved; an arbitrary constant C is appended.
 ```
 
-Non-elementary integrals, products requiring non-affine substitution, and
-branch-sensitive complex antiderivatives remain `partial` rather than being
-guessed.
+Non-elementary integrals, products outside the recognized monomial-power
+substitution patterns, and branch-sensitive complex antiderivatives remain
+`partial` rather than being guessed.
 
 Variable arguments use Core's portable aliases. An expression containing `α`
 can be analyzed by passing `α` as the variable; both are normalized to the

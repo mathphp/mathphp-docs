@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.208.0` monomial-power substitution for selected
+  composite products.
+
+## 2026-09-07
+
 - Documented Explaining `v0.207.0` normalization of unary numeric exponents in
   symbolic differentiation.
 
