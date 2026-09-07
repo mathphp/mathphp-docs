@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.228.0` factored logistic ODE analysis,
+  equilibrium branches, and denominator-domain metadata.
+
+## 2026-09-07
+
 - Documented Explaining `v0.227.0` homogeneous first-order ODE ratio
   substitution and branch-aware quadratic forcing support.
 

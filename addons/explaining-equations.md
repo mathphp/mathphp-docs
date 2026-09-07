@@ -581,6 +581,22 @@ branch retains the `x ≠ 0` domain requirement and pole metadata; non-quadratic
 ratio functions or mixed x/y dependence remain explicit numerical or partial
 cases.
 
+### Logistic first-order equations
+
+Factored logistic equations `y' = r*y*(1-y/K)` are recognized:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze("y' = 2*y*(1-y/10)");
+// solutions['method'] === 'automatic-logistic-ode'
+// solutions['branch'] === 'nonzero-growth'
+```
+
+`analyzeLogisticOde()` is the explicit facade. The result retains `rate`,
+`carryingCapacity`, both equilibrium solutions, `complete: false`, and a
+denominator-domain note. Zero-growth forms return the full constant family;
+nonnumeric, differently factored, or variable-coefficient forms remain
+explicit numerical or partial cases.
+
 ### Exact first-order equations
 
 The generic dispatcher also recognizes exact equations when the derivative can
