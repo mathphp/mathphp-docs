@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented normalization of positive constant-base powers such as `e^x` and
+  `2^x` into exponential-linear Lambert-W analysis.
+
+## 2026-09-07
+
 - Documented exact logarithmic polynomial substitutions for `log1p()` with its
   strict argument-greater-than-−1 domain.
 
