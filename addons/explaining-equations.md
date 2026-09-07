@@ -502,6 +502,21 @@ Use `analyzeConstant()` for the explicit facade. The result includes both
 evaluated sides, residual, tolerance, and a complete satisfaction flag; any
 unresolved variable is left for the relevant analyzer.
 
+Discrete real functions return complete intervals instead of sampled points:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('floor(x) = 3');
+// solutions['method'] === 'discrete-function-interval'
+// solutions['intervals'] === [[
+//     'lower' => 3.0, 'upper' => 4.0,
+//     'lowerInclusive' => true, 'upperInclusive' => false,
+// ]]
+```
+
+Affine `floor`, `ceil`, `round` (PHP half-up ties), and `sign` forms preserve
+open and closed endpoints and report `complete: true`. Use
+`analyzeDiscrete()` to choose the variable or provide known parameters.
+
 The same generic entry point recognizes semicolon- or newline-separated systems
 when every row is an equality. It first attempts exact Gaussian elimination for
 affine rows, returning `method: automatic-linear-system` with unique,

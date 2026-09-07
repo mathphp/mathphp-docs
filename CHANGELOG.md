@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.237.0` complete interval analysis for affine
+  `floor`, `ceil`, `round`, and `sign` equalities.
+
+## 2026-09-07
+
 - Documented Explaining `v0.236.0` variable-free constant equality evaluation
   and automatic dispatch.
 
