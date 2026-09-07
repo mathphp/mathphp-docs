@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.182.0` automatic generic dispatch for bounded
+  second-order ODE boundary-value problems and shooting controls.
+
+## 2026-09-07
+
 - Documented Explaining `v0.181.0` automatic generic dispatch for coupled
   mixed-order Caputo systems, including wave components and velocity clauses.
 

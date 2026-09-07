@@ -389,6 +389,24 @@ $analysis = (new EquationAnalyzer())->analyze("y'' + y = 0");
 The route returns the symbolic general solution and characteristic metadata;
 call `analyzeSecondOrderOde()` when initial values are available.
 
+The generic dispatcher also recognizes a bounded second-order boundary-value
+problem when two endpoint values are supplied:
+
+```php
+$bvp = (new EquationAnalyzer())->analyze(
+    'd2y/dx2 = 0; y(0) = 0; y(1) = 1; x = {0,1}; steps = 64'
+);
+// solutions['method'] === 'automatic-boundary-value-ode'
+// solutions['automaticDomain'] === [0.0, 1.0]
+```
+
+The compact route uses bounded shooting with RK4 and returns the selected
+initial slope, endpoint residual, and trajectory. `steps`, `iterations`, and
+`tolerance` clauses are optional. It reports `partial` when shooting cannot
+meet the residual tolerance; it does not prove uniqueness or cover derivative,
+multi-point, singular, or higher-order boundary conditions. Use
+`analyzeNumericalBoundaryValueOde()` for those explicit controls.
+
 Complete compact index-1 differential-algebraic systems are also recognized by
 the generic dispatcher:
 
