@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact equal-base logarithm solving through injectivity, including
+  polynomial and rational-polynomial arguments with shared domain validation.
+
+## 2026-09-07
+
 - Documented exact polynomial absolute-value combinations with up to seven
   independent terms and 128 sign branches.
 

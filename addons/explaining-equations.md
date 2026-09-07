@@ -1030,6 +1030,13 @@ the polynomial root-completeness metadata, rejects non-positive logarithm
 arguments, and reports original denominator poles instead of silently
 cancelling them.
 
+Equal-base logarithm equalities use injectivity before numerical fallback.
+For example, `ln(x^2 + 1) = ln(10)` becomes `x^2 + 1 = 10`, and
+`log((x + 1) / (x - 1), 2) = log(3, 2)` becomes a rational-polynomial
+equality. The `exact-same-base-logarithm` result validates both strict
+positive-argument domains and denominator restrictions; identical arguments
+are returned as domain-limited identities rather than a finite root list.
+
 Pairs of affine square roots such as `sqrt(x) + sqrt(x - 1) = 2` are solved by
 two-stage squaring. Every candidate is checked against both radicand domains
 and the original unsquared equation, so extraneous roots are removed before
