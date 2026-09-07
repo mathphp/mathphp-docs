@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.199.0` generic 2×2 matrix operations and real or
+  complex eigenvalue metadata.
+
+## 2026-09-07
+
 - Documented Explaining `v0.198.0` generic bounded optimization dispatch,
   aliases, golden-section evidence, and local-search limitations.
 

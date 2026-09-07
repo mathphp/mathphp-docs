@@ -572,6 +572,22 @@ The result retains Gaussian-elimination rank, consistency, and augmented
 matrix diagnostics. Use `analyzeMatrixEquation()` when the matrix and vector
 are already available as PHP arrays.
 
+Common numeric 2×2 matrix operations are also available through the generic
+entry point:
+
+```php
+$determinant = (new EquationAnalyzer())->analyze('det([[1,2],[3,4]])');
+// solutions['method'] === 'automatic-matrix-determinant'
+// solutions['result'] === -2
+
+$spectrum = (new EquationAnalyzer())->analyze('eigenvalues([[2,1],[1,2]])');
+// solutions['result'] === [3, 1]
+```
+
+`transpose(...)`, `inverse(...)`, `eigenvalue(...)`, and `spectrum(...)` are
+accepted for numeric 2×2 matrices. Complex eigenvalues retain explicit
+real/imaginary components, while singular inverses remain `partial`.
+
 ## Bounded Fredholm integral equations
 
 `NumericalIntegralEquationAnalyzer` adds a finite collocation solver for linear
