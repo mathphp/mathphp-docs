@@ -2,6 +2,11 @@
 
 ## 2026-09-08
 
+- Documented automatic bounded dispatch for scalar two- and three-dimensional
+  parabolic initial-boundary problems.
+
+## 2026-09-08
+
 - Documented automatic bounded dispatch for coupled one- and three-dimensional
   parabolic initial-boundary systems.
 

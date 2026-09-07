@@ -2256,6 +2256,21 @@ evaluation limits supplied through `EvaluationOptions` are preserved across
 the automatic parabolic, elliptic, wave, coupled-wave, and fractional-PDE
 routes.
 
+The same compact initial-boundary syntax dispatches scalar rectangular
+parabolic problems in two and three dimensions. For example:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'u_t = 0.1*(u_xx + u_yy); u(x,y,0) = 1; u(0,y,t) = 1; u(1,y,t) = 1; u(x,0,t) = 1; u(x,1,t) = 1; x = {0,1}; y = {0,1}; t = {0,0.01}; firstPoints = 25; secondPoints = 25; timeSteps = 10',
+);
+// solutions['method'] === 'automatic-bounded-parabolic-2d-pde'
+```
+
+The three-dimensional form adds `z`, two more faces, and `thirdPoints`,
+returning `automatic-bounded-parabolic-3d-pde`. These compact routes infer
+Dirichlet faces only; use the explicit numerical facades for mixed boundaries,
+non-default coordinates, or advanced solver controls.
+
 The generic entry point also recognizes a bounded coupled one-dimensional
 parabolic system when every field supplies an initial profile, two Dirichlet
 endpoints, and finite space/time domains:
