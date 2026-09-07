@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact polynomial absolute-value equations with both sign branches
+  and denominator/residual filtering.
+
+## 2026-09-07
+
 - Documented exact polynomial cube-root equations with negative real branch
   support and completeness metadata.
 

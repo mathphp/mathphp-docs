@@ -384,6 +384,26 @@ $analysis = (new EquationAnalyzer())->analyze('cbrt(x^2 - 1) = x - 1');
 // solutions['complete'] === true
 ```
 
+## Polynomial absolute-value equations
+
+An absolute value around a polynomial or rational-polynomial expression is
+solved by enumerating both sign branches:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('abs(x^2 - 1) = 3');
+
+// solutions['method'] === 'exact-polynomial-absolute'
+// solutions['roots'] === [-2, 2]
+// solutions['complete'] === true
+```
+
+The analyzer solves `P(x) = Q(x)` and `−P(x) = Q(x)`, removes roots at
+original rational denominator poles, and validates every survivor against the
+absolute-value residual. It supports scalar multiples and constant-denominator
+rational terms. Multiple independent absolute terms, inequalities, and
+piecewise combinations continue through their dedicated branch or bounded
+numerical analyzers.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative
