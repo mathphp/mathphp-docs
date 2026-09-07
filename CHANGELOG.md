@@ -2,6 +2,11 @@
 
 ## 2026-09-08
 
+- Documented custom-function propagation through automatic finite sums and
+  products.
+
+## 2026-09-08
+
 - Documented custom-function propagation through automatic initial-value ODE
   and ODE-system dispatch.
 

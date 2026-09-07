@@ -980,6 +980,10 @@ inequalities, implicit regions, and initial-value ODE paths, while exact
 analyzers still report `unsupported` or `partial` when no symbolic proof is
 available.
 
+Automatic finite sums and products use the supplied function registry for every
+term as well, so custom functions remain available in expressions such as
+`sum(custom(k), k, 1, 5)`.
+
 The Core evaluator also provides domain-checked special functions such as
 `erf`, `erfc`, `gamma`, and `lgamma`. They can be used directly in bounded
 equation searches and in any explaining analyzer that evaluates Core
