@@ -559,8 +559,8 @@ $analysis = (new EquationAnalyzer())->analyze('cbrt(1 + sqrt(x)) = 2');
 
 ## Nested radicals with absolute values
 
-An outer square or real cube root can contain one absolute-value branch and an
-optional inner polynomial radical:
+An outer square or real cube root can contain up to two independent
+absolute-value branches and an optional inner polynomial radical:
 
 ```php
 $analysis = (new EquationAnalyzer())->analyze(
@@ -575,6 +575,20 @@ The analyzer enumerates both signs of the absolute value, raises the outer
 equation to its integer root degree, and reduces the remaining square or cube
 root. It validates all radicand domains, denominator poles, principal
 square-root targets, signed cube-root branches, and the original residual.
+
+With two absolute terms, all four sign combinations are enumerated:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'sqrt(1 + sqrt(x) + abs(x - 1) + abs(x - 2)) = 4'
+);
+
+// solutions['method'] === 'exact-nested-radical-absolute'
+// solutions['branchCount'] === 4
+```
+
+Three or more independent absolute terms remain partial or bounded numerical
+paths.
 
 ## Generic calculus expressions
 
