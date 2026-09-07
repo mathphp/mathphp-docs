@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.139.0` coupled two-dimensional wave systems with
+  typed edges, coupled spatial operators, and CFL diagnostics.
+
+## 2026-09-07
+
 - Documented Explaining `v0.138.0` coupled one-dimensional wave systems with
   initial displacement/velocity maps, typed boundaries, and CFL diagnostics.
 

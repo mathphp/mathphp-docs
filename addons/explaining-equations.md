@@ -856,6 +856,45 @@ the visual payload is `pde-system-wave`. This is a bounded explicit numerical
 approximation; higher-dimensional coupled waves, nonlocal boundaries, and
 symbolic/global wave-system solutions remain outside this contract.
 
+## Coupled two-dimensional wave systems
+
+`NumericalCoupledWavePde2DAnalyzer` extends the coupled wave contract to a
+bounded rectangle with four typed edges. Each equation has one second-time
+derivative and can couple all field values and spatial operators:
+
+```text
+u_tt = c^2*(u_xx + u_yy) + v
+v_tt = c^2*(v_xx + v_yy) - u
+```
+
+Provide displacement and velocity maps plus one expression for each field on
+the left, right, bottom, and top edges:
+
+```php
+use MathPHP\Explaining\NumericalCoupledWavePde2DAnalyzer;
+
+$analysis = (new NumericalCoupledWavePde2DAnalyzer())->analyze(
+    'u_tt = 0.05*(u_xx + u_yy) + v; v_tt = 0.05*(v_xx + v_yy) - u',
+    ['u', 'v'],
+    ['u' => 'sin(pi*x)*sin(pi*y)', 'v' => '0'],
+    ['u' => '0', 'v' => '1'],
+    ['u' => '0', 'v' => '0'],
+    ['u' => '0', 'v' => '0'],
+    ['u' => '0', 'v' => '0'],
+    firstPoints: 25,
+    secondPoints: 25,
+    timeSteps: 100,
+);
+```
+
+The solver retains synchronized two-dimensional field snapshots, applies a
+centered leapfrog update with initial velocities, and exposes affine versus
+directly evaluated nonlinear operator modes plus a conservative CFL guard.
+Dirichlet, Neumann, Robin, and paired-periodic edges are supported through the
+edge-first `boundaryConditions` map. The visual payload is
+`pde-system-wave-2d`; higher-dimensional coupled waves, nonlocal boundaries,
+and symbolic/global solutions remain outside this bounded explicit contract.
+
 ## Three-dimensional parabolic PDEs
 
 `NumericalParabolicPde3DAnalyzer` covers a resource-capped rectangular heat or
