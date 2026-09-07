@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact solving for distinct affine radical products combined with
+  affine terms, including domain and unsquared residual filtering.
+
+## 2026-09-07
+
 - Documented exact products of distinct affine square roots with domain and
   unsquared residual filtering.
 

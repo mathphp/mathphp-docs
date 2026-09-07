@@ -328,6 +328,29 @@ negative radicand, and substitutes each survivor back into the unsquared
 principal-root equation. Scaling, shifted radicands, zero targets, and
 negative-target rejection are retained explicitly in the explanation steps.
 
+## Radical products combined with affine terms
+
+A product of distinct principal square roots can be combined with a linear
+term and still solved exactly when the radicands are affine:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'sqrt(x)*sqrt(x + 1) + x = 2'
+);
+
+// solutions['method'] === 'exact-radical-product-affine'
+// solutions['roots'] === [0.8]
+// solutions['complete'] === true
+```
+
+The analyzer isolates the radical product, squares once to obtain a quadratic,
+then checks each candidate against both radicand domains and the original
+unsquared equation. Addition and subtraction orientations, reordered affine
+terms, scalar product coefficients, and complete no-real-solution cases are
+handled. More than two independent radical factors, nonlinear additive terms,
+and equations requiring repeated squaring remain outside this exact reduction
+and are reported through the broader numerical or partial analyzers.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative
