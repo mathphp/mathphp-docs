@@ -2670,6 +2670,21 @@ limited to rectangular Dirichlet edges; use the explicit analyzer below for
 mixed or periodic boundaries, nonlocal spatial operators, variable order, or
 custom evaluation options.
 
+Variable-order 2D fields use a parenthesized order expression:
+
+```php
+$variable2d = (new EquationAnalyzer())->analyze(
+    'D^(0.5 + 0.1*t)_t u = 0.1*(u_xx + u_yy); u(x,y,0) = 0; ' .
+    'u(0,y,t) = 0; u(1,y,t) = 0; u(x,0,t) = 0; u(x,1,t) = 0; ' .
+    'x = {0,1}; y = {0,1}; t = {0,0.2}; firstPoints = 25; secondPoints = 25'
+);
+// solutions['method'] === 'automatic-variable-order-fractional-2d-pde'
+```
+
+Add `u_t(x,y,0) = velocity` when the order expression enters wave memory
+(`1 < α ≤ 2`); the method becomes
+`automatic-variable-order-fractional-wave-2d-pde`.
+
 The same compact dispatcher supports bounded three-dimensional fields with a
 canonical Laplacian, six Dirichlet faces, and `thirdPoints`:
 

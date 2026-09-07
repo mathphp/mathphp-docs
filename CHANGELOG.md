@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.188.0` automatic generic dispatch for bounded
+  two-dimensional variable-order fractional diffusion and wave PDE syntax.
+
+## 2026-09-07
+
 - Documented Explaining `v0.187.0` automatic generic dispatch for bounded
   three-dimensional constant-order fractional diffusion and wave PDE syntax.
 
