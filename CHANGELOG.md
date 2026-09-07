@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.191.0` automatic generic dispatch for box and
+  generalized variational inequalities.
+
+## 2026-09-07
+
 - Documented Explaining `v0.190.0` automatic generic dispatch for differential
   complementarity systems and mixed finite bounds.
 

@@ -2024,6 +2024,18 @@ reaches the configured tolerance; otherwise it reports `partial`. This is a
 bounded numerical method, not a proof of existence, uniqueness, monotonicity,
 or global convergence for arbitrary nonsmooth/nonmonotone mappings.
 
+The generic entry point accepts a compact box VI:
+
+```php
+$vi = (new EquationAnalyzer())->analyze(
+    'VI: F(x) = [x - 1]; x(0) = 0; x in [0,2]; ' .
+    'iterations = 100; stepSize = 0.8; tolerance = 1e-9'
+);
+// solutions['method'] === 'automatic-box-variational-inequality'
+```
+
+Add `constraint = x <= 0.5` clauses for automatic generalized VI dispatch.
+
 ## Complex equation systems
 
 `ComplexSystemAnalyzer` solves a square system of up to eight complex
