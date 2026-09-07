@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented constant-base power sums such as `2^x + x = 3` in the affine
+  Lambert-W normalization path.
+
+## 2026-09-07
+
 - Documented normalization of one exponential plus affine terms into complete
   Lambert-W analysis, including reversed term order and equality sides.
 

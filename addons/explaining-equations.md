@@ -555,9 +555,10 @@ sides such as `exp(x) = 3*x + 3` are supported; constant exponents fall back to
 exact linear isolation. Other forms continue through bounded numerical
 analysis. The normalizer also moves affine terms across the equality for
 equivalent forms such as `exp(x) + x = 1`, `x + exp(x) = 1`, and
-`exp(2*x + 1) - 3*x - 4 = 5`. Equivalent positive constant-base forms such as `e^x = x` and `2^x = 3*x` are
-normalized with `a^u = exp(log(a)·u)` before applying the same Lambert-W branch
-analysis.
+`exp(2*x + 1) - 3*x - 4 = 5`. Equivalent positive constant-base forms such
+as `e^x = x` and `2^x = 3*x` are normalized with
+`a^u = exp(log(a)·u)` before applying the same Lambert-W branch analysis;
+sums such as `2^x + x = 3` use the same reduction.
 
 Logarithmic-product equations such as `x*ln(x) = -0.1` are also reduced to
 Lambert-W branches on the positive domain:
