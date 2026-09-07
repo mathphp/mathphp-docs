@@ -668,6 +668,18 @@ The result keeps constraints tagged by equation row and preserves active
 branch alternatives. Mixed non-piecewise systems continue through the general
 nonlinear-system path.
 
+Affine equality rows are now composed exactly with piecewise rows:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'min(x, y) = 1; x + y = 3'
+);
+// exact-piecewise-system with x >= 1, y >= 1, and x + y = 3
+// solutions['complete'] === true
+```
+
+Nonlinear rows remain explicitly delegated to the nonlinear-system analyzer.
+
 Integer-only `gcd()` and `lcm()` equalities use complete integer-domain
 analysis:
 

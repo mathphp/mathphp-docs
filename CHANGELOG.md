@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.251.0` mixed affine/piecewise system composition
+  and nonlinear fallback boundaries.
+
+## 2026-09-07
+
 - Documented Explaining `v0.250.0` exact composition of multivariable affine
   min/max equation systems.
 
