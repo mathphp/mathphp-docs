@@ -454,6 +454,11 @@ Quadratics in one shared trigonometric value are solved by reducing to
 `sin(x)^2 + sin(x) = 0` returns the complete periodic families for `u = -1`
 and `u = 0`, while roots outside the unit range are rejected exactly.
 
+The same substitution now covers cubic and quartic polynomials in one shared
+value, such as `sin(x)^3 - sin(x) = 0` and `cos(x)^4 - cos(x)^2 = 0`.
+Real polynomial roots are isolated before values outside `[-1, 1]` are removed,
+then every admissible value is expanded into complete trigonometric families.
+
 Product-exponential equations of the form `(a*x+b)*exp(a*x+b) = c` are
 dispatched to a real Lambert-W transformation before numerical sampling:
 
@@ -2366,6 +2371,9 @@ the axis. The result exposes `realComplete: true` when all real roots are
 certified. It also records Durand–Kerner convergence metadata for the full
 complex spectrum; complex roots remain numerical approximations rather than
 symbolic proof objects.
+
+Square-free reduction also handles monomial repeated-root factors correctly;
+for example, `x^4 - x^2 = 0` preserves the distinct roots `-1`, `0`, and `1`.
 
 For degree three and above, `solutions['complexRoots']` also contains
 Durand–Kerner approximations with separate `real`, `imaginary`, and

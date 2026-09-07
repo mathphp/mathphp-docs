@@ -2,6 +2,13 @@
 
 ## 2026-09-07
 
+- Documented exact cubic and quartic solving in a shared sine or cosine value,
+  including certified real-root isolation and periodic families.
+- Documented the repeated-root isolation correction used by the polynomial
+  and trigonometric polynomial analyzers.
+
+## 2026-09-07
+
 - Documented exact quadratic solving in a shared sine or cosine value, including
   unit-range filtering and complete periodic families.
 
