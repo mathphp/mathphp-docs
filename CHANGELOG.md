@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact affine-plus-square-root solving with radicand-domain and
+  post-squaring residual checks.
+
+## 2026-09-07
+
 - Documented warning-free bounds handling for 3D wave and parabolic derivative
   stencils, including coupled parabolic fields.
 

@@ -186,6 +186,25 @@ $analysis = (new EquationAnalyzer())->analyze('4 = sqrt(x) + sqrt(x - 1)');
 This orientation normalization applies across the existing elementary
 families; it does not turn an unsupported expression into a symbolic proof.
 
+## Affine plus square-root equations
+
+One square-root term combined with an affine expression is reduced exactly to
+a quadratic candidate equation:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('sqrt(x) + x = 3');
+
+// solutions['method'] === 'exact-radical-affine'
+// solutions['roots'] === [1.6972243622680054]
+// solutions['complete'] === true
+```
+
+The solver checks the radicand domain and substitutes every quadratic
+candidate back into the unsquared equation, removing extraneous roots. This
+also covers scaled affine radicands and constant-left forms such as
+`4 = sqrt(x) + sqrt(x - 1)` through the existing radical-combination path;
+multiple independent square-root terms remain a separate supported family.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative
