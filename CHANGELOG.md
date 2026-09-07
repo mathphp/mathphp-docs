@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented bounded-degree polynomial solving for monotone `erf()` and `erfc()`
+  values with strict real-range filtering.
+
+## 2026-09-07
+
 - Documented expansion of bounded integer powers and products of `exp()` and
   `expm1()` terms into commensurate exponential polynomials.
 

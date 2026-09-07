@@ -480,6 +480,9 @@ own ranges as well: `asin(x)^2 = 0.25`, `acos(x)^2 = 1`, `atan(x)^2 = 1`,
 `asinh(x)^2 = 1`, `acosh(x)^2 = 1`, and `atanh(x)^2 = 1` map polynomial roots
 through the corresponding direct function. Roots outside a principal inverse
 range are discarded before the affine argument is reconstructed.
+The monotone special-function pair is covered too: `erf(x)^2 = 0.25` and
+`erfc(x)^2 = 1` use the existing real inverse approximation after filtering
+against `−1 < erf(x) < 1` and `0 < erfc(x) < 2`.
 
 Commensurate exponential equations can contain more than two terms. The solver
 substitutes `z = exp(a*x+b)` and delegates bounded-degree polynomials to the
