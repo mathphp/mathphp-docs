@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented four-branch enumeration for two independent absolute terms inside
+  nested square- and cube-root equations.
+
+## 2026-09-07
+
 - Documented exact absolute-value branch reduction inside an outer square- or
   cube-root expression, including optional inner polynomial radicals.
 
