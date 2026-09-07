@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.204.0` generic trace and rank operations for
+  bounded numeric matrices.
+
+## 2026-09-07
+
 - Documented Explaining `v0.203.0` bounded numeric spectra up to 12×12 and
   explicit convergence semantics.
 

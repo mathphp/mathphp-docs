@@ -606,8 +606,8 @@ The result retains Gaussian-elimination rank, consistency, and augmented
 matrix diagnostics. Use `analyzeMatrixEquation()` when the matrix and vector
 are already available as PHP arrays.
 
-Determinant, transpose, inverse, and bounded spectral operations are also
-available for numeric matrices through the generic entry point:
+Trace, rank, determinant, transpose, inverse, and bounded spectral operations
+are also available for numeric matrices through the generic entry point:
 
 ```php
 $determinant = (new EquationAnalyzer())->analyze('det([[1,2],[3,4]])');
@@ -619,10 +619,17 @@ $spectrum = (new EquationAnalyzer())->analyze('eigenvalues([[2,1],[1,2]])');
 
 $determinant3d = (new EquationAnalyzer())->analyze('det([[1,2,3],[0,1,4],[5,6,0]])');
 // solutions['result'] is approximately 1
+
+$trace = (new EquationAnalyzer())->analyze('trace([[1,2,3],[0,1,4],[5,6,0]])');
+// solutions['result'] === 2
+
+$rank = (new EquationAnalyzer())->analyze('rank([[1,2,3],[2,4,6]])');
+// solutions['result'] === 1
 ```
 
 `transpose(...)` accepts rectangular matrices; `inverse(...)` and `det(...)`
-require square matrices up to 32 dimensions. `eigenvalue(...)` and `spectrum(...)`
+require square matrices up to 32 dimensions; `rank(...)` accepts rectangular
+matrices up to 32 rows and 32 columns. `eigenvalue(...)` and `spectrum(...)`
 require square numeric matrices up to 12×12. The 2×2 case uses an exact
 characteristic formula; larger spectra use bounded numerical roots and may be
 `partial` when the iteration does not converge. Complex eigenvalues retain
