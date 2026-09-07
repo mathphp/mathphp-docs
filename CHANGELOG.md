@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact logarithmic polynomial substitutions for `log1p()` with its
+  strict argument-greater-than-−1 domain.
+
+## 2026-09-07
+
 - Documented exact bounded-degree polynomial solving in affine logarithm values,
   including positive-domain filtering during inverse mapping.
 

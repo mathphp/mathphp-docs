@@ -435,6 +435,9 @@ or `log10(2*x + 1)^2 = 4`, use the bounded substitution
 `u = log_base(a*x + b)`. Polynomial roots are exponentiated, mapped back through
 the affine argument, and checked against the strict logarithm domain before a
 complete result is returned.
+The same substitution covers `log1p(x)` polynomials by normalizing
+`log1p(x) = ln(1 + x)` before mapping roots back, so the strict `x > -1`
+domain remains explicit.
 
 Pairs of affine square roots such as `sqrt(x) + sqrt(x - 1) = 2` are solved by
 two-stage squaring. Every candidate is checked against both radicand domains
