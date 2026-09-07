@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.175.0` automatic bounded two-dimensional wave-PDE
+  dispatch, compact field/edge syntax, and solver limitations.
+
+## 2026-09-07
+
 - Documented Explaining `v0.174.0` automatic bounded one-dimensional wave-PDE
   dispatch, compact displacement/velocity syntax, and solver limitations.
 

@@ -784,6 +784,23 @@ infers only two Dirichlet edges; use `analyzeNumericalWavePde()` for Neumann,
 Robin, periodic, custom resolution, or nonlinear operator controls. Higher-
 dimensional wave systems remain explicit-facade-only.
 
+The generic dispatcher also recognizes a bounded two-dimensional wave problem
+with four edge values and explicit displacement/velocity fields:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'u_tt = c^2*(u_xx + u_yy); u(x,y,0) = 1; u_t(x,y,0) = 0; u(0,y,t) = 1; u(1,y,t) = 1; u(x,0,t) = 1; u(x,1,t) = 1; x = {0,1}; y = {0,1}; t = {0,0.1}; firstPoints = 25; secondPoints = 25; timeSteps = 100',
+    ['c' => 1],
+);
+// solutions['method'] === 'automatic-bounded-wave-2d-pde'
+// solutions['automaticDomain'] === [0.0, 1.0, 0.0, 1.0, 0.0, 0.1]
+```
+
+This compact route selects the 2D CFL-controlled wave solver and returns
+volumetric field snapshots plus grid and stability metadata. It infers four
+Dirichlet edges only; use `analyzeNumericalWavePde2D()` for Neumann, Robin,
+periodic, custom resolution, or nonlinear operator controls.
+
 ```php
 $periodic = (new NumericalPdeAnalyzer())->analyze(
     'u_t = u_xx', '1', '1', '1',
