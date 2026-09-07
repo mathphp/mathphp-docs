@@ -472,6 +472,9 @@ filter because tangent is unbounded between its poles.
 The reciprocal functions are covered too: `sec(x)^2 = 4`, `csc(x)^2 = 4`, and
 `cot(x)^2 = 1` produce periodic families, while targets inside the real range
 gap of secant or cosecant are rejected exactly.
+Inverse reciprocal functions are covered with their principal ranges as well:
+`asec(x)^2 = 1`, `acsc(x)^2 = 1`, and `acot(x)^2 = 1` map admissible polynomial
+roots through secant, cosecant, and cotangent while excluding their poles.
 Hyperbolic polynomials are handled with their real inverse domains as well:
 `sinh(x)^2 = 1`, `cosh(x)^2 = 4`, and `tanh(x)^2 = 0.25` return complete roots,
 while `cosh(x)^2 = 0.25` and `tanh(x)^2 = 1` are proved impossible.

@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact direct and bounded-degree polynomial analysis for `asec()`,
+  `acsc()`, and `acot()` with principal-range filtering.
+
+## 2026-09-07
+
 - Documented bounded-degree polynomial substitutions for `sqrt()`, `cbrt()`, and
   `abs()` values, including nonnegative-domain and absolute-value branches.
 
