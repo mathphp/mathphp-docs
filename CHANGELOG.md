@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact polynomial absolute-value combinations with up to three
+  independent terms and eight sign branches.
+
+## 2026-09-07
+
 - Documented exact logarithmic polynomial solving, including rational
   denominator-pole and positive-domain validation.
 
