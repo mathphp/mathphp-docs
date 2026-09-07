@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.165.0` automatic neutral-delay IVP dispatch and
+  delayed-slope trajectory metadata.
+
+## 2026-09-07
+
 - Documented Explaining `v0.164.0` automatic state-dependent-delay IVP
   dispatch and bounded-lag failure semantics.
 

@@ -2023,6 +2023,21 @@ and slope for delayed times and retaining them in every trajectory point.
 Advanced, state-dependent, and neutral equations with discontinuous or
 distributed derivative histories remain outside this focused contract.
 
+The generic dispatcher accepts a complete neutral-delay IVP:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    "y' = yd + 0.5*ydd; y(t) = 1; y'(t) = 0; y(0) = 1; delay = 0.5",
+);
+// solutions['method'] === 'automatic-neutral-delay-ivp'
+// solutions['automaticDelay'] === 0.5
+```
+
+The input requires constant state and derivative histories, one numeric initial
+state, and a positive fixed delay. The automatic route uses 128 bounded
+method-of-steps Euler intervals over `[t₀, t₀ + 1]`, retaining delayed state
+and slope samples; use `analyzeNumericalNeutralDelayOde()` for explicit control.
+
 ## Coupled marked jump-diffusions
 
 `NumericalJumpSdeSystemAnalyzer` extends vector Euler–Maruyama systems with a
