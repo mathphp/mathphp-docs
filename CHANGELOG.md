@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.220.0` elementary-forcing linear ODE analysis with
+  integrating-factor metadata.
+
+## 2026-09-07
+
 - Documented Explaining `v0.219.0` bounded Bernoulli first-order ODE analysis
   and branch-aware domain metadata.
 
