@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.202.0` generalized matrix operations, rectangular
+  transpose support, and the 2×2 eigenvalue scope.
+
+## 2026-09-07
+
 - Documented Explaining `v0.201.0` generic two-variable optimization,
   aliases, refinement history, and non-global completeness semantics.
 
