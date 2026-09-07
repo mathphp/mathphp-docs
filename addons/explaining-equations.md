@@ -517,6 +517,21 @@ Affine `floor`, `ceil`, `round` (PHP half-up ties), and `sign` forms preserve
 open and closed endpoints and report `complete: true`. Use
 `analyzeDiscrete()` to choose the variable or provide known parameters.
 
+Affine-vs-constant `min()` and `max()` forms also return complete interval
+solutions:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('max(-x, 5) = 5');
+// solutions['method'] === 'piecewise-function-interval'
+// solutions['intervals'] === [[
+//     'lower' => -5.0, 'upper' => null,
+//     'lowerInclusive' => true, 'upperInclusive' => false,
+// ]]
+```
+
+Use `analyzePiecewiseFunction()` for the explicit facade. Singleton roots,
+closed half-lines, and empty sets retain `complete: true` metadata.
+
 The same generic entry point recognizes semicolon- or newline-separated systems
 when every row is an equality. It first attempts exact Gaussian elimination for
 affine rows, returning `method: automatic-linear-system` with unique,
