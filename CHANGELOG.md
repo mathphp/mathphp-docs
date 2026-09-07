@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact bounded-degree polynomial solving in affine logarithm values,
+  including positive-domain filtering during inverse mapping.
+
+## 2026-09-07
+
 - Documented bounded-degree commensurate exponential polynomials with complete
   positive-root filtering.
 

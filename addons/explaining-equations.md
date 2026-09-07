@@ -430,6 +430,11 @@ linear equation. Roots are retained only when every logarithm argument is
 strictly positive, so the result can safely expose `complete: true`.
 Scaled single-log forms such as `2*ln(x) = ln(4)` use the same isolation path
 and retain the positive-domain check.
+Polynomial expressions in one logarithm value, such as `ln(x)^2 + ln(x) = 0`
+or `log10(2*x + 1)^2 = 4`, use the bounded substitution
+`u = log_base(a*x + b)`. Polynomial roots are exponentiated, mapped back through
+the affine argument, and checked against the strict logarithm domain before a
+complete result is returned.
 
 Pairs of affine square roots such as `sqrt(x) + sqrt(x - 1) = 2` are solved by
 two-stage squaring. Every candidate is checked against both radicand domains
