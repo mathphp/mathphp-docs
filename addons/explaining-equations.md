@@ -996,6 +996,10 @@ derivative rule, generic calculus can emit a centered finite-difference
 derivative expression with `partial` status. It never presents that numerical
 approximation as a symbolic derivative.
 
+Indefinite integration follows the same boundary: a registered function can
+produce a sampled reference antiderivative with retained quadrature samples,
+but the result remains `partial` and is not presented as a closed form.
+
 The Core evaluator also provides domain-checked special functions such as
 `erf`, `erfc`, `gamma`, and `lgamma`. They can be used directly in bounded
 equation searches and in any explaining analyzer that evaluates Core
