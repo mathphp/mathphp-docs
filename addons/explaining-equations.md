@@ -976,8 +976,9 @@ resource limits as the rest of your application.
 The generic `EquationAnalyzer::analyze()` entry point accepts the same optional
 `EvaluationOptions` argument. Registered custom functions therefore remain
 available when the dispatcher falls back to bounded numerical equations,
-inequalities, or implicit regions, while exact analyzers still report
-`unsupported` or `partial` when no symbolic proof is available.
+inequalities, implicit regions, and initial-value ODE paths, while exact
+analyzers still report `unsupported` or `partial` when no symbolic proof is
+available.
 
 The Core evaluator also provides domain-checked special functions such as
 `erf`, `erfc`, `gamma`, and `lgamma`. They can be used directly in bounded

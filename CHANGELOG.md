@@ -2,6 +2,11 @@
 
 ## 2026-09-08
 
+- Documented custom-function propagation through automatic initial-value ODE
+  and ODE-system dispatch.
+
+## 2026-09-08
+
 - Documented custom-function propagation through generic equation, inequality,
   and implicit-region dispatch.
 
