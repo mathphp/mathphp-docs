@@ -18,6 +18,27 @@ $json = $analysis->toArray();
 Render the model as a prompt, a hint, or an audit record. Pair it with the
 [translation layer](explaining-translations.md) for learner-facing copy.
 
+## Same-function trigonometric equalities
+
+Affine arguments of the same `sin()`, `cos()`, or `tan()` function are solved
+symbolically with their complete periodic families instead of a finite sample
+window:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('sin(x + 1) = sin(2*x - 1)');
+
+// solutions['method'] === 'exact-trigonometric-equality'
+// solutions['complete'] === true
+// solutions['families'] contains both periodic branches, with k ∈ ℤ
+```
+
+The analyzer uses `A − B = 2πk` or `A + B = π + 2πk` for sine,
+`A − B = 2πk` or `A + B = 2πk` for cosine, and `A − B = πk` for tangent.
+Arguments must be affine in the selected variable. Tangent results retain a
+domain note because poles, where either argument is undefined, are excluded.
+Constant identities and inconsistent constant equalities are reported without
+inventing numerical roots.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative

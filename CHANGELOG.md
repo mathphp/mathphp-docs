@@ -2,6 +2,12 @@
 
 ## 2026-09-07
 
+- Documented exact periodic-family solving for same-function trigonometric
+  equalities with affine `sin()`, `cos()`, and `tan()` arguments, including
+  tangent pole-domain metadata and constant identity handling.
+
+## 2026-09-07
+
 - Documented integer affine-power Lambert-W analysis (powers 2 through 8),
   including odd-power sign filtering and the new power facade.
 
