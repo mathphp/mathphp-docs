@@ -2651,6 +2651,25 @@ outside this focused contract.
 
 ### Two-dimensional time-fractional diffusion
 
+The generic dispatcher also recognizes the compact rectangular form with a
+constant order, a canonical five-point Laplacian, four Dirichlet edges, and
+independent grid controls:
+
+```php
+$field2d = (new EquationAnalyzer())->analyze(
+    'D^0.5_t u = 0.1*(u_xx + u_yy); u(x,y,0) = 0; ' .
+    'u(0,y,t) = 0; u(1,y,t) = 0; u(x,0,t) = 0; u(x,1,t) = 0; ' .
+    'x = {0,1}; y = {0,1}; t = {0,0.2}; firstPoints = 25; secondPoints = 25'
+);
+// solutions['method'] === 'automatic-caputo-fractional-2d-pde'
+```
+
+For `1 < α ≤ 2`, add `u_t(x,y,0) = velocity` to select
+`automatic-caputo-fractional-wave-2d-pde`. The compact route is deliberately
+limited to rectangular Dirichlet edges; use the explicit analyzer below for
+mixed or periodic boundaries, nonlocal spatial operators, variable order, or
+custom evaluation options.
+
 `NumericalFractionalPde2DAnalyzer` applies the same bounded constant-order
 Caputo memory rule to rectangular fields of the form
 `D_t^α u = κ(u_xx + u_yy) + s(x,y,t,u)`:
