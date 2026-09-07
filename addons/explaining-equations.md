@@ -85,6 +85,22 @@ the same-function branches; even powers retain both signs. Equal powers are
 required on both sides; mismatched powers remain explicit numerical or partial
 cases rather than being approximated as exact.
 
+## Product-to-sum trigonometric identities
+
+Two equal-magnitude affine sine or cosine terms set to zero are factored using
+product-to-sum identities:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('sin(x) + sin(2*x) = 0');
+
+// solutions['method'] === 'exact-trigonometric-product-to-sum'
+// solutions['complete'] === true
+```
+
+This covers sums and differences of the same trigonometric function, including
+scaled equal-magnitude terms. Mixed sine/cosine sums and non-zero targets do
+not match this exact reduction and retain their normal partial status.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative

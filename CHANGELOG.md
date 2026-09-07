@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact product-to-sum factorization for equal-magnitude affine sine
+  and cosine sums/differences set to zero.
+
+## 2026-09-07
+
 - Documented exact equal-integer-power trigonometric equality solving, with
   odd/even sign-branch rules and explicit handling of mismatched powers.
 
