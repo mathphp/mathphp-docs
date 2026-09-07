@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.223.0` branch-aware constant-coefficient Riccati
+  ODE analysis and automatic dispatch.
+
+## 2026-09-07
+
 - Documented Explaining `v0.222.0` bounded exact first-order ODE analysis,
   implicit potential reconstruction, and automatic dispatch.
 

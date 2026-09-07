@@ -522,6 +522,25 @@ initial-value, higher-order, delayed, and fractional ODEs remain explicit APIs b
 additional conditions or numerical controls that a bare equality does not
 provide.
 
+### Constant-coefficient Riccati equations
+
+Quadratic first-order equations of the form `y' = a*y² + b*y + c` are routed
+through a branch-aware Riccati analyzer:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze("y' = y^2 + 1");
+// solutions['method'] === 'automatic-riccati-ode'
+// solutions['branch'] === 'complex-equilibria'
+```
+
+The discriminant selects the two-real-equilibria, repeated-equilibrium, or
+complex-equilibria family. `analyzeRiccatiOde()` is the explicit facade. The
+result retains `a`, `b`, `c`, the discriminant, branch metadata, and a
+`domainNote`; `complete` is false because arbitrary constants can create poles,
+and equilibrium solutions and maximal intervals must be interpreted against
+the caller's initial data. Non-quadratic or variable-coefficient Riccati
+forms remain explicit numerical/partial cases.
+
 ### Exact first-order equations
 
 The generic dispatcher also recognizes exact equations when the derivative can
