@@ -2078,6 +2078,22 @@ the evaluated lag and delayed value are retained in each point. Advanced,
 discontinuous, and neutral state-dependent delays remain outside this focused
 contract.
 
+The generic dispatcher accepts a complete bounded-lag IVP:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    "y' = yd; y(t) = 1; y(0) = 1; delay(t,y) = 0.25 + 0.05*y; maximumDelay = 1",
+);
+// solutions['method'] === 'automatic-state-dependent-delay-ivp'
+// solutions['automaticMaximumDelay'] === 1.0
+```
+
+The input requires a positive lag expression, a numeric maximum-delay bound,
+constant history, and one numeric initial state. The automatic route uses 128
+method-of-steps Euler intervals over `[t₀, t₀ + 1]`; invalid or out-of-bound
+lags remain `unsupported` or `partial` rather than being silently clipped.
+Use `analyzeNumericalStateDependentDelayOde()` for explicit control.
+
 ## Scalar Caputo fractional ODEs
 
 `NumericalFractionalOdeAnalyzer` covers scalar Caputo initial-value equations

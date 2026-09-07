@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.164.0` automatic state-dependent-delay IVP
+  dispatch and bounded-lag failure semantics.
+
+## 2026-09-07
+
 - Documented Explaining `v0.163.0` automatic distributed-delay IVP dispatch,
   kernel clauses, and bounded quadrature metadata.
 
