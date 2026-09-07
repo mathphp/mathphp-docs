@@ -241,6 +241,19 @@ Each harmonic candidate is checked against the quadrant that produced it, so
 roots on quadrant boundaries are retained once and impossible targets are
 reported exactly.
 
+Compact self-power equations now reach the same Lambert-W path through the
+generic entry point:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('x^x = 2');
+
+// solutions['method'] === 'automatic-self-power'
+// solutions['roots'] contains the positive-real Lambert-W branch
+```
+
+This preserves the positive-base domain note and does not claim negative-base
+or complex branches without an explicit complex-domain analyzer.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative

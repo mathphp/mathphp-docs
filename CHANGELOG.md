@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented generic dispatch of compact self-power equations through the
+  positive-real Lambert-W analyzer.
+
+## 2026-09-07
+
 - Documented exact quadrant-aware solving for shared-phase absolute
   sine/cosine sums and their complete periodic families.
 
