@@ -117,6 +117,23 @@ Relative signs and equal-magnitude scalar coefficients are preserved, and both
 periodic sine branches are returned. Mixed sums such as `sin(x) + cos(2*x)`
 remain outside this direct equality reduction.
 
+## Double-angle trigonometric polynomials
+
+When an affine phase appears with its cosine double angle, the analyzer can
+substitute a bounded algebraic variable:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('sin(x) + cos(2*x) = 0');
+
+// solutions['method'] === 'exact-trigonometric-double-angle'
+// solutions['complete'] === true
+```
+
+It uses `cos(2A) = 1 − 2sin(A)²` or
+`cos(2A) = 2cos(A)² − 1`, filters polynomial roots to `[−1, 1]`, and maps
+them back to complete periodic phase families. Unsupported mixed terms remain
+explicitly partial.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative

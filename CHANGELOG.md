@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact double-angle trigonometric polynomial reduction with bounded
+  substitution, range filtering, and periodic-family reconstruction.
+
+## 2026-09-07
+
 - Documented exact mixed affine sine/cosine equalities via cosine-to-sine phase
   normalization, including sign and equal-magnitude coefficient handling.
 
