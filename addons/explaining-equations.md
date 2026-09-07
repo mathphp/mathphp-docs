@@ -567,8 +567,11 @@ $analysis = (new EquationAnalyzer())->analyze(
 // solutions['complete'] === true
 ```
 
-Strict inequalities are retained. `!=` systems remain partial because they
-require disjunctive region handling.
+Strict inequalities are retained. `!=` rows are expanded into exact `<` and
+`>` branches, and each bounded region is exposed through
+`solutions['disjunctiveRegions']`. Results remain complete while branch
+expansion and Fourier–Motzkin elimination stay within safety caps; capped
+searches are reported as partial.
 
 Affine components, empty radius domains, and fixed-component metadata are
 preserved. Use `analyzeHypot()` for the explicit facade.

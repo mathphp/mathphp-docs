@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact disjunctive affine-relation feasibility for `!=` rows,
+  including the `disjunctiveRegions` result metadata and bounded-cap behavior.
+
+## 2026-09-07
+
 - Documented comma-separated equation-system input with delimiter-aware
   handling for function arguments.
 
@@ -28,11 +33,6 @@
 ## 2026-09-07
 
 - Documented exact composition of affine relation rows with piecewise systems.
-
-## 2026-09-07
-
-- Documented higher-dimensional affine-relation feasibility and the explicit
-  disjunctive limitation for `!=` rows.
 
 ## 2026-09-07
 
