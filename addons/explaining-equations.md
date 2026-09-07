@@ -739,6 +739,9 @@ $analysis = (new EquationAnalyzer())->analyze('x^2 = 4; x >= 0');
 
 Every candidate is re-evaluated against all equality and relation rows. The
 finite numerical search does not claim global root completeness.
+When every equality row is affine, the dispatcher instead uses exact Gaussian
+elimination: unique roots can be complete after constraint verification, while
+underdetermined families retain free-variable metadata and remain partial.
 
 Two-variable inequalities use a separate bounded region sampler. For example:
 
