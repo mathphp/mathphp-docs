@@ -626,6 +626,18 @@ $analysis = (new EquationAnalyzer())->analyze('min(x, 2, 3, 5) = 2');
 The controlling fixed branch is selected with the same minimum/maximum
 semantics as Core, and the result preserves endpoint inclusion.
 
+Multiple affine branches are solved by checking each branch candidate against
+all other branches:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('max(x, -x) = 1');
+// solutions['roots'] === [-1.0, 1.0]
+// solutions['complete'] === true
+```
+
+This prevents a branch that reaches the target but is not the controlling
+minimum/maximum branch from being reported as a false solution.
+
 Integer-only `gcd()` and `lcm()` equalities use complete integer-domain
 analysis:
 

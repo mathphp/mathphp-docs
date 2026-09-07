@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.247.0` complete min/max analysis for multiple
+  affine branches and verified roots.
+
+## 2026-09-07
+
 - Documented Explaining `v0.246.0` variadic `min()`/`max()` interval analysis
   with collapsed fixed branches.
 
