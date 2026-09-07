@@ -570,6 +570,25 @@ $analysis = (new EquationAnalyzer())->analyze('log2(x) = 3');
 `log1p()` retains its `inner > -1` domain and `expm1()` rejects targets at or
 below `-1`.
 
+Integer-only `gcd()` and `lcm()` equalities use complete integer-domain
+analysis:
+
+```php
+$gcd = (new EquationAnalyzer())->analyze('gcd(x, 6) = 2');
+// solutions['method'] === 'integer-gcd'
+// solutions['variableDomain'] === 'integers'
+// solutions['period'] === 6
+// solutions['residueClasses'] === [2, 4]
+
+$lcm = (new EquationAnalyzer())->analyze('lcm(x, 6) = 12');
+// solutions['method'] === 'integer-lcm'
+// solutions['roots'] === [-12.0, -4.0, 4.0, 12.0]
+```
+
+Affine arguments such as `gcd(2*x, 6)` are supported. Non-integer arguments
+remain explicit `unsupported` results because these Core functions are defined
+on integers.
+
 The same generic entry point recognizes semicolon- or newline-separated systems
 when every row is an equality. It first attempts exact Gaussian elimination for
 affine rows, returning `method: automatic-linear-system` with unique,
