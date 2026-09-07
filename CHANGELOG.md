@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.168.0` automatic bounded Fredholm and Volterra
+  dispatch, including nonlinear Picard selection and compact syntax.
+
+## 2026-09-07
+
 - Documented Explaining `v0.167.0` automatic coupled scalar-order Caputo-wave
   system dispatch, velocity conditions, and wave metadata.
 

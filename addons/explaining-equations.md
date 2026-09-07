@@ -498,6 +498,27 @@ the current cell is solved with scalar Picard updates. `rowHistory` records
 the updates and convergence of every midpoint, while non-convergent or
 undefined rows keep the overall result `partial`.
 
+The generic `EquationAnalyzer::analyze()` entry point recognizes a compact
+bounded syntax for these four solver variants. A linear Fredholm equation can
+be written as:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'u(x) = 1 + 0.5 * integral{0,1}(1*u(t))',
+);
+// solutions['method'] === 'automatic-fredholm-integral'
+// solutions['automaticDomain'] === [0.0, 1.0]
+```
+
+Use `integral{0,x}` for the causal Volterra form (square-bracket bounds are
+also accepted). If the integrand is nonlinear in the unknown, such as
+`integral{0,1}(u(t)^2)`, the dispatcher
+selects bounded Picard iteration and returns
+`automatic-nonlinear-fredholm-integral` (or the Volterra equivalent). The
+compact grammar requires the quadrature variable `t`, uses 32 midpoint
+points, and always marks the finite result `complete: false`; use the explicit
+facades for resolution, iteration, or custom intervals.
+
 ## Scalar Itô stochastic differential equations
 
 `NumericalSdeAnalyzer` simulates bounded stochastic equations of the form
