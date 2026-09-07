@@ -2,6 +2,9 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.216.0` global polynomial/rational inequality sign
+  charts over the complete real line.
+
 - Documented Explaining `v0.215.0` hyperbolic polynomial integration support.
 
 - Documented Explaining `v0.214.0` higher-degree rational inequality sign

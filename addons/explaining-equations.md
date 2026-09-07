@@ -1875,6 +1875,17 @@ $rational = (new RationalInequalityAnalyzer())->analyze('1 / x > 0', 'x', -1, 1)
 // complete: true, intervals: (0, 1], excludedValues: [0]
 ```
 
+For a polynomial or rational relation over all real values, use the global
+facade instead of supplying finite bounds:
+
+```php
+$global = (new EquationAnalyzer())->analyzeGlobalInequality('x^2 >= 4', 'x');
+// intervals: (-∞, -2] and [2, ∞); complete: true
+```
+
+Global mode rejects transcendental expressions rather than sampling an
+unbounded domain.
+
 `LinearSystemAnalyzer` generalizes the two-equation helper to arbitrary affine
 systems. It uses Gaussian elimination and distinguishes a unique solution,
 inconsistency, and free-variable families:
