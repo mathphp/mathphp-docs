@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented bounded-degree polynomial substitutions for `sqrt()`, `cbrt()`, and
+  `abs()` values, including nonnegative-domain and absolute-value branches.
+
+## 2026-09-07
+
 - Documented bounded-degree polynomial solving for monotone `erf()` and `erfc()`
   values with strict real-range filtering.
 

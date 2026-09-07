@@ -483,6 +483,10 @@ range are discarded before the affine argument is reconstructed.
 The monotone special-function pair is covered too: `erf(x)^2 = 0.25` and
 `erfc(x)^2 = 1` use the existing real inverse approximation after filtering
 against `−1 < erf(x) < 1` and `0 < erfc(x) < 2`.
+The same bounded substitution handles powers of `sqrt`, `cbrt`, and `abs`:
+`sqrt(2*x + 1)^2 = 9` keeps the principal nonnegative branch,
+`cbrt(x)^2 = 4` returns both real cube-root branches, and `abs(x)^3 = 8`
+returns both affine absolute-value branches.
 
 Commensurate exponential equations can contain more than two terms. The solver
 substitutes `z = exp(a*x+b)` and delegates bounded-degree polynomials to the
