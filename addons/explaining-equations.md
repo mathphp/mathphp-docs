@@ -519,6 +519,10 @@ Explicit rational exponents such as `x^(2/3) = 4` retain every real branch
 domain. Negative rational exponents exclude zero and preserve reciprocal
 branches.
 
+Sums of affine absolute values are solved branch by branch. For example,
+`abs(x) + abs(x - 2) = 4` returns `[-1, 3]`, while the minimum equation
+`abs(x) + abs(x - 2) = 2` returns the complete closed interval `[0, 2]`.
+
 Implicit multiplication is accepted in algebraic equation paths, including
 `x(x+1)=6` and `(x+1)(x-1)=0`. The normalizer rewrites only an inferred
 variable immediately before `(`; named calls such as `sin(x)` remain function

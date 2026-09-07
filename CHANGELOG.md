@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact branch-interval solving for sums of affine absolute values,
+  including breakpoints and complete identity intervals.
+
+## 2026-09-07
+
 - Documented exact real branch solving for explicit rational affine-base
   exponents, including denominator-domain and negative-power handling.
 
