@@ -2,6 +2,12 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.145.0` automatic nonlinear-system dispatch from
+  the generic equation entry point, including inferred unknowns and explicit
+  zero-start metadata.
+
+## 2026-09-07
+
 - Documented Explaining `v0.144.0` automatic bounded numerical fallback from
   the generic equation dispatcher for single-variable Core-compatible
   equalities.

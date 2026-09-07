@@ -207,6 +207,13 @@ bounded numerical solver on `[-100, 100]`. Such results expose
 `analyzeNumerically()` when a different interval, sample count, or refinement
 depth is required.
 
+The same generic entry point recognizes semicolon- or newline-separated systems
+when every row is an equality. It infers ASCII unknowns and runs one damped
+Newton solve from zero, returning `method: automatic-nonlinear-system` and
+`automaticInitial`. This is intentionally one local solve: use
+`analyzeNonlinearSystemMany()` or `analyzeNonlinearSystemGrid()` to explore
+multiple basins and roots.
+
 ## Implicit two-variable equations
 
 A single equality in two unknowns usually describes a curve rather than a
