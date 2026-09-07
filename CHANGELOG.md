@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.190.0` automatic generic dispatch for differential
+  complementarity systems and mixed finite bounds.
+
+## 2026-09-07
+
 - Documented Explaining `v0.189.0` automatic generic dispatch for bounded
   three-dimensional variable-order fractional diffusion and wave PDE syntax.
 

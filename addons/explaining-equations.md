@@ -1841,6 +1841,20 @@ approximation, not a global certificate: generalized mixed complementarity formu
 higher-index DAEs, unbounded active-set searches, and non-paired inequality
 constraints remain outside this focused contract.
 
+The generic entry point accepts the same compact notation:
+
+```php
+$contact = (new EquationAnalyzer())->analyze(
+    "x' = 1; 0 <= z ⟂ z + x >= 0; " .
+    'x(0) = -1; z(0) = 1; t = {0,2}; steps = 80'
+);
+// solutions['method'] === 'automatic-numerical-complementarity'
+```
+
+Add an upper bound as `0 <= z <= 1 ⟂ g >= 0` for automatic mixed
+complementarity dispatch. Use the explicit facade for custom tolerances,
+mass matrices, or nonstandard active-set controls.
+
 ### Mixed complementarity bounds
 
 For box-constrained pairs, use `analyzeMixed()` with one finite lower and upper
