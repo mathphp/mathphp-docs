@@ -2297,9 +2297,11 @@ $analysis = (new PolynomialEquationAnalyzer())->analyze(
 ```
 
 Linear and quadratic polynomials are solved directly. For degree three and
-above, the analyzer derives a Cauchy root bound, uses sampled bisection for
-real roots, and also records Durand–Kerner convergence metadata for the full
-complex spectrum; these roots remain numerical approximations rather than
+above, the analyzer derives a Cauchy root bound and uses a Sturm sequence to
+isolate every distinct real root, including repeated roots that do not cross
+the axis. The result exposes `realComplete: true` when all real roots are
+certified. It also records Durand–Kerner convergence metadata for the full
+complex spectrum; complex roots remain numerical approximations rather than
 symbolic proof objects.
 
 For degree three and above, `solutions['complexRoots']` also contains
@@ -2309,7 +2311,7 @@ inspect the convergence metadata before presenting them as final values.
 
 Rational equalities are solved by cross-multiplying normalized polynomial
 numerators and denominators. Linear and quadratic cases use direct roots;
-higher-degree cases use the bounded polynomial root iteration and expose
+higher-degree cases use certified real-root isolation and expose
 `rootConverged` and `complete` metadata. The analyzer preserves the original
 domain: denominator zeros are returned in `solutions['excludedValues']` and are
 never reintroduced as roots after cancellation:

@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented complete Sturm-sequence real-root isolation for higher-degree
+  polynomial equations, repeated roots, and certified no-real-root cases.
+
+## 2026-09-07
+
 - Documented exact disjunctive affine-relation feasibility for `!=` rows,
   including the `disjunctiveRegions` result metadata and bounded-cap behavior.
 
