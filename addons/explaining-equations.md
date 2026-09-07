@@ -2425,6 +2425,24 @@ history; it does not claim a symbolic solution or global stability. Use the
 explicit variable-order facades for custom options and higher-resolution
 studies.
 
+Coupled systems can assign independent orders with `order[x] = ...` and
+`order[y] = ...`. Components with `1 < α ≤ 2` also require a matching numeric
+velocity clause; the result records those components in `waveComponents`:
+
+```php
+$mixed = (new EquationAnalyzer())->analyze(
+    "D^alpha x = -x; D^alpha y = x; x(0) = 1; y(0) = 0; " .
+    "order[x] = 0.5; order[y] = 1.5; x'(0) = 0; y'(0) = 1; " .
+    't = {0,0.2}; steps = 32'
+);
+// solutions['method'] === 'automatic-caputo-fractional-mixed-wave-system'
+// solutions['waveComponents'] === ['y']
+```
+
+Orders may be numeric or Core expressions such as `0.5 + 0.1*t`. This is a
+bounded numerical memory approximation; use `analyzeNumericalFractionalOdeSystem()`
+for custom order maps, evaluation options, and resolution.
+
 ## Coupled Caputo fractional ODE systems
 
 `NumericalFractionalOdeSystemAnalyzer` extends the same order range to a
