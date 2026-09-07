@@ -27,6 +27,10 @@
 
 ## 2026-09-07
 
+- Documented exact composition of affine relation rows with piecewise systems.
+
+## 2026-09-07
+
 - Documented Explaining `v0.251.0` mixed affine/piecewise system composition
   and nonlinear fallback boundaries.
 

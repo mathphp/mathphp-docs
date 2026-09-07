@@ -691,6 +691,16 @@ $analysis = (new EquationAnalyzer())->analyze(
 // solutions['complete'] === false
 ```
 
+Affine relation rows can be composed exactly with piecewise regions:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'min(x, y) = 1; x + y <= 3'
+);
+// exact-piecewise-system with x >= 1, y >= 1, and x + y <= 3
+// solutions['complete'] === true
+```
+
 Integer-only `gcd()` and `lcm()` equalities use complete integer-domain
 analysis:
 
