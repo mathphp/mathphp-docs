@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented nested square/cube-root equations with up to five independent
+  absolute terms and a 32-branch complexity cap.
+
+## 2026-09-07
+
 - Documented eight-branch enumeration for three independent absolute terms
   inside nested square- and cube-root expressions.
 

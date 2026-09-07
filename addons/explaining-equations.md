@@ -598,8 +598,9 @@ $analysis = (new EquationAnalyzer())->analyze(
 // solutions['branchCount'] === 8
 ```
 
-Four or more independent absolute terms remain partial or bounded numerical
-paths.
+Four and five absolute terms are supported with 16 and 32 combinations
+respectively. Six or more independent absolute terms remain partial or bounded
+numerical paths to keep symbolic branch growth bounded.
 
 ## Generic calculus expressions
 
