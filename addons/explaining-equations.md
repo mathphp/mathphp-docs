@@ -2069,6 +2069,20 @@ result. It is a bounded numerical approximation (`complete: false`), not a
 symbolic fractional solver; variable-order operators remain outside this
 scalar contract.
 
+The generic dispatcher accepts a complete compact scalar IVP as well:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('D^0.5 y = 1; y(0) = 0');
+// solutions['method'] === 'automatic-caputo-fractional-ivp'
+// solutions['automaticOrder'] === 0.5
+```
+
+`D^α y` and `Caputo^α y` forms require a numeric order strictly between zero
+and one plus one numeric initial condition. The automatic route uses the finite
+interval `[t₀, t₀ + 1]` and 128 memory steps, preserving
+`complete: false`; use `analyzeNumericalFractionalOde()` for explicit domain,
+resolution, or known-parameter control.
+
 ## Variable-order Caputo fractional ODEs
 
 `NumericalVariableOrderFractionalOdeAnalyzer` evaluates an explicit order

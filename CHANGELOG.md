@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.161.0` automatic scalar Caputo fractional-IVP
+  dispatch and finite memory-trajectory metadata.
+
+## 2026-09-07
+
 - Documented Explaining `v0.160.0` automatic compact index-1 DAE dispatch and
   bounded projection diagnostics.
 
