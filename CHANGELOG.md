@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.153.0` automatic first-order linear ODE dispatch
+  and its explicit boundary for conditioned numerical ODE families.
+
+## 2026-09-07
+
 - Documented Explaining `v0.152.0` dimensional equality analysis and automatic
   dispatch through the optional units add-on.
 

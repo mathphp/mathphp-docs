@@ -291,6 +291,23 @@ The generic entry point detects numeric unit literals automatically. Use
 `UnitCatalog` is needed. Mismatched dimensions are reported as an evaluated,
 unsatisfied equality; they are never coerced into scalar values.
 
+## Automatic first-order ODE dispatch
+
+The generic `EquationAnalyzer::analyze()` entry point recognizes first-order
+constant-coefficient derivative notation and delegates to the symbolic ODE
+analyzer:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze("y' = 2*y + 3");
+// solutions['general'] contains y(x) = C·exp(2·x) − 1.5
+// solutions['method'] === 'automatic-linear-ode'
+```
+
+`dy/dx = 4` is accepted as well. Initial-value, higher-order, nonlinear,
+delayed, and fractional ODEs remain explicit APIs because they require
+additional conditions or numerical controls that a bare equality does not
+provide.
+
 ```php
 use MathPHP\Explaining\NumericalImplicitEquationAnalyzer;
 
