@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.230.0` positive-real self-power analysis through
+  Lambert-W branches and automatic dispatch.
+
+## 2026-09-07
+
 - Documented Explaining `v0.229.0` real Lambert-W branch analysis and
   automatic product-exponential dispatch.
 

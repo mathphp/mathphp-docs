@@ -417,6 +417,21 @@ Lambert-W argument, real branch list, transformed general form, and the
 real-domain cutoff at `-1/e`. Expressions outside this strict shape continue
 through the bounded numerical route.
 
+Self-power equations such as `x^x = c` are also analyzed on the positive-real
+domain:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('x^x = 0.8');
+// solutions['method'] === 'automatic-self-power'
+// solutions['branches'] === [0, -1]
+// solutions['roots'] contains both positive-real roots
+```
+
+Use `analyzeSelfPower()` for the explicit facade. The result exposes the
+positive-domain minimum `e^(-1/e)`, Lambert-W branches, and a
+`positiveDomainComplete` flag. Negative-base rational-exponent cases remain an
+explicit domain boundary.
+
 The same generic entry point recognizes semicolon- or newline-separated systems
 when every row is an equality. It first attempts exact Gaussian elimination for
 affine rows, returning `method: automatic-linear-system` with unique,
