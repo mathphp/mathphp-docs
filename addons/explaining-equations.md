@@ -420,6 +420,25 @@ $analysis = (new EquationAnalyzer())->analyze(
 Expressions with more than two independent absolute terms remain on the
 bounded branch or numerical analyzers so their completeness is not overstated.
 
+## Polynomial radical combinations
+
+Two square roots with polynomial or rational-polynomial radicands are solved by
+isolating the remaining radical product and squaring twice:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'sqrt(x^2 + 1) + sqrt(x + 2) = 3'
+);
+
+// solutions['method'] === 'exact-polynomial-radical-combination'
+// solutions['complete'] === true
+```
+
+Candidates are checked against both principal-root domains, original rational
+denominator poles, and the unsquared equation. This prevents the second
+squaring step from leaking extraneous roots. More than two independent square
+roots remain on their dedicated affine reductions or bounded numerical paths.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative

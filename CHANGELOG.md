@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact two-stage polynomial radical combinations with domain,
+  denominator, and residual filtering.
+
+## 2026-09-07
+
 - Documented exact sign-branch solving for combinations of up to two
   polynomial absolute-value terms.
 
