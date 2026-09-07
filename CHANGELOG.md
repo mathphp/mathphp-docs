@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact sign-branch solving for combinations of up to two
+  polynomial absolute-value terms.
+
+## 2026-09-07
+
 - Documented exact polynomial absolute-value equations with both sign branches
   and denominator/residual filtering.
 

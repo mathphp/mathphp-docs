@@ -404,6 +404,22 @@ rational terms. Multiple independent absolute terms, inequalities, and
 piecewise combinations continue through their dedicated branch or bounded
 numerical analyzers.
 
+Up to two absolute terms can be combined with polynomial terms by enumerating
+all four sign combinations:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'abs(x^2 - 1) + abs(x - 2) = 3'
+);
+
+// solutions['method'] === 'exact-polynomial-absolute-combination'
+// solutions['roots'] === [-1, 0, 2]
+// solutions['complete'] === true
+```
+
+Expressions with more than two independent absolute terms remain on the
+bounded branch or numerical analyzers so their completeness is not overstated.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative
