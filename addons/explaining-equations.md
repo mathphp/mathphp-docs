@@ -558,6 +558,18 @@ $analysis = (new EquationAnalyzer())->analyze('hypot(x, 3) = 5');
 Affine components, empty radius domains, and fixed-component metadata are
 preserved. Use `analyzeHypot()` for the explicit facade.
 
+Core’s stable logarithm/exponential variants use exact inverse analysis for
+affine inputs:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('log2(x) = 3');
+// solutions['method'] === 'exact-elementary-inverse'
+// solutions['roots'] === [8.0]
+```
+
+`log1p()` retains its `inner > -1` domain and `expm1()` rejects targets at or
+below `-1`.
+
 The same generic entry point recognizes semicolon- or newline-separated systems
 when every row is an equality. It first attempts exact Gaussian elimination for
 affine rows, returning `method: automatic-linear-system` with unique,

@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.241.0` exact inverse analysis for `log2()`,
+  `log1p()`, and `expm1()`.
+
+## 2026-09-07
+
 - Documented Explaining `v0.240.0` exact one-variable `hypot()` equation
   analysis and radius-domain handling.
 
