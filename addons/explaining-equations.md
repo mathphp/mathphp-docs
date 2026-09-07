@@ -449,6 +449,11 @@ Shared-phase sine/cosine products use the double-angle identity
 complete periodic families, while targets outside `[-1/2, 1/2]` receive an
 exact no-real-solution result.
 
+Quadratics in one shared trigonometric value are solved by reducing to
+`u = sin(t)` or `u = cos(t)` with `-1 ≤ u ≤ 1`. For example,
+`sin(x)^2 + sin(x) = 0` returns the complete periodic families for `u = -1`
+and `u = 0`, while roots outside the unit range are rejected exactly.
+
 Product-exponential equations of the form `(a*x+b)*exp(a*x+b) = c` are
 dispatched to a real Lambert-W transformation before numerical sampling:
 

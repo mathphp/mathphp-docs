@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact quadratic solving in a shared sine or cosine value, including
+  unit-range filtering and complete periodic families.
+
+## 2026-09-07
+
 - Documented exact shared-phase sine/cosine product solving via the double-angle
   reduction, including periodic families and range proofs.
 
