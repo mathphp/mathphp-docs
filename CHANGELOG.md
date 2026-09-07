@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.249.0` complete multivariable affine min/max region
+  analysis and active-boundary alternatives.
+
+## 2026-09-07
+
 - Documented Explaining `v0.248.0` complete one-argument `min()`/`max()` identity
   analysis.
 

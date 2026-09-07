@@ -641,6 +641,19 @@ minimum/maximum branch from being reported as a false solution.
 Core's one-argument identity forms are also solved completely, for example
 `min(x) = 2` and `max(2*x + 1) = 5`.
 
+Multivariable affine piecewise equalities return exact inequality regions:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('min(x, y) = 1');
+// solutions['method'] === 'exact-piecewise-region'
+// x >= 1, y >= 1, with x = 1 or y = 1 active
+// solutions['complete'] === true
+```
+
+This keeps the full union-of-boundaries representation instead of sampling a
+bounded contour. Use `analyzePiecewiseRegion()` when controlling the call
+explicitly.
+
 Integer-only `gcd()` and `lcm()` equalities use complete integer-domain
 analysis:
 
