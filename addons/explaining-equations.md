@@ -2208,6 +2208,21 @@ The result retains vector forcing history, component trajectories, and the
 shared fractional order. Mixed orders can be supplied as a numeric/order-
 expression map per component:
 
+The generic dispatcher supports a shared-order compact system as well:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'D^alpha x = -x; D^alpha y = x; x(0) = 1; y(0) = 0; order = 0.5',
+);
+// solutions['method'] === 'automatic-caputo-fractional-system'
+// solutions['automaticOrder'] === 0.5
+```
+
+The automatic form requires one shared numeric order strictly between zero and
+one and one numeric initial value per component. It uses 128 bounded memory
+steps over `[t₀, t₀ + 1]`; use `analyzeNumericalFractionalOdeSystem()` for
+mixed orders, wave components, or explicit coordinate and resolution control.
+
 ```php
 $mixed = (new NumericalFractionalOdeSystemAnalyzer())->analyze(
     "x' = 1; y' = 2",

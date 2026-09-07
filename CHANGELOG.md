@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.166.0` automatic coupled scalar-order Caputo
+  system dispatch and shared-order memory metadata.
+
+## 2026-09-07
+
 - Documented Explaining `v0.165.0` automatic neutral-delay IVP dispatch and
   delayed-slope trajectory metadata.
 
