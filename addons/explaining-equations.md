@@ -110,6 +110,22 @@ retains per-variable sequences, generated-term steps, and a `complete` flag;
 missing terms or undefined updates are reported as `partial` rather than being
 silently substituted.
 
+The generic `EquationAnalyzer::analyze()` entry point recognizes seeded
+recurrence systems when the seeds and rules are supplied together:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'a[0] = 0; a[1] = 1; a[n+2] = a[n+1] + a[n]',
+);
+// solutions['sequence'] contains 12 finite terms
+// solutions['method'] === 'automatic-bounded-recurrence'
+```
+
+Multiple seeded rules use synchronous expansion and return
+`automatic-bounded-recurrence-system`. The default is deliberately finite
+(12 terms); use `analyzeRecurrence()` or `analyzeRecurrenceSystem()` to choose
+the term count, start index, and known forcing parameters.
+
 ## Finite numerical limits
 
 `LimitAnalyzer` estimates a finite one-sided or two-sided limit by evaluating

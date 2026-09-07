@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.156.0` automatic seeded recurrence and coupled
+  recurrence-system dispatch with bounded finite expansion.
+
+## 2026-09-07
+
 - Documented Explaining `v0.155.0` structured matrix-equation solving with
   bounded Gaussian elimination and singular-system diagnostics.
 
