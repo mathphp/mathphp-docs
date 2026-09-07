@@ -432,6 +432,21 @@ positive-domain minimum `e^(-1/e)`, Lambert-W branches, and a
 `positiveDomainComplete` flag. Negative-base rational-exponent cases remain an
 explicit domain boundary.
 
+Exponential-linear equations such as `exp(x) = 3*x` are solved through all
+real Lambert-W branches:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('exp(x) = 3*x');
+// solutions['method'] === 'automatic-exponential-linear'
+// solutions['branches'] === [0, -1]
+// solutions['roots'] contains both real roots
+```
+
+Use `analyzeExponentialLinear()` for the explicit facade. Affine right-hand
+sides such as `exp(x) = 3*x + 3` are supported; constant exponents fall back to
+exact linear isolation. Other forms continue through bounded numerical
+analysis.
+
 The same generic entry point recognizes semicolon- or newline-separated systems
 when every row is an equality. It first attempts exact Gaussian elimination for
 affine rows, returning `method: automatic-linear-system` with unique,

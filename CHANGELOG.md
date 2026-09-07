@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.231.0` exponential-linear Lambert-W analysis,
+  affine shifts, and automatic dispatch.
+
+## 2026-09-07
+
 - Documented Explaining `v0.230.0` positive-real self-power analysis through
   Lambert-W branches and automatic dispatch.
 
