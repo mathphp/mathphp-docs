@@ -444,6 +444,11 @@ Shared-phase trigonometric squares are reduced exactly too. Identities such as
 `sin(x)^2 + cos(x)^2 = 1` are recognized, while `sin(x)^2 = 0.5` returns
 complete periodic families after enforcing `0 ≤ sin²(t) ≤ 1`.
 
+Shared-phase sine/cosine products use the double-angle identity
+`sin(t)cos(t) = sin(2t)/2`. For example, `sin(x) * cos(x) = 0.25` returns
+complete periodic families, while targets outside `[-1/2, 1/2]` receive an
+exact no-real-solution result.
+
 Product-exponential equations of the form `(a*x+b)*exp(a*x+b) = c` are
 dispatched to a real Lambert-W transformation before numerical sampling:
 

@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact shared-phase sine/cosine product solving via the double-angle
+  reduction, including periodic families and range proofs.
+
+## 2026-09-07
+
 - Documented scalar-coefficient support for exact two-affine-radical solving
   with post-squaring domain and residual checks.
 
