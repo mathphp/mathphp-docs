@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-08
+
+- Documented relative residual checks that prevent underflow-driven false roots
+  in bounded numerical equation searches.
+
 ## 2026-09-07
 
 - Documented exact equality solving for positive exponential forms with affine

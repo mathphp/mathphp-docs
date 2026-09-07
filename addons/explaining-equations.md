@@ -985,6 +985,10 @@ bounded numerical solver on `[-100, 100]`. Such results expose
 `method: automatic-bounded-numerical` and `automaticDomain`; call
 `analyzeNumerically()` when a different interval, sample count, or refinement
 depth is required.
+Residual acceptance is relative to the two evaluated sides, with an exact-zero
+or zero-side exception for floating-point trigonometric endpoints. This keeps
+underflowed but unequal values from becoming false roots while preserving
+legitimate endpoints such as `sin(2*pi) = 0`.
 
 Shared-phase harmonic equations such as `sin(x) + cos(x) = 1` are solved before
 that numerical fallback. The analyzer rewrites the combination as
