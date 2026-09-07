@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented fractional-power syntax parity for exact polynomial square- and
+  cube-root equations.
+
+## 2026-09-07
+
 - Documented exact two-stage polynomial radical combinations with domain,
   denominator, and residual filtering.
 

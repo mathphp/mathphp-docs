@@ -438,6 +438,8 @@ Candidates are checked against both principal-root domains, original rational
 denominator poles, and the unsquared equation. This prevents the second
 squaring step from leaking extraneous roots. More than two independent square
 roots remain on their dedicated affine reductions or bounded numerical paths.
+Equivalent fractional-power syntax with exponents `1/2` and `1/3` is normalized
+to the same exact square- and cube-root paths.
 
 ## Generic calculus expressions
 
