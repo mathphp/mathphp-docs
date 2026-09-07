@@ -343,6 +343,25 @@ delayed, and fractional ODEs remain explicit APIs because they require
 additional conditions or numerical controls that a bare equality does not
 provide.
 
+The generic entry point can route a complete numeric IVP when its conditions
+are included in the same semicolon-separated input:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze("y' = sin(x) + y; y(0) = 1");
+// solutions['method'] === 'automatic-numerical-ivp'
+// solutions['automaticDomain'] === [0.0, 1.0]
+
+$second = (new EquationAnalyzer())->analyze("y'' = -y; y(0) = 1; y'(0) = 0");
+// solutions['method'] === 'automatic-numerical-second-order-ivp'
+```
+
+The dispatcher also accepts apostrophe notation through order 32 when every
+initial derivative is supplied. It uses a finite `[x₀, x₀ + 1]` interval and
+128 RK4 steps, returning `partial` if evaluation becomes undefined or
+non-finite. This is convenience dispatch, not a global existence theorem; use
+the explicit numerical ODE APIs to select domains, step counts, or richer
+initial-state controls.
+
 Second-order constant-coefficient forms are also recognized automatically:
 
 ```php

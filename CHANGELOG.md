@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.158.0` automatic embedded initial-value ODE
+  dispatch for first-, second-, and higher-order numerical trajectories.
+
+## 2026-09-07
+
 - Documented Explaining `v0.157.0` bounded two-variable inequality-region
   sampling, automatic dispatch, and explicit partial-result semantics.
 
