@@ -2,6 +2,9 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.210.0` shifted-polynomial expansion for bounded
+  integration by parts.
+
 - Documented Explaining `v0.209.0` bounded integration-by-parts coverage for
   monomial elementary products.
 
