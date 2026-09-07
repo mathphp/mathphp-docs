@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented normalization of one exponential plus affine terms into complete
+  Lambert-W analysis, including reversed term order and equality sides.
+
+## 2026-09-07
+
 - Documented complete direct affine `atan()` equation inversion and generic
   dispatch.
 

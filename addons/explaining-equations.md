@@ -553,8 +553,9 @@ $analysis = (new EquationAnalyzer())->analyze('exp(x) = 3*x');
 Use `analyzeExponentialLinear()` for the explicit facade. Affine right-hand
 sides such as `exp(x) = 3*x + 3` are supported; constant exponents fall back to
 exact linear isolation. Other forms continue through bounded numerical
-analysis.
-Equivalent positive constant-base forms such as `e^x = x` and `2^x = 3*x` are
+analysis. The normalizer also moves affine terms across the equality for
+equivalent forms such as `exp(x) + x = 1`, `x + exp(x) = 1`, and
+`exp(2*x + 1) - 3*x - 4 = 5`. Equivalent positive constant-base forms such as `e^x = x` and `2^x = 3*x` are
 normalized with `a^u = exp(log(a)·u)` before applying the same Lambert-W branch
 analysis.
 
