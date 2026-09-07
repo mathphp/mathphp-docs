@@ -247,9 +247,18 @@ $analysis = (new EquationAnalyzer())->analyze('exp(z) = i');
 This is intentionally a local solve, not a proof that every complex root was
 found. Use `analyzeComplex()` with an explicit `ComplexNumber` start, iteration
 limit, tolerance, and optional known scalar parameters when the initial basin
-must be controlled. Equations with multiple unknowns remain an explicit
-`ComplexSystemAnalyzer` workflow so their variable ordering and starting
-values are never guessed.
+must be controlled. A square semicolon/newline-separated system containing `i`
+is also routed automatically to `ComplexSystemAnalyzer` (up to eight unknowns):
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('z + w = 1; z - w = i');
+// solutions['z'] ≈ 0.5 + 0.5i; solutions['w'] ≈ 0.5 − 0.5i
+// solutions['method'] === 'automatic-complex-system-newton'
+```
+
+Use `analyzeComplexSystem()` when variable ordering, starting values, or a
+different basin must be controlled. Neither automatic route proves that every
+complex root was found.
 
 ## Implicit two-variable equations
 

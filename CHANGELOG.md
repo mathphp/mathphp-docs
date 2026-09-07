@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.150.0` automatic complex-system dispatch for
+  square systems containing standalone `i` expressions.
+
+## 2026-09-07
+
 - Documented Explaining `v0.149.0` automatic complex equality dispatch for
   standalone `i` expressions, including local-root and starting-point metadata.
 
