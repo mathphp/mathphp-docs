@@ -36,10 +36,10 @@ $analysis = (new CalculusAnalyzer())->integral('sqrt(x) + 2*x');
 ```
 
 Bounded integration by parts also covers polynomial products with affine
-`sin`, `cos`, and `exp` factors, such as `x*exp(x)` and `x^2*cos(2*x)`, up to
-degree eight. Shifted polynomial factors such as `(x + 1)^2*sin(x)` are
-expanded before applying the recurrence. Other product forms remain explicit
-`partial` results.
+`sin`, `cos`, `sinh`, `cosh`, and `exp` factors, such as `x*exp(x)` and
+`x^2*cos(2*x)`, up to degree eight. Shifted polynomial factors such as
+`(x + 1)^2*sin(x)` are expanded before applying the recurrence. Other product
+forms remain explicit `partial` results.
 
 Non-elementary integrals, products outside the recognized monomial-power
 substitution patterns, and branch-sensitive complex antiderivatives remain

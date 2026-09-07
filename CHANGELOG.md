@@ -2,6 +2,8 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.215.0` hyperbolic polynomial integration support.
+
 - Documented Explaining `v0.214.0` higher-degree rational inequality sign
   charts and pole/convergence metadata.
 
