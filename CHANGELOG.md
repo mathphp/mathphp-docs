@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact one-level nested principal-square-root solving with domain,
+  denominator, and original-residual validation.
+
+## 2026-09-07
+
 - Documented six-term multiquadratic square-root elimination and explicit
   partial status for high-degree candidate polynomials.
 

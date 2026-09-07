@@ -514,6 +514,27 @@ The norm removes each radical basis bit before real-root isolation. Candidates
 are then checked against every principal-root domain, rational denominator pole,
 and the original unsquared equation.
 
+## Nested principal square roots
+
+One level of nested principal square roots is solved exactly when it fits
+`sqrt(P(x) + c*sqrt(R(x))) = Q(x)`:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'sqrt(x + sqrt(x + 1)) = 2'
+);
+
+// solutions['method'] === 'exact-nested-polynomial-radical'
+// solutions['roots'] contains 2.2087121525...
+// solutions['complete'] === true
+```
+
+The analyzer first enforces the nonnegative outer target, squares once, then
+reduces the remaining inner radical with a second domain-checked squaring. It
+rejects denominator poles and candidates that fail the original nested residual.
+Deeper nesting and multiple independent nested roots remain partial or bounded
+numerical paths.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative
