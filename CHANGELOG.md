@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.170.0` automatic coupled scalar Itô SDE-system
+  dispatch and independent seeded-path metadata.
+
+## 2026-09-07
+
 - Documented Explaining `v0.169.0` automatic scalar Itô SDE dispatch,
   compact stochastic syntax, and seeded-path metadata.
 

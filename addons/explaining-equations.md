@@ -564,6 +564,22 @@ bounded run uses 128 steps, 16 paths, and seed `12345`; add `steps`, `paths`,
 or `seed` clauses to override those defaults. Results remain stochastic finite
 approximations with `complete: false`.
 
+Coupled systems use repeated stochastic clauses followed by one initial value
+per state:
+
+```php
+$system = (new EquationAnalyzer())->analyze(
+    'dX = V*dt + 0*dW; dV = -X*dt + 0*dW; X(0) = 1; V(0) = 0; target = 1; paths = 8; seed = 42',
+);
+// solutions['method'] === 'automatic-euler-maruyama-sde-system'
+// solutions['automaticVariables'] === ['X', 'V']
+```
+
+The generic system form uses independent Brownian components and the same
+bounded defaults as the scalar form. Use
+`analyzeNumericalSdeSystem()` when a covariance matrix, larger state set, or
+other simulation control is required.
+
 ## Coupled vector Itô systems
 
 `NumericalSdeSystemAnalyzer` applies the same bounded contract to a vector of
