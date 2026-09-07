@@ -408,6 +408,11 @@ that numerical fallback. The analyzer rewrites the combination as
 returns both principal representatives and complete periodic families. Mixed
 phases such as `sin(x) + cos(2*x) = 0` remain bounded numerical problems.
 
+Shared-phase hyperbolic combinations such as `sinh(x) + cosh(x) = 2` are also
+solved exactly. The analyzer substitutes `z = exp(a·x + b)`, solves the
+resulting quadratic, keeps only positive finite `z` values, and maps every
+remaining branch back to the real variable.
+
 Product-exponential equations of the form `(a*x+b)*exp(a*x+b) = c` are
 dispatched to a real Lambert-W transformation before numerical sampling:
 

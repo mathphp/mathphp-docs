@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact shared-phase hyperbolic combinations and positive-root
+  filtering through the exponential substitution.
+
+## 2026-09-07
+
 - Documented exact shared-phase harmonic trigonometric equations and their
   complete periodic solution families.
 
