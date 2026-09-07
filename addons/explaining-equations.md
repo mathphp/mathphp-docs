@@ -242,6 +242,25 @@ bounded inequality analyzer on `[-100, 100]`, expose
 bounded results rather than global proofs. Use `analyzeInequality()` to choose
 the interval and sampling controls explicitly.
 
+Two-variable inequalities use a separate bounded region sampler. For example:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('x^2 + y^2 <= 9');
+// solutions['method'] === 'automatic-bounded-inequality-region'
+// solutions['cells'] contains fully feasible grid cells
+// solutions['boundaryCells'] contains mixed or undefined cells
+// solutions['complete'] === false
+```
+
+The automatic route infers the two real unknowns and samples
+`[-10, 10] × [-10, 10]`. `NumericalImplicitInequalityAnalyzer` and
+`analyzeNumericalImplicitInequality()` let callers choose the rectangle and
+grid resolution. A cell is classified from its four corner samples, so the
+result is deliberately `partial`: narrow feasible bands, disconnected pieces,
+and features between grid points require a finer grid or a domain-specific
+symbolic solver. Undefined or non-finite samples are kept in
+`boundaryCells` rather than silently counted as feasible.
+
 Piecewise and `if(...)` equalities are detected before relation dispatch and
 use `PiecewiseEquationAnalyzer` branch by branch. The generic path reports
 `method: automatic-bounded-piecewise`, records `automaticDomain`, and keeps

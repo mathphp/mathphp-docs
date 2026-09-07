@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.157.0` bounded two-variable inequality-region
+  sampling, automatic dispatch, and explicit partial-result semantics.
+
+## 2026-09-07
+
 - Documented Explaining `v0.156.0` automatic seeded recurrence and coupled
   recurrence-system dispatch with bounded finite expansion.
 
