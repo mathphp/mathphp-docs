@@ -2704,6 +2704,23 @@ limited to rectangular Dirichlet faces and canonical Laplacians; use the
 explicit 3D analyzer for mixed or periodic faces, nonlocal operators, or
 custom evaluation options.
 
+Variable-order 3D fields use the same parenthesized order form and six face
+clauses:
+
+```php
+$variableVolume = (new EquationAnalyzer())->analyze(
+    'D^(0.5 + 0.1*t)_t u = 0.1*(u_xx + u_yy + u_zz); u(x,y,z,0) = 0; ' .
+    'u(0,y,z,t) = 0; u(1,y,z,t) = 0; u(x,0,z,t) = 0; u(x,1,z,t) = 0; ' .
+    'u(x,y,0,t) = 0; u(x,y,1,t) = 0; x = {0,1}; y = {0,1}; z = {0,1}; ' .
+    't = {0,0.2}; firstPoints = 15; secondPoints = 15; thirdPoints = 15'
+);
+// solutions['method'] === 'automatic-variable-order-fractional-3d-pde'
+```
+
+Add `u_t(x,y,z,0) = velocity` for variable-order wave memory. Mixed or
+periodic faces and nonlocal operators remain available through the explicit
+3D analyzers.
+
 `NumericalFractionalPde2DAnalyzer` applies the same bounded constant-order
 Caputo memory rule to rectangular fields of the form
 `D_t^α u = κ(u_xx + u_yy) + s(x,y,t,u)`:
