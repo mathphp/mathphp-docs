@@ -2,6 +2,12 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.140.0` coupled three-dimensional wave systems with
+  six typed faces, mixed spatial operators, synchronized snapshots, and CFL
+  diagnostics.
+
+## 2026-09-07
+
 - Documented Explaining `v0.139.0` coupled two-dimensional wave systems with
   typed edges, coupled spatial operators, and CFL diagnostics.
 

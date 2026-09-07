@@ -892,8 +892,50 @@ centered leapfrog update with initial velocities, and exposes affine versus
 directly evaluated nonlinear operator modes plus a conservative CFL guard.
 Dirichlet, Neumann, Robin, and paired-periodic edges are supported through the
 edge-first `boundaryConditions` map. The visual payload is
-`pde-system-wave-2d`; higher-dimensional coupled waves, nonlocal boundaries,
-and symbolic/global solutions remain outside this bounded explicit contract.
+`pde-system-wave-2d`; nonlocal boundaries and symbolic/global solutions remain
+outside this bounded explicit contract.
+
+## Coupled three-dimensional wave systems
+
+`NumericalCoupledWavePde3DAnalyzer` extends the same contract to several fields
+on a shared rectangular box with six typed faces:
+
+```text
+u_tt = c^2*(u_xx + u_yy + u_zz) + v
+v_tt = c^2*(v_xx + v_yy + v_zz) - u
+```
+
+Every field receives an initial displacement and velocity plus left/right,
+bottom/top, and front/back expressions:
+
+```php
+use MathPHP\Explaining\NumericalCoupledWavePde3DAnalyzer;
+
+$analysis = (new NumericalCoupledWavePde3DAnalyzer())->analyze(
+    'u_tt = 0.03*(u_xx + u_yy + u_zz) + v; v_tt = 0.03*(v_xx + v_yy + v_zz) - u',
+    ['u', 'v'],
+    ['u' => 'sin(pi*x)*sin(pi*y)*sin(pi*z)', 'v' => '0'],
+    ['u' => '0', 'v' => '1'],
+    ['u' => '0', 'v' => '0'], ['u' => '0', 'v' => '0'],
+    ['u' => '0', 'v' => '0'], ['u' => '0', 'v' => '0'],
+    ['u' => '0', 'v' => '0'], ['u' => '0', 'v' => '0'],
+    firstPoints: 15,
+    secondPoints: 15,
+    thirdPoints: 15,
+    timeSteps: 100,
+);
+```
+
+The explicit centered update supports coupled first derivatives, pure second
+derivatives, and centered mixed `u_xy`, `u_xz`, and `u_yz` operators. A shared
+CFL guard chooses bounded substeps and records affine versus directly evaluated
+nonlinear operator modes. Dirichlet, Neumann, Robin, and paired-periodic faces
+are normalized per field; periodic faces must be supplied as matching pairs.
+Synchronized 3D snapshots are retained with `complete: false`, and the visual
+payload is `pde-system-wave-3d`. This remains a finite approximation for the
+declared bounded system: unsupported syntax, singular evaluations, resource
+caps, nonlocal boundaries, and symbolic/global solutions are reported as
+`unsupported` or `partial` rather than treated as universal coverage.
 
 ## Three-dimensional parabolic PDEs
 
