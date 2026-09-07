@@ -34,9 +34,11 @@ $integral = (new EquationAnalyzer())->analyze('∫ x^2 dx');
 ```
 
 `derivative(expression, variable)` and `integral(expression, variable)` are
-equivalent function forms. This is symbolic coverage for supported elementary
-operations; branch-sensitive, non-elementary, or otherwise unsupported terms
-remain explicitly `partial` or `unsupported`. See
+equivalent function forms. Elementary antiderivatives also apply substitution
+to affine arguments such as `sin(2*x + 1)`, `exp(3*x - 2)`, and `sqrt(4*x - 2)`.
+This is symbolic coverage for supported elementary operations;
+branch-sensitive, non-elementary, or otherwise unsupported terms remain
+explicitly `partial` or `unsupported`. See
 [explaining calculus](explaining-calculus.md) for the direct analyzer API.
 
 ## Generic numerical limits
