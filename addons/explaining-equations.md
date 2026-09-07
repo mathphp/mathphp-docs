@@ -818,6 +818,22 @@ returns volumetric snapshots plus grid and stability metadata. It infers six
 Dirichlet faces only; use `analyzeNumericalWavePde3D()` for Neumann, Robin,
 periodic, custom resolution, or nonlinear operator controls.
 
+The generic dispatcher also recognizes a bounded coupled one-dimensional wave
+system:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'u_tt = 0.1*u_xx + v; v_tt = 0.1*v_xx - u; u(x,0) = 0; v(x,0) = 0; u_t(x,0) = 0; v_t(x,0) = 0; u(0,t) = 0; u(1,t) = 0; v(0,t) = 0; v(1,t) = 0; x = {0,1}; t = {0,0.01}; spacePoints = 41; timeSteps = 100',
+);
+// solutions['method'] === 'automatic-bounded-coupled-wave-pde'
+// solutions['automaticVariables'] === ['u', 'v']
+```
+
+This compact route selects the shared-grid coupled wave solver and returns
+per-field snapshots, operator modes, and stability metadata. It infers paired
+Dirichlet endpoints only; use `analyzeNumericalCoupledWavePde()` for mixed,
+Robin, periodic, custom resolution, or higher-dimensional coupled systems.
+
 ```php
 $periodic = (new NumericalPdeAnalyzer())->analyze(
     'u_t = u_xx', '1', '1', '1',

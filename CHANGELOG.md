@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.177.0` automatic bounded coupled one-dimensional
+  wave-PDE dispatch, compact multi-field syntax, and solver limitations.
+
+## 2026-09-07
+
 - Documented Explaining `v0.176.0` automatic bounded three-dimensional wave-PDE
   dispatch, compact field/face syntax, and solver limitations.
 
