@@ -3,6 +3,11 @@
 ## 2026-09-08
 
 - Documented registry and evaluation-limit propagation through automatic
+  fractional ODE/system and delay-equation dispatch.
+
+## 2026-09-08
+
+- Documented registry and evaluation-limit propagation through automatic
   scalar, coupled, and jump SDE dispatch.
 
 ## 2026-09-08

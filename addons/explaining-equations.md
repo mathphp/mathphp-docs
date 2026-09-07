@@ -3822,6 +3822,9 @@ The input requires constant state and derivative histories, one numeric initial
 state, and a positive fixed delay. The automatic route uses 128 bounded
 method-of-steps Euler intervals over `[t₀, t₀ + 1]`, retaining delayed state
 and slope samples; use `analyzeNumericalNeutralDelayOde()` for explicit control.
+Registered Core functions and evaluation limits supplied through
+`EvaluationOptions` are preserved by the automatic retarded, distributed,
+state-dependent, and neutral delay routes.
 
 ## Coupled marked jump-diffusions
 
@@ -3930,7 +3933,9 @@ $analysis = (new EquationAnalyzer())->analyze('D^0.5 y = 1; y(0) = 0');
 and one plus one numeric initial condition. The automatic route uses the finite
 interval `[t₀, t₀ + 1]` and 128 memory steps, preserving
 `complete: false`; use `analyzeNumericalFractionalOde()` for explicit domain,
-resolution, or known-parameter control.
+resolution, or known-parameter control. Registered Core functions and
+evaluation limits from `EvaluationOptions` are propagated through scalar,
+shared-order, mixed-order, and variable-order automatic fractional routes.
 
 ## Variable-order Caputo fractional ODEs
 
