@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.162.0` automatic fixed-delay IVP dispatch and
+  constant-history method-of-steps metadata.
+
+## 2026-09-07
+
 - Documented Explaining `v0.161.0` automatic scalar Caputo fractional-IVP
   dispatch and finite memory-trajectory metadata.
 

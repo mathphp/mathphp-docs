@@ -1940,6 +1940,23 @@ The finite trajectory is numerical (`complete: false`); neutral, advanced, and
 state-dependent-delay equations remain unsupported by this discrete-lag
 analyzer.
 
+The generic dispatcher accepts a complete fixed-delay IVP with explicit
+constant history:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    "y' = -y(t - 0.5); y(t) = 1; y(0) = 1",
+);
+// solutions['method'] === 'automatic-retarded-delay-ivp'
+// solutions['automaticDelay'] === 0.5
+```
+
+The parser requires one positive numeric lag, a constant `y(t)` history, and a
+numeric `y(t₀)` initial value. It rewrites `y(t)` to the current state and
+`y(t - τ)` to the delayed state before running 128 bounded method-of-steps
+Euler intervals over `[t₀, t₀ + 1]`. Use `analyzeNumericalDelayOde()` for
+non-constant histories, custom domains, or resolution control.
+
 ## Distributed-delay ODEs
 
 `NumericalDistributedDelayOdeAnalyzer` covers a bounded scalar retarded
