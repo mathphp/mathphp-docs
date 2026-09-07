@@ -834,6 +834,23 @@ per-field snapshots, operator modes, and stability metadata. It infers paired
 Dirichlet endpoints only; use `analyzeNumericalCoupledWavePde()` for mixed,
 Robin, periodic, custom resolution, or higher-dimensional coupled systems.
 
+The generic dispatcher also recognizes a bounded coupled two-dimensional wave
+system with four faces per field:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'u_tt = 0.05*(u_xx + u_yy) + v; v_tt = 0.05*(v_xx + v_yy) - u; u(x,y,0) = 0; v(x,y,0) = 0; u_t(x,y,0) = 0; v_t(x,y,0) = 0; u(0,y,t) = 0; u(1,y,t) = 0; u(x,0,t) = 0; u(x,1,t) = 0; v(0,y,t) = 0; v(1,y,t) = 0; v(x,0,t) = 0; v(x,1,t) = 0; x = {0,1}; y = {0,1}; t = {0,0.01}; firstPoints = 25; secondPoints = 25; timeSteps = 100',
+);
+// solutions['method'] === 'automatic-bounded-coupled-wave-2d-pde'
+// solutions['automaticVariables'] === ['u', 'v']
+```
+
+This compact route selects the shared-grid 2D coupled solver and returns
+per-field volumetric snapshots, operator modes, and stability metadata. It
+infers four Dirichlet faces per field only; use
+`analyzeNumericalCoupledWavePde2D()` for mixed faces, Robin/periodic
+conditions, custom resolution, or nonlinear operator controls.
+
 ```php
 $periodic = (new NumericalPdeAnalyzer())->analyze(
     'u_t = u_xx', '1', '1', '1',

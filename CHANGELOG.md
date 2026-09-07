@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.178.0` automatic bounded coupled two-dimensional
+  wave-PDE dispatch, compact multi-field syntax, and solver limitations.
+
+## 2026-09-07
+
 - Documented Explaining `v0.177.0` automatic bounded coupled one-dimensional
   wave-PDE dispatch, compact multi-field syntax, and solver limitations.
 
