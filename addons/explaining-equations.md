@@ -423,6 +423,12 @@ normalized with `a^u = exp(log(a)·u)` and solved by the same quadratic. Bases
 must be positive and not one; other power forms remain on the existing inverse
 or numerical fallback path.
 
+Pairs of logarithms with matching bases and affine arguments are solved exactly
+as well. For example, `ln(x) + ln(x - 1) = 0` uses the product rule and a
+quadratic, while `ln(x) - ln(x - 1) = ln(2)` uses the quotient rule and a
+linear equation. Roots are retained only when every logarithm argument is
+strictly positive, so the result can safely expose `complete: true`.
+
 Product-exponential equations of the form `(a*x+b)*exp(a*x+b) = c` are
 dispatched to a real Lambert-W transformation before numerical sampling:
 
