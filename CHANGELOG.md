@@ -31,6 +31,11 @@
 
 ## 2026-09-07
 
+- Documented higher-dimensional affine-relation feasibility and the explicit
+  disjunctive limitation for `!=` rows.
+
+## 2026-09-07
+
 - Documented Explaining `v0.251.0` mixed affine/piecewise system composition
   and nonlinear fallback boundaries.
 

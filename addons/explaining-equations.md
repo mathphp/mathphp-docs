@@ -555,6 +555,21 @@ $analysis = (new EquationAnalyzer())->analyze('hypot(x, 3) = 5');
 // solutions['complete'] === true
 ```
 
+Systems consisting entirely of affine relations use exact Fourier–Motzkin
+feasibility analysis:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'x >= 0; y >= 0; z >= 0; x + y + z <= 1'
+);
+// exact-affine-relation-system
+// solutions['feasible'] === true
+// solutions['complete'] === true
+```
+
+Strict inequalities are retained. `!=` systems remain partial because they
+require disjunctive region handling.
+
 Affine components, empty radius domains, and fixed-component metadata are
 preserved. Use `analyzeHypot()` for the explicit facade.
 
