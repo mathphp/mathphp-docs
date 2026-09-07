@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact sign-branch solving for one polynomial or rational-polynomial
+  square root combined with one polynomial or rational-polynomial absolute value.
+
+## 2026-09-07
+
 - Documented fractional-power syntax parity for exact polynomial square- and
   cube-root equations.
 

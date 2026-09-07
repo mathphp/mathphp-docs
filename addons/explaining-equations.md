@@ -420,6 +420,27 @@ $analysis = (new EquationAnalyzer())->analyze(
 Expressions with more than two independent absolute terms remain on the
 bounded branch or numerical analyzers so their completeness is not overstated.
 
+## Polynomial radical plus absolute-value equations
+
+One polynomial or rational-polynomial square root can be combined with one
+polynomial or rational-polynomial absolute value:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'sqrt(x^2 + 1) + abs(x - 1) = 3'
+);
+
+// solutions['method'] === 'exact-polynomial-radical-absolute'
+// solutions['roots'] === [-0.75, 1.875]
+// solutions['complete'] === true
+```
+
+The analyzer enumerates the positive and negative absolute-value branches,
+isolates the principal square root, and squares each branch. It then filters
+negative radicands, rational denominator poles, and candidates that fail the
+original unsquared residual. Equations with additional independent radicals or
+absolute values remain on the broader partial or numerical paths.
+
 ## Polynomial radical combinations
 
 Two square roots with polynomial or rational-polynomial radicands are solved by
