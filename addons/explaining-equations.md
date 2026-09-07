@@ -730,6 +730,23 @@ or symbolic closed-form requests are reported as `unsupported` or `partial`.
 Numerical completion is never a proof for every PDE solution. Paired periodic
 boundaries are supported by setting both edges to `['type' => 'periodic']`:
 
+The generic `EquationAnalyzer::analyze()` entry point recognizes a fully
+specified one-dimensional Dirichlet problem:
+
+```php
+use MathPHP\Explaining\EquationAnalyzer;
+
+$analysis = (new EquationAnalyzer())->analyze(
+    'u_t = 0.1*u_xx; u(x,0) = 1; u(0,t) = 1; u(1,t) = 1; x = {0,1}; t = {0,0.1}; spacePoints = 41; timeSteps = 100',
+);
+// solutions['method'] === 'automatic-bounded-parabolic-pde'
+// solutions['automaticDomain'] === [0.0, 1.0, 0.0, 0.1]
+```
+
+The compact route requires explicit space/time domains and uses paired
+Dirichlet values. Use `analyzeNumericalPde()` for Neumann, Robin, periodic,
+non-default coordinates, or custom resolution.
+
 ```php
 $periodic = (new NumericalPdeAnalyzer())->analyze(
     'u_t = u_xx', '1', '1', '1',

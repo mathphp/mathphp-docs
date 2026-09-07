@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.172.0` automatic bounded one-dimensional parabolic
+  PDE dispatch, domains, and Dirichlet initial-boundary syntax.
+
+## 2026-09-07
+
 - Documented Explaining `v0.171.0` automatic scalar and coupled jump-diffusion
   dispatch, intensities, and seeded marked events.
 
