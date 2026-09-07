@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.155.0` structured matrix-equation solving with
+  bounded Gaussian elimination and singular-system diagnostics.
+
+## 2026-09-07
+
 - Documented Explaining `v0.154.0` automatic second-order constant-coefficient
   ODE dispatch and characteristic-root metadata.
 
