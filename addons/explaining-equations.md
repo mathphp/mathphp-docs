@@ -499,8 +499,10 @@ Integer powers and products of exponential terms are expanded before the same
 substitution, so `expm1(x)^2 = 1` and `exp(x)^2 - 2*exp(x) = 0` are solved
 without falling back to bounded sampling.
 
-Product-exponential equations of the form `(a*x+b)*exp(a*x+b) = c` are
-dispatched to a real Lambert-W transformation before numerical sampling:
+Product-exponential equations of the form
+`(c*x+e)*exp(a*x+b) = d` are dispatched to a real Lambert-W transformation
+before numerical sampling. The factor and exponent may use different affine
+slopes and offsets, and either multiplication order is accepted:
 
 ```php
 $analysis = (new EquationAnalyzer())->analyze('x*exp(x) = -0.1');
@@ -509,10 +511,16 @@ $analysis = (new EquationAnalyzer())->analyze('x*exp(x) = -0.1');
 // solutions['roots'] contains both real roots
 ```
 
+For example, `(2*x+3)*exp(4*x-1) = 5` is reduced by scaling the affine
+factor into `u`, then solving `u*exp(u) = c` on the real `W₀`/`W₋₁`
+branches. If the factor or exponential is constant, the analyzer uses direct
+logarithmic or linear isolation instead. The result retains the affine
+coefficients, transformed argument, real branches, and `complete` metadata.
+
 Use `analyzeLambertW()` for the explicit facade. The result exposes the
 Lambert-W argument, real branch list, transformed general form, and the
-real-domain cutoff at `-1/e`. Expressions outside this strict shape continue
-through the bounded numerical route.
+real-domain cutoff at `-1/e`. Expressions outside this product-exponential
+shape continue through the bounded numerical route.
 
 Self-power equations such as `x^x = c` are also analyzed on the positive-real
 domain:

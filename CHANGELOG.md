@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented generalized real Lambert-W analysis for products of an affine
+  factor and an exponential of an independent affine expression.
+
+## 2026-09-07
+
 - Documented exact direct and bounded-degree polynomial analysis for `asec()`,
   `acsc()`, and `acot()` with principal-range filtering.
 
