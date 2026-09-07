@@ -205,6 +205,25 @@ also covers scaled affine radicands and constant-left forms such as
 `4 = sqrt(x) + sqrt(x - 1)` through the existing radical-combination path;
 multiple independent square-root terms remain a separate supported family.
 
+## Absolute trigonometric equalities
+
+Scaled absolute sine, cosine, and tangent terms with affine phases are solved
+exactly by splitting the absolute value into both signed periodic branches:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('2*abs(sin(3*x - 1)) = 1');
+
+// solutions['method'] === 'exact-absolute-trigonometric'
+// solutions['complete'] === true
+// solutions['families'] contains both signs and all periodic branches
+```
+
+Sine and cosine targets are range-checked against `|f| ≤ 1`. Tangent keeps
+its complete `πk` families and explicitly records that odd-`π/2` poles are
+excluded. Zero targets avoid duplicate sign branches, while constant phases
+and out-of-range targets are reported as complete identities or no-solution
+results instead of being sent to bounded sampling.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative

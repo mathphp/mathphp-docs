@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact periodic solving for scaled absolute sine, cosine, and
+  tangent equations, including range checks and tangent-pole exclusions.
+
+## 2026-09-07
+
 - Documented exact affine-plus-square-root solving with radicand-domain and
   post-squaring residual checks.
 
