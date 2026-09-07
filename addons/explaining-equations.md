@@ -407,6 +407,22 @@ meet the residual tolerance; it does not prove uniqueness or cover derivative,
 multi-point, singular, or higher-order boundary conditions. Use
 `analyzeNumericalBoundaryValueOde()` for those explicit controls.
 
+Scalar differential inclusions are also recognized by the generic dispatcher:
+
+```php
+$inclusion = (new EquationAnalyzer())->analyze(
+    'dy/dt in [0,1]; y(0) = 0; t = {0,0.2}; steps = 16; selection = upper'
+);
+// solutions['method'] === 'automatic-differential-inclusion'
+// solutions['automaticSelection'] === 'upper'
+```
+
+The lower and upper expressions define an interval-valued slope. The bounded
+route retains both Euler envelope trajectories plus the selected demonstrative
+path; it is not a proof of reachable-set containment. Use
+`analyzeNumericalDifferentialInclusion()` for explicit domains, controls, or
+known constants.
+
 Complete compact index-1 differential-algebraic systems are also recognized by
 the generic dispatcher:
 

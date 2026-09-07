@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.183.0` automatic generic dispatch for scalar
+  differential inclusions, interval envelopes, and trajectory selection.
+
+## 2026-09-07
+
 - Documented Explaining `v0.182.0` automatic generic dispatch for bounded
   second-order ODE boundary-value problems and shooting controls.
 
