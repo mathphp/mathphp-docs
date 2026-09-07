@@ -2597,6 +2597,23 @@ such as `u_t(x,0) = 1`, returning
 endpoints and a canonical `κ*u_xx` operator; use the explicit facade for mixed
 or periodic boundaries, nonlocal spatial order, or custom evaluation options.
 
+Variable-order fields use a parenthesized order expression:
+
+```php
+$variable = (new EquationAnalyzer())->analyze(
+    'D^(0.5 + 0.1*t)_t u = 0.1*u_xx; u(x,0) = 0; ' .
+    'u(0,t) = 0; u(1,t) = 0; x = {0,1}; t = {0,0.2}; ' .
+    'spacePoints = 32; timeSteps = 16'
+);
+// solutions['method'] === 'automatic-variable-order-fractional-pde'
+```
+
+The order is evaluated at each grid point and time step. Orders may remain in
+diffusion mode (`0 < α < 1`) or wave mode (`1 < α ≤ 2`), but a run that crosses
+`α = 1` is reported partial. The result retains order history and temporal
+mode; use `analyzeNumericalVariableOrderFractionalPde()` for mixed boundaries,
+nonlocal operators, or custom evaluation options.
+
 Use the optional boundary map for mixed conditions or a periodic interval. A
 periodic pair wraps the duplicate endpoints to the opposite interior values
 before each memory update:
