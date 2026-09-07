@@ -7,6 +7,11 @@
 
 ## 2026-09-07
 
+- Documented deterministic multi-start exploration for generic nonlinear
+  systems and the resulting incomplete root-coverage contract.
+
+## 2026-09-07
+
 - Documented Explaining `v0.251.0` mixed affine/piecewise system composition
   and nonlinear fallback boundaries.
 

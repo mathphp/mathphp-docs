@@ -704,11 +704,12 @@ newline-separated systems when every row is an equality. Commas inside
 function arguments remain part of the expression, so `min(x, y) = 1, max(x, y) = 2`
 is safely treated as two rows. It first attempts exact Gaussian elimination for
 affine rows, returning `method: automatic-linear-system` with unique,
-inconsistent, or underdetermined metadata. Nonlinear systems then fall back to
-one damped Newton solve from zero, returning `method:
-automatic-nonlinear-system` and `automaticInitial`. This is intentionally one
-local solve: use `analyzeNonlinearSystemMany()` or
-`analyzeNonlinearSystemGrid()` to explore multiple basins and roots.
+inconsistent, or underdetermined metadata. Nonlinear systems use deterministic
+bounded multi-start Newton exploration, returning `method:
+automatic-nonlinear-system`, `automaticStarts`, and distinct converged roots in
+`solutions['roots']`. The result remains incomplete because a finite start set
+cannot prove global root coverage; use `analyzeNonlinearSystemMany()` or
+`analyzeNonlinearSystemGrid()` for explicit starts, bounds, or denser searches.
 
 Inequalities and chained relations are also recognized by the generic
 `EquationAnalyzer::analyze()` entry point. They delegate to the exact/sampled
