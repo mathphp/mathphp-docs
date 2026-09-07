@@ -473,9 +473,9 @@ $analysis = (new EquationAnalyzer())->analyze(
 
 Candidates are checked against both principal-root domains, original rational
 denominator poles, and the unsquared equation. This prevents the second
-squaring step from leaking extraneous roots. Four or more independent square
-roots were previously left on their dedicated affine reductions or bounded
-numerical paths; four-term equations now use the multiquadratic path below.
+squaring step from leaking extraneous roots. Four through six independent
+square roots now use the multiquadratic path below; seven or more remain on
+partial or bounded numerical paths.
 Equivalent fractional-power syntax with exponents `1/2` and `1/3` is normalized
 to the same exact square- and cube-root paths.
 
@@ -492,12 +492,13 @@ $analysis = (new EquationAnalyzer())->analyze(
 ```
 
 Every candidate is checked against all principal-root domains, rational
-denominator poles, and the original unsquared equation. Five-term candidates
-may remain `partial` when their high-degree polynomial cannot be fully
-isolated; six or more independent roots and nested radical compositions remain
-on partial or bounded numerical paths so completeness is not overstated.
+denominator poles, and the original unsquared equation. Four-, five-, and
+six-term candidates may remain `partial` when their high-degree polynomial
+cannot be fully isolated; seven or more independent roots and nested radical
+compositions remain on partial or bounded numerical paths so completeness is
+not overstated.
 
-Four or five independent square-root terms use a multiquadratic conjugate norm:
+Four through six independent square-root terms use a multiquadratic conjugate norm:
 
 ```php
 $analysis = (new EquationAnalyzer())->analyze(

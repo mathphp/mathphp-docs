@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented six-term multiquadratic square-root elimination and explicit
+  partial status for high-degree candidate polynomials.
+
+## 2026-09-07
+
 - Documented five-term multiquadratic square-root elimination with explicit
   partial completeness metadata for high-degree candidate polynomials.
 
