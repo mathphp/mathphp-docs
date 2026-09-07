@@ -766,6 +766,24 @@ parts and nonlinear spatial derivative terms remain explicitly `unsupported`
 or `partial`, and a numerical convergence result is not a proof of uniqueness
 or completeness.
 
+The generic dispatcher also recognizes a bounded one-dimensional wave problem
+with explicit displacement and velocity profiles:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'u_tt = c^2*u_xx; u(x,0) = 1; u_t(x,0) = 0; u(0,t) = 1; u(1,t) = 1; x = {0,1}; t = {0,0.1}; spacePoints = 41; timeSteps = 100',
+    ['c' => 1],
+);
+// solutions['method'] === 'automatic-bounded-wave-pde'
+// solutions['automaticDomain'] === [0.0, 1.0, 0.0, 0.1]
+```
+
+This compact route selects the CFL-controlled wave solver and returns
+displacement snapshots, the effective step size, and stability metadata. It
+infers only two Dirichlet edges; use `analyzeNumericalWavePde()` for Neumann,
+Robin, periodic, custom resolution, or nonlinear operator controls. Higher-
+dimensional wave systems remain explicit-facade-only.
+
 ```php
 $periodic = (new NumericalPdeAnalyzer())->analyze(
     'u_t = u_xx', '1', '1', '1',
