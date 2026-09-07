@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented complete Lambert-W analysis for exponential-versus-squared-affine
+  equations and the new explicit facade.
+
+## 2026-09-07
+
 - Documented constant-base power sums such as `2^x + x = 3` in the affine
   Lambert-W normalization path.
 
