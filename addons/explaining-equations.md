@@ -522,6 +522,28 @@ initial-value, higher-order, delayed, and fractional ODEs remain explicit APIs b
 additional conditions or numerical controls that a bare equality does not
 provide.
 
+### Exact first-order equations
+
+The generic dispatcher also recognizes exact equations when the derivative can
+be isolated into the additive form `M(x,y) + N(x,y)y' = 0` (or `dy/dx`):
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    "2*x*y + 1 + (x^2 + 3*y^2)*dy/dx = 0",
+);
+// solutions['method'] === 'automatic-exact-ode'
+// solutions['implicit'] is ψ(x,y) = C
+```
+
+The analyzer differentiates `M` and `N`, checks `∂M/∂y = ∂N/∂x` on finite
+domain samples, integrates a potential, and verifies both recovered partial
+derivatives. `analyzeExactOde()` is the explicit facade. The result includes
+`M`, `N`, `dMdy`, `dNdx`, `potential`, `exactnessSamples`, and
+`verificationSamples`; non-exact forms and expressions outside the bounded
+elementary differentiator/integrator are retained as explicit
+`unsupported`/`partial` results rather than being presented as universal
+solutions.
+
 The generic entry point can route a complete numeric IVP when its conditions
 are included in the same semicolon-separated input:
 

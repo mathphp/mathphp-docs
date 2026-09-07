@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.222.0` bounded exact first-order ODE analysis,
+  implicit potential reconstruction, and automatic dispatch.
+
+## 2026-09-07
+
 - Documented Explaining `v0.221.0` variable-coefficient elementary linear ODE
   support and integrating-factor boundaries.
 
