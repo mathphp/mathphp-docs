@@ -2218,10 +2218,22 @@ $analysis = (new EquationAnalyzer())->analyze(
 // solutions['automaticOrder'] === 0.5
 ```
 
-The automatic form requires one shared numeric order strictly between zero and
-one and one numeric initial value per component. It uses 128 bounded memory
-steps over `[t₀, t₀ + 1]`; use `analyzeNumericalFractionalOdeSystem()` for
-mixed orders, wave components, or explicit coordinate and resolution control.
+The automatic diffusion form requires one shared numeric order strictly between
+zero and one and one numeric initial value per component. It uses 128 bounded
+memory steps over `[t₀, t₀ + 1]`. Shared-order wave systems use the same
+dispatcher with `1 < α ≤ 2` and one initial velocity per component:
+
+```php
+$wave = (new EquationAnalyzer())->analyze(
+    "D^alpha x = -x; D^alpha y = x; x(0) = 1; y(0) = 0; x'(0) = 0; y'(0) = 1; order = 1.5",
+);
+// solutions['method'] === 'automatic-caputo-fractional-wave-system'
+// solutions['automaticInitialVelocity'] === ['x' => 0.0, 'y' => 1.0]
+```
+
+Wave and diffusion dispatch both use 128 bounded memory steps over `[t₀,
+t₀ + 1]`; use `analyzeNumericalFractionalOdeSystem()` for mixed orders,
+custom coordinates, or resolution control.
 
 ```php
 $mixed = (new NumericalFractionalOdeSystemAnalyzer())->analyze(

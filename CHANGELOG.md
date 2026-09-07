@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.167.0` automatic coupled scalar-order Caputo-wave
+  system dispatch, velocity conditions, and wave metadata.
+
+## 2026-09-07
+
 - Documented Explaining `v0.166.0` automatic coupled scalar-order Caputo
   system dispatch and shared-order memory metadata.
 
