@@ -2229,8 +2229,42 @@ wave memory. Components with `1 < α ≤ 2` require an initial velocity; all
 forcing histories, temporal modes, operator modes, and synchronized snapshots
 are retained. Typed Dirichlet, Neumann, Robin, and paired-periodic edges plus
 bounded nonlocal spatial order are supported. The visual payload is
-`pde-system-fractional-wave`; symbolic solutions and higher-dimensional
-coupled fractional-wave systems remain outside this focused contract.
+`pde-system-fractional-wave`.
+
+## Coupled two-dimensional Caputo fractional waves
+
+`NumericalCoupledFractionalWavePde2DAnalyzer` extends the coupled memory
+contract to rectangular fields with four typed edges. Equations may couple all
+fields and use centered `x`, `y`, and mixed `xy` spatial operators:
+
+```text
+D_t^α u = 0.02*(u_xx + u_yy) + v
+D_t^α v = 0.02*(v_xx + v_yy) - u
+```
+
+```php
+use MathPHP\Explaining\NumericalCoupledFractionalWavePde2DAnalyzer;
+
+$system = (new NumericalCoupledFractionalWavePde2DAnalyzer())->analyze(
+    'D_t^alpha u = 0.02*(u_xx + u_yy) + v; D_t^alpha v = 0.02*(v_xx + v_yy) - u',
+    ['u', 'v'],
+    1.6,
+    ['u' => 'sin(pi*x)*sin(pi*y)', 'v' => '0'],
+    ['u' => '0', 'v' => '1'],
+    ['u' => '0', 'v' => '0'], ['u' => '0', 'v' => '0'],
+    ['u' => '0', 'v' => '0'], ['u' => '0', 'v' => '0'],
+    firstPoints: 25,
+    secondPoints: 25,
+    timeSteps: 100,
+);
+```
+
+Use an order map for mixed diffusion and wave memory, and set `spatialOrder`
+below `2` for the bounded symmetric nonlocal operator. The result retains
+per-field forcing histories, temporal/operator modes, synchronized snapshots,
+and a `pde-system-fractional-wave-2d` visual. Symbolic solutions, unbounded
+domains, and coupled three-dimensional fractional waves remain outside this
+focused contract.
 
 ## Three-dimensional Caputo fractional waves
 

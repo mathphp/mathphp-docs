@@ -2,6 +2,12 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.142.0` coupled two-dimensional Caputo wave fields
+  with mixed orders, typed edges, mixed spatial operators, and retained memory
+  histories.
+
+## 2026-09-07
+
 - Clarified that coupled fractional-wave diffusion components may omit initial
   velocity while wave components require one.
 
