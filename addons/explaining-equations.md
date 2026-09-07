@@ -404,8 +404,8 @@ rational terms. Multiple independent absolute terms, inequalities, and
 piecewise combinations continue through their dedicated branch or bounded
 numerical analyzers.
 
-Up to three absolute terms can be combined with polynomial terms by enumerating
-all eight sign combinations:
+Up to four absolute terms can be combined with polynomial terms by enumerating
+all 16 sign combinations:
 
 ```php
 $analysis = (new EquationAnalyzer())->analyze(
@@ -417,7 +417,7 @@ $analysis = (new EquationAnalyzer())->analyze(
 // solutions['complete'] === true
 ```
 
-Expressions with more than three independent absolute terms remain on the
+Expressions with more than four independent absolute terms remain on the
 bounded branch or numerical analyzers so their completeness is not overstated.
 
 ## Polynomial radical plus absolute-value equations
