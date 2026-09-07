@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.195.0` generic bounded numerical limit dispatch,
+  including direction notation and its non-proof completeness semantics.
+
+## 2026-09-07
+
 - Documented Explaining `v0.194.0` automatic generic dispatch for symbolic
   derivatives and antiderivatives, including supported forms and limitations.
 

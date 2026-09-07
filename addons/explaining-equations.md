@@ -39,6 +39,26 @@ operations; branch-sensitive, non-elementary, or otherwise unsupported terms
 remain explicitly `partial` or `unsupported`. See
 [explaining calculus](explaining-calculus.md) for the direct analyzer API.
 
+## Generic numerical limits
+
+Bounded numerical limits can use the same generic entry point:
+
+```php
+$limit = (new EquationAnalyzer())->analyze('limit(sin(x) / x, x, 0)');
+// solutions['method'] === 'automatic-limit'
+// solutions['limit'] is approximately 1
+
+$oneSided = (new EquationAnalyzer())->analyze('lim_{x->0+} 1 / x');
+// direction: right; samples and side evidence are retained
+```
+
+`limit(expression, variable, point[, direction])` accepts `left`, `right`, or
+`both`; subscript notation also accepts `x→point` and one-sided `+`/`-`
+suffixes. These results are finite geometric-sampling estimates with
+`complete: false`, not symbolic proofs or global divergence classifications.
+For explicit sample counts, tolerances, and known values, use `LimitAnalyzer`
+directly.
+
 ## Conditional and piecewise expressions
 
 For a numeric result selected by conditions, use `PiecewiseEvaluator`. It
