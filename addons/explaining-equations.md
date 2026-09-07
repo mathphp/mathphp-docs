@@ -1007,6 +1007,12 @@ normalized with `a^u = exp(log(a)·u)` and solved by the same quadratic. Bases
 must be positive and not one; other power forms remain on the existing inverse
 or numerical fallback path.
 
+Equalities between two positive exponential forms are reduced exactly by
+equating their natural-log phases. Thus `2^x = 3^x` and `exp(x) = 2^x` both
+return `x = 0`, while `2^(x + 1) = 4^(x - 1)` returns `x = 3`. Identical
+phases are reported as identities, so exponential underflow cannot create
+spurious bounded numerical roots.
+
 Pairs of logarithms with matching bases and affine arguments are solved exactly
 as well. For example, `ln(x) + ln(x - 1) = 0` uses the product rule and a
 quadratic, while `ln(x) - ln(x - 1) = ln(2)` uses the quotient rule and a

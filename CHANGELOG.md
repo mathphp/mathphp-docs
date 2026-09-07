@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact equality solving for positive exponential forms with affine
+  exponents and the guard against underflow-driven false roots.
+
+## 2026-09-07
+
 - Documented exact mixed-base logarithm solving for shared
   polynomial/rational-polynomial arguments.
 
