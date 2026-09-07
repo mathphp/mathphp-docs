@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact same-phase Pythagorean trigonometric polynomial reduction,
+  bounded complementary-value filtering, and periodic reconstruction.
+
+## 2026-09-07
+
 - Documented exact double-angle trigonometric polynomial reduction with bounded
   substitution, range filtering, and periodic-family reconstruction.
 

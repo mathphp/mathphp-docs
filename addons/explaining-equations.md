@@ -134,6 +134,22 @@ It uses `cos(2A) = 1 − 2sin(A)²` or
 them back to complete periodic phase families. Unsupported mixed terms remain
 explicitly partial.
 
+## Pythagorean trigonometric polynomials
+
+Same-phase complementary terms such as `sin(A)^2 + cos(A)` and
+`cos(A)^2 + sin(A)` are reduced with `sin(A)^2 + cos(A)^2 = 1`:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('sin(x)^2 + cos(x) = 0');
+
+// solutions['method'] === 'exact-trigonometric-pythagorean-polynomial'
+// solutions['complete'] === true
+```
+
+The resulting quadratic is solved in the bounded complementary value, then
+mapped back to all periodic phase branches. Domain and range filtering are
+retained in the structured result.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative
