@@ -991,6 +991,11 @@ to expose `complete: false` when sampling cannot prove a global statement.
 Bounded one- and two-variable optimization requests use the same registry while
 retaining their explicit local-search and non-global-completeness metadata.
 
+If symbolic differentiation encounters a registered function without a known
+derivative rule, generic calculus can emit a centered finite-difference
+derivative expression with `partial` status. It never presents that numerical
+approximation as a symbolic derivative.
+
 The Core evaluator also provides domain-checked special functions such as
 `erf`, `erfc`, `gamma`, and `lgamma`. They can be used directly in bounded
 equation searches and in any explaining analyzer that evaluates Core

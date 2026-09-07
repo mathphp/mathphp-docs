@@ -2,6 +2,11 @@
 
 ## 2026-09-08
 
+- Documented the registry-aware finite-difference derivative fallback and its
+  explicit `partial` status.
+
+## 2026-09-08
+
 - Documented custom-function propagation through automatic bounded one- and
   two-variable optimization.
 
