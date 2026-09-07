@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Clarified that coupled fractional-wave diffusion components may omit initial
+  velocity while wave components require one.
+
+## 2026-09-07
+
 - Documented Explaining `v0.141.0` coupled one-dimensional Caputo wave fields
   with mixed component orders, typed edges, memory histories, and nonlocal
   spatial operators.
