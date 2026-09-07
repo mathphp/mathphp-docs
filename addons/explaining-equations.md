@@ -728,6 +728,17 @@ bounded inequality analyzer on `[-100, 100]`, expose
 `method: automatic-bounded-inequality` and `automaticDomain`, and remain
 bounded results rather than global proofs. Use `analyzeInequality()` to choose
 the interval and sampling controls explicitly.
+Equality systems can include explicit domain constraints:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('x^2 = 4; x >= 0');
+// constrained-nonlinear-system
+// solutions['roots'] === [['x' => 2.0]]
+// solutions['complete'] === false
+```
+
+Every candidate is re-evaluated against all equality and relation rows. The
+finite numerical search does not claim global root completeness.
 
 Two-variable inequalities use a separate bounded region sampler. For example:
 

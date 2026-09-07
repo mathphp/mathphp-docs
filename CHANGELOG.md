@@ -17,6 +17,11 @@
 
 ## 2026-09-07
 
+- Documented constrained nonlinear systems with explicit domain relations and
+  their incomplete bounded-search contract.
+
+## 2026-09-07
+
 - Documented Explaining `v0.251.0` mixed affine/piecewise system composition
   and nonlinear fallback boundaries.
 
