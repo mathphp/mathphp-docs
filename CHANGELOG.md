@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.209.0` bounded integration-by-parts coverage for
+  monomial elementary products.
+
+## 2026-09-07
+
 - Documented Explaining `v0.208.0` monomial-power substitution for selected
   composite products.
 
