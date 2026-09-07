@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.196.0` generic finite sum/product dispatch,
+  sigma notation, per-term evidence, and the bounded term cap.
+
+## 2026-09-07
+
 - Documented Explaining `v0.195.0` generic bounded numerical limit dispatch,
   including direction notation and its non-proof completeness semantics.
 

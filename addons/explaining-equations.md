@@ -59,6 +59,25 @@ suffixes. These results are finite geometric-sampling estimates with
 For explicit sample counts, tolerances, and known values, use `LimitAnalyzer`
 directly.
 
+## Generic finite sums and products
+
+Finite series notation is evaluated term by term through the generic entry
+point:
+
+```php
+$sum = (new EquationAnalyzer())->analyze('sum(k^2, k, 1, 5)');
+// solutions['method'] === 'automatic-finite-sum'
+// solutions['value'] === 55
+
+$sigma = (new EquationAnalyzer())->analyze('Σ_{k=1}^{5} k^2');
+// solutions['value'] === 55
+```
+
+`prod(expression, variable, start, end)` and `product(...)` use the same
+integer-bound grammar. Direct evaluation is capped at 2,048 terms, and every
+finite term is retained in the structured result. Undefined terms or ranges
+over the cap remain explicitly `partial` or `unsupported`.
+
 ## Conditional and piecewise expressions
 
 For a numeric result selected by conditions, use `PiecewiseEvaluator`. It
