@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.250.0` exact composition of multivariable affine
+  min/max equation systems.
+
+## 2026-09-07
+
 - Documented Explaining `v0.249.0` complete multivariable affine min/max region
   analysis and active-boundary alternatives.
 

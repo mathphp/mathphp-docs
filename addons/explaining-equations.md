@@ -654,6 +654,20 @@ This keeps the full union-of-boundaries representation instead of sampling a
 bounded contour. Use `analyzePiecewiseRegion()` when controlling the call
 explicitly.
 
+Piecewise rows can also be composed into a complete system region:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'min(x, y) = 1; max(x, y) = 2'
+);
+// solutions['method'] === 'exact-piecewise-system'
+// solutions['complete'] === true
+```
+
+The result keeps constraints tagged by equation row and preserves active
+branch alternatives. Mixed non-piecewise systems continue through the general
+nonlinear-system path.
+
 Integer-only `gcd()` and `lcm()` equalities use complete integer-domain
 analysis:
 
