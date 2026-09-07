@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact positive/negative exponential combinations and their
+  positive-root domain filtering.
+
+## 2026-09-07
+
 - Documented exact shared-phase hyperbolic combinations and positive-root
   filtering through the exponential substitution.
 

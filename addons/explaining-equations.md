@@ -413,6 +413,11 @@ solved exactly. The analyzer substitutes `z = exp(a·x + b)`, solves the
 resulting quadratic, keeps only positive finite `z` values, and maps every
 remaining branch back to the real variable.
 
+The same substitution handles mixed exponential branches such as
+`exp(x) + exp(-x) = 3` and shifted/scaled forms. Every positive `z` root is
+mapped back to `x`, while non-positive branches are discarded as outside the
+real exponential domain.
+
 Product-exponential equations of the form `(a*x+b)*exp(a*x+b) = c` are
 dispatched to a real Lambert-W transformation before numerical sampling:
 
