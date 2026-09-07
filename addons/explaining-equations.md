@@ -150,6 +150,26 @@ The resulting quadratic is solved in the bounded complementary value, then
 mapped back to all periodic phase branches. Domain and range filtering are
 retained in the structured result.
 
+## Double-angle trigonometric factors
+
+Zero-target sums that contain a base phase and its sine double angle can be
+factored exactly instead of being sent to numerical search:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('sin(x) + 2*sin(2*x) = 0');
+
+// solutions['method'] === 'exact-trigonometric-double-angle-factor'
+// solutions['complete'] === true
+```
+
+The analyzer uses
+`sin(A) + c·sin(2A) = sin(A)(1 + 2c·cos(A))` and
+`cos(A) + c·sin(2A) = cos(A)(1 + 2c·sin(A))`. It accepts reordered terms,
+relative phase orientation, and periodic reconstruction of every factor
+branch. Nonzero targets and mixed forms outside these identities remain
+explicitly partial so callers can distinguish exact coverage from bounded
+numerical estimates.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative

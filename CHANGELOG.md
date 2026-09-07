@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact double-angle trigonometric factorization for zero-target
+  sine and cosine equations, including reordered terms and periodic branches.
+
+## 2026-09-07
+
 - Documented exact same-phase Pythagorean trigonometric polynomial reduction,
   bounded complementary-value filtering, and periodic reconstruction.
 
