@@ -1857,9 +1857,10 @@ quadratic polynomials are certified with an exact sign chart over the supplied
 domain. For degree three and above, the result is complete when the full
 complex-root iteration converges and otherwise remains `partial`. The result
 has `method: exact-polynomial-sign-chart`, `criticalRoots`, and a `complete`
-flag. Rational and transcendental expressions use their dedicated exact or
-sampled interval routes and remain `partial` when undefined points or finite
-sampling prevent a proof.
+flag. Rational-polynomial expressions use their dedicated exact sign-chart
+route, retain denominator zeros as gaps, and expose `rootConverged` metadata
+for higher-degree roots. Transcendental expressions use sampled intervals and
+remain `partial` when undefined points or finite sampling prevent a proof.
 Every result includes interval endpoints, open/closed flags, and critical
 points:
 
