@@ -3370,3 +3370,25 @@ $analysis = (new SecondOrderOdeAnalyzer())->analyze(
 The analyzer also handles repeated and complex-conjugate characteristic roots,
 plus constant forcing. More complicated higher-order equations should be
 rewritten as first-order systems and passed to the numerical system analyzer.
+
+For constant-coefficient linear equations of order three through 32, use the
+bounded symbolic higher-order analyzer:
+
+```php
+use MathPHP\Explaining\HigherOrderOdeAnalyzer;
+
+$analysis = (new HigherOrderOdeAnalyzer())->analyze(
+    "y''' - 6*y'' + 11*y' - 6*y = 0",
+);
+// solution['basis'] contains independent exponential terms.
+// solution['rootConverged'] and solution['complete'] describe confidence.
+```
+
+The generic `EquationAnalyzer` dispatches the same notation with method
+`automatic-higher-order-ode`. Characteristic roots are numerical for these
+higher degrees; conjugate pairs are rendered as real sine/cosine terms. A
+non-resonant constant right-hand forcing term is supported through a constant
+particular solution. Variable-coefficient, nonlinear, singular, or resonant
+forcing equations are deliberately returned as `partial`/`unsupported`, and
+initial-value problems should use `analyzeNumericalHigherOrderOde()` when a
+bounded trajectory is wanted.
