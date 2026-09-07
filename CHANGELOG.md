@@ -2,6 +2,11 @@
 
 ## 2026-09-08
 
+- Documented registry and evaluation-limit propagation through automatic
+  scalar, coupled, and jump SDE dispatch.
+
+## 2026-09-08
+
 - Documented custom-function propagation through automatic Fredholm, Volterra,
   and nonlinear integral-equation dispatch.
 

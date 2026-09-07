@@ -2061,7 +2061,9 @@ The compact form requires the state name `X`, binds drift and diffusion
 expressions to `t` and `x`, and uses seeded Euler–Maruyama paths. The default
 bounded run uses 128 steps, 16 paths, and seed `12345`; add `steps`, `paths`,
 or `seed` clauses to override those defaults. Results remain stochastic finite
-approximations with `complete: false`.
+approximations with `complete: false`. When an `EvaluationOptions` instance is
+provided to the generic analyzer, its registered Core functions and evaluation
+limits are preserved in the drift and diffusion evaluations.
 
 Coupled systems use repeated stochastic clauses followed by one initial value
 per state:
@@ -2077,7 +2079,8 @@ $system = (new EquationAnalyzer())->analyze(
 The generic system form uses independent Brownian components and the same
 bounded defaults as the scalar form. Use
 `analyzeNumericalSdeSystem()` when a covariance matrix, larger state set, or
-other simulation control is required.
+other simulation control is required. Registered Core functions and evaluation
+limits on `EvaluationOptions` are propagated to every component.
 
 ## Coupled vector Itô systems
 
@@ -2158,8 +2161,10 @@ $system = (new EquationAnalyzer())->analyze(
 ```
 
 Each event mark `m` is seeded and uniform. Add `steps`, `paths`, and `seed`
-clauses for bounded controls; use the explicit facades for correlated jump
-measures or state-dependent intensities.
+clauses for bounded controls. The generic scalar, coupled, and marked jump
+routes preserve registered Core functions and evaluation limits from
+`EvaluationOptions`; use the explicit facades for correlated jump measures or
+state-dependent intensities.
 
 ## Numerical higher-order ODEs
 
