@@ -2,6 +2,11 @@
 
 ## 2026-09-08
 
+- Documented custom-function propagation through automatic Fredholm, Volterra,
+  and nonlinear integral-equation dispatch.
+
+## 2026-09-08
+
 - Documented the registry-aware sampled antiderivative fallback and its
   explicit `partial` status.
 

@@ -1000,6 +1000,10 @@ Indefinite integration follows the same boundary: a registered function can
 produce a sampled reference antiderivative with retained quadrature samples,
 but the result remains `partial` and is not presented as a closed form.
 
+Automatic Fredholm and Volterra integral-equation dispatch also preserves the
+registry for forcing and kernel evaluation, together with bounded numerical
+status and convergence diagnostics.
+
 The Core evaluator also provides domain-checked special functions such as
 `erf`, `erfc`, `gamma`, and `lgamma`. They can be used directly in bounded
 equation searches and in any explaining analyzer that evaluates Core
