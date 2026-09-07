@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.193.0` automatic generic dispatch for numeric
+  matrix equations.
+
+## 2026-09-07
+
 - Documented Explaining `v0.192.0` automatic generic dispatch for bounded
   nonsmooth normal-cone inclusions.
 

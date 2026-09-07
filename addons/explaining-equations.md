@@ -462,6 +462,20 @@ undefined cell is `partial`; malformed input or a wholly unevaluable domain is
 `unsupported`. Every result includes `complete: false`: grid sampling cannot
 prove that a curve has no additional branches or singular points.
 
+## Numeric matrix equations
+
+The generic entry point also accepts numeric square matrix equations:
+
+```php
+$matrix = (new EquationAnalyzer())->analyze('A = [[2,1],[1,3]]; b = [1,2]');
+// solutions['method'] === 'automatic-matrix-equation'
+// solutions['solution'] === [0.2, 0.6]
+```
+
+The result retains Gaussian-elimination rank, consistency, and augmented
+matrix diagnostics. Use `analyzeMatrixEquation()` when the matrix and vector
+are already available as PHP arrays.
+
 ## Bounded Fredholm integral equations
 
 `NumericalIntegralEquationAnalyzer` adds a finite collocation solver for linear
