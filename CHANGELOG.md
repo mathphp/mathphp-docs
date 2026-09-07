@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented bounded recursive exact solving for nested principal square-root
+  chains with inside-out branch and domain validation.
+
+## 2026-09-07
+
 - Documented exact one-level nested principal-square-root solving with domain,
   denominator, and original-residual validation.
 

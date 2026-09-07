@@ -532,8 +532,20 @@ $analysis = (new EquationAnalyzer())->analyze(
 The analyzer first enforces the nonnegative outer target, squares once, then
 reduces the remaining inner radical with a second domain-checked squaring. It
 rejects denominator poles and candidates that fail the original nested residual.
-Deeper nesting and multiple independent nested roots remain partial or bounded
-numerical paths.
+For chains up to four nested levels, the recursive analyzer applies the same
+reduction inside-out and reports `exact-nested-radical-chain` with a `depth`
+field. Deeper chains and multiple independent nested roots remain partial or
+bounded numerical paths.
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'sqrt(1 + sqrt(1 + sqrt(x))) = 2'
+);
+
+// solutions['method'] === 'exact-nested-radical-chain'
+// solutions['roots'] === [64]
+// solutions['depth'] === 2
+```
 
 ## Generic calculus expressions
 
