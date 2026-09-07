@@ -254,8 +254,12 @@ $analysis = (new RecurrenceAnalyzer())->analyze(
 ```
 
 Distinct real roots, repeated roots, and complex-conjugate roots are reported
-with separate branch metadata. Higher-order, nonlinear, variable-coefficient,
-or incomplete-seed recurrences continue to return bounded terms without an
+with separate branch metadata. Numeric linear recurrences through order eight
+with distinct, well-conditioned roots receive a generalized complex closed
+form reconstructed from the supplied seeds. Near-repeated or ill-conditioned
+roots retain characteristic metadata with `closedFormComplete: false`; higher-
+order beyond the supported bound, nonlinear, variable-coefficient, or
+incomplete-seed recurrences continue to return bounded terms without an
 invented infinite closed form.
 
 For mutually dependent sequences, use `RecurrenceSystemAnalyzer` with one

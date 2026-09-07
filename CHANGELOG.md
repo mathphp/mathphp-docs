@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.225.0` higher-order linear-recurrence roots and
+  conservative complex Vandermonde closed-form reconstruction.
+
+## 2026-09-07
+
 - Documented Explaining `v0.224.0` characteristic-root and closed-form
   metadata for numeric first- and second-order linear recurrences.
 
