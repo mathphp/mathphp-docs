@@ -491,8 +491,20 @@ $analysis = (new EquationAnalyzer())->analyze("y' = 2*y + 3");
 // solutions['method'] === 'automatic-linear-ode'
 ```
 
-`dy/dx = 4` is accepted as well. Initial-value, higher-order, nonlinear,
-delayed, and fractional ODEs remain explicit APIs because they require
+`dy/dx = 4` is accepted as well. Constant-coefficient Bernoulli forms use the
+`v = y^(1−n)` substitution:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze("y' + 2*y = 4*y^3");
+// solutions['method'] === 'automatic-bernoulli-ode'
+// solutions['general'] is the generic non-zero branch.
+```
+
+`analyzeBernoulliOde()` is the explicit facade. Numeric constant `p`, `q`, and
+`n` are required, with `n` outside 0 and 1. The result includes `domainNote`
+and `complete: false` because real power branches, singular solutions, and
+domain restrictions require caller-side interpretation. Other nonlinear,
+initial-value, higher-order, delayed, and fractional ODEs remain explicit APIs because they require
 additional conditions or numerical controls that a bare equality does not
 provide.
 

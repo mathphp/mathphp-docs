@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.219.0` bounded Bernoulli first-order ODE analysis
+  and branch-aware domain metadata.
+
+## 2026-09-07
+
 - Documented Explaining `v0.218.0` bounded separable first-order ODE analysis
   and reciprocal elementary integration support.
 
