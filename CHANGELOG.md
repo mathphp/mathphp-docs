@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact shared-phase tangent polynomial solving, including periodic
+  branches and complete no-real-root proofs.
+
+## 2026-09-07
+
 - Documented exact cubic and quartic solving in a shared sine or cosine value,
   including certified real-root isolation and periodic families.
 - Documented the repeated-root isolation correction used by the polynomial

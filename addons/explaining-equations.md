@@ -458,6 +458,9 @@ The same substitution now covers cubic and quartic polynomials in one shared
 value, such as `sin(x)^3 - sin(x) = 0` and `cos(x)^4 - cos(x)^2 = 0`.
 Real polynomial roots are isolated before values outside `[-1, 1]` are removed,
 then every admissible value is expanded into complete trigonometric families.
+Tangent polynomials such as `tan(x)^2 = 1` use the same real polynomial roots
+but map each value through `atan(u) + πk`, without applying a bounded-value
+filter because tangent is unbounded between its poles.
 
 Product-exponential equations of the form `(a*x+b)*exp(a*x+b) = c` are
 dispatched to a real Lambert-W transformation before numerical sampling:
