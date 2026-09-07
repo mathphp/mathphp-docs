@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.149.0` automatic complex equality dispatch for
+  standalone `i` expressions, including local-root and starting-point metadata.
+
+## 2026-09-07
+
 - Documented Explaining `v0.148.0` Core `v0.3.6` integration and special
   functions available to bounded equation analysis.
 

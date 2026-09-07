@@ -232,6 +232,25 @@ use `PiecewiseEquationAnalyzer` branch by branch. The generic path reports
 branch jumps or undefined samples as `partial` evidence rather than treating a
 discontinuity as a root.
 
+Equalities containing the standalone imaginary unit `i` are routed to the
+complex Newton analyzer before real-valued fallbacks. The generic path infers
+the unknown, starts at `0 + 0i`, and returns `method:
+automatic-complex-newton`, `automaticInitial`, one local complex root, and its
+residual history:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('exp(z) = i');
+// solutions['root'] ≈ ['real' => 0, 'imaginary' => π/2]
+// solutions['method'] === 'automatic-complex-newton'
+```
+
+This is intentionally a local solve, not a proof that every complex root was
+found. Use `analyzeComplex()` with an explicit `ComplexNumber` start, iteration
+limit, tolerance, and optional known scalar parameters when the initial basin
+must be controlled. Equations with multiple unknowns remain an explicit
+`ComplexSystemAnalyzer` workflow so their variable ordering and starting
+values are never guessed.
+
 ## Implicit two-variable equations
 
 A single equality in two unknowns usually describes a curve rather than a
