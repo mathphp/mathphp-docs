@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact reduction of repeated affine fractional-power products to
+  rational-power equations with complete real-domain branch handling.
+
+## 2026-09-07
+
 - Documented exact unique-zero fixed-point solving for supported odd and
   monotone elementary functions with affine arguments.
 

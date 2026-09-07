@@ -293,6 +293,23 @@ as identities on their unrestricted variable domain; functions with additional
 fixed points, such as `cos`, `tan`, `sqrt`, and `cbrt`, remain on their own
 specialized or numerical paths.
 
+## Repeated affine fractional-power products
+
+Products that use the same affine base can be combined before solving:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('x*sqrt(x) = 1');
+
+// x · sqrt(x) → x^(3/2)
+// solutions['method'] === 'exact-power-product'
+// solutions['roots'] === [1.0]
+```
+
+The reducer also handles scaled and shifted bases, `cbrt()` factors, and
+explicit rational exponents. It delegates real branch and domain decisions to
+the rational-power analyzer, so even-denominator roots enforce non-negative
+bases and odd-denominator cube-root branches retain negative solutions.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative
