@@ -699,8 +699,10 @@ Affine arguments such as `gcd(2*x, 6)` are supported. Non-integer arguments
 remain explicit `unsupported` results because these Core functions are defined
 on integers.
 
-The same generic entry point recognizes semicolon- or newline-separated systems
-when every row is an equality. It first attempts exact Gaussian elimination for
+The same generic entry point recognizes semicolon-, comma-, or
+newline-separated systems when every row is an equality. Commas inside
+function arguments remain part of the expression, so `min(x, y) = 1, max(x, y) = 2`
+is safely treated as two rows. It first attempts exact Gaussian elimination for
 affine rows, returning `method: automatic-linear-system` with unique,
 inconsistent, or underdetermined metadata. Nonlinear systems then fall back to
 one damped Newton solve from zero, returning `method:

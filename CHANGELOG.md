@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented comma-separated equation-system input with delimiter-aware
+  handling for function arguments.
+
+## 2026-09-07
+
 - Documented Explaining `v0.251.0` mixed affine/piecewise system composition
   and nonlinear fallback boundaries.
 
