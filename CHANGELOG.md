@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact equal-integer-power trigonometric equality solving, with
+  odd/even sign-branch rules and explicit handling of mismatched powers.
+
+## 2026-09-07
+
 - Documented complete sign-branch factorization for squared affine
   trigonometric equalities, including tangent pole-domain metadata and shared
   root normalization.

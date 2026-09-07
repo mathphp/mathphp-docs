@@ -79,6 +79,12 @@ Tangent results include the pole-domain restriction. Shared root
 normalization removes duplicate representatives discovered by different
 branches.
 
+The same analyzer handles equal positive integer powers (for example
+`sin(x)^3 = sin(2*x)^3` and `cos(x)^8 = cos(2*x)^8`). Odd powers retain only
+the same-function branches; even powers retain both signs. Equal powers are
+required on both sides; mismatched powers remain explicit numerical or partial
+cases rather than being approximated as exact.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative
