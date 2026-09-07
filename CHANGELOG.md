@@ -2,6 +2,9 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.211.0` higher-degree polynomial inequality sign
+  charts and convergence metadata.
+
 - Documented Explaining `v0.210.0` shifted-polynomial expansion for bounded
   integration by parts.
 

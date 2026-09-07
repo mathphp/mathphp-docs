@@ -1797,9 +1797,10 @@ $analysis = (new PolynomialEquationAnalyzer())->analyze(
 ```
 
 Linear and quadratic polynomials are solved directly. For degree three and
-above, the analyzer derives a Cauchy root bound and uses sampled bisection for
-real roots; proof-level completeness still requires a dedicated symbolic
-solver.
+above, the analyzer derives a Cauchy root bound, uses sampled bisection for
+real roots, and also records Durand–Kerner convergence metadata for the full
+complex spectrum; these roots remain numerical approximations rather than
+symbolic proof objects.
 
 For degree three and above, `solutions['complexRoots']` also contains
 Durand–Kerner approximations with separate `real`, `imaginary`, and
@@ -1848,11 +1849,13 @@ marked partial when sampling cannot prove global completeness.
 
 Use `InequalityAnalyzer` for bounded real relations. ASCII relations (`<`,
 `<=`, `>`, `>=`) and Unicode aliases (`≤`, `≥`, `≠`) are accepted. Linear and
-quadratic
-polynomials are certified with an exact sign chart over the supplied domain;
-the result has `method: exact-polynomial-sign-chart` and `complete: true`.
-Rational, transcendental, and higher-degree expressions use sampled intervals
-and remain `partial` when undefined points or finite sampling prevent a proof.
+quadratic polynomials are certified with an exact sign chart over the supplied
+domain. For degree three and above, the result is complete when the full
+complex-root iteration converges and otherwise remains `partial`. The result
+has `method: exact-polynomial-sign-chart`, `criticalRoots`, and a `complete`
+flag. Rational and transcendental expressions use their dedicated exact or
+sampled interval routes and remain `partial` when undefined points or finite
+sampling prevent a proof.
 Every result includes interval endpoints, open/closed flags, and critical
 points:
 
