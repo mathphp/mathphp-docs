@@ -389,6 +389,24 @@ $analysis = (new EquationAnalyzer())->analyze("y'' + y = 0");
 The route returns the symbolic general solution and characteristic metadata;
 call `analyzeSecondOrderOde()` when initial values are available.
 
+Complete compact index-1 differential-algebraic systems are also recognized by
+the generic dispatcher:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    "x' = -z; z - x = 0; x(0) = 1; z(0) = 1",
+);
+// solutions['method'] === 'automatic-numerical-dae'
+// solutions['final']['values'] contains the projected state
+```
+
+The parser requires at least one derivative equation, one algebraic constraint,
+and one numeric initial value for every state at the same coordinate. The
+automatic route uses projected Euler integration on `[t₀, t₀ + 1]` with 128
+steps and preserves constraint residuals and `partial` failure states. Use
+`analyzeNumericalDae()` when mass matrices, differentiated constraints,
+tolerances, or custom intervals are needed.
+
 ```php
 use MathPHP\Explaining\NumericalImplicitEquationAnalyzer;
 

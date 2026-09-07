@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.160.0` automatic compact index-1 DAE dispatch and
+  bounded projection diagnostics.
+
+## 2026-09-07
+
 - Documented Explaining `v0.159.0` automatic coupled first-order IVP dispatch
   and bounded vector-RK4 metadata.
 
