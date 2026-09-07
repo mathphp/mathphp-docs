@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented bounded-degree commensurate exponential polynomials with complete
+  positive-root filtering.
+
+## 2026-09-07
+
 - Documented exact shared-value polynomial solving for `sinh`, `cosh`, and
   `tanh`, including strict real-range handling and inverse branches.
 

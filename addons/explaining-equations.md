@@ -468,6 +468,11 @@ Hyperbolic polynomials are handled with their real inverse domains as well:
 `sinh(x)^2 = 1`, `cosh(x)^2 = 4`, and `tanh(x)^2 = 0.25` return complete roots,
 while `cosh(x)^2 = 0.25` and `tanh(x)^2 = 1` are proved impossible.
 
+Commensurate exponential equations can contain more than two terms. The solver
+substitutes `z = exp(a*x+b)` and delegates bounded-degree polynomials to the
+certified real-root analyzer, then keeps only positive `z` values. For example,
+`exp(3*x) - 6*exp(2*x) + 11*exp(x) - 6 = 0` returns `0`, `ln(2)`, and `ln(3)`.
+
 Product-exponential equations of the form `(a*x+b)*exp(a*x+b) = c` are
 dispatched to a real Lambert-W transformation before numerical sampling:
 
