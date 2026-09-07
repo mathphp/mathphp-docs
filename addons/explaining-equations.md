@@ -1983,6 +1983,22 @@ trajectory point. This is a finite numerical approximation; neutral, advanced,
 state-dependent, and higher-dimensional distributed-delay equations remain
 outside this focused contract.
 
+The generic dispatcher accepts a complete five-clause form:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    "y' = yd; y(t) = 1; y(0) = 1; delay = 0.5; kernel(s) = 1",
+);
+// solutions['method'] === 'automatic-distributed-delay-ivp'
+// solutions['automaticKernel'] === '1'
+```
+
+It requires a positive numeric delay, constant history, numeric initial state,
+and one explicit lag-kernel expression. The automatic route uses 128
+method-of-steps Euler intervals and 32 composite-trapezoid lag samples over
+`[t₀, t₀ + 1]`; use `analyzeNumericalDistributedDelayOde()` for custom domains,
+history, kernels, or resolution.
+
 ## Neutral-delay ODEs
 
 `NumericalNeutralDelayOdeAnalyzer` covers bounded scalar neutral retarded

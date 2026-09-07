@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.163.0` automatic distributed-delay IVP dispatch,
+  kernel clauses, and bounded quadrature metadata.
+
+## 2026-09-07
+
 - Documented Explaining `v0.162.0` automatic fixed-delay IVP dispatch and
   constant-history method-of-steps metadata.
 
