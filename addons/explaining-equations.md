@@ -42,6 +42,24 @@ branch-sensitive, non-elementary, or otherwise unsupported terms remain
 explicitly `partial` or `unsupported`. See
 [explaining calculus](explaining-calculus.md) for the direct analyzer API.
 
+## Automatic separable ODE dispatch
+
+First-order equations whose right-hand side factors independently into x-only
+and y-only terms are separated automatically:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze("y' = x*y");
+// solutions['method'] === 'automatic-separable-ode'
+// solutions['implicit'] contains the elementary implicit family.
+```
+
+`analyzeSeparableOde()` is the explicit facade. The bounded parser accepts
+top-level products and quotients; each factor must depend on x, y, or neither.
+Reciprocal affine and negative-power terms use the logarithmic/power rules from
+the symbolic integrator. Mixed-variable factors are `unsupported`, while
+separable equations with non-elementary separated integrals are `partial` and
+retain both separated integrands instead of claiming a closed form.
+
 ## Generic numerical limits
 
 Bounded numerical limits can use the same generic entry point:
@@ -523,6 +541,10 @@ $analysis = (new EquationAnalyzer())->analyze("y'' + y = 0");
 
 The route returns the symbolic general solution and characteristic metadata;
 call `analyzeSecondOrderOde()` when initial values are available.
+
+Separable first-order forms such as `y' = x*y` are also recognized with
+`automatic-separable-ode`. The result retains the separated integrands and an
+implicit elementary family; use `analyzeSeparableOde()` for direct access.
 
 The generic dispatcher also recognizes a bounded second-order boundary-value
 problem when two endpoint values are supplied:

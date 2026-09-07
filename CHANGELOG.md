@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.218.0` bounded separable first-order ODE analysis
+  and reciprocal elementary integration support.
+
+## 2026-09-07
+
 - Documented Explaining `v0.217.0` bounded symbolic constant-coefficient ODE
   analysis for orders three through 32.
 
