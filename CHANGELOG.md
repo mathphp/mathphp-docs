@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.171.0` automatic scalar and coupled jump-diffusion
+  dispatch, intensities, and seeded marked events.
+
+## 2026-09-07
+
 - Documented Explaining `v0.170.0` automatic coupled scalar Itô SDE-system
   dispatch and independent seeded-path metadata.
 

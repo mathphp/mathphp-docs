@@ -637,8 +637,30 @@ Each interval draws a normal diffusion increment and an exact bounded Poisson
 count, retaining per-step counts, total jumps, endpoint statistics, and the
 seed. The method marks itself `complete: false` because this is a finite
 stochastic approximation. For deterministic performance bounds, the exact
-inversion sampler requires intensity × step size ≤ 50; high-rate, marked, and
-vector jump processes need a separate contract.
+inversion sampler requires intensity × step size ≤ 50.
+
+The generic `EquationAnalyzer::analyze()` entry point recognizes a compact
+scalar jump-diffusion when the intensity is declared explicitly:
+
+```php
+$jump = (new EquationAnalyzer())->analyze(
+    'dX = 0*dt + 0*dW + 1*dN; intensity(X) = 2; X(0) = 0; target = 1; seed = 42',
+);
+// solutions['method'] === 'automatic-compound-poisson-sde'
+```
+
+Repeat the derivative and state clauses for a coupled system:
+
+```php
+$system = (new EquationAnalyzer())->analyze(
+    'dX = 0*dt + 0*dW + m*dN; dY = 0*dt + 0*dW + 2*m*dN; intensity(X) = 2; intensity(Y) = 1; X(0) = 0; Y(0) = 0; target = 1',
+);
+// solutions['method'] === 'automatic-compound-poisson-sde-system'
+```
+
+Each event mark `m` is seeded and uniform. Add `steps`, `paths`, and `seed`
+clauses for bounded controls; use the explicit facades for correlated jump
+measures or state-dependent intensities.
 
 ## Numerical higher-order ODEs
 
