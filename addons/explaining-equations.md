@@ -44,6 +44,24 @@ The same exact treatment is available for affine hyperbolic phases:
 `cosh(A) = cosh(B)` uses the two branches `A = B` and `A = −B`. These are
 non-periodic real solution sets and are returned with `complete: true`.
 
+## Same-function monotone equalities
+
+For supported strictly monotone functions, equal affine arguments are solved
+directly and checked against the function domain:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('asin(x) = asin(2*x)');
+
+// solutions['method'] === 'exact-monotone-equality'
+// solutions['roots'] === [0.0]
+// solutions['domain'] explains the asin() argument range
+```
+
+This exact path covers inverse trigonometric and hyperbolic functions,
+`erf()`/`erfc()`, exponentials, logarithms, `sqrt()`, and related monotone
+forms when each side has one affine argument. Candidates outside domains such
+as `[−1, 1]` for `asin()` or `[1, ∞)` for `acosh()` are rejected.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative

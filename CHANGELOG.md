@@ -2,6 +2,12 @@
 
 ## 2026-09-07
 
+- Documented exact same-function monotone equalities for affine arguments,
+  including inverse functions, error functions, exponentials, logarithms, and
+  square roots with domain filtering.
+
+## 2026-09-07
+
 - Documented exact affine-phase equality solving for `sinh()`, `cosh()`, and
   `tanh()`, including injective and even-function branches.
 
