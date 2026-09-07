@@ -606,8 +606,8 @@ The result retains Gaussian-elimination rank, consistency, and augmented
 matrix diagnostics. Use `analyzeMatrixEquation()` when the matrix and vector
 are already available as PHP arrays.
 
-Determinant, transpose, and inverse operations are also available for numeric
-matrices through the generic entry point:
+Determinant, transpose, inverse, and bounded spectral operations are also
+available for numeric matrices through the generic entry point:
 
 ```php
 $determinant = (new EquationAnalyzer())->analyze('det([[1,2],[3,4]])');
@@ -623,7 +623,9 @@ $determinant3d = (new EquationAnalyzer())->analyze('det([[1,2,3],[0,1,4],[5,6,0]
 
 `transpose(...)` accepts rectangular matrices; `inverse(...)` and `det(...)`
 require square matrices up to 32 dimensions. `eigenvalue(...)` and `spectrum(...)`
-remain scoped to numeric 2×2 matrices, with complex eigenvalues retaining
+require square numeric matrices up to 12×12. The 2×2 case uses an exact
+characteristic formula; larger spectra use bounded numerical roots and may be
+`partial` when the iteration does not converge. Complex eigenvalues retain
 explicit real/imaginary components. Singular inverses remain `partial`.
 
 ## Bounded Fredholm integral equations

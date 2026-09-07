@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.203.0` bounded numeric spectra up to 12×12 and
+  explicit convergence semantics.
+
+## 2026-09-07
+
 - Documented Explaining `v0.202.0` generalized matrix operations, rectangular
   transpose support, and the 2×2 eigenvalue scope.
 
