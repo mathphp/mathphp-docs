@@ -418,6 +418,11 @@ The same substitution handles mixed exponential branches such as
 mapped back to `x`, while non-positive branches are discarded as outside the
 real exponential domain.
 
+Positive constant-base reciprocal powers such as `2^x + 2^(-x) = 3` are
+normalized with `a^u = exp(log(a)·u)` and solved by the same quadratic. Bases
+must be positive and not one; other power forms remain on the existing inverse
+or numerical fallback path.
+
 Product-exponential equations of the form `(a*x+b)*exp(a*x+b) = c` are
 dispatched to a real Lambert-W transformation before numerical sampling:
 

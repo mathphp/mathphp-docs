@@ -2,6 +2,10 @@
 
 ## 2026-09-07
 
+- Documented exact positive constant-base reciprocal power combinations.
+
+## 2026-09-07
+
 - Documented exact positive/negative exponential combinations and their
   positive-root domain filtering.
 
