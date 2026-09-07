@@ -1861,7 +1861,9 @@ and one numeric initial value for every state at the same coordinate. The
 automatic route uses projected Euler integration on `[t₀, t₀ + 1]` with 128
 steps and preserves constraint residuals and `partial` failure states. Use
 `analyzeNumericalDae()` when mass matrices, differentiated constraints,
-tolerances, or custom intervals are needed.
+tolerances, or custom intervals are needed. Registered Core functions and
+evaluation limits supplied through `EvaluationOptions` are preserved by this
+automatic DAE route.
 
 ```php
 use MathPHP\Explaining\NumericalImplicitEquationAnalyzer;
@@ -3350,7 +3352,10 @@ $contact = (new EquationAnalyzer())->analyze(
 
 Add an upper bound as `0 <= z <= 1 ⟂ g >= 0` for automatic mixed
 complementarity dispatch. Use the explicit facade for custom tolerances,
-mass matrices, or nonstandard active-set controls.
+mass matrices, or nonstandard active-set controls. The automatic
+complementarity, variational-inequality, normal-cone, differential-inclusion,
+and boundary-value routes likewise preserve registered Core functions and
+evaluation limits from `EvaluationOptions`.
 
 ### Mixed complementarity bounds
 
