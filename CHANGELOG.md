@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.234.0` scoped implicit-multiplication normalization
+  for variable-parenthesis equation notation.
+
+## 2026-09-07
+
 - Documented Explaining `v0.233.0` affine-base power analysis, real branch
   handling, and domain metadata.
 

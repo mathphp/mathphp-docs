@@ -473,6 +473,11 @@ Use `analyzePower()` for the explicit facade. Integer exponents retain odd/even
 real branches, while non-integer exponents use the positive-base domain and
 expose `domainNote`/`complete` metadata. Negative powers exclude a zero base.
 
+Implicit multiplication is accepted in algebraic equation paths, including
+`x(x+1)=6` and `(x+1)(x-1)=0`. The normalizer rewrites only an inferred
+variable immediately before `(`; named calls such as `sin(x)` remain function
+calls, and the original input is preserved in the returned analysis.
+
 The same generic entry point recognizes semicolon- or newline-separated systems
 when every row is an equality. It first attempts exact Gaussian elimination for
 affine rows, returning `method: automatic-linear-system` with unique,
