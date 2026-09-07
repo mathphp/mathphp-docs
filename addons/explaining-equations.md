@@ -993,6 +993,9 @@ Refined sign-changing brackets must also satisfy a residual check, so narrowing
 around a pole such as `tan(x)` yields an explicit partial result rather than a
 singularity root. Strictly positive exponential forms that underflow to zero
 are likewise excluded from exact-zero acceptance.
+Sampled inequality boundaries use the same residual requirement; for example,
+`tan(x) > 0` stays partial when a sign boundary is a pole rather than a
+certified zero.
 
 Shared-phase harmonic equations such as `sin(x) + cos(x) = 1` are solved before
 that numerical fallback. The analyzer rewrites the combination as
