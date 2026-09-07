@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.248.0` complete one-argument `min()`/`max()` identity
+  analysis.
+
+## 2026-09-07
+
 - Documented Explaining `v0.247.0` complete min/max analysis for multiple
   affine branches and verified roots.
 

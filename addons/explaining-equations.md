@@ -638,6 +638,9 @@ $analysis = (new EquationAnalyzer())->analyze('max(x, -x) = 1');
 This prevents a branch that reaches the target but is not the controlling
 minimum/maximum branch from being reported as a false solution.
 
+Core's one-argument identity forms are also solved completely, for example
+`min(x) = 2` and `max(2*x + 1) = 5`.
+
 Integer-only `gcd()` and `lcm()` equalities use complete integer-domain
 analysis:
 
