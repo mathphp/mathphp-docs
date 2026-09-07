@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.244.0` quadrant-aware `atan2()` equation analysis,
+  including finite roots and axis half-lines.
+
+## 2026-09-07
+
 - Documented Explaining `v0.243.0` complete affine `erf()`/`erfc()` inverse
   analysis and open range endpoints.
 

@@ -584,6 +584,19 @@ The open range endpoints are handled explicitly: `erf(x) = ±1` and
 `erfc(x) = 0 or 2` have no finite real roots. `gamma()` and `lgamma()` remain
 branch-sensitive numerical analyses.
 
+Affine `atan2()` equations are solved with complete quadrant-aware metadata:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('atan2(x, 1) = 0.5');
+// solutions['method'] === 'exact-atan2'
+// solutions['roots'] contains [tan(0.5)]
+// solutions['complete'] === true
+```
+
+When an axis angle describes a half-line, the result includes open interval
+metadata so the undefined origin is not accidentally included. Impossible
+quadrant targets return complete empty results.
+
 Integer-only `gcd()` and `lcm()` equalities use complete integer-domain
 analysis:
 
