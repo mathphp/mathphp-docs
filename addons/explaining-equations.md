@@ -431,6 +431,11 @@ strictly positive, so the result can safely expose `complete: true`.
 Scaled single-log forms such as `2*ln(x) = ln(4)` use the same isolation path
 and retain the positive-domain check.
 
+Pairs of affine square roots such as `sqrt(x) + sqrt(x - 1) = 2` are solved by
+two-stage squaring. Every candidate is checked against both radicand domains
+and the original unsquared equation, so extraneous roots are removed before
+`complete: true` is returned.
+
 Product-exponential equations of the form `(a*x+b)*exp(a*x+b) = c` are
 dispatched to a real Lambert-W transformation before numerical sampling:
 

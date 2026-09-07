@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact two-affine-radical solving with domain and residual checks
+  after squaring.
+
+## 2026-09-07
+
 - Documented exact scaled single-log solving with strict positive-domain
   validation.
 
