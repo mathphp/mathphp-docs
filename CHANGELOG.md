@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.173.0` automatic bounded two-dimensional elliptic
+  PDE dispatch, compact Dirichlet syntax, and solver limitations.
+
+## 2026-09-07
+
 - Documented Explaining `v0.172.0` automatic bounded one-dimensional parabolic
   PDE dispatch, domains, and Dirichlet initial-boundary syntax.
 

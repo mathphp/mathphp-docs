@@ -747,6 +747,25 @@ The compact route requires explicit space/time domains and uses paired
 Dirichlet values. Use `analyzeNumericalPde()` for Neumann, Robin, periodic,
 non-default coordinates, or custom resolution.
 
+The generic dispatcher also recognizes a fully specified bounded two-dimensional
+elliptic Dirichlet problem:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'u_xx + u_yy = 0; u(0,y) = 0; u(1,y) = 0; u(x,0) = 0; u(x,1) = 0; x = {0,1}; y = {0,1}; firstPoints = 25; secondPoints = 25',
+);
+// solutions['method'] === 'automatic-bounded-elliptic-pde'
+// solutions['automaticDomain'] === [0.0, 1.0, 0.0, 1.0]
+```
+
+The compact route selects the bounded Gauss–Seidel solver and returns the
+finite grid, residual metrics, and retained field snapshots. It infers only
+four Dirichlet edges; use `analyzeNumericalEllipticPde()` for Neumann, Robin,
+periodic, mixed-derivative, or custom solver controls. Non-elliptic principal
+parts and nonlinear spatial derivative terms remain explicitly `unsupported`
+or `partial`, and a numerical convergence result is not a proof of uniqueness
+or completeness.
+
 ```php
 $periodic = (new NumericalPdeAnalyzer())->analyze(
     'u_t = u_xx', '1', '1', '1',
