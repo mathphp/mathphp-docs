@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.197.0` generic bounded definite-integral dispatch,
+  Simpson-area metadata, and explicit sampling limitations.
+
+## 2026-09-07
+
 - Documented Explaining `v0.196.0` generic finite sum/product dispatch,
   sigma notation, per-term evidence, and the bounded term cap.
 

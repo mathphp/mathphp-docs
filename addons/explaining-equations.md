@@ -78,6 +78,22 @@ integer-bound grammar. Direct evaluation is capped at 2,048 terms, and every
 finite term is retained in the structured result. Undefined terms or ranges
 over the cap remain explicitly `partial` or `unsupported`.
 
+## Generic definite integrals
+
+Bounded definite integrals use the same generic entry point:
+
+```php
+$area = (new EquationAnalyzer())->analyze('integral(x^2, x, 0, 1)');
+// solutions['method'] === 'automatic-definite-integral'
+// solutions['area'] is approximately 0.3333333333
+
+$unicodeArea = (new EquationAnalyzer())->analyze('∫_0^1 x^2 dx');
+```
+
+Both forms use bounded Simpson sampling and return `complete: false`. If a
+sample is undefined or non-finite, the result is `partial` and the gap is kept
+visible rather than coerced to zero.
+
 ## Conditional and piecewise expressions
 
 For a numeric result selected by conditions, use `PiecewiseEvaluator`. It
