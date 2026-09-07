@@ -351,10 +351,10 @@ handled. More than two independent radical factors, nonlinear additive terms,
 and equations requiring repeated squaring remain outside this exact reduction
 and are reported through the broader numerical or partial analyzers.
 
-## Polynomial-radical equations
+## Polynomial square- and cube-root equations
 
-One principal square root can contain a polynomial or rational-polynomial
-radicand while polynomial terms appear on either side:
+One principal square root or real cube root can contain a polynomial or
+rational-polynomial radicand while polynomial terms appear on either side:
 
 ```php
 $analysis = (new EquationAnalyzer())->analyze('sqrt(x^2 + 1) + x = 2');
@@ -365,15 +365,24 @@ $analysis = (new EquationAnalyzer())->analyze('sqrt(x^2 + 1) + x = 2');
 ```
 
 The analyzer collects the non-radical terms as `P(x)`, isolates
-`c·sqrt(R(x))`, and squares once to form `P(x)^2 − c²R(x) = 0`. It then
-rejects rational denominator poles, negative radicands, and extraneous roots
-that fail the original unsquared equation. Quartic candidate polynomials are
-supported through the existing real-root isolation path; if a higher-degree
-candidate search cannot certify every real root, the result remains `partial`
+`c·sqrt(R(x))`, and squares once to form `P(x)^2 − c²R(x) = 0`. For
+`c·cbrt(R(x))`, it cubes once to form `P(x)^3 + c³R(x) = 0`; this preserves
+negative real cube-root branches without a principal-domain restriction. It
+then rejects rational denominator poles, negative square-root radicands, and
+extraneous square-root candidates that fail the original unsquared equation.
+Quartic and higher candidate polynomials use the existing real-root isolation
+path; if a search cannot certify every real root, the result remains `partial`
 with its validated roots and completeness metadata. Equations containing
-multiple independent square-root terms still use their dedicated two-term or
-product reductions, or remain numerical/partial when no exact reduction
-applies.
+multiple independent roots still use their dedicated reductions, or remain
+numerical/partial when no exact reduction applies.
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('cbrt(x^2 - 1) = x - 1');
+
+// solutions['method'] === 'exact-polynomial-cuberoot'
+// solutions['roots'] === [0, 1, 3]
+// solutions['complete'] === true
+```
 
 ## Generic calculus expressions
 

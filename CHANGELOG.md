@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact polynomial cube-root equations with negative real branch
+  support and completeness metadata.
+
+## 2026-09-07
+
 - Documented exact polynomial-radical equations with principal-domain and
   unsquared residual filtering.
 
