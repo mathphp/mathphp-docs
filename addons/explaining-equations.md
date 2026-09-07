@@ -2572,6 +2572,20 @@ $analysis = (new NumericalEllipticPde3DAnalyzer())->analyze(
 Unpaired periodic faces, nonlocal faces, nonlinear derivative operators, and
 uniqueness/completeness proofs remain outside this focused numerical contract.
 
+The generic `EquationAnalyzer::analyze()` entry point also recognizes the
+compact six-face Dirichlet form with finite x/y/z domains. It returns
+`automatic-bounded-elliptic-3d-pde`; use `analyzeNumericalEllipticPde3D()` for
+mixed or periodic faces, custom coordinates, or solver controls:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'u_xx + u_yy + u_zz = 0; u(0,y,z) = y + z; u(1,y,z) = 1 + y + z; ' .
+    'u(x,0,z) = x + z; u(x,1,z) = x + 1 + z; ' .
+    'u(x,y,0) = x + y; u(x,y,1) = x + y + 1; ' .
+    'x = {0,1}; y = {0,1}; z = {0,1}; firstPoints = 9; secondPoints = 9; thirdPoints = 9; iterations = 500',
+);
+```
+
 ## One-dimensional wave equations
 
 `NumericalWavePdeAnalyzer` supports a bounded hyperbolic initial-boundary

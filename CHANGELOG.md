@@ -2,6 +2,11 @@
 
 ## 2026-09-08
 
+- Documented automatic compact dispatch for bounded three-dimensional
+  elliptic Dirichlet problems.
+
+## 2026-09-08
+
 - Documented the bounded two-dimensional coupled parabolic solver, typed edge
   conditions, periodic pairing, and automatic compact dispatch.
 
