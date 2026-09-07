@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.192.0` automatic generic dispatch for bounded
+  nonsmooth normal-cone inclusions.
+
+## 2026-09-07
+
 - Documented Explaining `v0.191.0` automatic generic dispatch for box and
   generalized variational inequalities.
 

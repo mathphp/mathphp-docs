@@ -1992,6 +1992,18 @@ non-finite field, or crossed Euler envelopes yields `partial`; this is a
 bounded explanatory approximation, not a rigorous multidimensional
 reachable-set computation.
 
+`NumericalNonsmoothNormalConeAnalyzer` covers bounded inclusions of the form
+`0 ∈ F(z) + ∂φ(z) + N_K(z)` with centered finite-difference subgradients and
+kink diagnostics. The generic entry point accepts:
+
+```php
+$normalCone = (new EquationAnalyzer())->analyze(
+    'NC: F(x) = [x - 2]; potential = abs(x); x(0) = 0; ' .
+    'x in [-1,1]; iterations = 100; stepSize = 0.5; tolerance = 1e-9'
+);
+// solutions['method'] === 'automatic-nonsmooth-normal-cone'
+```
+
 When a system may have several nearby roots, call `analyzeMany()` with several
 initial maps. It deduplicates converged values but keeps failed or partial runs
 so callers can show which starting points were inconclusive.
