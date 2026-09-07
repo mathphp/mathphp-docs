@@ -614,6 +614,18 @@ Pole metadata and branch status are returned explicitly. Nonzero gamma and
 lgamma searches remain partial because a global symbolic root proof is not
 claimed.
 
+Variadic `min()` and `max()` calls with one affine branch and multiple fixed
+branches are reduced to complete intervals:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('min(x, 2, 3, 5) = 2');
+// solutions['fixedBranches'] === [2.0, 3.0, 5.0]
+// solutions['complete'] === true
+```
+
+The controlling fixed branch is selected with the same minimum/maximum
+semantics as Core, and the result preserves endpoint inclusion.
+
 Integer-only `gcd()` and `lcm()` equalities use complete integer-domain
 analysis:
 
