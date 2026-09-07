@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact affine-phase equality solving for `sinh()`, `cosh()`, and
+  `tanh()`, including injective and even-function branches.
+
+## 2026-09-07
+
 - Documented exact periodic-family solving for same-function trigonometric
   equalities with affine `sin()`, `cos()`, and `tan()` arguments, including
   tangent pole-domain metadata and constant identity handling.

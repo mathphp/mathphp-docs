@@ -39,6 +39,11 @@ domain note because poles, where either argument is undefined, are excluded.
 Constant identities and inconsistent constant equalities are reported without
 inventing numerical roots.
 
+The same exact treatment is available for affine hyperbolic phases:
+`sinh(A) = sinh(B)` and `tanh(A) = tanh(B)` use injectivity, while
+`cosh(A) = cosh(B)` uses the two branches `A = B` and `A = −B`. These are
+non-periodic real solution sets and are returned with `complete: true`.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative
