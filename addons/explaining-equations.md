@@ -988,6 +988,9 @@ Automatic bounded definite integrals, limits, and Laplace/Fourier transform
 estimates preserve the same registry. Their finite-sampling results continue
 to expose `complete: false` when sampling cannot prove a global statement.
 
+Bounded one- and two-variable optimization requests use the same registry while
+retaining their explicit local-search and non-global-completeness metadata.
+
 The Core evaluator also provides domain-checked special functions such as
 `erf`, `erfc`, `gamma`, and `lgamma`. They can be used directly in bounded
 equation searches and in any explaining analyzer that evaluates Core

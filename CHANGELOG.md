@@ -2,6 +2,11 @@
 
 ## 2026-09-08
 
+- Documented custom-function propagation through automatic bounded one- and
+  two-variable optimization.
+
+## 2026-09-08
+
 - Documented custom-function propagation through automatic bounded integrals,
   limits, and Laplace/Fourier transforms.
 
