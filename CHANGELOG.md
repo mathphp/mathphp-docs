@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact mixed-base logarithm solving for shared
+  polynomial/rational-polynomial arguments.
+
+## 2026-09-07
+
 - Documented exact equal-base logarithm solving through injectivity, including
   polynomial and rational-polynomial arguments with shared domain validation.
 

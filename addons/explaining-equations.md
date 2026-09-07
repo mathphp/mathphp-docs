@@ -1036,6 +1036,10 @@ For example, `ln(x^2 + 1) = ln(10)` becomes `x^2 + 1 = 10`, and
 equality. The `exact-same-base-logarithm` result validates both strict
 positive-argument domains and denominator restrictions; identical arguments
 are returned as domain-limited identities rather than a finite root list.
+If the shared positive argument is written with different valid bases, as in
+`ln(x) = log2(x)`, equality requires that argument to be one. The
+`exact-mixed-base-logarithm` result solves that polynomial/rational condition
+and preserves the same domain checks.
 
 Pairs of affine square roots such as `sqrt(x) + sqrt(x - 1) = 2` are solved by
 two-stage squaring. Every candidate is checked against both radicand domains
