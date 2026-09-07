@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact polynomial absolute-value combinations with up to seven
+  independent terms and 128 sign branches.
+
+## 2026-09-07
+
 - Documented exact polynomial absolute-value combinations with up to six
   independent terms and 64 sign branches.
 
