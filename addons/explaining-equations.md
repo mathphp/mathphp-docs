@@ -461,6 +461,9 @@ then every admissible value is expanded into complete trigonometric families.
 Tangent polynomials such as `tan(x)^2 = 1` use the same real polynomial roots
 but map each value through `atan(u) + πk`, without applying a bounded-value
 filter because tangent is unbounded between its poles.
+The reciprocal functions are covered too: `sec(x)^2 = 4`, `csc(x)^2 = 4`, and
+`cot(x)^2 = 1` produce periodic families, while targets inside the real range
+gap of secant or cosecant are rejected exactly.
 
 Product-exponential equations of the form `(a*x+b)*exp(a*x+b) = c` are
 dispatched to a real Lambert-W transformation before numerical sampling:

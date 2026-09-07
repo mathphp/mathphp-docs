@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact polynomial solving for shared secant, cosecant, and
+  cotangent values, including reciprocal range checks and periodic branches.
+
+## 2026-09-07
+
 - Documented exact shared-phase tangent polynomial solving, including periodic
   branches and complete no-real-root proofs.
 
