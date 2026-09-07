@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.229.0` real Lambert-W branch analysis and
+  automatic product-exponential dispatch.
+
+## 2026-09-07
+
 - Documented Explaining `v0.228.0` factored logistic ODE analysis,
   equilibrium branches, and denominator-domain metadata.
 

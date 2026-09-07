@@ -402,6 +402,21 @@ bounded numerical solver on `[-100, 100]`. Such results expose
 `analyzeNumerically()` when a different interval, sample count, or refinement
 depth is required.
 
+Product-exponential equations of the form `(a*x+b)*exp(a*x+b) = c` are
+dispatched to a real Lambert-W transformation before numerical sampling:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('x*exp(x) = -0.1');
+// solutions['method'] === 'automatic-lambert-w'
+// solutions['branches'] === [0, -1]
+// solutions['roots'] contains both real roots
+```
+
+Use `analyzeLambertW()` for the explicit facade. The result exposes the
+Lambert-W argument, real branch list, transformed general form, and the
+real-domain cutoff at `-1/e`. Expressions outside this strict shape continue
+through the bounded numerical route.
+
 The same generic entry point recognizes semicolon- or newline-separated systems
 when every row is an equality. It first attempts exact Gaussian elimination for
 affine rows, returning `method: automatic-linear-system` with unique,
