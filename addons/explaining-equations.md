@@ -461,6 +461,18 @@ Use `analyzeLogProduct()` for the explicit facade. Affine forms such as
 `(2*x+1)*ln(2*x+1)=1` are supported; the result exposes the `-1/e` cutoff and
 retains explicit metadata for logarithm-domain limits.
 
+Affine-base power equations are also analyzed directly:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('x^0.5 = 4');
+// solutions['method'] === 'automatic-affine-base-power'
+// solutions['roots'] contains [16]
+```
+
+Use `analyzePower()` for the explicit facade. Integer exponents retain odd/even
+real branches, while non-integer exponents use the positive-base domain and
+expose `domainNote`/`complete` metadata. Negative powers exclude a zero base.
+
 The same generic entry point recognizes semicolon- or newline-separated systems
 when every row is an equality. It first attempts exact Gaussian elimination for
 affine rows, returning `method: automatic-linear-system` with unique,

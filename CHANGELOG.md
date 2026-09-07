@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.233.0` affine-base power analysis, real branch
+  handling, and domain metadata.
+
+## 2026-09-07
+
 - Documented Explaining `v0.232.0` positive-real logarithmic-product
   Lambert-W analysis and automatic dispatch.
 
