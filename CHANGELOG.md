@@ -12,6 +12,11 @@
 
 ## 2026-09-07
 
+- Documented branch-aware numerical exploration for mixed affine piecewise and
+  nonlinear systems.
+
+## 2026-09-07
+
 - Documented Explaining `v0.251.0` mixed affine/piecewise system composition
   and nonlinear fallback boundaries.
 

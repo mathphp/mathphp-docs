@@ -665,8 +665,10 @@ $analysis = (new EquationAnalyzer())->analyze(
 ```
 
 The result keeps constraints tagged by equation row and preserves active
-branch alternatives. Mixed non-piecewise systems continue through the general
-nonlinear-system path.
+branch alternatives. Systems mixing piecewise rows with nonlinear equations
+now expand affine active branches and use bounded numerical exploration. They
+return `method: branch-aware-nonlinear-system`, verified roots, and
+`complete: false` because finite starts cannot prove global coverage.
 
 Affine equality rows are now composed exactly with piecewise rows:
 
@@ -678,7 +680,16 @@ $analysis = (new EquationAnalyzer())->analyze(
 // solutions['complete'] === true
 ```
 
-Nonlinear rows remain explicitly delegated to the nonlinear-system analyzer.
+Nonlinear rows are explored branch by branch:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'min(x, y) = 1; x^2 + y = 3'
+);
+// branch-aware-nonlinear-system
+// roots include verified values near (1, 2) and (sqrt(2), 1)
+// solutions['complete'] === false
+```
 
 Integer-only `gcd()` and `lcm()` equalities use complete integer-domain
 analysis:
