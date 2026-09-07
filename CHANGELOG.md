@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact Lambert-W solving for affine-logarithmic equations,
+  including real branch and positive-domain handling.
+
+## 2026-09-07
+
 - Documented generic dispatch of compact self-power equations through the
   positive-real Lambert-W analyzer.
 

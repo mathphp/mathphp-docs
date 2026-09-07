@@ -254,6 +254,26 @@ $analysis = (new EquationAnalyzer())->analyze('x^x = 2');
 This preserves the positive-base domain note and does not claim negative-base
 or complex branches without an explicit complex-domain analyzer.
 
+## Affine-logarithmic Lambert-W equations
+
+One affine logarithm combined with affine terms is reduced exactly to real
+Lambert-W branches:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('ln(2*x + 1) = x');
+
+// solutions['method'] === 'exact-log-affine-lambert-w'
+// solutions['complete'] === true
+// solutions['roots'] contains both admissible real branches
+```
+
+The same path handles `ln(x) + x = 1`, scaled logarithms, `log(x, 10)`,
+`log2()`, `log10()`, and `log1p()` when the logarithm argument is affine. The
+solver filters Lambert-W branches through the strict positive logarithm domain
+and reports complete no-real-solution results when the real argument is below
+`−1/e`. More complicated products, multiple independent logarithms, and
+complex branches remain separate analyzer families.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative
