@@ -2371,6 +2371,11 @@ declared bounded system: unsupported syntax, singular evaluations, resource
 caps, nonlocal boundaries, and symbolic/global solutions are reported as
 `unsupported` or `partial` rather than treated as universal coverage.
 
+The 3D derivative stencils guard higher-order accesses at the one-cell
+interior margin. First- and second-order operators therefore do not read
+outside the grid, while third-derivative operators still use their full
+two-cell centered stencil.
+
 ## Three-dimensional parabolic PDEs
 
 `NumericalParabolicPde3DAnalyzer` covers a resource-capped rectangular heat or

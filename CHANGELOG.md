@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented warning-free bounds handling for 3D wave and parabolic derivative
+  stencils, including coupled parabolic fields.
+
+## 2026-09-07
+
 - Documented constant-left equality normalization across elementary exact
   analyzers.
 
