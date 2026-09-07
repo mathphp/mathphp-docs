@@ -2,6 +2,12 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.180.0` automatic generic dispatch for scalar
+  variable-order Caputo ODE and wave IVP syntax, including finite domains,
+  step controls, and initial velocity.
+
+## 2026-09-07
+
 - Documented Explaining `v0.179.0` automatic bounded coupled three-dimensional
   wave-PDE dispatch, compact multi-field syntax, and solver limitations.
 

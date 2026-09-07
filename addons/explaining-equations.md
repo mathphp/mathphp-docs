@@ -2401,6 +2401,30 @@ $wave = (new EquationAnalyzer())->analyzeNumericalVariableOrderFractionalWaveOde
 The order must not cross `α = 1` during a run; such a trajectory is reported
 `partial`. Symbolic fractional solutions remain unsupported.
 
+The generic `EquationAnalyzer` entry point recognizes the same variable-order
+syntax without requiring the explicit facade. Parenthesized order expressions
+may depend on the independent coordinate and latest state, with optional
+finite domains and step counts:
+
+```php
+use MathPHP\Explaining\EquationAnalyzer;
+
+$diffusion = (new EquationAnalyzer())->analyze(
+    'D^(0.5 + 0.1*t) y = 1; y(0) = 0; t = {0,0.2}; steps = 32'
+);
+// solutions['method'] === 'automatic-variable-order-fractional-ivp'
+
+$wave = (new EquationAnalyzer())->analyze(
+    "D^(1.5 + 0.05*t) y = 0; y(0) = 0; y'(0) = 1; t = {0,0.2}; steps = 32"
+);
+// solutions['method'] === 'automatic-variable-order-fractional-wave-ivp'
+```
+
+The compact route returns a bounded numerical approximation with order
+history; it does not claim a symbolic solution or global stability. Use the
+explicit variable-order facades for custom options and higher-resolution
+studies.
+
 ## Coupled Caputo fractional ODE systems
 
 `NumericalFractionalOdeSystemAnalyzer` extends the same order range to a
