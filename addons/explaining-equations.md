@@ -199,6 +199,14 @@ Pass `EvaluationOptions` when an equation uses an explicitly registered Core
 function; both sides are then evaluated through the same function registry and
 resource limits as the rest of your application.
 
+The generic `EquationAnalyzer::analyze()` entry point uses the exact polynomial,
+rational, and elementary strategies first. When none applies but the equality
+is a single-variable Core expression, it now delegates automatically to the
+bounded numerical solver on `[-100, 100]`. Such results expose
+`method: automatic-bounded-numerical` and `automaticDomain`; call
+`analyzeNumerically()` when a different interval, sample count, or refinement
+depth is required.
+
 ## Implicit two-variable equations
 
 A single equality in two unknowns usually describes a curve rather than a

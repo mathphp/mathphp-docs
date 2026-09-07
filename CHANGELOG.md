@@ -2,6 +2,12 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.144.0` automatic bounded numerical fallback from
+  the generic equation dispatcher for single-variable Core-compatible
+  equalities.
+
+## 2026-09-07
+
 - Documented Explaining `v0.143.0` coupled three-dimensional Caputo
   fractional-wave fields with mixed temporal modes, six typed faces, mixed and
   nonlocal spatial operators, and synchronized visual snapshots.
