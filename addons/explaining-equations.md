@@ -587,7 +587,18 @@ $analysis = (new EquationAnalyzer())->analyze(
 // solutions['branchCount'] === 4
 ```
 
-Three or more independent absolute terms remain partial or bounded numerical
+Three absolute terms are also supported with all eight sign combinations:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'sqrt(1 + abs(x) + abs(x - 2) + abs(x + 1)) = 4'
+);
+
+// solutions['method'] === 'exact-nested-radical-absolute'
+// solutions['branchCount'] === 8
+```
+
+Four or more independent absolute terms remain partial or bounded numerical
 paths.
 
 ## Generic calculus expressions

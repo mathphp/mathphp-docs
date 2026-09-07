@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented eight-branch enumeration for three independent absolute terms
+  inside nested square- and cube-root expressions.
+
+## 2026-09-07
+
 - Documented four-branch enumeration for two independent absolute terms inside
   nested square- and cube-root equations.
 
