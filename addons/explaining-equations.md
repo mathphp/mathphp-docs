@@ -441,6 +441,22 @@ negative radicands, rational denominator poles, and candidates that fail the
 original unsquared residual. Equations with additional independent radicals or
 absolute values remain on the broader partial or numerical paths.
 
+The same reduction supports real cube roots, including equivalent fractional
+power syntax:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'cbrt(x^2 - 1) + abs(x - 1) = 2'
+);
+
+// solutions['method'] === 'exact-polynomial-cuberoot-absolute'
+// solutions['complete'] === true
+```
+
+Cube-root branches are cubed rather than squared, so negative radicands remain
+valid. Candidates are still checked against rational denominator poles and the
+original unsimplified equation.
+
 ## Polynomial radical combinations
 
 Two square roots with polynomial or rational-polynomial radicands are solved by

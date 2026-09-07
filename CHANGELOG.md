@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact signed cube-root plus absolute-value branch solving,
+  including `cbrt(...)` and equivalent fractional-power syntax.
+
+## 2026-09-07
+
 - Documented exact sign-branch solving for one polynomial or rational-polynomial
   square root combined with one polynomial or rational-polynomial absolute value.
 
