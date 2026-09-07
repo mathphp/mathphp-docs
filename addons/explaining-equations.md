@@ -440,6 +440,10 @@ Commensurate exponential sums such as `2^x + 4^x = 6` are normalized with
 `z = 2^x`, producing a polynomial in positive `z`. Its real roots are isolated
 by the polynomial analyzer, then positive branches are mapped back to `x`.
 
+Shared-phase trigonometric squares are reduced exactly too. Identities such as
+`sin(x)^2 + cos(x)^2 = 1` are recognized, while `sin(x)^2 = 0.5` returns
+complete periodic families after enforcing `0 ≤ sin²(t) ≤ 1`.
+
 Product-exponential equations of the form `(a*x+b)*exp(a*x+b) = c` are
 dispatched to a real Lambert-W transformation before numerical sampling:
 

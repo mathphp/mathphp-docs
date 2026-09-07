@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact shared-phase trigonometric-square solving, identities, range
+  proofs, and periodic families.
+
+## 2026-09-07
+
 - Documented exact polynomial reduction for commensurate exponential sums and
   positive-substitution branch filtering.
 
