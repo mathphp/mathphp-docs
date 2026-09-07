@@ -224,6 +224,23 @@ excluded. Zero targets avoid duplicate sign branches, while constant phases
 and out-of-range targets are reported as complete identities or no-solution
 results instead of being sent to bounded sampling.
 
+Shared-phase sums of absolute sine and cosine terms are also solved by
+quadrant-aware harmonic reduction:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'abs(sin(x)) + abs(cos(x)) = 1'
+);
+
+// solutions['method'] === 'exact-absolute-trigonometric-sum'
+// solutions['complete'] === true
+// solutions['families'] contains the π-periodic branches
+```
+
+Each harmonic candidate is checked against the quadrant that produced it, so
+roots on quadrant boundaries are retained once and impossible targets are
+reported exactly.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative

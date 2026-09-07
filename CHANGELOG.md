@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact quadrant-aware solving for shared-phase absolute
+  sine/cosine sums and their complete periodic families.
+
+## 2026-09-07
+
 - Documented exact periodic solving for scaled absolute sine, cosine, and
   tangent equations, including range checks and tangent-pole exclusions.
 
