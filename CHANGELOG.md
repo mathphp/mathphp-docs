@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.236.0` variable-free constant equality evaluation
+  and automatic dispatch.
+
+## 2026-09-07
+
 - Documented Explaining `v0.235.0` bounded discrete factorial analysis and
   automatic dispatch.
 

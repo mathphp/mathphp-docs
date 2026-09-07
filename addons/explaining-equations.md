@@ -490,6 +490,18 @@ Use `analyzeFactorial()` for the explicit facade. The result exposes its
 integer search limit, domain note, completeness flag, and duplicate roots for
 `0! = 1! = 1`.
 
+Variable-free equalities are evaluated directly:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('sqrt(4) = 2');
+// solutions['method'] === 'constant-equality'
+// solutions['satisfied'] === true
+```
+
+Use `analyzeConstant()` for the explicit facade. The result includes both
+evaluated sides, residual, tolerance, and a complete satisfaction flag; any
+unresolved variable is left for the relevant analyzer.
+
 The same generic entry point recognizes semicolon- or newline-separated systems
 when every row is an equality. It first attempts exact Gaussian elimination for
 affine rows, returning `method: automatic-linear-system` with unique,
