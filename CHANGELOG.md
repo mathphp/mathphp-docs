@@ -2,6 +2,11 @@
 
 ## 2026-09-08
 
+- Documented the bounded two-dimensional coupled parabolic solver, typed edge
+  conditions, periodic pairing, and automatic compact dispatch.
+
+## 2026-09-08
+
 - Documented automatic bounded dispatch for scalar two- and three-dimensional
   parabolic initial-boundary problems.
 

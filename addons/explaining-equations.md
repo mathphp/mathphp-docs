@@ -2775,6 +2775,56 @@ solutions remain outside this numerical contract.
 result remains `complete: false`. Backward diffusion and higher-dimensional
 systems remain outside this contract.
 
+## Coupled two-dimensional parabolic systems
+
+`NumericalCoupledParabolicPde2DAnalyzer` advances up to sixteen coupled fields
+on one shared bounded rectangle. Each equation has one first-time derivative;
+right-hand sides may reference every field and their first, pure second, mixed,
+or pure third spatial derivatives:
+
+```text
+u_t = u_xx + v
+v_t = v_yy - u
+```
+
+```php
+use MathPHP\Explaining\NumericalCoupledParabolicPde2DAnalyzer;
+
+$analysis = (new NumericalCoupledParabolicPde2DAnalyzer())->analyze(
+    'u_t = u_xx + v; v_t = v_yy - u',
+    ['u', 'v'],
+    ['u' => '1', 'v' => '0'],
+    ['u' => '1', 'v' => '0'], ['u' => '1', 'v' => '0'],
+    ['u' => '1', 'v' => '0'], ['u' => '1', 'v' => '0'],
+    firstPoints: 25, secondPoints: 25, timeSteps: 100,
+);
+```
+
+The five positional maps are the initial profile plus left, right, bottom, and
+top Dirichlet expressions for every field. The optional edge-first
+`boundaryConditions` map replaces individual edges with Neumann, Robin, or
+paired periodic conditions. The solver evaluates a shared explicit grid,
+keeps synchronized per-field snapshots, applies local sensitivity guards to
+nonlinear spatial operators, and reports `pde-system-heatmap-2d` visual data.
+Per-field modes are retained in `solution['operatorModes']`; a `solved` result
+still has `solution['complete'] = false` because it is a finite numerical
+approximation. Nonlocal boundaries, unpaired periodic edges, arbitrary mixed
+third derivatives, higher dimensions, and symbolic general solutions remain
+outside this focused contract.
+
+The generic entry point accepts the compact all-Dirichlet form with finite
+rectangular x/y/t domains and returns
+`automatic-bounded-coupled-parabolic-2d-pde`:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'u_t = u_xx + v; v_t = v_yy; u(x,y,0) = 0; v(x,y,0) = 1; ' .
+    'u(0,y,t) = 0; u(1,y,t) = 0; u(x,0,t) = 0; u(x,1,t) = 0; ' .
+    'v(0,y,t) = 1; v(1,y,t) = 1; v(x,0,t) = 1; v(x,1,t) = 1; ' .
+    'x = {0,1}; y = {0,1}; t = {0,0.01}; firstPoints = 9; secondPoints = 9; timeSteps = 2',
+);
+```
+
 ## Coupled one-dimensional wave systems
 
 `NumericalCoupledWavePdeAnalyzer` covers bounded systems of second-time-
