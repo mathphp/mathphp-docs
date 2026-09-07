@@ -170,6 +170,22 @@ branch. Nonzero targets and mixed forms outside these identities remain
 explicitly partial so callers can distinguish exact coverage from bounded
 numerical estimates.
 
+## Constant-left equality normalization
+
+Elementary exact analyzers treat equality as symmetric. Constant-left input is
+normalized before dispatch, so equivalent forms take the same exact path:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('0 = sin(x) + 2*sin(2*x)');
+// solutions['method'] === 'exact-trigonometric-double-angle-factor'
+
+$analysis = (new EquationAnalyzer())->analyze('4 = sqrt(x) + sqrt(x - 1)');
+// solutions['method'] === 'exact-radical-combination'
+```
+
+This orientation normalization applies across the existing elementary
+families; it does not turn an unsupported expression into a symbolic proof.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative

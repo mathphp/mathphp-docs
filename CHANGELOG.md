@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented constant-left equality normalization across elementary exact
+  analyzers.
+
+## 2026-09-07
+
 - Documented exact double-angle trigonometric factorization for zero-target
   sine and cosine equations, including reordered terms and periodic branches.
 
