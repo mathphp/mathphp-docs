@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented integer affine-power Lambert-W analysis (powers 2 through 8),
+  including odd-power sign filtering and the new power facade.
+
+## 2026-09-07
+
 - Documented complete Lambert-W analysis for exponential-versus-squared-affine
   equations and the new explicit facade.
 

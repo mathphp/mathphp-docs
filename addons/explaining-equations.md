@@ -560,9 +560,9 @@ as `e^x = x` and `2^x = 3*x` are normalized with
 `a^u = exp(log(a)·u)` before applying the same Lambert-W branch analysis;
 sums such as `2^x + x = 3` use the same reduction.
 
-Exponential-versus-square equations such as `exp(x) = x^2` and
-`2^x = 3*(x + 1)^2` use both signs of the affine factor and every real `W₀` or
-`W₋₁` branch:
+Exponential-versus-integer-power equations such as `exp(x) = x^2`,
+`exp(x) = x^3`, and `2^x = 3*(x + 1)^4` use every sign allowed by the real
+power domain and every real `W₀` or `W₋₁` branch:
 
 ```php
 $analysis = (new EquationAnalyzer())->analyze('exp(x) = x^2');
@@ -570,9 +570,10 @@ $analysis = (new EquationAnalyzer())->analyze('exp(x) = x^2');
 // solutions['roots'] contains the complete real root set
 ```
 
-Use `analyzeExponentialQuadratic()` for the explicit facade. The analyzer
-requires a positive squared-factor coefficient and reports complete no-root
-results when the real domain makes the equality impossible.
+Use `analyzeExponentialQuadratic()` for the square-compatible facade or
+`analyzeExponentialPower()` for integer powers from 2 through 8. The analyzer
+reports complete no-root results when the real power domain makes the equality
+impossible.
 
 Logarithmic-product equations such as `x*ln(x) = -0.1` are also reduced to
 Lambert-W branches on the positive domain:
