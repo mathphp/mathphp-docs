@@ -597,6 +597,23 @@ When an axis angle describes a half-line, the result includes open interval
 metadata so the undefined origin is not accidentally included. Impossible
 quadrant targets return complete empty results.
 
+`gamma()` and `lgamma()` affine equations are searched branch-by-branch without
+crossing their non-positive-integer poles:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('gamma(x) = 1');
+// solutions['method'] === 'branch-safe-special-numerical'
+// solutions['complete'] === false
+
+$zero = (new EquationAnalyzer())->analyze('gamma(x) = 0');
+// solutions['roots'] === []
+// solutions['complete'] === true
+```
+
+Pole metadata and branch status are returned explicitly. Nonzero gamma and
+lgamma searches remain partial because a global symbolic root proof is not
+claimed.
+
 Integer-only `gcd()` and `lcm()` equalities use complete integer-domain
 analysis:
 

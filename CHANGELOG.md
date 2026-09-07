@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.245.0` pole-separated `gamma()`/`lgamma()` branch
+  analysis and the complete `gamma(x) = 0` result.
+
+## 2026-09-07
+
 - Documented Explaining `v0.244.0` quadrant-aware `atan2()` equation analysis,
   including finite roots and axis half-lines.
 
