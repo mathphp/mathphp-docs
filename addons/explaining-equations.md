@@ -199,6 +199,11 @@ Pass `EvaluationOptions` when an equation uses an explicitly registered Core
 function; both sides are then evaluated through the same function registry and
 resource limits as the rest of your application.
 
+The Core evaluator also provides domain-checked special functions such as
+`erf`, `erfc`, `gamma`, and `lgamma`. They can be used directly in bounded
+equation searches and in any explaining analyzer that evaluates Core
+expressions.
+
 The generic `EquationAnalyzer::analyze()` entry point uses the exact polynomial,
 rational, and elementary strategies first. When none applies but the equality
 is a single-variable Core expression, it now delegates automatically to the

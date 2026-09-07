@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.148.0` Core `v0.3.6` integration and special
+  functions available to bounded equation analysis.
+
+## 2026-09-07
+
 - Documented Explaining `v0.147.0` piecewise/`if(...)` equality dispatch and
   branch-aware bounded diagnostics in the generic equation entry point.
 
