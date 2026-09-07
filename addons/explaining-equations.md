@@ -308,6 +308,17 @@ delayed, and fractional ODEs remain explicit APIs because they require
 additional conditions or numerical controls that a bare equality does not
 provide.
 
+Second-order constant-coefficient forms are also recognized automatically:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze("y'' + y = 0");
+// solutions['roots'] contains the complex characteristic pair
+// solutions['method'] === 'automatic-second-order-ode'
+```
+
+The route returns the symbolic general solution and characteristic metadata;
+call `analyzeSecondOrderOde()` when initial values are available.
+
 ```php
 use MathPHP\Explaining\NumericalImplicitEquationAnalyzer;
 

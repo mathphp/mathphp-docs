@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.154.0` automatic second-order constant-coefficient
+  ODE dispatch and characteristic-root metadata.
+
+## 2026-09-07
+
 - Documented Explaining `v0.153.0` automatic first-order linear ODE dispatch
   and its explicit boundary for conditioned numerical ODE families.
 
