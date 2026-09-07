@@ -514,6 +514,10 @@ $analysis = (new EquationAnalyzer())->analyze('x^0.5 = 4');
 Use `analyzePower()` for the explicit facade. Integer exponents retain odd/even
 real branches, while non-integer exponents use the positive-base domain and
 expose `domainNote`/`complete` metadata. Negative powers exclude a zero base.
+Explicit rational exponents such as `x^(2/3) = 4` retain every real branch
+(`x = ±8`), while even-denominator exponents enforce a non-negative base
+domain. Negative rational exponents exclude zero and preserve reciprocal
+branches.
 
 Implicit multiplication is accepted in algebraic equation paths, including
 `x(x+1)=6` and `(x+1)(x-1)=0`. The normalizer rewrites only an inferred

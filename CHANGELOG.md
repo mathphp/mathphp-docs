@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact real branch solving for explicit rational affine-base
+  exponents, including denominator-domain and negative-power handling.
+
+## 2026-09-07
+
 - Documented exact shared-phase trigonometric-square solving, identities, range
   proofs, and periodic families.
 
