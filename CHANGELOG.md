@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.232.0` positive-real logarithmic-product
+  Lambert-W analysis and automatic dispatch.
+
+## 2026-09-07
+
 - Documented Explaining `v0.231.0` exponential-linear Lambert-W analysis,
   affine shifts, and automatic dispatch.
 

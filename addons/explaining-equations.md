@@ -447,6 +447,20 @@ sides such as `exp(x) = 3*x + 3` are supported; constant exponents fall back to
 exact linear isolation. Other forms continue through bounded numerical
 analysis.
 
+Logarithmic-product equations such as `x*ln(x) = -0.1` are also reduced to
+Lambert-W branches on the positive domain:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('x*ln(x) = -0.1');
+// solutions['method'] === 'automatic-log-product'
+// solutions['branches'] === [0, -1]
+// solutions['roots'] contains both positive-real roots
+```
+
+Use `analyzeLogProduct()` for the explicit facade. Affine forms such as
+`(2*x+1)*ln(2*x+1)=1` are supported; the result exposes the `-1/e` cutoff and
+retains explicit metadata for logarithm-domain limits.
+
 The same generic entry point recognizes semicolon- or newline-separated systems
 when every row is an equality. It first attempts exact Gaussian elimination for
 affine rows, returning `method: automatic-linear-system` with unique,
