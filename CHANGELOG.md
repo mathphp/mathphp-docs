@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented complete direct affine `atan()` equation inversion and generic
+  dispatch.
+
+## 2026-09-07
+
 - Documented generalized real Lambert-W analysis for products of an affine
   factor and an exponential of an independent affine expression.
 

@@ -483,6 +483,9 @@ own ranges as well: `asin(x)^2 = 0.25`, `acos(x)^2 = 1`, `atan(x)^2 = 1`,
 `asinh(x)^2 = 1`, `acosh(x)^2 = 1`, and `atanh(x)^2 = 1` map polynomial roots
 through the corresponding direct function. Roots outside a principal inverse
 range are discarded before the affine argument is reconstructed.
+Direct affine equations such as `atan(2*x - 1) = 0.5` are inverted exactly
+with `x = (tan(0.5) + 1)/2`; the generic dispatcher reports the same complete
+result rather than using bounded numerical sampling.
 The monotone special-function pair is covered too: `erf(x)^2 = 0.25` and
 `erfc(x)^2 = 1` use the existing real inverse approximation after filtering
 against `−1 < erf(x) < 1` and `0 < erfc(x) < 2`.
