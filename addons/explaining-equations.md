@@ -485,6 +485,9 @@ Commensurate exponential equations can contain more than two terms. The solver
 substitutes `z = exp(a*x+b)` and delegates bounded-degree polynomials to the
 certified real-root analyzer, then keeps only positive `z` values. For example,
 `exp(3*x) - 6*exp(2*x) + 11*exp(x) - 6 = 0` returns `0`, `ln(2)`, and `ln(3)`.
+Integer powers and products of exponential terms are expanded before the same
+substitution, so `expm1(x)^2 = 1` and `exp(x)^2 - 2*exp(x) = 0` are solved
+without falling back to bounded sampling.
 
 Product-exponential equations of the form `(a*x+b)*exp(a*x+b) = c` are
 dispatched to a real Lambert-W transformation before numerical sampling:

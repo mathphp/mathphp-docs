@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented expansion of bounded integer powers and products of `exp()` and
+  `expm1()` terms into commensurate exponential polynomials.
+
+## 2026-09-07
+
 - Documented bounded-degree polynomial substitutions for inverse trigonometric
   and inverse hyperbolic values, including principal-range filtering.
 
