@@ -801,6 +801,23 @@ volumetric field snapshots plus grid and stability metadata. It infers four
 Dirichlet edges only; use `analyzeNumericalWavePde2D()` for Neumann, Robin,
 periodic, custom resolution, or nonlinear operator controls.
 
+The generic dispatcher also recognizes a bounded three-dimensional wave problem
+with six face values and explicit displacement/velocity fields:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'u_tt = c^2*(u_xx + u_yy + u_zz); u(x,y,z,0) = 1; u_t(x,y,z,0) = 0; u(0,y,z,t) = 1; u(1,y,z,t) = 1; u(x,0,z,t) = 1; u(x,1,z,t) = 1; u(x,y,0,t) = 1; u(x,y,1,t) = 1; x = {0,1}; y = {0,1}; z = {0,1}; t = {0,0.01}; firstPoints = 15; secondPoints = 15; thirdPoints = 15; timeSteps = 100',
+    ['c' => 1],
+);
+// solutions['method'] === 'automatic-bounded-wave-3d-pde'
+// solutions['automaticDomain'] === [0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.01]
+```
+
+This compact route selects the resource-capped 3D CFL-controlled solver and
+returns volumetric snapshots plus grid and stability metadata. It infers six
+Dirichlet faces only; use `analyzeNumericalWavePde3D()` for Neumann, Robin,
+periodic, custom resolution, or nonlinear operator controls.
+
 ```php
 $periodic = (new NumericalPdeAnalyzer())->analyze(
     'u_t = u_xx', '1', '1', '1',
