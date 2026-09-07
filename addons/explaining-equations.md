@@ -35,7 +35,8 @@ $integral = (new EquationAnalyzer())->analyze('∫ x^2 dx');
 
 `derivative(expression, variable)` and `integral(expression, variable)` are
 equivalent function forms. Elementary antiderivatives also apply substitution
-to affine arguments such as `sin(2*x + 1)`, `exp(3*x - 2)`, and `sqrt(4*x - 2)`.
+to affine arguments such as `sin(2*x + 1)`, `exp(3*x - 2)`, `sqrt(4*x - 2)`,
+and `(2*x + 1)^3`. Affine reciprocal powers use the logarithmic exception.
 This is symbolic coverage for supported elementary operations;
 branch-sensitive, non-elementary, or otherwise unsupported terms remain
 explicitly `partial` or `unsupported`. See

@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.206.0` affine-power substitution and reciprocal
+  logarithmic antiderivatives.
+
+## 2026-09-07
+
 - Documented Explaining `v0.205.0` affine-argument symbolic integration and
   substitution semantics.
 
