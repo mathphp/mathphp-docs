@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.152.0` dimensional equality analysis and automatic
+  dispatch through the optional units add-on.
+
+## 2026-09-07
+
 - Documented Explaining `v0.151.0` automatic bounded implicit-contour dispatch
   for two-variable equalities and its finite default domain.
 

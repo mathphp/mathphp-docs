@@ -274,6 +274,23 @@ domain `[-10, 10] × [-10, 10]`. It returns
 `complete: false`; use the explicit analyzer when the curve is larger than
 that window or needs a finer grid.
 
+## Dimensional equalities
+
+When `mathphp/mathphp-units` is installed, `UnitEquationAnalyzer` evaluates
+both sides through the quantity grammar, compares dimensions and normalized
+base values, and keeps the display-unit conversions in the result:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('2m + 200cm = 4m');
+// solutions['satisfied'] === true
+// solutions['method'] === 'unit-dimensional-equality'
+```
+
+The generic entry point detects numeric unit literals automatically. Use
+`analyzeUnitEquation()` when variables are `Quantity` objects or when a custom
+`UnitCatalog` is needed. Mismatched dimensions are reported as an evaluated,
+unsatisfied equality; they are never coerced into scalar values.
+
 ```php
 use MathPHP\Explaining\NumericalImplicitEquationAnalyzer;
 
