@@ -1809,10 +1809,12 @@ Durand–Kerner approximations with separate `real`, `imaginary`, and
 `formatted` fields. These are numerical approximations, not proof objects;
 inspect the convergence metadata before presenting them as final values.
 
-Rational equalities are solved exactly when cross-multiplication produces a
-linear or quadratic polynomial. The analyzer preserves the original domain:
-denominator zeros are returned in `solutions['excludedValues']` and are never
-reintroduced as roots after cancellation:
+Rational equalities are solved by cross-multiplying normalized polynomial
+numerators and denominators. Linear and quadratic cases use direct roots;
+higher-degree cases use the bounded polynomial root iteration and expose
+`rootConverged` and `complete` metadata. The analyzer preserves the original
+domain: denominator zeros are returned in `solutions['excludedValues']` and are
+never reintroduced as roots after cancellation:
 
 ```php
 $analysis = (new RationalEquationAnalyzer())->analyze('1 / x = 2');
@@ -1823,8 +1825,8 @@ $cancelled = (new RationalEquationAnalyzer())->analyze('(x^2 - 1) / (x - 1) = 0'
 ```
 
 `EquationAnalyzer::analyze()` dispatches these rational forms automatically.
-Higher-degree rational expressions remain available through bounded numerical
-solving when a domain is supplied.
+Results whose higher-degree root iteration does not converge are returned as
+`partial` rather than being presented as complete.
 
 ## Elementary inverse equations
 

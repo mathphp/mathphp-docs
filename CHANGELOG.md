@@ -2,6 +2,9 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.213.0` higher-degree rational-polynomial equality
+  support and convergence metadata.
+
 - Documented Explaining `v0.212.0` automatic exact routing for affine systems.
 
 - Documented Explaining `v0.211.0` higher-degree polynomial inequality sign
