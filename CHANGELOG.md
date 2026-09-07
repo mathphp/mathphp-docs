@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.243.0` complete affine `erf()`/`erfc()` inverse
+  analysis and open range endpoints.
+
+## 2026-09-07
+
 - Documented Explaining `v0.242.0` integer-domain `gcd()`/`lcm()` equation
   analysis, periodic residue classes, and exact finite roots.
 

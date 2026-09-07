@@ -570,6 +570,20 @@ $analysis = (new EquationAnalyzer())->analyze('log2(x) = 3');
 `log1p()` retains its `inner > -1` domain and `expm1()` rejects targets at or
 below `-1`.
 
+Affine `erf()` and `erfc()` equalities now use complete monotone inverse
+analysis:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('erf(x) = 0.5');
+// solutions['method'] === 'monotone-special-inverse'
+// solutions['roots'] contains approximately [0.476936128]
+// solutions['complete'] === true
+```
+
+The open range endpoints are handled explicitly: `erf(x) = ±1` and
+`erfc(x) = 0 or 2` have no finite real roots. `gamma()` and `lgamma()` remain
+branch-sensitive numerical analyses.
+
 Integer-only `gcd()` and `lcm()` equalities use complete integer-domain
 analysis:
 
