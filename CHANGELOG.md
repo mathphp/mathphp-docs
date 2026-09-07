@@ -2,6 +2,12 @@
 
 ## 2026-09-07
 
+- Documented complete sign-branch factorization for squared affine
+  trigonometric equalities, including tangent pole-domain metadata and shared
+  root normalization.
+
+## 2026-09-07
+
 - Documented exact same-function monotone equalities for affine arguments,
   including inverse functions, error functions, exponentials, logarithms, and
   square roots with domain filtering.

@@ -62,6 +62,23 @@ This exact path covers inverse trigonometric and hyperbolic functions,
 forms when each side has one affine argument. Candidates outside domains such
 as `[−1, 1]` for `asin()` or `[1, ∞)` for `acosh()` are rejected.
 
+## Squared trigonometric equalities
+
+Squared affine `sin()`, `cos()`, and `tan()` expressions are factored into
+both sign branches, preserving every periodic family:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('sin(x)^2 = sin(2*x)^2');
+
+// solutions['method'] === 'exact-trigonometric-square-equality'
+// solutions['complete'] === true
+// solutions['families'] contains the positive- and negative-sign branches
+```
+
+Tangent results include the pole-domain restriction. Shared root
+normalization removes duplicate representatives discovered by different
+branches.
+
 ## Generic calculus expressions
 
 The same entry point recognizes compact symbolic derivative and antiderivative
