@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.207.0` normalization of unary numeric exponents in
+  symbolic differentiation.
+
+## 2026-09-07
+
 - Documented Explaining `v0.206.0` affine-power substitution and reciprocal
   logarithmic antiderivatives.
 

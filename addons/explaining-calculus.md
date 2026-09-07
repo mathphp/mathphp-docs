@@ -26,15 +26,18 @@ proof for branch-sensitive complex functions.
 
 Antiderivatives also use an AST fallback for elementary forms such as grouped
 powers, square roots, constant multiples, reciprocals, trigonometric and
-inverse-trigonometric functions, hyperbolic functions, `exp`, and `log10`:
+inverse-trigonometric functions, hyperbolic functions, `exp`, and `log10`.
+Affine substitutions are supported for forms such as `sin(2*x + 1)`,
+`(2*x + 1)^3`, and the reciprocal logarithmic exception:
 
 ```php
 $analysis = (new CalculusAnalyzer())->integral('sqrt(x) + 2*x');
 // status: solved; an arbitrary constant C is appended.
 ```
 
-Non-elementary integrals, products requiring substitution, and branch-sensitive
-complex antiderivatives remain `partial` rather than being guessed.
+Non-elementary integrals, products requiring non-affine substitution, and
+branch-sensitive complex antiderivatives remain `partial` rather than being
+guessed.
 
 Variable arguments use Core's portable aliases. An expression containing `α`
 can be analyzed by passing `α` as the variable; both are normalized to the
