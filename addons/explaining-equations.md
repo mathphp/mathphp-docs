@@ -474,7 +474,8 @@ $analysis = (new EquationAnalyzer())->analyze(
 Candidates are checked against both principal-root domains, original rational
 denominator poles, and the unsquared equation. This prevents the second
 squaring step from leaking extraneous roots. Four or more independent square
-roots remain on their dedicated affine reductions or bounded numerical paths.
+roots were previously left on their dedicated affine reductions or bounded
+numerical paths; four-term equations now use the multiquadratic path below.
 Equivalent fractional-power syntax with exponents `1/2` and `1/3` is normalized
 to the same exact square- and cube-root paths.
 
@@ -491,9 +492,25 @@ $analysis = (new EquationAnalyzer())->analyze(
 ```
 
 Every candidate is checked against all principal-root domains, rational
-denominator poles, and the original unsquared equation. Four or more
-independent roots and nested radical compositions remain on partial or
-bounded numerical paths so completeness is not overstated.
+denominator poles, and the original unsquared equation. Five or more
+independent roots and nested radical compositions remain on partial or bounded
+numerical paths so completeness is not overstated.
+
+Four independent square-root terms use a multiquadratic conjugate norm:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'sqrt(x^2 + 1) + sqrt(x^2 + 4) + sqrt(x^2 + 9) + sqrt(x^2 + 16) = 10'
+);
+
+// solutions['method'] === 'exact-polynomial-radical-multiquadratic'
+// solutions['roots'] === [0]
+// solutions['complete'] === true
+```
+
+The norm removes each radical basis bit before real-root isolation. Candidates
+are then checked against every principal-root domain, rational denominator pole,
+and the original unsquared equation.
 
 ## Generic calculus expressions
 

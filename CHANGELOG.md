@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented exact multiquadratic norm elimination for four independent
+  polynomial square-root terms with domain, denominator, and residual checks.
+
+## 2026-09-07
+
 - Documented exact three-stage elimination for three independent polynomial
   square-root terms with domain, denominator, and residual validation.
 
