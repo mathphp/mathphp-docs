@@ -214,6 +214,13 @@ Newton solve from zero, returning `method: automatic-nonlinear-system` and
 `analyzeNonlinearSystemMany()` or `analyzeNonlinearSystemGrid()` to explore
 multiple basins and roots.
 
+Inequalities and chained relations are also recognized by the generic
+`EquationAnalyzer::analyze()` entry point. They delegate to the exact/sampled
+bounded inequality analyzer on `[-100, 100]`, expose
+`method: automatic-bounded-inequality` and `automaticDomain`, and remain
+bounded results rather than global proofs. Use `analyzeInequality()` to choose
+the interval and sampling controls explicitly.
+
 ## Implicit two-variable equations
 
 A single equality in two unknowns usually describes a curve rather than a

@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.146.0` automatic bounded inequality dispatch,
+  including chained relations and explicit default-domain metadata.
+
+## 2026-09-07
+
 - Documented Explaining `v0.145.0` automatic nonlinear-system dispatch from
   the generic equation entry point, including inferred unknowns and explicit
   zero-start metadata.
