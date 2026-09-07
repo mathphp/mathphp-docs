@@ -492,11 +492,12 @@ $analysis = (new EquationAnalyzer())->analyze(
 ```
 
 Every candidate is checked against all principal-root domains, rational
-denominator poles, and the original unsquared equation. Five or more
-independent roots and nested radical compositions remain on partial or bounded
-numerical paths so completeness is not overstated.
+denominator poles, and the original unsquared equation. Five-term candidates
+may remain `partial` when their high-degree polynomial cannot be fully
+isolated; six or more independent roots and nested radical compositions remain
+on partial or bounded numerical paths so completeness is not overstated.
 
-Four independent square-root terms use a multiquadratic conjugate norm:
+Four or five independent square-root terms use a multiquadratic conjugate norm:
 
 ```php
 $analysis = (new EquationAnalyzer())->analyze(

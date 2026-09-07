@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented five-term multiquadratic square-root elimination with explicit
+  partial completeness metadata for high-degree candidate polynomials.
+
+## 2026-09-07
+
 - Documented exact multiquadratic norm elimination for four independent
   polynomial square-root terms with domain, denominator, and residual checks.
 
