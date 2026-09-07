@@ -2251,7 +2251,10 @@ $analysis = (new EquationAnalyzer())->analyze(
 
 The compact route requires explicit space/time domains and uses paired
 Dirichlet values. Use `analyzeNumericalPde()` for Neumann, Robin, periodic,
-non-default coordinates, or custom resolution.
+non-default coordinates, or custom resolution. Registered Core functions and
+evaluation limits supplied through `EvaluationOptions` are preserved across
+the automatic parabolic, elliptic, wave, coupled-wave, and fractional-PDE
+routes.
 
 The generic dispatcher also recognizes a fully specified bounded two-dimensional
 elliptic Dirichlet problem:

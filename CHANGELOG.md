@@ -2,6 +2,11 @@
 
 ## 2026-09-08
 
+- Documented registry and evaluation-limit propagation through automatic
+  one-, two-, and three-dimensional PDE and wave dispatch.
+
+## 2026-09-08
+
 - Documented registry and evaluation-limit propagation through automatic DAE,
   complementarity, variational, inclusion, and boundary-value dispatch.
 
