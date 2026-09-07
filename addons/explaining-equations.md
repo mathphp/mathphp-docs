@@ -564,6 +564,23 @@ and equilibrium solutions and maximal intervals must be interpreted against
 the caller's initial data. Non-quadratic or variable-coefficient Riccati
 forms remain explicit numerical/partial cases.
 
+### Homogeneous first-order equations
+
+Equations whose right-hand side depends on the ratio `y/x` are routed through
+the substitution `v = y/x` when that ratio forcing is a numeric quadratic:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze("y' = (y/x)^2 + 1");
+// solutions['method'] === 'automatic-homogeneous-ode'
+// solutions['branch'] === 'complex-ratio-equilibria'
+```
+
+The analyzer returns logarithmic, power, real-ratio, repeated-ratio, or
+tangent branches and exposes `analyzeHomogeneousOde()` for direct use. Every
+branch retains the `x ≠ 0` domain requirement and pole metadata; non-quadratic
+ratio functions or mixed x/y dependence remain explicit numerical or partial
+cases.
+
 ### Exact first-order equations
 
 The generic dispatcher also recognizes exact equations when the derivative can

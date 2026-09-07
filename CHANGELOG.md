@@ -2,6 +2,11 @@
 
 ## 2026-09-07
 
+- Documented Explaining `v0.227.0` homogeneous first-order ODE ratio
+  substitution and branch-aware quadratic forcing support.
+
+## 2026-09-07
+
 - Documented Explaining `v0.226.0` repeated-root recurrence reconstruction with
   confluent-Vandermonde verification.
 
