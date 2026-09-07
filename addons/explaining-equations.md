@@ -851,6 +851,23 @@ infers four Dirichlet faces per field only; use
 `analyzeNumericalCoupledWavePde2D()` for mixed faces, Robin/periodic
 conditions, custom resolution, or nonlinear operator controls.
 
+The generic dispatcher also recognizes a bounded coupled three-dimensional wave
+system with six faces per field:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'u_tt = 0.03*(u_xx + u_yy + u_zz) + v; v_tt = 0.03*(v_xx + v_yy + v_zz) - u; u(x,y,z,0) = 0; v(x,y,z,0) = 0; u_t(x,y,z,0) = 0; v_t(x,y,z,0) = 0; u(0,y,z,t) = 0; u(1,y,z,t) = 0; u(x,0,z,t) = 0; u(x,1,z,t) = 0; u(x,y,0,t) = 0; u(x,y,1,t) = 0; v(0,y,z,t) = 0; v(1,y,z,t) = 0; v(x,0,z,t) = 0; v(x,1,z,t) = 0; v(x,y,0,t) = 0; v(x,y,1,t) = 0; x = {0,1}; y = {0,1}; z = {0,1}; t = {0,0.01}; firstPoints = 15; secondPoints = 15; thirdPoints = 15; timeSteps = 100',
+);
+// solutions['method'] === 'automatic-bounded-coupled-wave-3d-pde'
+// solutions['automaticVariables'] === ['u', 'v']
+```
+
+This compact route selects the shared-grid 3D coupled solver and returns
+per-field volumetric snapshots, operator modes, and stability metadata. It
+infers six Dirichlet faces per field only; use
+`analyzeNumericalCoupledWavePde3D()` for mixed faces, Robin/periodic
+conditions, custom resolution, or nonlinear operator controls.
+
 ```php
 $periodic = (new NumericalPdeAnalyzer())->analyze(
     'u_t = u_xx', '1', '1', '1',
