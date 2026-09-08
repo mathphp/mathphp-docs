@@ -2507,10 +2507,14 @@ conditions, and retains grids in
 types and coefficients are returned in `solution['boundaryConditions']`.
 `solved` means the finite grid met the requested update and residual tolerances;
 `partial` means the iteration limit was reached or a field update failed.
-Non-elliptic principal parts, nonlinear derivative terms, singular Robin coefficients,
-incompatible corners, nonlocal conditions, and higher dimensions are outside
-this focused contract, and convergence does not prove a unique or complete PDE
-solution. For periodicity, set both edges of an axis to
+Non-elliptic principal parts, singular Robin coefficients, incompatible
+corners, nonlocal conditions, and higher dimensions are outside this focused
+contract. Nonlinear spatial derivative operators with a locally elliptic
+principal part use bounded local-Newton updates and expose
+`solution['operatorMode'] = 'nonlinear-local-newton'`; undefined, singular, or
+non-elliptic localizations remain explicit `partial`/`unsupported` results.
+Convergence does not prove a unique or complete PDE solution. For periodicity,
+set both edges of an axis to
 `['type' => 'periodic']`; the solver wraps opposite interior edges into the
 centered stencil and rejects an unpaired periodic edge:
 
@@ -2548,9 +2552,12 @@ $analysis = (new NumericalEllipticPde3DAnalyzer())->analyze(
 ```
 
 The solver uses a seven-point plus diagonal mixed-derivative Gauss–Seidel
-stencil, re-evaluates nonlinear value terms with Picard updates, checks the
-full symmetric principal-part matrix for positive or negative definiteness,
-and retains volumetric snapshots in `solution['snapshots']`. `solved` means the
+stencil, re-evaluates nonlinear value terms with Picard updates, and supports
+nonlinear spatial derivative operators whose localized principal matrix remains
+definite through bounded local-Newton updates (`operatorMode` is
+`nonlinear-local-newton`). It checks the full symmetric principal-part matrix
+for positive or negative definiteness and retains volumetric snapshots in
+`solution['snapshots']`. `solved` means the
 finite grid reached the configured update and residual tolerances for one run.
 For periodicity, set both faces of an axis to `['type' => 'periodic']`; the
 solver wraps the opposite interior planes into the centered stencil and keeps
@@ -2569,8 +2576,9 @@ $analysis = (new NumericalEllipticPde3DAnalyzer())->analyze(
 );
 ```
 
-Unpaired periodic faces, nonlocal faces, nonlinear derivative operators, and
-uniqueness/completeness proofs remain outside this focused numerical contract.
+Unpaired periodic faces, nonlocal faces, singular or non-elliptic nonlinear
+localizations, and uniqueness/completeness proofs remain outside this focused
+numerical contract.
 
 The generic `EquationAnalyzer::analyze()` entry point also recognizes the
 compact six-face Dirichlet form with finite x/y/z domains. It returns

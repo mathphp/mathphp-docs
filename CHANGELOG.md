@@ -2,6 +2,12 @@
 
 ## 2026-09-08
 
+- Documented bounded 2D and 3D elliptic support for locally elliptic nonlinear
+  spatial-derivative operators, including local-Newton metadata and explicit
+  failure boundaries.
+
+## 2026-09-08
+
 - Documented bounded coupled three-dimensional elliptic systems, six-face
   boundary handling, and automatic compact dispatch.
 
