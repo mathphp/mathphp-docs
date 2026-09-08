@@ -2586,6 +2586,52 @@ $analysis = (new EquationAnalyzer())->analyze(
 );
 ```
 
+## Coupled two-dimensional elliptic systems
+
+`NumericalCoupledEllipticPdeAnalyzer` solves up to sixteen coupled fields on a
+shared bounded rectangle. Supply one residual equality per field; each field’s
+own second/mixed derivatives must remain affine and elliptic while other field
+values and derivative sources are evaluated at the current block Gauss–Seidel
+iterate:
+
+```text
+u_xx + u_yy + v = 0
+v_xx + v_yy - u = 0
+```
+
+```php
+use MathPHP\Explaining\NumericalCoupledEllipticPdeAnalyzer;
+
+$analysis = (new NumericalCoupledEllipticPdeAnalyzer())->analyze(
+    'u_xx + u_yy + v = 0; v_xx + v_yy - u = 0',
+    ['u', 'v'],
+    ['u' => '0', 'v' => '0'], ['u' => '0', 'v' => '0'],
+    ['u' => '0', 'v' => '0'], ['u' => '0', 'v' => '0'],
+    firstPoints: 25, secondPoints: 25, iterations: 500,
+);
+```
+
+The four positional maps provide left, right, bottom, and top Dirichlet
+expressions for every field. The optional edge-first `boundaryConditions` map
+adds independent Neumann, Robin, or paired periodic edges. Results retain
+per-field snapshots, normalized boundary metadata, residual metrics, and the
+`pde-system-elliptic-2d` visual kind. `solved` means only that this finite
+Gauss–Seidel run met its tolerance; nonlinear derivative products, non-elliptic
+principal parts, nonlocal boundaries, and symbolic/global completeness remain
+outside the contract.
+
+The generic entry point accepts the compact all-Dirichlet form and returns
+`automatic-bounded-coupled-elliptic-2d-pde`:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'u_xx + u_yy + v = 0; v_xx + v_yy - u = 0; ' .
+    'u(0,y) = 0; u(1,y) = 0; u(x,0) = 0; u(x,1) = 0; ' .
+    'v(0,y) = 0; v(1,y) = 0; v(x,0) = 0; v(x,1) = 0; ' .
+    'x = {0,1}; y = {0,1}; firstPoints = 25; secondPoints = 25; iterations = 500',
+);
+```
+
 ## One-dimensional wave equations
 
 `NumericalWavePdeAnalyzer` supports a bounded hyperbolic initial-boundary

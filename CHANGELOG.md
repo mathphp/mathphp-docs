@@ -2,6 +2,11 @@
 
 ## 2026-09-08
 
+- Documented bounded coupled two-dimensional elliptic systems, typed edges,
+  periodic pairing, and automatic compact dispatch.
+
+## 2026-09-08
+
 - Documented automatic compact dispatch for bounded three-dimensional
   elliptic Dirichlet problems.
 
