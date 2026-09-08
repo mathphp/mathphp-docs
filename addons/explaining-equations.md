@@ -2621,10 +2621,12 @@ visual kind. A hard 65,536-cell cap prevents accidental resource exhaustion.
 The generic `EquationAnalyzer::analyze()` entry point also recognizes the
 compact eight-face form and returns `automatic-bounded-elliptic-4d-pde`.
 
-This is intentionally a finite numerical contract, not universal equation
-coverage: mixed/Robin/periodic 4D faces, nonlinear spatial-derivative
-operators, nonlocal operators, coupled fields above 3D, and symbolic/global
-completeness proofs remain explicit unsupported cases.
+The explicit facade also accepts `boundaryConditions` entries for Dirichlet,
+Neumann, Robin, and paired periodic faces; the compact dispatcher infers
+Dirichlet faces only. This is intentionally a finite numerical contract, not
+universal equation coverage: nonlinear spatial-derivative operators, nonlocal
+operators, coupled fields above 3D, and symbolic/global completeness proofs
+remain explicit unsupported cases.
 
 ## Coupled two-dimensional elliptic systems
 
