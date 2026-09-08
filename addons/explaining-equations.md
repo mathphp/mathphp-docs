@@ -2594,6 +2594,38 @@ $analysis = (new EquationAnalyzer())->analyze(
 );
 ```
 
+## Four-dimensional elliptic PDEs
+
+`NumericalEllipticPde4DAnalyzer` extends the scalar elliptic solver to a
+bounded rectangular four-dimensional field. It accepts the four diagonal
+second derivatives (`u_xx`, `u_yy`, `u_zz`, `u_ww`), all six affine mixed
+derivatives, eight Dirichlet faces, nonlinear value/source terms, and a full
+4×4 symmetric principal-part definiteness check:
+
+```php
+use MathPHP\Explaining\NumericalEllipticPde4DAnalyzer;
+
+$analysis = (new NumericalEllipticPde4DAnalyzer())->analyze(
+    'u_xx + u_yy + u_zz + u_ww = 0',
+    'y + z + w', '1 + y + z + w',
+    'x + z + w', 'x + 1 + z + w',
+    'x + y + w', 'x + y + 1 + w',
+    'x + y + z', 'x + y + z + 1',
+    firstPoints: 7, secondPoints: 7, thirdPoints: 7, fourthPoints: 7,
+);
+```
+
+The method is `gauss-seidel-elliptic-4d`; the result retains the 4D grid,
+residual metrics, and snapshots under the `differential-equation-elliptic-pde-4d`
+visual kind. A hard 65,536-cell cap prevents accidental resource exhaustion.
+The generic `EquationAnalyzer::analyze()` entry point also recognizes the
+compact eight-face form and returns `automatic-bounded-elliptic-4d-pde`.
+
+This is intentionally a finite numerical contract, not universal equation
+coverage: mixed/Robin/periodic 4D faces, nonlinear spatial-derivative
+operators, nonlocal operators, coupled fields above 3D, and symbolic/global
+completeness proofs remain explicit unsupported cases.
+
 ## Coupled two-dimensional elliptic systems
 
 `NumericalCoupledEllipticPdeAnalyzer` solves up to sixteen coupled fields on a
