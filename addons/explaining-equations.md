@@ -2628,7 +2628,7 @@ use residual-checked local Newton updates and report
 `solution['operatorMode'] = 'nonlinear-local-newton'`; unstable localizations
 remain `unsupported` or `partial`. This is intentionally a finite numerical
 contract, not universal equation coverage: nonlocal operators, coupled fields
-above 3D, and symbolic/global completeness proofs remain explicit unsupported
+above 4D, and symbolic/global completeness proofs remain explicit unsupported
 cases.
 
 ## Coupled two-dimensional elliptic systems
@@ -2719,6 +2719,43 @@ symbolic/global completeness remain outside this focused numerical contract.
 
 The generic entry point accepts the compact six-face all-Dirichlet form and
 returns `automatic-bounded-coupled-elliptic-3d-pde`.
+
+## Coupled four-dimensional elliptic systems
+
+`NumericalCoupledEllipticPde4DAnalyzer` solves up to eight fields on one shared
+bounded 4D grid. Residuals may include affine diagonal and mixed second
+derivatives of the target field while the other field values are evaluated at
+the current block Gauss–Seidel iterate:
+
+```text
+u_xx + u_yy + u_zz + u_ww + v - v = 0
+v_xx + v_yy + v_zz + v_ww + u - u = 0
+```
+
+```php
+use MathPHP\Explaining\NumericalCoupledEllipticPde4DAnalyzer;
+
+$analysis = (new NumericalCoupledEllipticPde4DAnalyzer())->analyze(
+    'u_xx + u_yy + u_zz + u_ww + v - v = 0; ' .
+    'v_xx + v_yy + v_zz + v_ww + u - u = 0',
+    ['u', 'v'],
+    ['u' => '1', 'v' => '2'], ['u' => '1', 'v' => '2'],
+    ['u' => '1', 'v' => '2'], ['u' => '1', 'v' => '2'],
+    ['u' => '1', 'v' => '2'], ['u' => '1', 'v' => '2'],
+    ['u' => '1', 'v' => '2'], ['u' => '1', 'v' => '2'],
+    firstPoints: 7, secondPoints: 7, thirdPoints: 7, fourthPoints: 7,
+);
+```
+
+The eight positional maps provide left, right, bottom, top, front, back,
+lower, and upper Dirichlet expressions for every field. The solver checks the
+full symmetric 4×4 principal-part matrix, retains synchronized snapshots under
+`pde-system-elliptic-4d`, and caps the grid at 32,768 cells. `solved` means
+only that this finite block iteration met its configured tolerance.
+
+This first coupled 4D contract is deliberately explicit: typed Neumann/Robin/
+periodic faces, nonlinear target-derivative operators, nonlocal operators,
+compact generic dispatch, and symbolic/global completeness are not inferred.
 
 ## One-dimensional wave equations
 
