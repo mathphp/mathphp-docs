@@ -2,6 +2,11 @@
 
 ## 2026-09-08
 
+- Documented bounded coupled three-dimensional elliptic systems, six-face
+  boundary handling, and automatic compact dispatch.
+
+## 2026-09-08
+
 - Documented bounded coupled two-dimensional elliptic systems, typed edges,
   periodic pairing, and automatic compact dispatch.
 

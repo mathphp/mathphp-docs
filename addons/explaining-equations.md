@@ -2632,6 +2632,44 @@ $analysis = (new EquationAnalyzer())->analyze(
 );
 ```
 
+## Coupled three-dimensional elliptic systems
+
+`NumericalCoupledEllipticPde3DAnalyzer` extends the coupled elliptic contract
+to up to eight fields on one shared bounded rectangular volume. Each residual
+may include diagonal and mixed second derivatives of the current field while
+coupled values and derivative sources are evaluated at the current block
+Gauss–Seidel iterate:
+
+```text
+u_xx + u_yy + u_zz + v = 0
+v_xx + v_yy + v_zz - u = 0
+```
+
+```php
+use MathPHP\Explaining\NumericalCoupledEllipticPde3DAnalyzer;
+
+$analysis = (new NumericalCoupledEllipticPde3DAnalyzer())->analyze(
+    'u_xx + u_yy + u_zz + v = 0; v_xx + v_yy + v_zz - u = 0',
+    ['u', 'v'],
+    ['u' => '0', 'v' => '0'], ['u' => '0', 'v' => '0'],
+    ['u' => '0', 'v' => '0'], ['u' => '0', 'v' => '0'],
+    ['u' => '0', 'v' => '0'], ['u' => '0', 'v' => '0'],
+    firstPoints: 15, secondPoints: 15, thirdPoints: 15, iterations: 500,
+);
+```
+
+The six positional maps provide left, right, bottom, top, front, and back
+Dirichlet expressions for every field. The optional face-first
+`boundaryConditions` map adds independent Neumann, Robin, or paired-periodic
+faces. Results retain volumetric snapshots, normalized face metadata, residual
+metrics, and the `pde-system-elliptic-3d` visual kind. The full symmetric
+principal-part matrix must be positive or negative definite at every sampled
+node. Nonlinear derivative products, nonlocal faces, higher dimensions, and
+symbolic/global completeness remain outside this focused numerical contract.
+
+The generic entry point accepts the compact six-face all-Dirichlet form and
+returns `automatic-bounded-coupled-elliptic-3d-pde`.
+
 ## One-dimensional wave equations
 
 `NumericalWavePdeAnalyzer` supports a bounded hyperbolic initial-boundary
