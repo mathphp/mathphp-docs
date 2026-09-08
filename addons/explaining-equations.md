@@ -2748,14 +2748,18 @@ $analysis = (new NumericalCoupledEllipticPde4DAnalyzer())->analyze(
 ```
 
 The eight positional maps provide left, right, bottom, top, front, back,
-lower, and upper Dirichlet expressions for every field. The solver checks the
-full symmetric 4×4 principal-part matrix, retains synchronized snapshots under
+lower, and upper Dirichlet expressions for every field. The optional
+`boundaryConditions` map upgrades each face to Dirichlet, Neumann, Robin, or
+paired periodic behavior. The solver checks the full symmetric 4×4
+principal-part matrix, retains synchronized snapshots under
 `pde-system-elliptic-4d`, and caps the grid at 32,768 cells. `solved` means
 only that this finite block iteration met its configured tolerance.
 
 This first coupled 4D contract is deliberately explicit: typed Neumann/Robin/
-periodic faces, nonlinear target-derivative operators, nonlocal operators,
-compact generic dispatch, and symbolic/global completeness are not inferred.
+nonlinear target-derivative operators, nonlocal operators, and symbolic/global
+completeness are not inferred. The generic
+`EquationAnalyzer::analyze()` entry point also accepts the compact all-Dirichlet
+form and returns `automatic-bounded-coupled-elliptic-4d-pde`.
 
 ## One-dimensional wave equations
 
