@@ -2597,8 +2597,9 @@ $analysis = (new EquationAnalyzer())->analyze(
 ## Coupled two-dimensional elliptic systems
 
 `NumericalCoupledEllipticPdeAnalyzer` solves up to sixteen coupled fields on a
-shared bounded rectangle. Supply one residual equality per field; each field’s
-own second/mixed derivatives must remain affine and elliptic while other field
+shared bounded rectangle. Supply one residual equality per field; affine
+second/mixed derivatives are supported directly, and locally elliptic nonlinear
+spatial-derivative terms use target-field local-Newton updates. Other field
 values and derivative sources are evaluated at the current block Gauss–Seidel
 iterate:
 
@@ -2623,10 +2624,11 @@ The four positional maps provide left, right, bottom, and top Dirichlet
 expressions for every field. The optional edge-first `boundaryConditions` map
 adds independent Neumann, Robin, or paired periodic edges. Results retain
 per-field snapshots, normalized boundary metadata, residual metrics, and the
-`pde-system-elliptic-2d` visual kind. `solved` means only that this finite
-Gauss–Seidel run met its tolerance; nonlinear derivative products, non-elliptic
-principal parts, nonlocal boundaries, and symbolic/global completeness remain
-outside the contract.
+`pde-system-elliptic-2d` visual kind. Nonlinear runs expose
+`solution['operatorMode'] = 'nonlinear-local-newton'`; `solved` means only that
+this finite Gauss–Seidel/Newton run met its tolerance. Non-elliptic principal
+parts, nonlocal boundaries, and symbolic/global completeness remain outside
+the contract.
 
 The generic entry point accepts the compact all-Dirichlet form and returns
 `automatic-bounded-coupled-elliptic-2d-pde`:
