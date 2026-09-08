@@ -2623,10 +2623,13 @@ compact eight-face form and returns `automatic-bounded-elliptic-4d-pde`.
 
 The explicit facade also accepts `boundaryConditions` entries for Dirichlet,
 Neumann, Robin, and paired periodic faces; the compact dispatcher infers
-Dirichlet faces only. This is intentionally a finite numerical contract, not
-universal equation coverage: nonlinear spatial-derivative operators, nonlocal
-operators, coupled fields above 3D, and symbolic/global completeness proofs
-remain explicit unsupported cases.
+Dirichlet faces only. Locally elliptic nonlinear spatial-derivative operators
+use residual-checked local Newton updates and report
+`solution['operatorMode'] = 'nonlinear-local-newton'`; unstable localizations
+remain `unsupported` or `partial`. This is intentionally a finite numerical
+contract, not universal equation coverage: nonlocal operators, coupled fields
+above 3D, and symbolic/global completeness proofs remain explicit unsupported
+cases.
 
 ## Coupled two-dimensional elliptic systems
 
