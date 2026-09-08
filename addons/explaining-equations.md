@@ -2674,7 +2674,10 @@ Dirichlet expressions for every field. The optional face-first
 faces. Results retain volumetric snapshots, normalized face metadata, residual
 metrics, and the `pde-system-elliptic-3d` visual kind. The full symmetric
 principal-part matrix must be positive or negative definite at every sampled
-node. Nonlinear derivative products, nonlocal faces, higher dimensions, and
+node. Locally elliptic nonlinear spatial-derivative terms use target-field
+local-Newton updates and expose
+`solution['operatorMode'] = 'nonlinear-local-newton'`; singular or
+non-elliptic localizations, nonlocal faces, higher dimensions, and
 symbolic/global completeness remain outside this focused numerical contract.
 
 The generic entry point accepts the compact six-face all-Dirichlet form and

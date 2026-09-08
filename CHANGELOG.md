@@ -3,6 +3,11 @@
 ## 2026-09-08
 
 - Documented locally elliptic nonlinear spatial-derivative support for coupled
+  three-dimensional elliptic systems with local-Newton metadata.
+
+## 2026-09-08
+
+- Documented locally elliptic nonlinear spatial-derivative support for coupled
   two-dimensional elliptic systems, including local-Newton metadata and safe
   failure boundaries.
 
