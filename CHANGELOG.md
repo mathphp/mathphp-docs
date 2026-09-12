@@ -7,6 +7,11 @@
 
 ## 2026-09-12
 
+- Documented monotone `sin()`/`cos()` plus affine equation analysis, derivative
+  bounds, numerical refinement, and complete uniqueness metadata.
+
+## 2026-09-12
+
 - Documented exact monotone combinatorial-expression analysis for one
   `binomial()` or `permutation()` term combined with an affine expression.
 

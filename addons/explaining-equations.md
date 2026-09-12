@@ -83,6 +83,20 @@ domain note because poles, where either argument is undefined, are excluded.
 Constant identities and inconsistent constant equalities are reported without
 inventing numerical roots.
 
+When a single `sin()` or `cos()` term is combined with an affine term, a global
+derivative bound can certify monotonicity and uniqueness:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('sin(x) + x = 0');
+// solutions['method'] === 'automatic-trigonometric-affine-monotone'
+// solutions['roots'] contains 0.0
+// solutions['complete'] === true
+```
+
+The root is bracketed and refined numerically after the uniqueness proof.
+Reversed signs are supported; non-monotone periodic combinations remain with
+the exact-family or bounded numerical analyzers.
+
 The same exact treatment is available for affine hyperbolic phases:
 `sinh(A) = sinh(B)` and `tanh(A) = tanh(B)` use injectivity, while
 `cosh(A) = cosh(B)` uses the two branches `A = B` and `A = −B`. These are
