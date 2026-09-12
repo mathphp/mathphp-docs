@@ -180,6 +180,11 @@ The default function allowlist is:
 | `hypot(x, y)` | 2 | finite Euclidean norm; float |
 | `gcd(a, b)` | 2 | finite integer arguments; int |
 | `lcm(a, b)` | 2 | finite integer arguments; int, overflow checked |
+| `factorial(n)` | 1 | non-negative integer; int, overflow checked |
+| `binomial(n, k)` | 2 | non-negative integers with `k <= n`; int, overflow checked |
+| `choose(n, k)`, `ncr(n, k)` | 2 | aliases for `binomial`; int, overflow checked |
+| `permutation(n, k)` | 2 | non-negative integers with `k <= n`; int, overflow checked |
+| `permute(n, k)`, `npr(n, k)` | 2 | aliases for `permutation`; int, overflow checked |
 | `sign(x)` | 1 | `-1`, `0`, or `1`; int |
 | `min(...)`, `max(...)` | 1–16 | finite aggregate; preserves numeric type |
 | `floor(x)`, `ceil(x)`, `round(x)` | 1 | float |

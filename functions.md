@@ -8,6 +8,8 @@ Math::evaluate('sqrt(area) + log(minimum, 10)', [
     'area' => 81,
     'minimum' => 100,
 ]); // 11.0
+
+Math::evaluate('binomial(10, 3) + permutation(4, 2)'); // 132
 ```
 
 The default catalogue includes the common elementary, trigonometric,
@@ -15,9 +17,12 @@ hyperbolic, logarithmic, aggregate, and rounding functions: `abs`, `sqrt`,
 `cbrt`, `sin`, `cos`, `tan`, `sec`, `csc`, `cot`, `asin`, `acos`, `atan`, `sinh`, `cosh`, `tanh`, `asinh`,
 `acosh`, `atanh`, `exp`, `ln`, `log`, `log10`, `log2`, `log1p`, `expm1`,
 `atan2`, `hypot`, `gcd`, `lcm`, `sign`, `min`, `max`,
-`floor`, `ceil`, and `round`. `log(value, base)` and `hypot(x, y)` take two
-arguments; `min` and `max` accept one through sixteen; the other built-ins
-take one. Names are case-sensitive and never resolve against PHP's global
+`floor`, `ceil`, `round`, `factorial`, `binomial`, `choose`, `ncr`,
+`permutation`, `permute`, and `npr`. `log(value, base)` and `hypot(x, y)`
+take two arguments; `min` and `max` accept one through sixteen; the other
+built-ins take one. The combinatorial functions require non-negative integer
+arguments and return exact host integers, or a structured domain/overflow
+error. Names are case-sensitive and never resolve against PHP's global
 function table. Applications can still register reviewed deterministic
 callbacks for domain-specific functions.
 

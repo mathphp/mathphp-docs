@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-12
+
+- Documented the Core combinatorial functions `factorial`, `binomial`/`choose`/`ncr`,
+  and `permutation`/`permute`/`npr`, including integer-domain and overflow behavior.
+
 ## 2026-09-08
 
 - Documented locally elliptic nonlinear spatial-derivative support for coupled
