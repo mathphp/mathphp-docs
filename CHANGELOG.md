@@ -31,6 +31,8 @@
   polynomial equations and complete real-range rejection.
 - Documented gamma-family symbolic derivative identities and the pole-aware
   antiderivative of `digamma()`.
+- Documented beta/logbeta partial-derivative identities in the explaining
+  calculus add-on.
 
 ## 2026-09-12
 

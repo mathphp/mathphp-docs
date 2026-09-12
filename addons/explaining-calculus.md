@@ -19,6 +19,9 @@ the public registry: `gamma(u)` differentiates to
 `gamma(u)·digamma(u)·u′`, `lgamma(u)` to `digamma(u)·u′`, and `digamma(u)` to
 `trigamma(u)·u′`. The elementary antiderivative of `digamma(u)` is
 `ln(abs(gamma(u)))` on each interval that avoids a gamma pole.
+For two-argument beta functions, the differentiator applies
+`d logbeta(a,b) = digamma(a)·a′ + digamma(b)·b′ − digamma(a+b)·(a′+b′)`;
+`beta(a,b)` multiplies that logarithmic derivative by `beta(a,b)`.
 
 ```php
 $analysis = (new CalculusAnalyzer())->derivative('x^2 * sin(x^2)');
