@@ -27,6 +27,8 @@
   `coth()`, including stable large-argument evaluation and zero poles.
 - Documented symbolic derivative and elementary antiderivative rules for
   `sech()`, `csch()`, and `coth()` in the explaining calculus add-on.
+- Documented exact inverse-branch analysis for reciprocal hyperbolic
+  polynomial equations and complete real-range rejection.
 
 ## 2026-09-12
 

@@ -1191,6 +1191,11 @@ roots through secant, cosecant, and cotangent while excluding their poles.
 Hyperbolic polynomials are handled with their real inverse domains as well:
 `sinh(x)^2 = 1`, `cosh(x)^2 = 4`, and `tanh(x)^2 = 0.25` return complete roots,
 while `cosh(x)^2 = 0.25` and `tanh(x)^2 = 1` are proved impossible.
+Reciprocal hyperbolic polynomials use their corresponding inverse branches:
+`sech(x)^2 = 0.25` has the symmetric roots `±acosh(2)`, `csch(x)^2 = 1`
+has roots `±asinh(1)`, and `coth(x)^2 = 4` has roots `±atanh(0.5)`.
+Targets outside the real ranges (`sech` above 1, `csch` at 0, or `coth` in
+`[-1, 1]`) are rejected as complete no-solution results.
 Polynomial expressions in principal inverse functions are handled with their
 own ranges as well: `asin(x)^2 = 0.25`, `acos(x)^2 = 1`, `atan(x)^2 = 1`,
 `asinh(x)^2 = 1`, `acosh(x)^2 = 1`, and `atanh(x)^2 = 1` map polynomial roots
