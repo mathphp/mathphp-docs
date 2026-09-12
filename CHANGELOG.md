@@ -4,6 +4,8 @@
 
 - Documented incomplete elliptic integrals `ellipf()`/`ellipkinc()` and
   `ellipeinc()`, including their real parameter domain and singular endpoints.
+- Documented normalized incomplete beta functions `betainc()` and `betaincc()`
+  with continued-fraction evaluation and finite real-domain validation.
 
 ## 2026-09-12
 
