@@ -1601,6 +1601,23 @@ Affine arguments such as `gcd(2*x, 6)` are supported. Non-integer arguments
 remain explicit `unsupported` results because these Core functions are defined
 on integers.
 
+Matching `gcd()` and `lcm()` terms are solved with a finite exact integer
+search. For `gcd(x, 6) + lcm(x, 6) = 14`, the bound follows from
+`lcm(x, 6) >= |x|`, so every candidate lies in `[-14, 14]`:
+
+```php
+$combination = (new EquationAnalyzer())->analyze('gcd(x, 6) + lcm(x, 6) = 14');
+// solutions['method'] === 'automatic-integer-gcd-lcm-combination'
+// solutions['variableDomain'] === 'integers'
+// solutions['roots'] === [-4.0, 4.0]
+// solutions['complete'] === true
+```
+
+Affine arguments such as `gcd(2*x, 6) + lcm(2*x, 6) = 14` are mapped back to
+the original variable (`[-2.0, 2.0]`). The strategy only accepts one matching
+`gcd()` and one matching `lcm()` term with the same fixed integer. Targets above
+the configured exact search bound return `partial` with `complete: false`.
+
 The same generic entry point recognizes semicolon-, comma-, or
 newline-separated systems when every row is an equality. Commas inside
 function arguments remain part of the expression, so `min(x, y) = 1, max(x, y) = 2`

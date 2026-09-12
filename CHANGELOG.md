@@ -2,6 +2,11 @@
 
 ## 2026-09-12
 
+- Documented exact finite integer-domain analysis for matching `gcd()` + `lcm()`
+  combinations, affine arguments, and bounded completeness metadata.
+
+## 2026-09-12
+
 - Documented exact monotone absolute-value compositions for logarithms,
   exponentials, and square/cube roots.
 
