@@ -25,6 +25,12 @@ For two-argument beta functions, the differentiator applies
 For fixed integer order, Bessel derivatives use the standard recurrences
 `Jₙ′(u) = (Jₙ₋₁(u) − Jₙ₊₁(u))/2` and
 `Iₙ′(u) = (Iₙ₋₁(u) + Iₙ₊₁(u))/2`; variable-order derivatives remain partial.
+Lambert-W derivatives use implicit differentiation of
+`Wₖ(u)·exp(Wₖ(u)) = u`: `d/dx Wₖ(u) =
+Wₖ(u)·u′/(u·(1 + Wₖ(u)))`. The principal `lambertw(u)` and lower real
+`lambertw(u, -1)` branches are supported when the branch selector is constant;
+a varying branch selector remains partial. Expressions are still subject to
+Core's real-domain and branch-point restrictions.
 The Gaussian identities are also symbolic: `erf′(u) =
 2·exp(−u²)/sqrt(pi)·u′` and `erfc′(u) = −erf′(u)`. Their elementary
 antiderivatives are `u·erf(u) + exp(−u²)/sqrt(pi)` and
