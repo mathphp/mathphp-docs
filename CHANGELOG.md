@@ -22,6 +22,11 @@
 
 ## 2026-09-12
 
+- Documented exact finite integer-domain analysis for `gcd()` plus affine
+  expressions and its explicit `gcd(q,0)` boundary.
+
+## 2026-09-12
+
 - Documented exact monotone absolute-value compositions for logarithms,
   exponentials, and square/cube roots.
 

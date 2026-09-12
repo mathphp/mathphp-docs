@@ -1618,6 +1618,20 @@ the original variable (`[-2.0, 2.0]`). The strategy only accepts one matching
 `gcd()` and one matching `lcm()` term with the same fixed integer. Targets above
 the configured exact search bound return `partial` with `complete: false`.
 
+A bounded `gcd()` contribution can also be combined exactly with an affine
+integer expression:
+
+```php
+$expression = (new EquationAnalyzer())->analyze('gcd(x, 6) + x = 10');
+// solutions['method'] === 'automatic-integer-gcd-affine'
+// solutions['roots'] === [8.0]
+// solutions['complete'] === true
+```
+
+The analyzer proves a finite search range from `0 ≤ gcd(q,n) ≤ |n|` and keeps
+the result on the integer domain. The unbounded `gcd(q, 0)` form is reported as
+an explicit boundary rather than being sampled as a continuous equation.
+
 One combinatorial term can also be combined with an affine integer expression
 when the result is provably monotone. For example:
 
