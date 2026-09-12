@@ -1078,6 +1078,23 @@ expressions through the supplied `EvaluationOptions` registry. For example,
 Core evaluation path as the rest of the equation, rather than requiring a
 literal target.
 
+Regularized incomplete-function equations have a complete monotone path when
+the unknown occurs affinely in the value argument:
+
+```php
+$gamma = (new EquationAnalyzer())->analyze('gammainc(2, 3*x + 1) = 0.8');
+$beta = (new EquationAnalyzer())->analyze('betainc(2, 3, x) = 0.25');
+// solutions['method'] === 'monotone-regularized-special-inverse'
+// solutions['complete'] === true when Core evaluates the aligned functions
+```
+
+`gammainc`/`gammaincc` are solved on `u ≥ 0`, while `betainc`/`betaincc` are
+solved on `0 ≤ u ≤ 1`. Shape arguments must be finite, positive, and within
+Core's supported range; targets outside `[0, 1]` return complete no-solution
+results. Interior targets are refined by monotone bisection, and the returned
+root is mapped back through the affine value argument. This path proves the
+single real root on the stated domain; it does not claim symbolic closed form.
+
 The explaining analyzer also has an exact beta path for the common form
 `beta(a*x + b, n) = c` (or the symmetric argument order), and for `logbeta`
 with the same shape, when `n` is a fixed integer from 1 through 8. It rewrites
