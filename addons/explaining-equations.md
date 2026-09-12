@@ -1063,7 +1063,7 @@ registry for forcing and kernel evaluation, together with bounded numerical
 status and convergence diagnostics.
 
 The Core evaluator also provides domain-checked special functions such as
-`erf`, `erfc`, `erfi`, `airyai`, `airybi`, `gamma`, `lgamma`, `gammainc`, `gammaincc`, `beta`, `logbeta`, `zeta`, `digamma`,
+`erf`, `erfc`, `erfi`, `airyai`, `airybi`, `ellipk`, `ellipe`, `gamma`, `lgamma`, `gammainc`, `gammaincc`, `beta`, `logbeta`, `zeta`, `digamma`,
 `trigamma`, `polygamma`, `besselj`, `besseli`, `bessely`, and `besselk`. Beta arguments must be positive,
 `zeta()` currently requires a real argument greater than one, `digamma()` and
 `trigamma()` reject non-positive integer gamma poles, and Bessel functions
