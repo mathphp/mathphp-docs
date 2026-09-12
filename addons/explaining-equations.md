@@ -83,7 +83,7 @@ domain note because poles, where either argument is undefined, are excluded.
 Constant identities and inconsistent constant equalities are reported without
 inventing numerical roots.
 
-When a single `sin()` or `cos()` term is combined with an affine term, a global
+When a single `sin()` or `cos()` term (including a scalar multiple) is combined with an affine term, a global
 derivative bound can certify monotonicity and uniqueness:
 
 ```php

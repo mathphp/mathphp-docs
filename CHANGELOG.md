@@ -9,6 +9,8 @@
 
 - Documented monotone `sin()`/`cos()` plus affine equation analysis, derivative
   bounds, numerical refinement, and complete uniqueness metadata.
+- Documented scalar multiples and constant divisions accepted by the monotone
+  trigonometric analyzer.
 
 ## 2026-09-12
 
