@@ -6,6 +6,8 @@
   `ellipeinc()`, including their real parameter domain and singular endpoints.
 - Documented normalized incomplete beta functions `betainc()` and `betaincc()`
   with continued-fraction evaluation and finite real-domain validation.
+- Documented real inverse error functions `erfinv()` and `erfcinv()` with
+  strict open-interval domain validation.
 
 ## 2026-09-12
 
