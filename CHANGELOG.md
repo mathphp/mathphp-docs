@@ -2,6 +2,11 @@
 
 ## 2026-09-12
 
+- Documented that generic bounded numerical equation fallback results are
+  explicitly `partial` and never claim global completeness.
+
+## 2026-09-12
+
 - Documented exact constant-expression isolation for affine unknowns and
   configured custom functions in the explaining add-on.
 
