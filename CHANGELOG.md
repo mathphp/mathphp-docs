@@ -19,6 +19,8 @@
   real-domain contract for bounded equation searches.
 - Documented Core positive-real `beta()` and `logbeta()` evaluation for bounded
   equation searches.
+- Documented Core real `zeta(s)` evaluation for `s > 1` in bounded equation
+  searches.
 
 ## 2026-09-12
 

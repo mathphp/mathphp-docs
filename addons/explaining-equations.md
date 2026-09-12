@@ -1063,11 +1063,12 @@ registry for forcing and kernel evaluation, together with bounded numerical
 status and convergence diagnostics.
 
 The Core evaluator also provides domain-checked special functions such as
-`erf`, `erfc`, `gamma`, `lgamma`, `beta`, `logbeta`, `besselj`, and `besseli`.
-Beta arguments must be positive, and Bessel functions currently require finite
-integer orders. They can be used directly in bounded equation searches and in
-any explaining analyzer that evaluates Core expressions; bounded results
-remain `partial` unless a dedicated global proof exists.
+`erf`, `erfc`, `gamma`, `lgamma`, `beta`, `logbeta`, `zeta`, `besselj`, and
+`besseli`. Beta arguments must be positive, `zeta()` currently requires a real
+argument greater than one, and Bessel functions require finite integer orders.
+They can be used directly in bounded equation searches and in any explaining
+analyzer that evaluates Core expressions; bounded results remain `partial`
+unless a dedicated global proof exists.
 
 The generic `EquationAnalyzer::analyze()` entry point uses the exact polynomial,
 rational, and elementary strategies first. When none applies but the equality
