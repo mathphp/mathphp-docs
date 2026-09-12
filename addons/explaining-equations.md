@@ -1222,6 +1222,12 @@ unions of their factor zero sets.
 Strictly positive `exp(...)` factors are removed from zero products, so
 `exp(x) * sin(x) = 0` returns the complete sine family. Unresolved factors
 remain on the bounded path.
+Affine zero sets for `ln`, `log`, `log1p`, `expm1`, `sqrt`, and `cbrt` carry
+their real-domain checks too. Thus `ln(x) * exp(x) = 0` returns `x = 1`,
+`(x - 1) * sqrt(x) = 0` returns `0` and `1`, and `cbrt(x) * sin(x) = 0`
+retains the complete real sine family. Domain-restricted factors combined
+with periodic families remain conservative until their family bounds are
+representable.
 Pole-aware reciprocal cancellations are included for zero products:
 `tan(x) * cos(x) = 0` reduces to the zeros of `sin(x)`, while
 `cot(x) * sin(x) = 0` reduces to the zeros of `cos(x)`. Reciprocal poles are
