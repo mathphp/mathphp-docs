@@ -1733,6 +1733,21 @@ domain `[-10, 10] × [-10, 10]`. It returns
 `complete: false`; use the explicit analyzer when the curve is larger than
 that window or needs a finer grid.
 
+Equalities with four through six real unknowns are sampled as bounded implicit
+hypersurfaces rather than reduced to a scalar root list:
+
+```php
+$hyperSurface = (new EquationAnalyzer())->analyze('x^2 + y^2 + z^2 + w^2 = 1');
+// solutions['method'] === 'automatic-bounded-implicit-hypersurface'
+// solutions['cells'] contains sign-changing hypercells
+// solutions['complete'] === false
+```
+
+`analyzeNumericalImplicitHyperSurface()` accepts explicit bounds and grid
+resolution. It supports up to six variables, caps samples and returned cells
+for safety, and always reports partial coverage because a finite grid cannot
+prove a global hypersurface description.
+
 Three-variable equalities are sampled as bounded implicit surfaces rather than
 being reduced to a misleading one-dimensional root list:
 

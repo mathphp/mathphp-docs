@@ -17,6 +17,11 @@
 
 ## 2026-09-12
 
+- Documented bounded four-to-six-variable implicit-hypersurface sampling,
+  sign-changing hypercells, safety caps, and partial completeness metadata.
+
+## 2026-09-12
+
 - Documented exact monotone absolute-value compositions for logarithms,
   exponentials, and square/cube roots.
 
