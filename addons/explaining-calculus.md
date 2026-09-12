@@ -29,6 +29,9 @@ The Gaussian identities are also symbolic: `erf′(u) =
 2·exp(−u²)/sqrt(pi)·u′` and `erfc′(u) = −erf′(u)`. Their elementary
 antiderivatives are `u·erf(u) + exp(−u²)/sqrt(pi)` and
 `u·erfc(u) − exp(−u²)/sqrt(pi)`, respectively.
+The stable logarithmic/exponential helpers are covered as well:
+`log2′(u) = u′/(u·ln(2))`, `log1p′(u) = u′/(1+u)`, and
+`expm1′(u) = exp(u)·u′`, with their corresponding affine antiderivatives.
 
 ```php
 $analysis = (new CalculusAnalyzer())->derivative('x^2 * sin(x^2)');

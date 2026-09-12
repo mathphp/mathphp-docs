@@ -37,6 +37,7 @@
   explicit partial result for variable-order differentiation.
 - Documented symbolic derivative and antiderivative identities for `erf()`
   and `erfc()`.
+- Documented symbolic calculus rules for `log2()`, `log1p()`, and `expm1()`.
 
 ## 2026-09-12
 
