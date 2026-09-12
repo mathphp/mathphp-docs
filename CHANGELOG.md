@@ -25,6 +25,8 @@
   arguments, including explicit non-positive integer pole rejection.
 - Documented Core reciprocal hyperbolic functions `sech()`, `csch()`, and
   `coth()`, including stable large-argument evaluation and zero poles.
+- Documented symbolic derivative and elementary antiderivative rules for
+  `sech()`, `csch()`, and `coth()` in the explaining calculus add-on.
 
 ## 2026-09-12
 
