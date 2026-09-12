@@ -1604,8 +1604,17 @@ analysis:
 ```php
 $analysis = (new EquationAnalyzer())->analyze('erf(x) = 0.5');
 // solutions['method'] === 'monotone-special-inverse'
-// solutions['roots'] contains approximately [0.476936128]
+// solutions['roots'] contains approximately [0.4769362762044699]
 // solutions['complete'] === true
+```
+
+The same affine inverse path handles the strictly increasing real `erfi()`
+branch, subject to the finite evaluator range:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('erfi(x) = 1.6504257587975428');
+// solutions['method'] === 'monotone-special-inverse'
+// solutions['roots'] === [1.0]
 ```
 
 The open range endpoints are handled explicitly: `erf(x) = ±1` and

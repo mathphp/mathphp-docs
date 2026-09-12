@@ -8,6 +8,8 @@
   with continued-fraction evaluation and finite real-domain validation.
 - Documented real inverse error functions `erfinv()` and `erfcinv()` with
   strict open-interval domain validation.
+- Documented complete affine inverse analysis for `erfi()` on its finite real
+  evaluator range.
 
 ## 2026-09-12
 
