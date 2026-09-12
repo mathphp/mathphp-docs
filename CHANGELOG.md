@@ -21,6 +21,8 @@
   equation searches.
 - Documented Core real `zeta(s)` evaluation for `s > 1` in bounded equation
   searches.
+- Documented Core `digamma()` and `trigamma()` evaluation for finite real
+  arguments, including explicit non-positive integer pole rejection.
 
 ## 2026-09-12
 
