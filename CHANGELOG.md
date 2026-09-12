@@ -29,6 +29,8 @@
   `sech()`, `csch()`, and `coth()` in the explaining calculus add-on.
 - Documented exact inverse-branch analysis for reciprocal hyperbolic
   polynomial equations and complete real-range rejection.
+- Documented gamma-family symbolic derivative identities and the pole-aware
+  antiderivative of `digamma()`.
 
 ## 2026-09-12
 

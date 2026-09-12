@@ -14,6 +14,12 @@ inverse-hyperbolic, `exp`, `ln`, `log10`, and `sqrt`), constant powers, and
 general powers are handled with product, quotient, chain, and
 logarithmic-differentiation rules:
 
+Core's gamma-family identities are included where the derivative remains in
+the public registry: `gamma(u)` differentiates to
+`gamma(u)·digamma(u)·u′`, `lgamma(u)` to `digamma(u)·u′`, and `digamma(u)` to
+`trigamma(u)·u′`. The elementary antiderivative of `digamma(u)` is
+`ln(abs(gamma(u)))` on each interval that avoids a gamma pole.
+
 ```php
 $analysis = (new CalculusAnalyzer())->derivative('x^2 * sin(x^2)');
 // status: solved; product and chain-rule steps are included.
