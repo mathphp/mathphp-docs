@@ -50,6 +50,9 @@
   unique-root certification.
 - Documented pole-separated partial coverage for digamma/trigamma and the
   complete no-solution proof for non-positive trigamma targets.
+- Documented fixed-integer-order Bessel equation analysis, including complete
+  modified-Bessel range proofs and explicit partial metadata for oscillatory
+  Bessel-J searches.
 
 ## 2026-09-12
 

@@ -1090,6 +1090,16 @@ finite domain as `partial`, because the negative real axis has infinitely many
 branches. It does prove `trigamma(u) = c` has no real solution for `c ≤ 0`,
 since trigamma is positive everywhere it is defined.
 
+Fixed-integer-order `besselj(n, a*x + b) = c` equations use a bounded,
+branch-safe search on the symmetric argument interval `[-128, 128]`. Because
+`J_n` is oscillatory and has infinitely many zeros, these results are always
+`partial` and expose the searched argument domain. Integer-order `besseli`
+equations additionally use real parity and range facts: `I₀(u) ≥ 1`,
+`I₀(u) = 1` only at zero, positive integer orders vanish only at zero, and
+even orders cannot reach negative targets. Those cases are returned as
+complete proofs; remaining targets use a bounded positive-branch search and
+remain `partial`.
+
 The generic `EquationAnalyzer::analyze()` entry point uses the exact polynomial,
 rational, and elementary strategies first. When none applies but the equality
 is a single-variable Core expression, it now delegates automatically to the
