@@ -17,6 +17,8 @@
   discrete-affine equations.
 - Documented Core `besselj()` and `besseli()` evaluation and their integer-order
   real-domain contract for bounded equation searches.
+- Documented Core positive-real `beta()` and `logbeta()` evaluation for bounded
+  equation searches.
 
 ## 2026-09-12
 
