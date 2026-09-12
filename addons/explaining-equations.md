@@ -1115,6 +1115,20 @@ $e = (new EquationAnalyzer())->analyze('ellipe(x + 0.1) = 1.2');
 targets and finite endpoints are classified exactly; interior targets use
 monotone bisection and are mapped back through the affine parameter.
 
+Incomplete first- and second-kind elliptic equations are also supported when
+the unknown occurs affinely in the amplitude:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('ellipf(x + 0.1, 0.5) = 0.4');
+// solutions['method'] === 'exact-incomplete-elliptic-amplitude'
+```
+
+`ellipf`/`ellipkinc` and `ellipeinc` are solved on the principal branch
+`−π/2 ≤ phi ≤ π/2`, where the integral is strictly increasing. For `m = 1`
+the singular amplitude endpoints are excluded; finite interior targets remain
+valid. Periodic continuation outside this branch is intentionally left to
+bounded numerical analysis rather than being presented as a global proof.
+
 The explaining analyzer also has an exact beta path for the common form
 `beta(a*x + b, n) = c` (or the symmetric argument order), and for `logbeta`
 with the same shape, when `n` is a fixed integer from 1 through 8. It rewrites
