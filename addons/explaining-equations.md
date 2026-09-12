@@ -1733,6 +1733,21 @@ domain `[-10, 10] × [-10, 10]`. It returns
 `complete: false`; use the explicit analyzer when the curve is larger than
 that window or needs a finer grid.
 
+Three-variable equalities are sampled as bounded implicit surfaces rather than
+being reduced to a misleading one-dimensional root list:
+
+```php
+$surface = (new EquationAnalyzer())->analyze('x^2 + y^2 + z^2 = 1');
+// solutions['method'] === 'automatic-bounded-implicit-surface'
+// solutions['triangles'] contains approximate surface mesh triangles
+// solutions['complete'] === false
+```
+
+`analyzeNumericalImplicitSurface()` accepts explicit bounds and a grid
+resolution. It interpolates sign-changing voxel edges into triangles, retains
+undefined samples as gaps, and always reports partial coverage because a finite
+mesh cannot prove a global surface description.
+
 ## Dimensional equalities
 
 When `mathphp/mathphp-units` is installed, `UnitEquationAnalyzer` evaluates
