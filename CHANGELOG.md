@@ -2,6 +2,11 @@
 
 ## 2026-09-12
 
+- Documented exact monotone absolute-value compositions for logarithms,
+  exponentials, and square/cube roots.
+
+## 2026-09-12
+
 - Documented exact complementary affine `min()`/`max()` identity analysis.
 
 ## 2026-09-12

@@ -1189,6 +1189,21 @@ The same bounded substitution handles powers of `sqrt`, `cbrt`, and `abs`:
 `cbrt(x)^2 = 4` returns both real cube-root branches, and `abs(x)^3 = 8`
 returns both affine absolute-value branches.
 
+Selected monotone compositions with affine absolute values are inverted
+exactly as well:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('log(abs(x), 10) = 1');
+// solutions['method'] === 'exact-absolute-composition'
+// solutions['roots'] === [-10.0, 10.0]
+// solutions['complete'] === true
+```
+
+The path covers `ln`, `log`, `log10`, `log2`, `exp`, `sqrt`, and `cbrt`, with
+real-domain checks and both signed absolute-value branches. Use
+`analyzeAbsoluteComposition()` to select it explicitly; unsupported outer
+functions retain their existing exact or partial numerical behavior.
+
 Commensurate exponential equations can contain more than two terms. The solver
 substitutes `z = exp(a*x+b)` and delegates bounded-degree polynomials to the
 certified real-root analyzer, then keeps only positive `z` values. For example,
