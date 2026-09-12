@@ -1228,10 +1228,11 @@ their real-domain checks too. Thus `ln(x) * exp(x) = 0` returns `x = 1`,
 retains the complete real sine family. Domain-restricted factors combined
 with periodic families remain conservative until their family bounds are
 representable.
-Linear and quadratic polynomial factors are isolated exactly as well:
+Polynomial factors through degree sixteen are isolated exactly as well:
 `(x^2 - 1) * sin(x) = 0` contributes `-1`, `0`, and `1`, while
 `(x^2 + 1) * sin(x) = 0` proves that the polynomial has no real roots and
-retains only the sine family. Higher-degree polynomial factors stay on the
+retains only the sine family. Higher-degree factors reuse the certified
+Sturm-based polynomial analyzer; factors above degree sixteen stay on the
 conservative bounded path.
 Pole-aware reciprocal cancellations are included for zero products:
 `tan(x) * cos(x) = 0` reduces to the zeros of `sin(x)`, while

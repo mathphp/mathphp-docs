@@ -63,8 +63,9 @@
 - Documented flattened zero-product support for powers and absolute factors.
 - Documented nonzero exponential-factor elimination in zero products.
 - Documented domain-aware logarithm and radical zero-product factors.
-- Documented exact linear and quadratic polynomial-factor zero sets in
-  zero-product analysis, including no-real-root proofs.
+- Documented exact polynomial-factor zero sets through degree sixteen in
+  zero-product analysis, including certified higher-degree isolation and
+  no-real-root proofs.
 - Documented configured constant-expression targets for special-function
   equation analyzers.
 
