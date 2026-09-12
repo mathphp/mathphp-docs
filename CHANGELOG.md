@@ -4,6 +4,8 @@
 
 - Documented incomplete elliptic integrals `ellipf()`/`ellipkinc()` and
   `ellipeinc()`, including their real parameter domain and singular endpoints.
+- Documented real third-kind elliptic integrals `ellippi()` and `ellippinc()`
+  with characteristic and singularity validation.
 - Documented normalized incomplete beta functions `betainc()` and `betaincc()`
   with continued-fraction evaluation and finite real-domain validation.
 - Documented finite inverse incomplete-gamma quantiles `gammaincinv()` and
