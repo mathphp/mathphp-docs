@@ -1078,6 +1078,12 @@ with the same shape, when `n` is a fixed integer from 1 through 8. It rewrites
 only roots with `u > 0`; `complete: true` therefore includes the beta domain
 check rather than merely reporting algebraic polynomial roots.
 
+For `zeta(a*x + b) = c`, the explaining analyzer uses the real branch
+`u > 1`, where zeta is continuous and strictly decreasing with range
+`(1, ∞)`. Targets `c ≤ 1` are complete no-solution results; targets above
+one are bracketed numerically and then marked complete only after the unique
+monotone crossing is found and mapped back through the affine input.
+
 The generic `EquationAnalyzer::analyze()` entry point uses the exact polynomial,
 rational, and elementary strategies first. When none applies but the equality
 is a single-variable Core expression, it now delegates automatically to the

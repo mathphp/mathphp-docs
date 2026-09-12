@@ -46,6 +46,8 @@
   hyperbolic functions and their excluded target ranges.
 - Documented exact integer-parameter beta/logbeta equation reduction with
   positive-domain root filtering.
+- Documented the complete real-domain zeta equation contract and monotone
+  unique-root certification.
 
 ## 2026-09-12
 
