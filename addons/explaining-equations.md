@@ -1884,6 +1884,14 @@ $analysis = (new EquationAnalyzer())->analyze('exp(z) = i');
 // solutions['method'] === 'automatic-complex-newton'
 ```
 
+Complex residuals are evaluated over both real and imaginary components, so
+the local solver also accepts non-holomorphic expressions such as
+`conj(z)`, `real(z)`, `imag(z)`, `arg(z)`, and `phase(z)`. Each Newton step
+uses a centered 2×2 real Jacobian; this is more general than a complex
+derivative and makes conjugation and magnitude constraints explicit. The
+result is still a local numerical root, not a proof that every branch or root
+was found.
+
 This is intentionally a local solve, not a proof that every complex root was
 found. Use `analyzeComplex()` with an explicit `ComplexNumber` start, iteration
 limit, tolerance, and optional known scalar parameters when the initial basin
