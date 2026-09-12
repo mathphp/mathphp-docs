@@ -6,6 +6,8 @@
   `ellipeinc()`, including their real parameter domain and singular endpoints.
 - Documented normalized incomplete beta functions `betainc()` and `betaincc()`
   with continued-fraction evaluation and finite real-domain validation.
+- Documented finite inverse incomplete-gamma quantiles `gammaincinv()` and
+  `gammainccinv()` with tail-aware probability domains.
 - Documented inverse beta quantiles `betaincinv()` and `betainccinv()` with
   monotone inversion and probability-domain validation.
 - Documented real inverse error functions `erfinv()` and `erfcinv()` with
