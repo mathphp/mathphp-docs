@@ -74,6 +74,8 @@
   conditions, first-match semantics, and complete intervals.
 - Documented certified polynomial branches filtered by exact piecewise
   conditions.
+- Documented certified finite-root elementary branches in exact piecewise
+  equalities, with conservative fallback for periodic/non-certified branches.
 - Documented configured constant-expression targets for special-function
   equation analyzers.
 

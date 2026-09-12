@@ -1242,11 +1242,14 @@ Zero numerators over polynomial denominators are handled with explicit pole
 filtering: `sin(x) / x = 0` returns `x = πk` with `k ≠ 0`, while
 `abs(x - 1) / (x + 1) = 0` returns only `x = 1`. Real denominator roots are
 available in `solutions['denominatorRoots']`.
-Top-level `piecewise(...)` and `if(...)` equalities with affine or polynomial
-branches and affine conditions are solved exactly, including compound `and`/`or`
-conditions, first-match branch semantics, inclusive boundaries, and complete
-solution intervals. Other nonlinear branches retain the bounded branch-safe
-fallback.
+Top-level `piecewise(...)` and `if(...)` equalities with affine, polynomial, or
+certified elementary branches and affine conditions are solved exactly,
+including compound `and`/`or` conditions, first-match branch semantics,
+inclusive boundaries, and complete solution intervals. Finite-root inverse
+branches such as `sqrt(x) = 2`, `ln(x) = 0`, `exp(x) = 2`, and
+`abs(x - 1) = 0` are supported through the elementary analyzer. Periodic
+families and other non-certified nonlinear branches retain the bounded
+branch-safe fallback.
 Pole-aware reciprocal cancellations are included for zero products:
 `tan(x) * cos(x) = 0` reduces to the zeros of `sin(x)`, while
 `cot(x) * sin(x) = 0` reduces to the zeros of `cos(x)`. Reciprocal poles are
