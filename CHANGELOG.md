@@ -61,6 +61,7 @@
 - Documented complete zero-product analysis for affine and sine/cosine factors.
 - Documented pole-aware reciprocal trigonometric zero-product cancellations.
 - Documented flattened zero-product support for powers and absolute factors.
+- Documented nonzero exponential-factor elimination in zero products.
 - Documented configured constant-expression targets for special-function
   equation analyzers.
 

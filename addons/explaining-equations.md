@@ -1219,6 +1219,9 @@ Nested multiplication, positive integer powers, and affine absolute-value
 factors are flattened too: `x^2 * sin(x) = 0`,
 `sin(x)^2 * cos(x)^2 = 0`, and `abs(x) * sin(x) = 0` all return complete
 unions of their factor zero sets.
+Strictly positive `exp(...)` factors are removed from zero products, so
+`exp(x) * sin(x) = 0` returns the complete sine family. Unresolved factors
+remain on the bounded path.
 Pole-aware reciprocal cancellations are included for zero products:
 `tan(x) * cos(x) = 0` reduces to the zeros of `sin(x)`, while
 `cot(x) * sin(x) = 0` reduces to the zeros of `cos(x)`. Reciprocal poles are
