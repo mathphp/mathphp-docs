@@ -38,6 +38,7 @@
 - Documented symbolic derivative and antiderivative identities for `erf()`
   and `erfc()`.
 - Documented symbolic calculus rules for `log2()`, `log1p()`, and `expm1()`.
+- Documented two-argument derivative identities for `atan2()` and `hypot()`.
 
 ## 2026-09-12
 
