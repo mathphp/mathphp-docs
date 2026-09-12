@@ -2,6 +2,10 @@
 
 ## 2026-09-12
 
+- Documented exact complementary affine `min()`/`max()` identity analysis.
+
+## 2026-09-12
+
 - Documented that generic bounded numerical equation fallback results are
   explicitly `partial` and never claim global completeness.
 

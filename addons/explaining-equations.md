@@ -1366,6 +1366,20 @@ $analysis = (new EquationAnalyzer())->analyze('max(-x, 5) = 5');
 Use `analyzePiecewiseFunction()` for the explicit facade. Singleton roots,
 closed half-lines, and empty sets retain `complete: true` metadata.
 
+Complementary affine pairs are reduced by the identity
+`min(a,b) + max(a,b) = a + b`:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('min(x, 2) + max(x, 2) = 5');
+// solutions['method'] === 'exact-piecewise-identity'
+// solutions['roots'] === [3.0]
+// solutions['complete'] === true
+```
+
+The exact path requires the two calls to contain the same two affine branches,
+even when their argument order is reversed. Use `analyzePiecewiseIdentity()`
+to select it directly.
+
 Modulo equalities are solved over Core's integer domain:
 
 ```php
