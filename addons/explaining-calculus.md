@@ -22,6 +22,9 @@ the public registry: `gamma(u)` differentiates to
 For two-argument beta functions, the differentiator applies
 `d logbeta(a,b) = digamma(a)·a′ + digamma(b)·b′ − digamma(a+b)·(a′+b′)`;
 `beta(a,b)` multiplies that logarithmic derivative by `beta(a,b)`.
+For fixed integer order, Bessel derivatives use the standard recurrences
+`Jₙ′(u) = (Jₙ₋₁(u) − Jₙ₊₁(u))/2` and
+`Iₙ′(u) = (Iₙ₋₁(u) + Iₙ₊₁(u))/2`; variable-order derivatives remain partial.
 
 ```php
 $analysis = (new CalculusAnalyzer())->derivative('x^2 * sin(x^2)');

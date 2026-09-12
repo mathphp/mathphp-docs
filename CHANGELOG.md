@@ -33,6 +33,8 @@
   antiderivative of `digamma()`.
 - Documented beta/logbeta partial-derivative identities in the explaining
   calculus add-on.
+- Documented fixed-integer-order Bessel derivative recurrences and the
+  explicit partial result for variable-order differentiation.
 
 ## 2026-09-12
 
