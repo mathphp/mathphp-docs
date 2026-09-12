@@ -13,6 +13,8 @@
   trigonometric analyzer.
 - Documented exact integer-index solving for discrete functions combined with
   affine expressions.
+- Documented exact PHP half-up `round()` boundary families in mixed
+  discrete-affine equations.
 
 ## 2026-09-12
 

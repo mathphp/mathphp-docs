@@ -1391,9 +1391,10 @@ $analysis = (new EquationAnalyzer())->analyze('floor(x) + x = 4');
 ```
 
 Finite index ranges are verified directly; unbounded valid ranges are returned
-as complete integer-parameter families. Negative discrete terms and `round()`
-combinations remain on the bounded path until their boundary families have an
-equally explicit representation.
+as complete integer-parameter families. PHP half-up `round()` uses separate
+negative, zero, and positive output boundary families. Negative `floor()` and
+`ceil()` terms remain on the bounded path until their signed output families
+have an equally explicit representation.
 
 Affine-vs-constant `min()` and `max()` forms also return complete interval
 solutions:
