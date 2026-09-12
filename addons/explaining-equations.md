@@ -1238,6 +1238,10 @@ All recognized logarithm and radical domains are intersected across the whole
 product. Thus `sqrt(x) * sin(x) = 0` keeps only the sine family with `k ≥ 0`,
 `ln(x) * sin(x) = 0` starts at `k = 1`, and affine zero candidates outside the
 shared domain are filtered before the result is marked complete.
+Zero numerators over polynomial denominators are handled with explicit pole
+filtering: `sin(x) / x = 0` returns `x = πk` with `k ≠ 0`, while
+`abs(x - 1) / (x + 1) = 0` returns only `x = 1`. Real denominator roots are
+available in `solutions['denominatorRoots']`.
 Pole-aware reciprocal cancellations are included for zero products:
 `tan(x) * cos(x) = 0` reduces to the zeros of `sin(x)`, while
 `cot(x) * sin(x) = 0` reduces to the zeros of `cos(x)`. Reciprocal poles are

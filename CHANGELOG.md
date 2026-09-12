@@ -68,6 +68,8 @@
   no-real-root proofs.
 - Documented shared logarithm/radical domain filtering for affine roots and
   periodic zero-product families.
+- Documented exact zero-numerator analysis over polynomial denominators,
+  including periodic pole exclusions and tangent/cotangent zeros.
 - Documented configured constant-expression targets for special-function
   equation analyzers.
 
