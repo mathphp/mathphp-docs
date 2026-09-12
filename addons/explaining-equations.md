@@ -1084,6 +1084,12 @@ For `zeta(a*x + b) = c`, the explaining analyzer uses the real branch
 one are bracketed numerically and then marked complete only after the unique
 monotone crossing is found and mapped back through the affine input.
 
+`digamma` and `trigamma` equations are split at every non-positive integer
+gamma pole. The analyzer reports branch-safe numerical roots and the searched
+finite domain as `partial`, because the negative real axis has infinitely many
+branches. It does prove `trigamma(u) = c` has no real solution for `c ≤ 0`,
+since trigamma is positive everywhere it is defined.
+
 The generic `EquationAnalyzer::analyze()` entry point uses the exact polynomial,
 rational, and elementary strategies first. When none applies but the equality
 is a single-variable Core expression, it now delegates automatically to the

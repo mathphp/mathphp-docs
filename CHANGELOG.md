@@ -48,6 +48,8 @@
   positive-domain root filtering.
 - Documented the complete real-domain zeta equation contract and monotone
   unique-root certification.
+- Documented pole-separated partial coverage for digamma/trigamma and the
+  complete no-solution proof for non-positive trigamma targets.
 
 ## 2026-09-12
 
