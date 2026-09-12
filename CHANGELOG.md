@@ -57,6 +57,7 @@
   `lambertw(affine) = target` equations in the explaining add-on.
 - Documented symbolic Lambert-W chain-rule derivatives for the principal and
   lower real branches.
+- Documented exact integer-domain analysis for affine factorial arguments.
 - Documented configured constant-expression targets for special-function
   equation analyzers.
 

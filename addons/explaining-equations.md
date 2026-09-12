@@ -1406,6 +1406,18 @@ $analysis = (new EquationAnalyzer())->analyze('n! = 120');
 Use `analyzeFactorial()` for the explicit facade. The result exposes its
 integer search limit, domain note, completeness flag, and duplicate roots for
 `0! = 1! = 1`.
+Affine factorial arguments are solved exactly over integer unknowns too:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('factorial(2*x + 1) = 1');
+// solutions['method'] === 'automatic-factorial'
+// solutions['roots'] === [0]
+// solutions['argument'] === ['a' => 2, 'b' => 1]
+```
+
+The analyzer enumerates matching non-negative factorial arguments and maps
+them through the affine expression. Non-integer coefficients and continuous
+factorial extensions remain explicitly unsupported.
 
 Variable-free equalities are evaluated directly:
 
