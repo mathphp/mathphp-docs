@@ -15,6 +15,8 @@
   affine expressions.
 - Documented exact PHP half-up `round()` boundary families in mixed
   discrete-affine equations.
+- Documented Core `besselj()` and `besseli()` evaluation and their integer-order
+  real-domain contract for bounded equation searches.
 
 ## 2026-09-12
 
