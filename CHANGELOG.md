@@ -10,6 +10,8 @@
   strict open-interval domain validation.
 - Documented complete affine inverse analysis for `erfi()` on its finite real
   evaluator range.
+- Documented affine inverse analysis for `erfinv()` and `erfcinv()`, including
+  their strict input-domain checks.
 
 ## 2026-09-12
 

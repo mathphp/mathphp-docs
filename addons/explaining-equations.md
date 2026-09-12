@@ -1617,6 +1617,17 @@ $analysis = (new EquationAnalyzer())->analyze('erfi(x) = 1.6504257587975428');
 // solutions['roots'] === [1.0]
 ```
 
+Inverse error-function calls are handled by applying their forward branches
+to the target before isolating the affine input:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('erfinv(x) = 1');
+// solutions['roots'] contains approximately [0.8427007929497149]
+
+$analysis = (new EquationAnalyzer())->analyze('erfcinv(x) = 0');
+// solutions['roots'] === [1.0]
+```
+
 The open range endpoints are handled explicitly: `erf(x) = ±1` and
 `erfc(x) = 0 or 2` have no finite real roots. `gamma()` and `lgamma()` remain
 branch-sensitive numerical analyses.
