@@ -1064,10 +1064,11 @@ status and convergence diagnostics.
 
 The Core evaluator also provides domain-checked special functions such as
 `erf`, `erfc`, `gamma`, `lgamma`, `beta`, `logbeta`, `zeta`, `digamma`,
-`trigamma`, `polygamma`, `besselj`, and `besseli`. Beta arguments must be positive,
+`trigamma`, `polygamma`, `besselj`, `besseli`, `bessely`, and `besselk`. Beta arguments must be positive,
 `zeta()` currently requires a real argument greater than one, `digamma()` and
 `trigamma()` reject non-positive integer gamma poles, and Bessel functions
-require finite integer orders. They can be used directly in bounded equation
+require finite integer orders. The second-kind `bessely()`/`besselk()` functions
+also require positive arguments because zero is singular. They can be used directly in bounded equation
 searches and in any explaining analyzer that evaluates Core expressions;
 bounded results remain `partial` unless a dedicated global proof exists.
 

@@ -1645,6 +1645,9 @@ repositories.
 
 ## Unreleased
 
+- Document `bessely()`/`besselk()` evaluation and positive-domain bounded
+  equation searches.
+
 - Documented explicit partial results for undefined area and root samples.
 - Added the ecosystem release and deployment checklist.
 - Added dependency-free CI checks for relative Markdown links.
