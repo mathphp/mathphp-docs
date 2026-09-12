@@ -76,6 +76,8 @@
   conditions.
 - Documented certified finite-root elementary branches in exact piecewise
   equalities, with conservative fallback for periodic/non-certified branches.
+- Documented exact polynomial sign-chart conditions in piecewise equalities,
+  including bounded regions such as `x^2 < 1`.
 - Documented configured constant-expression targets for special-function
   equation analyzers.
 
