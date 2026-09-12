@@ -35,6 +35,9 @@ The stable logarithmic/exponential helpers are covered as well:
 For two-argument functions, `atan2(y,x)` uses
 `(x·y′ − y·x′)/(x²+y²)` and `hypot(a,b)` uses
 `(a·a′ + b·b′)/hypot(a,b)`; both remain undefined at their zero denominator.
+Inverse reciprocal trigonometric functions are also covered on their real
+domains: `asec′(u) = u′/(|u|sqrt(u²−1))`, `acsc′(u) =
+−u′/(|u|sqrt(u²−1))`, and `acot′(u) = −u′/(1+u²)`.
 
 ```php
 $analysis = (new CalculusAnalyzer())->derivative('x^2 * sin(x^2)');

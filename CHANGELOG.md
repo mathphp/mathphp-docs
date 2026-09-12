@@ -39,6 +39,7 @@
   and `erfc()`.
 - Documented symbolic calculus rules for `log2()`, `log1p()`, and `expm1()`.
 - Documented two-argument derivative identities for `atan2()` and `hypot()`.
+- Documented real-domain calculus rules for `asec()`, `acsc()`, and `acot()`.
 
 ## 2026-09-12
 
