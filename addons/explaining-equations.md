@@ -18,6 +18,32 @@ $json = $analysis->toArray();
 Render the model as a prompt, a hint, or an audit record. Pair it with the
 [translation layer](explaining-translations.md) for learner-facing copy.
 
+## Discrete combinatorial equations
+
+The private explaining add-on solves binomial-coefficient and permutation
+equalities exactly over the non-negative integer domain when one argument is
+unknown and the other is a fixed integer:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('binomial(n, 3) = 10');
+// solutions['method'] === 'automatic-binomial'
+// solutions['roots'] === [5.0]
+
+$analysis = (new EquationAnalyzer())->analyze('permutation(5, x) = 20');
+// solutions['method'] === 'automatic-permutation'
+// solutions['roots'] === [2.0]
+```
+
+`choose()` and `ncr()` are accepted as binomial aliases; `permute()` and
+`npr()` are accepted as permutation aliases. Affine unknown arguments are
+mapped back to integer roots, for example `binomial(2*n, 2) = 6`. The result
+records `variableDomain: integers`, the fixed argument, the exact search
+bound, and a `complete` flag. Two unknown arguments, non-integer fixed
+arguments, and targets that exceed the exact bound stay `unsupported` or
+`partial` so clients never mistake a bounded search for a continuous proof.
+
+Call `analyzeCombinatorial()` to select this solver explicitly.
+
 ## Same-function trigonometric equalities
 
 Affine arguments of the same `sin()`, `cos()`, or `tan()` function are solved

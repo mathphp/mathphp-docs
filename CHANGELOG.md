@@ -2,6 +2,12 @@
 
 ## 2026-09-12
 
+- Documented exact integer-domain binomial and permutation equation analysis in
+  the private explaining add-on, including aliases, affine arguments, and
+  complete-versus-partial result metadata.
+
+## 2026-09-12
+
 - Documented the Core combinatorial functions `factorial`, `binomial`/`choose`/`ncr`,
   and `permutation`/`permute`/`npr`, including integer-domain and overflow behavior.
 
