@@ -1064,7 +1064,7 @@ status and convergence diagnostics.
 
 The Core evaluator also provides domain-checked special functions such as
 `erf`, `erfc`, `gamma`, `lgamma`, `beta`, `logbeta`, `zeta`, `digamma`,
-`trigamma`, `besselj`, and `besseli`. Beta arguments must be positive,
+`trigamma`, `polygamma`, `besselj`, and `besseli`. Beta arguments must be positive,
 `zeta()` currently requires a real argument greater than one, `digamma()` and
 `trigamma()` reject non-positive integer gamma poles, and Bessel functions
 require finite integer orders. They can be used directly in bounded equation
@@ -1090,7 +1090,7 @@ For `zeta(a*x + b) = c`, the explaining analyzer uses the real branch
 one are bracketed numerically and then marked complete only after the unique
 monotone crossing is found and mapped back through the affine input.
 
-`digamma` and `trigamma` equations are split at every non-positive integer
+`digamma`, `trigamma`, and fixed-order `polygamma` equations are split at every non-positive integer
 gamma pole. The analyzer reports branch-safe numerical roots and the searched
 finite domain as `partial`, because the negative real axis has infinitely many
 branches. It does prove `trigamma(u) = c` has no real solution for `c ≤ 0`,

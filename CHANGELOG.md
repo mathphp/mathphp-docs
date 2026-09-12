@@ -1648,3 +1648,5 @@ repositories.
 - Documented explicit partial results for undefined area and root samples.
 - Added the ecosystem release and deployment checklist.
 - Added dependency-free CI checks for relative Markdown links.
+- Document fixed-order `polygamma(n, affine)` equation analysis and its
+  pole-separated partial-result contract.
