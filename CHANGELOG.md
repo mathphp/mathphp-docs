@@ -23,6 +23,8 @@
   searches.
 - Documented Core `digamma()` and `trigamma()` evaluation for finite real
   arguments, including explicit non-positive integer pole rejection.
+- Documented Core reciprocal hyperbolic functions `sech()`, `csch()`, and
+  `coth()`, including stable large-argument evaluation and zero poles.
 
 ## 2026-09-12
 

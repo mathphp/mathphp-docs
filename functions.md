@@ -14,7 +14,7 @@ Math::evaluate('binomial(10, 3) + permutation(4, 2)'); // 132
 
 The default catalogue includes the common elementary, trigonometric,
 hyperbolic, logarithmic, aggregate, and rounding functions: `abs`, `sqrt`,
-`cbrt`, `sin`, `cos`, `tan`, `sec`, `csc`, `cot`, `asin`, `acos`, `atan`, `sinh`, `cosh`, `tanh`, `asinh`,
+`cbrt`, `sin`, `cos`, `tan`, `sec`, `csc`, `cot`, `asin`, `acos`, `atan`, `sinh`, `cosh`, `tanh`, `sech`, `csch`, `coth`, `asinh`,
 `acosh`, `atanh`, `exp`, `ln`, `log`, `log10`, `log2`, `log1p`, `expm1`,
 `atan2`, `hypot`, `gcd`, `lcm`, `sign`, `min`, `max`,
 `floor`, `ceil`, `round`, `factorial`, `binomial`, `choose`, `ncr`,
