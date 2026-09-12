@@ -4170,12 +4170,13 @@ $analysis = (new ComplexSystemAnalyzer())->analyze(
 // z ≈ 0.5 + 0.5i, w ≈ 0.5 − 0.5i
 ```
 
-The solver approximates a complex Jacobian with centered finite differences,
-solves each Newton linear system with complex Gaussian elimination, and keeps
-the full iterate/residual history. It reports one nearby root from the supplied
-initial values; singular Jacobians, undefined expressions, and iteration limits
-remain `partial`, so convergence is not a proof that all complex roots were
-found.
+The solver approximates the real and imaginary residual components with
+centered finite differences, solves the resulting real `2n × 2n` Newton
+system, and keeps the full iterate/residual history. This supports
+non-holomorphic terms such as `conj(z)` in systems as well as analytic complex
+functions. It reports one nearby root from the supplied initial values;
+singular Jacobians, undefined expressions, and iteration limits remain
+`partial`, so convergence is not a proof that all complex roots were found.
 
 For bounded discovery without manually choosing starts, use `analyzeGrid()`:
 
