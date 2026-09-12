@@ -1649,6 +1649,7 @@ repositories.
   equation searches.
 - Document Core `erfi()`, `sinc()`, and `sinhc()` support and their origin limits.
 - Document normalized incomplete gamma functions `gammainc()` and `gammaincc()`.
+- Document Core Airy `airyai()` and `airybi()` support.
 
 - Documented explicit partial results for undefined area and root samples.
 - Added the ecosystem release and deployment checklist.
