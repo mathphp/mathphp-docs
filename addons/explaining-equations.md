@@ -1095,6 +1095,19 @@ results. Interior targets are refined by monotone bisection, and the returned
 root is mapped back through the affine value argument. This path proves the
 single real root on the stated domain; it does not claim symbolic closed form.
 
+Complete elliptic equations also have a monotone path for affine parameters:
+
+```php
+$k = (new EquationAnalyzer())->analyze('ellipk(2*x) = 2');
+$e = (new EquationAnalyzer())->analyze('ellipe(x + 0.1) = 1.2');
+// solutions['method'] === 'exact-elliptic-monotone'
+```
+
+`ellipk(u)` is solved on `0 ≤ u < 1` with range `[π/2, ∞)`, while
+`ellipe(u)` is solved on `0 ≤ u ≤ 1` with range `[1, π/2]`. Out-of-range
+targets and finite endpoints are classified exactly; interior targets use
+monotone bisection and are mapped back through the affine parameter.
+
 The explaining analyzer also has an exact beta path for the common form
 `beta(a*x + b, n) = c` (or the symmetric argument order), and for `logbeta`
 with the same shape, when `n` is a fixed integer from 1 through 8. It rewrites
