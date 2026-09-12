@@ -7,6 +7,11 @@
 
 ## 2026-09-12
 
+- Documented exact monotone combinatorial-expression analysis for one
+  `binomial()` or `permutation()` term combined with an affine expression.
+
+## 2026-09-12
+
 - Documented exact monotone absolute-value compositions for logarithms,
   exponentials, and square/cube roots.
 

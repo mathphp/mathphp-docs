@@ -1618,6 +1618,21 @@ the original variable (`[-2.0, 2.0]`). The strategy only accepts one matching
 `gcd()` and one matching `lcm()` term with the same fixed integer. Targets above
 the configured exact search bound return `partial` with `complete: false`.
 
+One combinatorial term can also be combined with an affine integer expression
+when the result is provably monotone. For example:
+
+```php
+$expression = (new EquationAnalyzer())->analyze('binomial(x, 2) + x = 6');
+// solutions['method'] === 'automatic-integer-combinatorial-expression'
+// solutions['roots'] === [3.0]
+// solutions['complete'] === true
+```
+
+The same strategy recognizes the `choose()`/`ncr()` and
+`permutation()`/`permute()`/`npr()` aliases, affine arguments, and finite
+second-argument domains. Unbounded non-monotone combinations remain partial so
+the analyzer does not turn a bounded sample into a false global proof.
+
 The same generic entry point recognizes semicolon-, comma-, or
 newline-separated systems when every row is an equality. Commas inside
 function arguments remain part of the expression, so `min(x, y) = 1, max(x, y) = 2`
