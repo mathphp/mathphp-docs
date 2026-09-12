@@ -1204,6 +1204,17 @@ Shared-phase sine/cosine products use the double-angle identity
 `sin(t)cos(t) = sin(2t)/2`. For example, `sin(x) * cos(x) = 0.25` returns
 complete periodic families, while targets outside `[-1/2, 1/2]` receive an
 exact no-real-solution result.
+Zero products of affine and sine/cosine factors are split exactly as well:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('x * sin(2*x + 1) = 0');
+// solutions['method'] === 'exact-zero-product'
+// solutions['roots'] === [-0.5, 0.0]
+// solutions['complete'] === true
+```
+
+The result includes affine representatives and complete periodic families for
+each recognized factor; unsupported factors remain on the bounded path.
 
 Quadratics in one shared trigonometric value are solved by reducing to
 `u = sin(t)` or `u = cos(t)` with `-1 ≤ u ≤ 1`. For example,
