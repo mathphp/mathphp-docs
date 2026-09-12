@@ -72,6 +72,8 @@
   including periodic pole exclusions and tangent/cotangent zeros.
 - Documented exact affine piecewise/`if` equality solving with compound
   conditions, first-match semantics, and complete intervals.
+- Documented certified polynomial branches filtered by exact piecewise
+  conditions.
 - Documented configured constant-expression targets for special-function
   equation analyzers.
 
