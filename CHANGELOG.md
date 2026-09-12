@@ -66,6 +66,8 @@
 - Documented exact polynomial-factor zero sets through degree sixteen in
   zero-product analysis, including certified higher-degree isolation and
   no-real-root proofs.
+- Documented shared logarithm/radical domain filtering for affine roots and
+  periodic zero-product families.
 - Documented configured constant-expression targets for special-function
   equation analyzers.
 

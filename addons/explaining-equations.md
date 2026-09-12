@@ -1234,6 +1234,10 @@ Polynomial factors through degree sixteen are isolated exactly as well:
 retains only the sine family. Higher-degree factors reuse the certified
 Sturm-based polynomial analyzer; factors above degree sixteen stay on the
 conservative bounded path.
+All recognized logarithm and radical domains are intersected across the whole
+product. Thus `sqrt(x) * sin(x) = 0` keeps only the sine family with `k ≥ 0`,
+`ln(x) * sin(x) = 0` starts at `k = 1`, and affine zero candidates outside the
+shared domain are filtered before the result is marked complete.
 Pole-aware reciprocal cancellations are included for zero products:
 `tan(x) * cos(x) = 0` reduces to the zeros of `sin(x)`, while
 `cot(x) * sin(x) = 0` reduces to the zeros of `cos(x)`. Reciprocal poles are
