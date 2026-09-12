@@ -1095,6 +1095,13 @@ results. Interior targets are refined by monotone bisection, and the returned
 root is mapped back through the affine value argument. This path proves the
 single real root on the stated domain; it does not claim symbolic closed form.
 
+The inverse quantile forms `gammaincinv`, `gammainccinv`, `betaincinv`, and
+`betainccinv` are handled when the unknown occurs in their probability
+argument. Their output target is checked against the gamma or beta value
+domain, and monotone bisection returns the unique probability root with
+`method: monotone-inverse-regularized-special`. Gamma's asymptotic probability
+endpoints remain open, while finite beta endpoints are solved exactly.
+
 Complete elliptic equations also have a monotone path for affine parameters:
 
 ```php
