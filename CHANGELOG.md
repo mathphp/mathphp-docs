@@ -2,6 +2,11 @@
 
 ## 2026-09-12
 
+- Documented exact constant-expression isolation for affine unknowns and
+  configured custom functions in the explaining add-on.
+
+## 2026-09-12
+
 - Documented exact integer-domain binomial and permutation equation analysis in
   the private explaining add-on, including aliases, affine arguments, and
   complete-versus-partial result metadata.

@@ -44,6 +44,24 @@ arguments, and targets that exceed the exact bound stay `unsupported` or
 
 Call `analyzeCombinatorial()` to select this solver explicitly.
 
+## Constant-expression isolation
+
+When one side contains no unresolved variables and the other is affine in the
+unknown, the dispatcher evaluates the constant side with the configured Core
+function registry and isolates the unknown exactly:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('gcd(6, 4) = x');
+// solutions['method'] === 'exact-constant-expression-isolation'
+// solutions['roots'] === [2.0]
+```
+
+This works in either orientation and includes custom functions supplied via
+`EvaluationOptions`. The result records the evaluated expression, constant
+value, affine coefficients, orientation, and `complete: true`. Nonlinear
+unknowns remain with their dedicated exact analyzers or explicitly bounded
+numerical fallback.
+
 ## Same-function trigonometric equalities
 
 Affine arguments of the same `sin()`, `cos()`, or `tan()` function are solved
