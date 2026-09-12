@@ -1196,6 +1196,10 @@ Reciprocal hyperbolic polynomials use their corresponding inverse branches:
 has roots `±asinh(1)`, and `coth(x)^2 = 4` has roots `±atanh(0.5)`.
 Targets outside the real ranges (`sech` above 1, `csch` at 0, or `coth` in
 `[-1, 1]`) are rejected as complete no-solution results.
+Their inverse functions are exact as well: `asech(x)^2 = 1` maps to the
+valid input `sech(1)`, `acsch(x)^2 = 1` maps to `±csch(1)`, and
+`acoth(x)^2 = 1` maps to `±coth(1)`. Negative `asech` targets and zero
+`acsch`/`acoth` targets are complete no-solution results.
 Polynomial expressions in principal inverse functions are handled with their
 own ranges as well: `asin(x)^2 = 0.25`, `acos(x)^2 = 1`, `atan(x)^2 = 1`,
 `asinh(x)^2 = 1`, `acosh(x)^2 = 1`, and `atanh(x)^2 = 1` map polynomial roots

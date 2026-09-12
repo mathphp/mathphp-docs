@@ -42,6 +42,8 @@
 - Documented real-domain calculus rules for `asec()`, `acsc()`, and `acot()`.
 - Documented real-domain calculus rules for `asech()`, `acsch()`, and
   `acoth()`.
+- Documented exact inverse-polynomial equation analysis for inverse reciprocal
+  hyperbolic functions and their excluded target ranges.
 
 ## 2026-09-12
 
