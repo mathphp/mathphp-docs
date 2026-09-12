@@ -11,6 +11,8 @@
   bounds, numerical refinement, and complete uniqueness metadata.
 - Documented scalar multiples and constant divisions accepted by the monotone
   trigonometric analyzer.
+- Documented exact integer-index solving for discrete functions combined with
+  affine expressions.
 
 ## 2026-09-12
 

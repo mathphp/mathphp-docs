@@ -1380,6 +1380,21 @@ Affine `floor`, `ceil`, `round` (PHP half-up ties), and `sign` forms preserve
 open and closed endpoints and report `complete: true`. Use
 `analyzeDiscrete()` to choose the variable or provide known parameters.
 
+One `floor()`, `ceil()`, or `sign()` term can also be combined with an affine
+term and solved by its integer output index:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('floor(x) + x = 4');
+// solutions['method'] === 'automatic-discrete-affine-exact'
+// solutions['roots'] === [2.0]
+// solutions['complete'] === true
+```
+
+Finite index ranges are verified directly; unbounded valid ranges are returned
+as complete integer-parameter families. Negative discrete terms and `round()`
+combinations remain on the bounded path until their boundary families have an
+equally explicit representation.
+
 Affine-vs-constant `min()` and `max()` forms also return complete interval
 solutions:
 
