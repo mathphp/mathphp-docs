@@ -70,6 +70,8 @@
   periodic zero-product families.
 - Documented exact zero-numerator analysis over polynomial denominators,
   including periodic pole exclusions and tangent/cotangent zeros.
+- Documented exact affine piecewise/`if` equality solving with compound
+  conditions, first-match semantics, and complete intervals.
 - Documented configured constant-expression targets for special-function
   equation analyzers.
 
