@@ -38,6 +38,9 @@ For two-argument functions, `atan2(y,x)` uses
 Inverse reciprocal trigonometric functions are also covered on their real
 domains: `asec′(u) = u′/(|u|sqrt(u²−1))`, `acsc′(u) =
 −u′/(|u|sqrt(u²−1))`, and `acot′(u) = −u′/(1+u²)`.
+The inverse hyperbolic reciprocals follow their real branches too:
+`asech′(u) = −u′/(u·sqrt(1−u²))`, `acsch′(u) =
+−u′/(|u|sqrt(1+u²))`, and `acoth′(u) = u′/(1−u²)`.
 
 ```php
 $analysis = (new CalculusAnalyzer())->derivative('x^2 * sin(x^2)');
