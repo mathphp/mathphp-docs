@@ -35,6 +35,8 @@
   calculus add-on.
 - Documented fixed-integer-order Bessel derivative recurrences and the
   explicit partial result for variable-order differentiation.
+- Documented symbolic derivative and antiderivative identities for `erf()`
+  and `erfc()`.
 
 ## 2026-09-12
 

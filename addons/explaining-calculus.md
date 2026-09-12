@@ -25,6 +25,10 @@ For two-argument beta functions, the differentiator applies
 For fixed integer order, Bessel derivatives use the standard recurrences
 `Jₙ′(u) = (Jₙ₋₁(u) − Jₙ₊₁(u))/2` and
 `Iₙ′(u) = (Iₙ₋₁(u) + Iₙ₊₁(u))/2`; variable-order derivatives remain partial.
+The Gaussian identities are also symbolic: `erf′(u) =
+2·exp(−u²)/sqrt(pi)·u′` and `erfc′(u) = −erf′(u)`. Their elementary
+antiderivatives are `u·erf(u) + exp(−u²)/sqrt(pi)` and
+`u·erfc(u) − exp(−u²)/sqrt(pi)`, respectively.
 
 ```php
 $analysis = (new CalculusAnalyzer())->derivative('x^2 * sin(x^2)');
