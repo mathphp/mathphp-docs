@@ -18,7 +18,9 @@ hyperbolic, logarithmic, aggregate, and rounding functions: `abs`, `sqrt`,
 `acosh`, `atanh`, `exp`, `ln`, `log`, `log10`, `log2`, `log1p`, `expm1`,
 `atan2`, `hypot`, `gcd`, `lcm`, `sign`, `min`, `max`,
 `floor`, `ceil`, `round`, `factorial`, `binomial`, `choose`, `ncr`,
-`permutation`, `permute`, and `npr`. `log(value, base)` and `hypot(x, y)`
+`permutation`, `permute`, `npr`, and `lambertw`. `lambertw(value)` evaluates
+the principal real branch; `lambertw(value, -1)` selects the lower real branch
+on `-1/e <= value < 0`. `log(value, base)` and `hypot(x, y)`
 take two arguments; `min` and `max` accept one through sixteen; the other
 built-ins take one. The combinatorial functions require non-negative integer
 arguments and return exact host integers, or a structured domain/overflow

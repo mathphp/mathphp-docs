@@ -53,6 +53,8 @@
 - Documented fixed-integer-order Bessel equation analysis, including complete
   modified-Bessel range proofs and explicit partial metadata for oscillatory
   Bessel-J searches.
+- Documented Core `lambertw()` real branches and exact inversion of direct
+  `lambertw(affine) = target` equations in the explaining add-on.
 
 ## 2026-09-12
 

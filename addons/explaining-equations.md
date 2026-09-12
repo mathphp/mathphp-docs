@@ -1291,6 +1291,12 @@ Lambert-W argument, real branch list, transformed general form, and the
 real-domain cutoff at `-1/e`. Expressions outside this product-exponential
 shape continue through the bounded numerical route.
 
+Direct real Lambert-W function equations are also inverted exactly:
+`lambertw(a*x+b) = c` maps to `a*x+b = c*exp(c)` on the principal branch,
+while `lambertw(a*x+b, -1) = c` uses the lower branch. The principal target
+must satisfy `c ≥ -1`; the lower-branch target must satisfy `c ≤ -1`. These
+range checks and the affine back-substitution are reported as complete.
+
 Self-power equations such as `x^x = c` are also analyzed on the positive-real
 domain:
 

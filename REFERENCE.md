@@ -170,6 +170,7 @@ The default function allowlist is:
 | `acosh(x)` | 1 | `x >= 1`; float |
 | `atanh(x)` | 1 | `-1 < x < 1`; float |
 | `exp(x)` | 1 | finite result; float |
+| `lambertw(x)` | 1–2 | real branch 0 by default; optional branch `-1` on `-1/e <= x < 0`; float |
 | `ln(x)` | 1 | `x > 0`; float |
 | `log(x, base)` | 2 | `x > 0`, `base > 0`, `base != 1`; float |
 | `log10(x)` | 1 | `x > 0`; float |
