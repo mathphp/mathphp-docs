@@ -1215,6 +1215,10 @@ $analysis = (new EquationAnalyzer())->analyze('x * sin(2*x + 1) = 0');
 
 The result includes affine representatives and complete periodic families for
 each recognized factor; unsupported factors remain on the bounded path.
+Pole-aware reciprocal cancellations are included for zero products:
+`tan(x) * cos(x) = 0` reduces to the zeros of `sin(x)`, while
+`cot(x) * sin(x) = 0` reduces to the zeros of `cos(x)`. Reciprocal poles are
+excluded from the returned domain metadata.
 
 Quadratics in one shared trigonometric value are solved by reducing to
 `u = sin(t)` or `u = cos(t)` with `-1 ≤ u ≤ 1`. For example,
