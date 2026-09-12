@@ -44,6 +44,8 @@
   `acoth()`.
 - Documented exact inverse-polynomial equation analysis for inverse reciprocal
   hyperbolic functions and their excluded target ranges.
+- Documented exact integer-parameter beta/logbeta equation reduction with
+  positive-domain root filtering.
 
 ## 2026-09-12
 

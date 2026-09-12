@@ -1071,6 +1071,13 @@ require finite integer orders. They can be used directly in bounded equation
 searches and in any explaining analyzer that evaluates Core expressions;
 bounded results remain `partial` unless a dedicated global proof exists.
 
+The explaining analyzer also has an exact beta path for the common form
+`beta(a*x + b, n) = c` (or the symmetric argument order), and for `logbeta`
+with the same shape, when `n` is a fixed integer from 1 through 8. It rewrites
+`B(u, n)` as `(n − 1)! / ∏(u + k)`, solves the resulting polynomial, and keeps
+only roots with `u > 0`; `complete: true` therefore includes the beta domain
+check rather than merely reporting algebraic polynomial roots.
+
 The generic `EquationAnalyzer::analyze()` entry point uses the exact polynomial,
 rational, and elementary strategies first. When none applies but the equality
 is a single-variable Core expression, it now delegates automatically to the
