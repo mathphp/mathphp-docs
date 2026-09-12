@@ -55,6 +55,8 @@
   Bessel-J searches.
 - Documented Core `lambertw()` real branches and exact inversion of direct
   `lambertw(affine) = target` equations in the explaining add-on.
+- Documented configured constant-expression targets for special-function
+  equation analyzers.
 
 ## 2026-09-12
 

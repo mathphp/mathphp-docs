@@ -1071,6 +1071,12 @@ require finite integer orders. They can be used directly in bounded equation
 searches and in any explaining analyzer that evaluates Core expressions;
 bounded results remain `partial` unless a dedicated global proof exists.
 
+Special-function equation analyzers also evaluate variable-free target
+expressions through the supplied `EvaluationOptions` registry. For example,
+`logbeta(x, 2) = ln(0.1)` and `zeta(x) = exp(ln(2))` use the same configured
+Core evaluation path as the rest of the equation, rather than requiring a
+literal target.
+
 The explaining analyzer also has an exact beta path for the common form
 `beta(a*x + b, n) = c` (or the symmetric argument order), and for `logbeta`
 with the same shape, when `n` is a fixed integer from 1 through 8. It rewrites
