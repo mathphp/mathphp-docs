@@ -2026,6 +2026,10 @@ Logarithmic polynomial and rational-polynomial equations accept finite outer
 scales as well. For example, `2 * ln(x^2 + 1) = 2` is normalized to
 `ln(x^2 + 1) = 1` before exponentiation and exact polynomial-domain checks.
 
+The real-root analyzers normalize outer scales too. For example,
+`2 * root(2*x + 1, 3) = -4` is solved as `root(2*x + 1, 3) = -2`, while
+even-root domain checks and rational denominator exclusions remain enforced.
+
 Variadic `min()` and `max()` calls with one affine branch and multiple fixed
 branches are reduced to complete intervals:
 

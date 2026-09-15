@@ -12,6 +12,8 @@
   region equations with retained scale metadata.
 - Documented constant-scale normalization for logarithmic polynomial and
   rational-polynomial equations with retained scale metadata.
+- Documented constant-scale normalization for affine and polynomial `root()` /
+  `nthroot()` equations with retained domain and pole validation.
 - Documented the explicit `EquationAnalyzer::analyzeNumericalEquation()` facade
   for bounded single-variable equations and its sampling controls.
 - Documented automatic unit conversions such as `25m to km` through the generic
