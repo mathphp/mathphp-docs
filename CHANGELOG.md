@@ -65,6 +65,8 @@
   aliases for `floor()` and `ceil()`.
 - Documented exact inversion of hyperbolic functions applied to affine absolute
   values, including real-domain checks and both signed branches.
+- Documented exact reciprocal-hyperbolic absolute compositions (`sech`, `csch`,
+  and `coth`) with singularity-aware range checks.
 
 ## 2026-09-12
 

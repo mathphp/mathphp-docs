@@ -131,6 +131,12 @@ target of at least one, and `tanh(abs(A))` requires a target in `[0, 1)`.
 as `sin(abs(x))` remain outside this exact path because they have infinitely
 many periodic branches.
 
+Reciprocal hyperbolic forms are covered too: `sech(abs(A))` inverts through
+`acosh(1 / target)`, `csch(abs(A))` through `asinh(1 / target)`, and
+`coth(abs(A))` through `atanh(1 / target)`. The analyzer enforces their real
+ranges (`0 < target ≤ 1`, `target > 0`, and `target > 1`, respectively) and
+keeps the singular zero-magnitude branch out of the solution set.
+
 ## Same-function monotone equalities
 
 For supported strictly monotone functions, equal affine arguments are solved
