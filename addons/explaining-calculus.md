@@ -70,6 +70,9 @@ continuity. `ellippinc` now supports characteristic and parameter identities
 away from singular
 coincidences such as `m = n` and `n = 1`; removable limits should be handled
 by continuity at those boundaries.
+Complete `ellippi(n, m)` uses the matching characteristic and parameter
+identities, including the chain rule when both arguments vary; its singular
+coincidences likewise require continuity-aware handling.
 For a fixed non-negative integer order, `polygamma(n,u)` follows the family
 identity `d/du polygamma(n,u) = polygamma(n+1,u)` and then applies the chain
 rule. A variable order is retained as a partial result.
