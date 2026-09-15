@@ -2075,6 +2075,11 @@ The same strategy recognizes the `choose()`/`ncr()` and
 second-argument domains. Unbounded non-monotone combinations remain partial so
 the analyzer does not turn a bounded sample into a false global proof.
 
+Constant coefficients on the combinatorial term are supported when the
+resulting expression remains provably monotone. For example,
+`2 * binomial(x, 2) + x = 9` is enumerated exactly, and the returned metadata
+records `coefficient: 2` so the explanation can show the weighted term.
+
 The same generic entry point recognizes semicolon-, comma-, or
 newline-separated systems when every row is an equality. Commas inside
 function arguments remain part of the expression, so `min(x, y) = 1, max(x, y) = 2`

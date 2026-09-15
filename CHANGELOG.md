@@ -53,6 +53,8 @@
   complete interval mapping and retained `solutions['scale']` metadata.
 - Documented affine solution families for consistent underdetermined matrix
   equations, including particular solutions and null-space bases.
+- Documented weighted combinatorial-expression equations such as
+  `2 * binomial(x, 2) + x = 9` when monotonicity remains provable.
 - Documented Unicode floor and ceiling brackets (`⌊x⌋`, `⌈x⌉`) as parser-level
   aliases for `floor()` and `ceil()`.
 
