@@ -67,6 +67,8 @@
   values, including real-domain checks and both signed branches.
 - Documented exact reciprocal-hyperbolic absolute compositions (`sech`, `csch`,
   and `coth`) with singularity-aware range checks.
+- Documented exact `erf(abs(affine))` and `erfc(abs(affine))` inversion with
+  endpoint-aware real-domain validation.
 
 ## 2026-09-12
 

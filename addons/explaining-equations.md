@@ -137,6 +137,12 @@ Reciprocal hyperbolic forms are covered too: `sech(abs(A))` inverts through
 ranges (`0 < target ≤ 1`, `target > 0`, and `target > 1`, respectively) and
 keeps the singular zero-magnitude branch out of the solution set.
 
+The monotone error functions `erf(abs(A))` and `erfc(abs(A))` are inverted
+with the same two-branch treatment. Their restricted ranges are enforced:
+`erf(abs(A))` accepts `[0, 1)`, while `erfc(abs(A))` accepts `(0, 1]`.
+Endpoint behavior is retained, so a target of `0` for `erf` or `1` for `erfc`
+returns the single zero-magnitude root.
+
 ## Same-function monotone equalities
 
 For supported strictly monotone functions, equal affine arguments are solved
