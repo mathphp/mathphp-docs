@@ -39,6 +39,8 @@
   equations (`ellippi`) with retained `solutions['scale']` metadata.
 - Documented constant-scale normalization for regularized gamma and beta
   equations, including inverse quantile forms and retained `solutions['scale']` metadata.
+- Documented constant-scale normalization for pole-separated digamma,
+  trigamma, and polygamma equation searches.
 - Documented Unicode floor and ceiling brackets (`⌊x⌋`, `⌈x⌉`) as parser-level
   aliases for `floor()` and `ceil()`.
 

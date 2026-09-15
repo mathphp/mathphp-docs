@@ -1307,6 +1307,11 @@ finite domain as `partial`, because the negative real axis has infinitely many
 branches. It does prove `trigamma(u) = c` has no real solution for `c ≤ 0`,
 since trigamma is positive everywhere it is defined.
 
+Constant multiples and divisions are normalized before branch searches. For
+example, `2 * trigamma(x) = 0` is reduced to the equivalent non-positive
+target `trigamma(x) = 0`; `solutions['scale']` preserves the original factor
+for explanation and visual layers.
+
 Fixed-integer-order `besselj(n, a*x + b) = c` equations use a bounded,
 branch-safe search on the symmetric argument interval `[-128, 128]`. Because
 `J_n` is oscillatory and has infinitely many zeros, these results are always
