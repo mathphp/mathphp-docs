@@ -1709,6 +1709,11 @@ The analyzer enumerates matching non-negative factorial arguments and maps
 them through the affine expression. Non-integer coefficients and continuous
 factorial extensions remain explicitly unsupported.
 
+Constant multiples and divisions are normalized before the discrete search.
+For example, `2 * n! = 240` is solved as `n! = 120`, while
+`solutions['scale']` retains the original factor for explanation and visual
+layers.
+
 Variable-free equalities are evaluated directly:
 
 ```php

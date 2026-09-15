@@ -45,6 +45,8 @@
   `sinhc()` equation analysis.
 - Documented constant-scale normalization for pole-separated `gamma()` and
   `lgamma()` equation searches.
+- Documented scaled factorial equations such as `2 * n! = 240`, including
+  retained `solutions['scale']` metadata.
 - Documented Unicode floor and ceiling brackets (`⌊x⌋`, `⌈x⌉`) as parser-level
   aliases for `floor()` and `ceil()`.
 
