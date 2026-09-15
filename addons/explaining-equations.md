@@ -1269,6 +1269,11 @@ non-negative targets are complete no-solution results and negative targets are
 bracketed to the unique real crossing. The result uses
 `method: exact-zeta-derivative-monotone` and retains the affine domain proof.
 
+Constant multiples and divisions are normalized for both zeta forms. For
+example, `2 * zetaprime(x) = -1` is explained as the equivalent target
+`zetaprime(x) = -0.5`, while the original scale remains in the solution
+metadata.
+
 `digamma`, `trigamma`, and fixed-order `polygamma` equations are split at every non-positive integer
 gamma pole. The analyzer reports branch-safe numerical roots and the searched
 finite domain as `partial`, because the negative real axis has infinitely many
