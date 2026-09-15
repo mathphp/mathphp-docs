@@ -494,6 +494,25 @@ $analysis = (new EquationAnalyzer())->analyze(
 Expressions with more than seven independent absolute terms remain on the
 bounded branch or numerical analyzers so their completeness is not overstated.
 
+## Fixed-degree real-root equations
+
+`root()` and its `nthroot()` alias support exact inversion when the radicand is
+affine in the unknown and the degree is a known positive integer:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('root(2*x + 1, 3) = -2');
+
+// solutions['method'] === 'exact-real-root'
+// solutions['roots'] === [-4.5]
+// solutions['complete'] === true
+```
+
+Odd degrees preserve negative real targets. Principal even roots are
+non-negative, so a negative target is reported as a complete no-solution result.
+The analyzer records the recovered radicand, degree, affine coefficients, and
+learner-facing inverse-power steps. Non-affine radicands remain available to
+the bounded numerical analyzer rather than being presented as exact.
+
 ## Polynomial radical plus absolute-value equations
 
 One polynomial or rational-polynomial square root can be combined with one
