@@ -1272,6 +1272,11 @@ are complete no-solution results; positive targets are bracketed from the
 negative tail to the singular boundary and mapped back through the affine
 argument.
 
+Constant multiples and divisions are normalized before the positive-range
+check and monotone bisection. For example, `2 * ellippi(x, 0) = 4.44288...`
+is solved against the corresponding base target; `solutions['scale']` retains
+the original factor so the explanation layer can show that normalization.
+
 The explaining analyzer also has an exact beta path for the common form
 `beta(a*x + b, n) = c` (or the symmetric argument order), and for `logbeta`
 with the same shape, when `n` is a fixed integer from 1 through 8. It rewrites
