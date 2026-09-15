@@ -8,6 +8,8 @@
   explaining dispatcher.
 - Documented implicit-surface dispatch for variable-exponent equalities, with
   undefined real-domain cells preserved as partial gaps.
+- Documented `mod()` and `modulo()` function notation for complete integer
+  congruence analysis.
 
 ## 2026-09-12
 

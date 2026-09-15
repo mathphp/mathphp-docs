@@ -1701,6 +1701,10 @@ $analysis = (new EquationAnalyzer())->analyze('x % 2 = 0');
 // solutions['modulus'] === 2
 ```
 
+Function notation is accepted as well: `mod(x, 2) = 0` and
+`modulo(x, 2) = 0` use the same truncated integer-remainder semantics and
+complete residue-class output.
+
 Affine dividends retain signed-remainder constraints and complete residue
 classes. Modulo by zero and non-integer operands remain explicit
 `unsupported` results.
