@@ -2018,6 +2018,10 @@ Integer-valued `gcd()` and `lcm()` equations apply the same rule before checking
 their integer target. Thus `2 * gcd(x, 6) = 4` is analyzed as
 `gcd(x, 6) = 2`, retaining the scale while returning complete residue classes.
 
+Multivariable `min()` and `max()` region analysis also accepts an outer finite
+constant scale. For example, `2 * min(x, y) = 2` is reduced to the equivalent
+region `min(x, y) = 1`, with the original scale retained in the result metadata.
+
 Variadic `min()` and `max()` calls with one affine branch and multiple fixed
 branches are reduced to complete intervals:
 

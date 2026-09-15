@@ -8,6 +8,8 @@
   `logbeta()` equations with retained scale metadata and positive-domain checks.
 - Documented constant-scale normalization for integer-valued `gcd()` and `lcm()`
   equations, retaining exact residue classes and integer-domain validation.
+- Documented constant-scale normalization for multivariable `min()`/`max()`
+  region equations with retained scale metadata.
 - Documented the explicit `EquationAnalyzer::analyzeNumericalEquation()` facade
   for bounded single-variable equations and its sampling controls.
 - Documented automatic unit conversions such as `25m to km` through the generic
