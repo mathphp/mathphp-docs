@@ -2118,6 +2118,11 @@ The generic entry point detects numeric unit literals automatically. Use
 `UnitCatalog` is needed. Mismatched dimensions are reported as an evaluated,
 unsatisfied equality; they are never coerced into scalar values.
 
+The same route now supports explicit conversions such as `25m to km` and
+`2h to min`. These return `method: unit-conversion`, preserve the normalized
+source quantity, and expose the converted display quantity in
+`solutions['converted']`.
+
 ## Automatic first-order ODE dispatch
 
 The generic `EquationAnalyzer::analyze()` entry point recognizes first-order

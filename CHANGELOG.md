@@ -4,6 +4,8 @@
 
 - Documented the explicit `EquationAnalyzer::analyzeNumericalEquation()` facade
   for bounded single-variable equations and its sampling controls.
+- Documented automatic unit conversions such as `25m to km` through the generic
+  explaining dispatcher.
 
 ## 2026-09-12
 
