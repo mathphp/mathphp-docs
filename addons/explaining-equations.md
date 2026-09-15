@@ -2022,6 +2022,10 @@ Multivariable `min()` and `max()` region analysis also accepts an outer finite
 constant scale. For example, `2 * min(x, y) = 2` is reduced to the equivalent
 region `min(x, y) = 1`, with the original scale retained in the result metadata.
 
+Logarithmic polynomial and rational-polynomial equations accept finite outer
+scales as well. For example, `2 * ln(x^2 + 1) = 2` is normalized to
+`ln(x^2 + 1) = 1` before exponentiation and exact polynomial-domain checks.
+
 Variadic `min()` and `max()` calls with one affine branch and multiple fixed
 branches are reduced to complete intervals:
 
