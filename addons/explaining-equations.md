@@ -1983,6 +1983,11 @@ The same quadrant-aware path supports one absolute-affine component, such as
 branches are returned, while axis cases expose two open intervals that exclude
 the undefined origin.
 
+Finite constant multiples and divisions are normalized before the quadrant
+analysis. For example, `2 * atan2(abs(x), 1) = 1` is reduced to the equivalent
+target angle `0.5`; the returned metadata keeps `solutions['scale'] = 2` and
+the original equation remains available for verification.
+
 `gamma()` and `lgamma()` affine equations are searched branch-by-branch without
 crossing their non-positive-integer poles:
 
