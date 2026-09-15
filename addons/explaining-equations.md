@@ -1243,6 +1243,11 @@ complete no-solution proof; target one maps only `u = 0`; targets above one
 are bracketed on the positive branch and mirrored to the complete pair of
 real roots.
 
+Constant multiples and divisions are normalized before range checks and
+positive-branch search. For example, `2 * sinhc(2*x + 4) = 2` is solved as
+`sinhc(2*x + 4) = 1`, with the original factor retained in
+`solutions['scale']` for explanation and visual layers.
+
 The normalized cardinal sine has exact branches for its globally identifiable
 levels:
 
@@ -1256,6 +1261,10 @@ family `u = k·π` for integers `k ≠ 0`, while target one returns only `u = 0`
 Other target levels are searched on `[-128, 128]` and remain explicitly
 `partial`, because sinc is oscillatory and a finite interval cannot prove the
 global root set.
+
+Constant multiples and divisions are normalized before exact zero/maximum
+checks and bounded searches; `solutions['scale']` preserves the factor used
+in the original equation.
 
 The complete third-kind integral is supported when exactly one argument is
 affine and the other is fixed:
