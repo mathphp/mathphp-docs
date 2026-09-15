@@ -154,6 +154,10 @@ The same absolute-value inversion covers the principal monotone branches of
 mapping the target back to a non-negative magnitude, including singularity and
 open-endpoint checks for reciprocal functions.
 
+Constant multiplication and division are normalized before inversion. For
+example, `2 * asinh(abs(x - 1)) = 2` retains `solutions['scale'] === 2` while
+solving the normalized target `asinh(abs(x - 1)) = 1`.
+
 ## Same-function monotone equalities
 
 For supported strictly monotone functions, equal affine arguments are solved

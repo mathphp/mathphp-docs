@@ -73,6 +73,8 @@
   partial results when the evaluator cannot reach the requested target.
 - Documented exact absolute-affine inversion for additional monotone branches:
   `expm1`, `log1p`, inverse trigonometric, and inverse hyperbolic functions.
+- Documented constant-multiple and constant-division normalization for absolute
+  compositions with retained `solutions['scale']` metadata.
 
 ## 2026-09-12
 
