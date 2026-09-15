@@ -2042,6 +2042,11 @@ Modulo equations accept finite outer scales before congruence reduction. For
 example, `2 * (x % 3) = 2` is normalized to `x % 3 = 1`, while the complete
 residue class and truncated-remainder sign semantics are retained.
 
+Nested principal square-root equations normalize an outer finite scale before
+their two-stage reduction. For example, `2 * sqrt(sqrt(x) + 1) = 4` is solved
+as `sqrt(sqrt(x) + 1) = 2`, with nonnegative-branch and residual validation
+preserved.
+
 Variadic `min()` and `max()` calls with one affine branch and multiple fixed
 branches are reduced to complete intervals:
 

@@ -20,6 +20,8 @@
   expressions with retained bounded search metadata.
 - Documented constant-scale normalization for `%`, `mod()`, and `modulo()`
   equations with retained congruence and sign-constraint metadata.
+- Documented constant-scale normalization for nested principal square-root
+  equations with retained branch and residual validation.
 - Documented the explicit `EquationAnalyzer::analyzeNumericalEquation()` facade
   for bounded single-variable equations and its sampling controls.
 - Documented automatic unit conversions such as `25m to km` through the generic
