@@ -77,6 +77,8 @@ Absolute-value expressions use `abs(u)′ = sign(u)·u′` away from the cusp
 `u = 0`; the explaining steps identify that nondifferentiable boundary.
 On the supported real branch `s > 1`, `zeta(s)` differentiates through the
 Core `zetaprime(s)` function and preserves the chain rule for composed inputs.
+Airy `airyai(u)` and `airybi(u)` expressions differentiate through Core
+`airyaiprime(u)` and `airybiprime(u)` functions, including affine inputs.
 For a fixed non-negative integer order, `polygamma(n,u)` follows the family
 identity `d/du polygamma(n,u) = polygamma(n+1,u)` and then applies the chain
 rule. A variable order is retained as a partial result.
