@@ -14,7 +14,7 @@ Math::evaluate('binomial(10, 3) + permutation(4, 2)'); // 132
 
 The default catalogue includes the common elementary, trigonometric,
 hyperbolic, logarithmic, aggregate, and rounding functions: `abs`, `sqrt`,
-`cbrt`, `sin`, `cos`, `tan`, `sec`, `csc`, `cot`, `asin`, `acos`, `atan`, `sinh`, `cosh`, `tanh`, `sech`, `csch`, `coth`, `asinh`,
+`cbrt`, `root`, `nthroot`, `sin`, `cos`, `tan`, `sec`, `csc`, `cot`, `asin`, `acos`, `atan`, `sinh`, `cosh`, `tanh`, `sech`, `csch`, `coth`, `asinh`,
 `acosh`, `atanh`, `exp`, `ln`, `log`, `log10`, `log2`, `log1p`, `expm1`,
 `atan2`, `hypot`, `mod`, `modulo`, `gcd`, `lcm`, `sign`, `min`, `max`,
 `floor`, `ceil`, `round`, `factorial`, `binomial`, `choose`, `ncr`,
@@ -30,6 +30,9 @@ callbacks for domain-specific functions.
 
 `mod(a, b)` and `modulo(a, b)` are aliases for truncated integer remainder;
 both arguments must be finite integers and the divisor must be non-zero.
+
+`root(value, degree)` and `nthroot(value, degree)` return real roots for positive
+integer degrees. Odd roots accept negative radicands; even roots reject them.
 
 Custom functions use an explicit name, arity, and callback through
 `FunctionDefinition` and `FunctionRegistry`.

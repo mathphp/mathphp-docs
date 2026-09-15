@@ -161,6 +161,8 @@ The default function allowlist is:
 | `abs(x)` | 1 | finite; preserves integer/float type |
 | `sqrt(x)` | 1 | `x >= 0`; float |
 | `cbrt(x)` | 1 | finite real cube root; float |
+| `root(value, degree)` | 2 | positive integer degree; even roots require a non-negative radicand |
+| `nthroot(value, degree)` | 2 | alias for `root()` |
 | `sin(x)`, `cos(x)` | 1 | float |
 | `tan(x)` | 1 | finite where cosine is non-zero; float |
 | `sec(x)` | 1 | finite where cosine is non-zero; float |
