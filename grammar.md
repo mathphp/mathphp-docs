@@ -2,7 +2,7 @@
 
 MathPHP accepts numbers, ASCII variable names, common Greek variable aliases,
 `pi`, `e`, `tau`, and `phi`,
-parentheses, absolute-value bars, unary signs, factorial, six binary operators, implicit products,
+parentheses, absolute-value bars, floor/ceiling brackets, unary signs, factorial, six binary operators, implicit products,
 and explicitly registered functions. The common Unicode aliases `×`, `÷`, `−`,
 `π`, `τ`, `φ`, `√`, and superscript digits are accepted for multiplication,
 division, subtraction, constants, square roots, and single-digit powers. Greek
@@ -15,6 +15,7 @@ when values are supplied by the host application.
 | `*`, `/`, `%` | Product, quotient, remainder | `9 % 4` |
 | implicit product | Product without `*` | `2x`, `2(x + 1)` |
 | `|…|` | Absolute value | `|x - 2|` |
+| `⌊…⌋`, `⌈…⌉` | Floor and ceiling | `⌊x⌋`, `⌈x⌉` |
 | `^` | Right-associative exponentiation | `2^3^2` |
 | `( )` | Grouping | `(subtotal + tax)` |
 
@@ -61,5 +62,6 @@ optional explaining package.
 | `6 ÷ 2` | `3.0` |
 | `−2 + 5` | `3` |
 | `|−3| + 1` | `4` |
+| `⌊1.2⌋ + ⌈1.2⌉` | `3.0` |
 | `1 / 0` | `eval.division_by_zero` |
 | `unknown + 1` | unknown-variable error |

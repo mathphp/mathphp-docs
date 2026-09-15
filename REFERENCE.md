@@ -135,6 +135,7 @@ the v0.3 grammar additions are documented here. The supported surface is:
 - grouping with parentheses;
 - absolute-value bars (`|x|`), including nested bars and implicit products such
   as `2|x|`;
+- floor and ceiling brackets (`⌊x⌋`, `⌈x⌉`), lowered to `floor()` and `ceil()`;
 - binary `+`, `-`, `*`, `/`, `%`, and `^`;
 - Unicode aliases `×`, `÷`, and `−` for multiplication, division, and
   subtraction;

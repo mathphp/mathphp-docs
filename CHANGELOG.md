@@ -14,6 +14,8 @@
   validation.
 - Documented absolute-value bar notation (`|x|`) as a parser-level alias for
   `abs(x)`, including nested bars and implicit multiplication.
+- Documented Unicode floor and ceiling brackets (`⌊x⌋`, `⌈x⌉`) as parser-level
+  aliases for `floor()` and `ceil()`.
 
 ## 2026-09-12
 
