@@ -57,6 +57,8 @@
   `2 * binomial(x, 2) + x = 9` when monotonicity remains provable.
 - Documented scaled affine `min()` and `max()` equations with complete branch
   dominance intervals and retained `solutions['scale']` metadata.
+- Documented scaled complementary two-branch `min()`/`max()` identities with
+  exact affine reduction and retained `solutions['scale']` metadata.
 - Documented Unicode floor and ceiling brackets (`⌊x⌋`, `⌈x⌉`) as parser-level
   aliases for `floor()` and `ceil()`.
 

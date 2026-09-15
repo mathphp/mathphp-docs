@@ -1799,6 +1799,10 @@ The exact path requires the two calls to contain the same two affine branches,
 even when their argument order is reversed. Use `analyzePiecewiseIdentity()`
 to select it directly.
 
+The identity may also be multiplied or divided by a finite constant. For
+example, `2 * (min(x, 2) + max(x, 2)) = 10` is normalized to the equivalent
+affine target, with the original factor retained in `solutions['scale']`.
+
 Modulo equalities are solved over Core's integer domain:
 
 ```php
