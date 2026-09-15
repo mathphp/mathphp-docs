@@ -1905,6 +1905,10 @@ Pole metadata and branch status are returned explicitly. Nonzero gamma and
 lgamma searches remain partial because a global symbolic root proof is not
 claimed.
 
+Constant multiples and divisions are normalized before the pole-separated
+search. For example, `2 * gamma(x) = 0` keeps `solutions['scale'] = 2` while
+using the equivalent zero target for the exact no-root proof.
+
 Variadic `min()` and `max()` calls with one affine branch and multiple fixed
 branches are reduced to complete intervals:
 

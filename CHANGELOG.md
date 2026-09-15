@@ -43,6 +43,8 @@
   trigamma, and polygamma equation searches.
 - Documented constant-scale normalization for exact and bounded `sinc()` and
   `sinhc()` equation analysis.
+- Documented constant-scale normalization for pole-separated `gamma()` and
+  `lgamma()` equation searches.
 - Documented Unicode floor and ceiling brackets (`⌊x⌋`, `⌈x⌉`) as parser-level
   aliases for `floor()` and `ceil()`.
 
