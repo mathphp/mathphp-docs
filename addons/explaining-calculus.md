@@ -38,6 +38,12 @@ antiderivatives are `u·erf(u) + exp(−u²)/sqrt(pi)` and
 The stable logarithmic/exponential helpers are covered as well:
 `log2′(u) = u′/(u·ln(2))`, `log1p′(u) = u′/(1+u)`, and
 `expm1′(u) = exp(u)·u′`, with their corresponding affine antiderivatives.
+The normalized cardinal functions use their quotient-rule derivatives:
+`sinc′(u) = (u·cos(u) − sin(u))/u² · u′` and
+`sinhc′(u) = (u·cosh(u) − sinh(u))/u² · u′`. Both formulas have a removable
+limit at `u = 0`; the explaining steps call this out so consumers evaluate the
+origin by continuity. Affine arguments such as `sinc(2*x + 1)` and
+`sinhc(2*x + 1)` include the corresponding chain-rule factor.
 For two-argument functions, `atan2(y,x)` uses
 `(x·y′ − y·x′)/(x²+y²)` and `hypot(a,b)` uses
 `(a·a′ + b·b′)/hypot(a,b)`; both remain undefined at their zero denominator.
