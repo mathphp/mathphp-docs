@@ -1108,7 +1108,7 @@ registry for forcing and kernel evaluation, together with bounded numerical
 status and convergence diagnostics.
 
 The Core evaluator also provides domain-checked special functions such as
-`erf`, `erfc`, `erfi`, `erfinv`, `erfcinv`, `airyai`, `airybi`, `ellipk`, `ellipe`, `ellipf`, `ellipeinc`, `ellippi`, `ellippinc`, `gamma`, `lgamma`, `gammainc`, `gammaincc`, `gammaincinv`, `gammainccinv`, `betainc`, `betaincc`, `betaincinv`, `betainccinv`, `beta`, `logbeta`, `zeta`, `digamma`,
+`erf`, `erfc`, `erfi`, `erfinv`, `erfcinv`, `airyai`, `airyaiprime`, `airybi`, `airybiprime`, `ellipk`, `ellipe`, `ellipf`, `ellipeinc`, `ellippi`, `ellippinc`, `gamma`, `lgamma`, `gammainc`, `gammaincc`, `gammaincinv`, `gammainccinv`, `betainc`, `betaincc`, `betaincinv`, `betainccinv`, `beta`, `logbeta`, `zeta`, `zetaprime`, `digamma`,
 `trigamma`, `polygamma`, `besselj`, `besseli`, `bessely`, and `besselk`. Beta arguments must be positive,
 `zeta()` currently requires a real argument greater than one, `digamma()` and
 `trigamma()` reject non-positive integer gamma poles, and Bessel functions
@@ -1197,10 +1197,11 @@ $analysis = (new EquationAnalyzer())->analyze('airyai(2*x + 1) = 0.2');
 // solutions['method'] === 'branch-safe-airy-numerical'
 ```
 
-Both `airyai(a*x + b) = c` and `airybi(a*x + b) = c` search the real argument
-interval `[-64, 64]`, map refined roots back through the affine input, and
-return `complete: false`. The negative real branches are oscillatory, so a
-finite search cannot prove that no additional roots exist outside the interval.
+`airyai(a*x + b) = c`, `airyaiprime(a*x + b) = c`, `airybi(a*x + b) = c`,
+and `airybiprime(a*x + b) = c` search the real argument interval `[-64, 64]`,
+map refined roots back through the affine input, and return `complete: false`.
+The negative real branches are oscillatory, so a finite search cannot prove
+that no additional roots exist outside the interval.
 
 The normalized hyperbolic cardinal function has a complete range-aware path:
 
@@ -1257,6 +1258,12 @@ For `zeta(a*x + b) = c`, the explaining analyzer uses the real branch
 `(1, ∞)`. Targets `c ≤ 1` are complete no-solution results; targets above
 one are bracketed numerically and then marked complete only after the unique
 monotone crossing is found and mapped back through the affine input.
+
+The same domain supports `zetaprime(a*x + b) = c`. On `u > 1`, the zeta
+derivative is strictly increasing with negative range `(-∞, 0)`, so
+non-negative targets are complete no-solution results and negative targets are
+bracketed to the unique real crossing. The result uses
+`method: exact-zeta-derivative-monotone` and retains the affine domain proof.
 
 `digamma`, `trigamma`, and fixed-order `polygamma` equations are split at every non-positive integer
 gamma pole. The analyzer reports branch-safe numerical roots and the searched

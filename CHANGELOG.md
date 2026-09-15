@@ -21,6 +21,8 @@
   real-domain behavior and residual validation.
 - Documented preserved denominator poles for rational root identities and
   cancelled candidate roots in the explaining package.
+- Documented finite-interval explaining support for Airy first derivatives
+  and complete monotone real-branch analysis for `zetaprime()` equations.
 - Documented Unicode floor and ceiling brackets (`⌊x⌋`, `⌈x⌉`) as parser-level
   aliases for `floor()` and `ceil()`.
 
