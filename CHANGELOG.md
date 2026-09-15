@@ -29,6 +29,8 @@
   equations.
 - Documented constant-scale normalization for integer-order Bessel equations,
   including the complete positive `besselk()` branch.
+- Documented constant-scale normalization for complete elliptic `ellipk()` and
+  `ellipe()` equations.
 - Documented Unicode floor and ceiling brackets (`⌊x⌋`, `⌈x⌉`) as parser-level
   aliases for `floor()` and `ceil()`.
 

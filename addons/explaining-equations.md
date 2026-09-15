@@ -1160,6 +1160,11 @@ $e = (new EquationAnalyzer())->analyze('ellipe(x + 0.1) = 1.2');
 targets and finite endpoints are classified exactly; interior targets use
 monotone bisection and are mapped back through the affine parameter.
 
+Constant multiples and divisions are normalized before range checks and
+bisection. For example, `2 * ellipe(x + 0.1) = 2.4` is solved as the
+equivalent target `ellipe(x + 0.1) = 1.2`, while `solutions['scale']` preserves
+the original factor for the explanation UI.
+
 Incomplete first- and second-kind elliptic equations are also supported when
 the unknown occurs affinely in the amplitude:
 
