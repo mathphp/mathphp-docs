@@ -1322,6 +1322,11 @@ Constant multiples and divisions are normalized before exact zero/maximum
 checks and bounded searches; `solutions['scale']` preserves the factor used
 in the original equation.
 
+Both cardinal functions are even, so the same paths accept `sinc(abs(A))` and
+`sinhc(abs(A))`. The result records `solutions['absoluteComponent']` while
+preserving the complete zero, maximum, or range-aware behavior of the
+underlying analyzer.
+
 The complete third-kind integral is supported when exactly one argument is
 affine and the other is fixed:
 
