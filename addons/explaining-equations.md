@@ -1179,6 +1179,11 @@ the singular amplitude endpoints are excluded; finite interior targets remain
 valid. Periodic continuation outside this branch is intentionally left to
 bounded numerical analysis rather than being presented as a global proof.
 
+Constant multiples and divisions are normalized before principal-branch range
+checks and bisection. For example, `2 * ellipeinc(x, 0) = 1` is solved as
+`ellipeinc(x, 0) = 0.5`, while `solutions['scale']` preserves the original
+factor for the explanation UI.
+
 The incomplete third-kind form `ellippinc(phi, n, m)` follows the same
 principal-amplitude contract when `n` and `m` are fixed:
 

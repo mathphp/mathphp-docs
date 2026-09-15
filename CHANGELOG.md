@@ -31,6 +31,8 @@
   including the complete positive `besselk()` branch.
 - Documented constant-scale normalization for complete elliptic `ellipk()` and
   `ellipe()` equations.
+- Documented constant-scale normalization for principal-branch incomplete
+  elliptic equations (`ellipf`, `ellipkinc`, and `ellipeinc`).
 - Documented Unicode floor and ceiling brackets (`⌊x⌋`, `⌈x⌉`) as parser-level
   aliases for `floor()` and `ceil()`.
 
