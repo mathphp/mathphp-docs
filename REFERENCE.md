@@ -133,6 +133,8 @@ the v0.3 grammar additions are documented here. The supported surface is:
   including Unicode aliases `π`, `τ`, and `φ`; common Greek variable symbols
   such as `α` and `λ` normalize to portable ASCII names;
 - grouping with parentheses;
+- absolute-value bars (`|x|`), including nested bars and implicit products such
+  as `2|x|`;
 - binary `+`, `-`, `*`, `/`, `%`, and `^`;
 - Unicode aliases `×`, `÷`, and `−` for multiplication, division, and
   subtraction;

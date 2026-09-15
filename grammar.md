@@ -2,7 +2,7 @@
 
 MathPHP accepts numbers, ASCII variable names, common Greek variable aliases,
 `pi`, `e`, `tau`, and `phi`,
-parentheses, unary signs, factorial, six binary operators, implicit products,
+parentheses, absolute-value bars, unary signs, factorial, six binary operators, implicit products,
 and explicitly registered functions. The common Unicode aliases `×`, `÷`, `−`,
 `π`, `τ`, `φ`, `√`, and superscript digits are accepted for multiplication,
 division, subtraction, constants, square roots, and single-digit powers. Greek
@@ -14,6 +14,7 @@ when values are supplied by the host application.
 | `+`, `-` | Addition and subtraction | `18 - 4` |
 | `*`, `/`, `%` | Product, quotient, remainder | `9 % 4` |
 | implicit product | Product without `*` | `2x`, `2(x + 1)` |
+| `|…|` | Absolute value | `|x - 2|` |
 | `^` | Right-associative exponentiation | `2^3^2` |
 | `( )` | Grouping | `(subtotal + tax)` |
 
@@ -34,7 +35,8 @@ Numbers may be integers or decimals; variable names use ASCII letters, digits,
 and underscores but cannot begin with a digit. Whitespace is ignored between
 tokens. A number, identifier, or grouped expression directly followed by
 another factor is an implicit product; `xy` remains one atomic identifier,
-while `x y` means `x * y`. An identifier followed by `(` is a function call,
+while `x y` means `x * y`. Absolute-value bars lower to `abs()` and may be
+nested. An identifier followed by `(` is a function call,
 including custom registered functions. There is no string interpolation,
 property access, assignment, or implicit PHP function lookup.
 
@@ -58,5 +60,6 @@ optional explaining package.
 | `2 × π` | `2π` |
 | `6 ÷ 2` | `3.0` |
 | `−2 + 5` | `3` |
+| `|−3| + 1` | `4` |
 | `1 / 0` | `eval.division_by_zero` |
 | `unknown + 1` | unknown-variable error |

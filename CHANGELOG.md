@@ -12,6 +12,8 @@
   congruence analysis.
 - Documented Core `mod()` and `modulo()` built-ins and their integer-domain
   validation.
+- Documented absolute-value bar notation (`|x|`) as a parser-level alias for
+  `abs(x)`, including nested bars and implicit multiplication.
 
 ## 2026-09-12
 
