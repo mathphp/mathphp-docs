@@ -2047,6 +2047,13 @@ their two-stage reduction. For example, `2 * sqrt(sqrt(x) + 1) = 4` is solved
 as `sqrt(sqrt(x) + 1) = 2`, with nonnegative-branch and residual validation
 preserved.
 
+The same normalization extends to deeper chains. For example,
+`2 * sqrt(1 + sqrt(1 + sqrt(x))) = 4` is reduced to the unscaled chain with
+target `2`, then each principal-root level is inverted recursively. The
+returned scale metadata, branch constraints, and final residual check make the
+transformation explicit without claiming solutions outside the real principal
+branch.
+
 Variadic `min()` and `max()` calls with one affine branch and multiple fixed
 branches are reduced to complete intervals:
 
