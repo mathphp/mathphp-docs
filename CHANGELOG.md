@@ -19,6 +19,8 @@
 - Documented exact explaining-package inversion for polynomial and
   rational-polynomial `root()`/`nthroot()` equations, including odd/even
   real-domain behavior and residual validation.
+- Documented preserved denominator poles for rational root identities and
+  cancelled candidate roots in the explaining package.
 - Documented Unicode floor and ceiling brackets (`⌊x⌋`, `⌈x⌉`) as parser-level
   aliases for `floor()` and `ceil()`.
 

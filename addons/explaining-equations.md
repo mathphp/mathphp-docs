@@ -516,6 +516,12 @@ checked against the original root domain, rational denominator restrictions,
 and residual. Non-polynomial radicands remain available to the bounded
 numerical analyzer rather than being presented as exact.
 
+Rational radicands retain their excluded poles even when cross-multiplication
+would otherwise cancel them. An identity such as
+`root((x - 1) / (x - 1), 2) = 1` is therefore reported as valid for every
+real `x` except `x = 1`, with the excluded value exposed in
+`solutions['excludedValues']`.
+
 ## Polynomial radical plus absolute-value equations
 
 One polynomial or rational-polynomial square root can be combined with one
