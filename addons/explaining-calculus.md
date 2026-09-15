@@ -46,6 +46,11 @@ Their affine antiderivatives are available as well:
 `∫erfinv(u)du = −exp(−erfinv(u)²)/sqrt(pi)`, and
 `∫erfcinv(u)du = exp(−erfcinv(u)²)/sqrt(pi)`. The usual substitution scale
 is included for arguments such as `erfi(2*x + 1)`.
+Regularized gamma and beta functions differentiate through their value
+arguments when shape parameters are constant: `gammainc` and `betainc` use
+their positive probability densities, while `gammaincc` and `betaincc` use
+the negative densities. The inverse quantile forms use the reciprocal density;
+complementary inverses carry the negative sign.
 For fixed integer order, the second-kind Bessel functions use
 `Yₙ′(u) = (Yₙ₋₁(u) − Yₙ₊₁(u))/2` and
 `Kₙ′(u) = −(Kₙ₋₁(u) + Kₙ₊₁(u))/2`. Variable-order derivatives remain partial.
