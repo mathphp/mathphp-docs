@@ -57,8 +57,12 @@ Incomplete elliptic integrals use the amplitude identities when their
 parameters are constant: `∂F/∂φ = 1/sqrt(1 − m·sin²φ)`,
 `∂E/∂φ = sqrt(1 − m·sin²φ)`, and
 `∂Π/∂φ = 1/((1 − n·sin²φ)·sqrt(1 − m·sin²φ))`. This covers both
-`ellipf`/`ellipkinc`, `ellipeinc`, and `ellippinc`; differentiating with
-respect to a parameter remains partial until its identity is implemented.
+`ellipf`/`ellipkinc`, `ellipeinc`, and `ellippinc`. The first and second kinds
+also support parameter differentiation:
+`∂F/∂m = E/(2m(1 − m)) − F/(2m) − sin(2φ)/(4(1 − m)·sqrt(1 − m·sin²φ))`
+and `∂E/∂m = (E − F)/(2m)`, with the zero-parameter endpoint interpreted by
+continuity. Third-kind parameter derivatives remain partial until their
+characteristic and parameter identities are implemented.
 For a fixed non-negative integer order, `polygamma(n,u)` follows the family
 identity `d/du polygamma(n,u) = polygamma(n+1,u)` and then applies the chain
 rule. A variable order is retained as a partial result.
