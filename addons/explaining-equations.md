@@ -148,6 +148,12 @@ finite targets are solved with both absolute-value branches; targets beyond
 that bracket are returned as `partial` with `complete: false`, rather than
 being reported as if no mathematical solution existed.
 
+The same absolute-value inversion covers the principal monotone branches of
+`expm1`, `log1p`, `asin`, `acos`, `atan`, `asec`, `acsc`, `acot`, `asech`,
+`acsch`, and `acoth`. Each function validates its exact real range before
+mapping the target back to a non-negative magnitude, including singularity and
+open-endpoint checks for reciprocal functions.
+
 ## Same-function monotone equalities
 
 For supported strictly monotone functions, equal affine arguments are solved

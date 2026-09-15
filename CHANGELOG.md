@@ -71,6 +71,8 @@
   endpoint-aware real-domain validation.
 - Documented finite-bracket inversion for `erfi(abs(affine))`, including honest
   partial results when the evaluator cannot reach the requested target.
+- Documented exact absolute-affine inversion for additional monotone branches:
+  `expm1`, `log1p`, inverse trigonometric, and inverse hyperbolic functions.
 
 ## 2026-09-12
 
