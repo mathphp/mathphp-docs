@@ -1781,6 +1781,10 @@ $analysis = (new EquationAnalyzer())->analyze('max(-x, 5) = 5');
 Use `analyzePiecewiseFunction()` for the explicit facade. Singleton roots,
 closed half-lines, and empty sets retain `complete: true` metadata.
 
+Constant multiples and divisions are normalized before branch dominance checks.
+For example, `2 * min(x, 5) = 6` is solved as `min(x, 5) = 3`, with the
+original factor retained in `solutions['scale']`.
+
 Complementary affine pairs are reduced by the identity
 `min(a,b) + max(a,b) = a + b`:
 
