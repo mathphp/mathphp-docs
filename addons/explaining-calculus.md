@@ -49,6 +49,10 @@ is included for arguments such as `erfi(2*x + 1)`.
 For fixed integer order, the second-kind Bessel functions use
 `Yₙ′(u) = (Yₙ₋₁(u) − Yₙ₊₁(u))/2` and
 `Kₙ′(u) = −(Kₙ₋₁(u) + Kₙ₊₁(u))/2`. Variable-order derivatives remain partial.
+Complete elliptic parameter derivatives use
+`dK/dm = (E(m) − (1 − m)K(m))/(2m(1 − m))` and
+`dE/dm = (E(m) − K(m))/(2m)`. The formulas have removable limits at `m = 0`,
+which the explaining steps identify for continuity-based evaluation.
 For a fixed non-negative integer order, `polygamma(n,u)` follows the family
 identity `d/du polygamma(n,u) = polygamma(n+1,u)` and then applies the chain
 rule. A variable order is retained as a partial result.
