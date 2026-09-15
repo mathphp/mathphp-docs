@@ -2009,6 +2009,11 @@ Constant multiples and divisions are normalized before the pole-separated
 search. For example, `2 * gamma(x) = 0` keeps `solutions['scale'] = 2` while
 using the equivalent zero target for the exact no-root proof.
 
+The same normalization is available for integer-parameter `beta()` and
+`logbeta()` equations. For example, `2 * beta(x, 2) = 1` is solved as
+`beta(x, 2) = 0.5`, while the returned analysis retains the original scale and
+the strict positive-domain filter.
+
 Variadic `min()` and `max()` calls with one affine branch and multiple fixed
 branches are reduced to complete intervals:
 

@@ -4,6 +4,8 @@
 
 - Documented constant-scale normalization for quadrant-aware `atan2()`
   equations, including retained `solutions['scale']` metadata.
+- Documented constant-scale normalization for integer-parameter `beta()` and
+  `logbeta()` equations with retained scale metadata and positive-domain checks.
 - Documented the explicit `EquationAnalyzer::analyzeNumericalEquation()` facade
   for bounded single-variable equations and its sampling controls.
 - Documented automatic unit conversions such as `25m to km` through the generic
