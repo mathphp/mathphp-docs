@@ -2495,6 +2495,12 @@ The result retains Gaussian-elimination rank, consistency, and augmented
 matrix diagnostics. Use `analyzeMatrixEquation()` when the matrix and vector
 are already available as PHP arrays.
 
+Consistent underdetermined systems retain their full affine solution family:
+`solution` is a particular solution, while `result['freeColumns']` and
+`result['basis']` describe the free-variable parameters and null-space basis.
+Inconsistent systems remain explicitly marked `partial` with an empty
+solution, so callers can distinguish no solution from a non-unique family.
+
 Trace, rank, determinant, transpose, inverse, and bounded spectral operations
 are also available for numeric matrices through the generic entry point:
 

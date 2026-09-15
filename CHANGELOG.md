@@ -51,6 +51,8 @@
   enumeration and retained `solutions['scale']` metadata.
 - Documented scaled `floor()`, `ceil()`, `round()`, and `sign()` equations with
   complete interval mapping and retained `solutions['scale']` metadata.
+- Documented affine solution families for consistent underdetermined matrix
+  equations, including particular solutions and null-space bases.
 - Documented Unicode floor and ceiling brackets (`⌊x⌋`, `⌈x⌉`) as parser-level
   aliases for `floor()` and `ceil()`.
 
