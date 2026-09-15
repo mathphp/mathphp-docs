@@ -1915,6 +1915,9 @@ preserved. Use `analyzeHypot()` for the explicit facade.
 The complete norm path also accepts one absolute-affine component, for example
 `hypot(abs(x - 1), 3) = 5`. The radicand is solved once and mapped through both
 signed branches; `solutions['absoluteComponent']` records that reduction.
+Constant multiplication and division are normalized first, so
+`2 * hypot(abs(x), 3) = 10` retains `solutions['scale'] === 2` while solving
+the equivalent radius equation.
 
 Core’s stable logarithm/exponential variants use exact inverse analysis for
 affine inputs:

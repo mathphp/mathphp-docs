@@ -79,6 +79,8 @@
   component is wrapped in `abs()`, including undefined-origin intervals.
 - Documented complete `hypot()` inversion when one affine component is wrapped
   in `abs()`, including retained absolute-component metadata.
+- Documented scale normalization for `hypot()` equations, including scaled
+  absolute components.
 - Documented even-function absolute-affine support for `sinc(abs(A))` and
   `sinhc(abs(A))`.
 
