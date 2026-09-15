@@ -1199,6 +1199,11 @@ branch on `[-π/2, π/2]` (open at `m = 1`), and proves uniqueness by monotone
 bisection. Amplitude periods outside that branch remain bounded numerical
 problems.
 
+Constant multiples and divisions are normalized before the third-kind range
+check and bisection. For example, `2 * ellippinc(x, 0, 0) = 1` is solved as
+`ellippinc(x, 0, 0) = 0.5`, with the original factor retained in
+`solutions['scale']`.
+
 Airy equations with affine arguments are analyzed through a branch-safe finite
 search:
 

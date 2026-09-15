@@ -33,6 +33,8 @@
   `ellipe()` equations.
 - Documented constant-scale normalization for principal-branch incomplete
   elliptic equations (`ellipf`, `ellipkinc`, and `ellipeinc`).
+- Documented constant-scale normalization for principal-branch incomplete
+  third-kind elliptic equations (`ellippinc`).
 - Documented Unicode floor and ceiling brackets (`⌊x⌋`, `⌈x⌉`) as parser-level
   aliases for `floor()` and `ceil()`.
 
