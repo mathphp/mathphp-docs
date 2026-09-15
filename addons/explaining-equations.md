@@ -2034,6 +2034,10 @@ The finite integer `gcd()` + `lcm()` combination solver also accepts an outer
 scale. For example, `2 * (gcd(x, 6) + lcm(x, 6)) = 28` is reduced to the exact
 target `14` before enumerating the bounded integer candidates.
 
+GCD-plus-affine expressions use the same normalization. For example,
+`2 * (gcd(x, 6) + x) = 20` is solved as `gcd(x, 6) + x = 10`, with the finite
+integer search range and affine root mapping preserved.
+
 Variadic `min()` and `max()` calls with one affine branch and multiple fixed
 branches are reduced to complete intervals:
 
