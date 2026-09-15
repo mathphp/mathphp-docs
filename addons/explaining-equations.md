@@ -2101,6 +2101,10 @@ resolution. It interpolates sign-changing voxel edges into triangles, retains
 undefined samples as gaps, and always reports partial coverage because a finite
 mesh cannot prove a global surface description.
 
+Variable-exponent surfaces such as `x^y = z` follow the same route. Core-valid
+regions are triangulated, while negative-base/fractional-exponent samples are
+retained as undefined gaps and the result remains explicitly `partial`.
+
 ## Dimensional equalities
 
 When `mathphp/mathphp-units` is installed, `UnitEquationAnalyzer` evaluates

@@ -6,6 +6,8 @@
   for bounded single-variable equations and its sampling controls.
 - Documented automatic unit conversions such as `25m to km` through the generic
   explaining dispatcher.
+- Documented implicit-surface dispatch for variable-exponent equalities, with
+  undefined real-domain cells preserved as partial gaps.
 
 ## 2026-09-12
 
