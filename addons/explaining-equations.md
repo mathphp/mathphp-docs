@@ -2038,6 +2038,10 @@ GCD-plus-affine expressions use the same normalization. For example,
 `2 * (gcd(x, 6) + x) = 20` is solved as `gcd(x, 6) + x = 10`, with the finite
 integer search range and affine root mapping preserved.
 
+Modulo equations accept finite outer scales before congruence reduction. For
+example, `2 * (x % 3) = 2` is normalized to `x % 3 = 1`, while the complete
+residue class and truncated-remainder sign semantics are retained.
+
 Variadic `min()` and `max()` calls with one affine branch and multiple fixed
 branches are reduced to complete intervals:
 

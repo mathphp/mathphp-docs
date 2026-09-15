@@ -18,6 +18,8 @@
   combinations with retained exact search metadata.
 - Documented constant-scale normalization for integer `gcd()`-plus-affine
   expressions with retained bounded search metadata.
+- Documented constant-scale normalization for `%`, `mod()`, and `modulo()`
+  equations with retained congruence and sign-constraint metadata.
 - Documented the explicit `EquationAnalyzer::analyzeNumericalEquation()` facade
   for bounded single-variable equations and its sampling controls.
 - Documented automatic unit conversions such as `25m to km` through the generic
