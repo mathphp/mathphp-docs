@@ -1129,6 +1129,21 @@ the singular amplitude endpoints are excluded; finite interior targets remain
 valid. Periodic continuation outside this branch is intentionally left to
 bounded numerical analysis rather than being presented as a global proof.
 
+The incomplete third-kind form `ellippinc(phi, n, m)` follows the same
+principal-amplitude contract when `n` and `m` are fixed:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze(
+    'ellippinc(x, 0.2, 0.5) = 0.4',
+);
+// solutions['method'] === 'exact-incomplete-elliptic-third-amplitude'
+```
+
+The analyzer requires `n < 1` and `m ≤ 1`, keeps the positive-integrand
+branch on `[-π/2, π/2]` (open at `m = 1`), and proves uniqueness by monotone
+bisection. Amplitude periods outside that branch remain bounded numerical
+problems.
+
 The explaining analyzer also has an exact beta path for the common form
 `beta(a*x + b, n) = c` (or the symmetric argument order), and for `logbeta`
 with the same shape, when `n` is a fixed integer from 1 through 8. It rewrites
