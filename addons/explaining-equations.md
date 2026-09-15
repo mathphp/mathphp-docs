@@ -2030,6 +2030,10 @@ The real-root analyzers normalize outer scales too. For example,
 `2 * root(2*x + 1, 3) = -4` is solved as `root(2*x + 1, 3) = -2`, while
 even-root domain checks and rational denominator exclusions remain enforced.
 
+The finite integer `gcd()` + `lcm()` combination solver also accepts an outer
+scale. For example, `2 * (gcd(x, 6) + lcm(x, 6)) = 28` is reduced to the exact
+target `14` before enumerating the bounded integer candidates.
+
 Variadic `min()` and `max()` calls with one affine branch and multiple fixed
 branches are reduced to complete intervals:
 
