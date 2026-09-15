@@ -1147,6 +1147,13 @@ domain, and monotone bisection returns the unique probability root with
 `method: monotone-inverse-regularized-special`. Gamma's asymptotic probability
 endpoints remain open, while finite beta endpoints are solved exactly.
 
+Constant multiples and divisions are normalized before range checks and
+bisection for both forward and inverse regularized functions. For example,
+`2 * gammainc(1, x) = 2 * (1 - exp(-1))` is solved against the normalized
+target `1 - exp(-1)`, and `2 * betaincinv(1, 1, 2*x) = 0.5` is solved against
+`0.25`. The returned `solutions['scale']` retains the original finite factor
+so explanation and visual layers can show the normalization step.
+
 Complete elliptic equations also have a monotone path for affine parameters:
 
 ```php

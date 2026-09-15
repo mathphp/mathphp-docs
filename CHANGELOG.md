@@ -35,6 +35,8 @@
   elliptic equations (`ellipf`, `ellipkinc`, and `ellipeinc`).
 - Documented constant-scale normalization for principal-branch incomplete
   third-kind elliptic equations (`ellippinc`).
+- Documented constant-scale normalization for regularized gamma and beta
+  equations, including inverse quantile forms and retained `solutions['scale']` metadata.
 - Documented Unicode floor and ceiling brackets (`⌊x⌋`, `⌈x⌉`) as parser-level
   aliases for `floor()` and `ceil()`.
 
