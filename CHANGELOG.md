@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-15
+
+- Documented the explicit `EquationAnalyzer::analyzeNumericalEquation()` facade
+  for bounded single-variable equations and its sampling controls.
+
 ## 2026-09-12
 
 - Documented incomplete elliptic integrals `ellipf()`/`ellipkinc()` and

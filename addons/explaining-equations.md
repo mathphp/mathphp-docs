@@ -1261,8 +1261,9 @@ is a single-variable Core expression, it now delegates automatically to the
 bounded numerical solver on `[-100, 100]`. Such results expose
 `method: automatic-bounded-numerical`, `automaticDomain`, `status: partial`,
 and `complete: false`; a finite interval never proves global root coverage.
-Call `analyzeNumerically()` when a different interval, sample count, or
-refinement depth is required.
+Call `EquationAnalyzer::analyzeNumericalEquation()` when a different interval,
+sample count, or refinement depth is required; it exposes the same bounded
+solver through the facade.
 Residual acceptance is relative to the two evaluated sides, with an exact-zero
 or zero-side exception for floating-point trigonometric endpoints. This keeps
 underflowed but unequal values from becoming false roots while preserving
