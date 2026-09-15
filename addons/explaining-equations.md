@@ -2014,6 +2014,10 @@ The same normalization is available for integer-parameter `beta()` and
 `beta(x, 2) = 0.5`, while the returned analysis retains the original scale and
 the strict positive-domain filter.
 
+Integer-valued `gcd()` and `lcm()` equations apply the same rule before checking
+their integer target. Thus `2 * gcd(x, 6) = 4` is analyzed as
+`gcd(x, 6) = 2`, retaining the scale while returning complete residue classes.
+
 Variadic `min()` and `max()` calls with one affine branch and multiple fixed
 branches are reduced to complete intervals:
 
