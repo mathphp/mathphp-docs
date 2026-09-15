@@ -1203,6 +1203,10 @@ map refined roots back through the affine input, and return `complete: false`.
 The negative real branches are oscillatory, so a finite search cannot prove
 that no additional roots exist outside the interval.
 
+Constant multiples and divisions are normalized before the search, so forms
+such as `2 * airyaiprime(x) = 6` retain the scale in the explanation while
+solving the equivalent derivative target `airyaiprime(x) = 3`.
+
 The normalized hyperbolic cardinal function has a complete range-aware path:
 
 ```php
