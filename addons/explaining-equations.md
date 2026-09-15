@@ -44,6 +44,11 @@ arguments, and targets that exceed the exact bound stay `unsupported` or
 
 Call `analyzeCombinatorial()` to select this solver explicitly.
 
+Constant multiples and divisions are normalized before integer enumeration.
+For example, `2 * binomial(n, 3) = 20` is solved against the equivalent
+target `binomial(n, 3) = 10`; `solutions['scale']` preserves the original
+factor for explanation and visual layers.
+
 ## Constant-expression isolation
 
 When one side contains no unresolved variables and the other is affine in the
