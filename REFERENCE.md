@@ -179,6 +179,7 @@ The default function allowlist is:
 | `expm1(x)` | 1 | finite result; float |
 | `atan2(y, x)` | 2 | undefined when both arguments are zero; float |
 | `hypot(x, y)` | 2 | finite Euclidean norm; float |
+| `mod(a, b)`, `modulo(a, b)` | 2 | finite integer operands; non-zero divisor; int |
 | `gcd(a, b)` | 2 | finite integer arguments; int |
 | `lcm(a, b)` | 2 | finite integer arguments; int, overflow checked |
 | `factorial(n)` | 1 | non-negative integer; int, overflow checked |

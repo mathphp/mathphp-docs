@@ -16,7 +16,7 @@ The default catalogue includes the common elementary, trigonometric,
 hyperbolic, logarithmic, aggregate, and rounding functions: `abs`, `sqrt`,
 `cbrt`, `sin`, `cos`, `tan`, `sec`, `csc`, `cot`, `asin`, `acos`, `atan`, `sinh`, `cosh`, `tanh`, `sech`, `csch`, `coth`, `asinh`,
 `acosh`, `atanh`, `exp`, `ln`, `log`, `log10`, `log2`, `log1p`, `expm1`,
-`atan2`, `hypot`, `gcd`, `lcm`, `sign`, `min`, `max`,
+`atan2`, `hypot`, `mod`, `modulo`, `gcd`, `lcm`, `sign`, `min`, `max`,
 `floor`, `ceil`, `round`, `factorial`, `binomial`, `choose`, `ncr`,
 `permutation`, `permute`, `npr`, and `lambertw`. `lambertw(value)` evaluates
 the principal real branch; `lambertw(value, -1)` selects the lower real branch
@@ -27,6 +27,9 @@ arguments and return exact host integers, or a structured domain/overflow
 error. Names are case-sensitive and never resolve against PHP's global
 function table. Applications can still register reviewed deterministic
 callbacks for domain-specific functions.
+
+`mod(a, b)` and `modulo(a, b)` are aliases for truncated integer remainder;
+both arguments must be finite integers and the divisor must be non-zero.
 
 Custom functions use an explicit name, arity, and callback through
 `FunctionDefinition` and `FunctionRegistry`.

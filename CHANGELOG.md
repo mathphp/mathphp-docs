@@ -10,6 +10,8 @@
   undefined real-domain cells preserved as partial gaps.
 - Documented `mod()` and `modulo()` function notation for complete integer
   congruence analysis.
+- Documented Core `mod()` and `modulo()` built-ins and their integer-domain
+  validation.
 
 ## 2026-09-12
 
