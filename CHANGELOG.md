@@ -75,6 +75,8 @@
   `expm1`, `log1p`, inverse trigonometric, and inverse hyperbolic functions.
 - Documented constant-multiple and constant-division normalization for absolute
   compositions with retained `solutions['scale']` metadata.
+- Documented complete quadrant-aware `atan2()` inversion when one affine
+  component is wrapped in `abs()`, including undefined-origin intervals.
 
 ## 2026-09-12
 

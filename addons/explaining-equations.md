@@ -1966,6 +1966,11 @@ When an axis angle describes a half-line, the result includes open interval
 metadata so the undefined origin is not accidentally included. Impossible
 quadrant targets return complete empty results.
 
+The same quadrant-aware path supports one absolute-affine component, such as
+`atan2(abs(x - 1), 2) = 0.5` or `atan2(2, abs(x + 1)) = 0.5`. Both signed
+branches are returned, while axis cases expose two open intervals that exclude
+the undefined origin.
+
 `gamma()` and `lgamma()` affine equations are searched branch-by-branch without
 crossing their non-positive-integer poles:
 
