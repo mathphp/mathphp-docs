@@ -1157,6 +1157,20 @@ interval `[-64, 64]`, map refined roots back through the affine input, and
 return `complete: false`. The negative real branches are oscillatory, so a
 finite search cannot prove that no additional roots exist outside the interval.
 
+The normalized hyperbolic cardinal function has a complete range-aware path:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('sinhc(2*x + 4) = 1');
+// solutions['method'] === 'exact-sinhc-range'
+```
+
+For `sinhc(u) = sinh(u)/u` with the continuous value `sinhc(0) = 1`, the
+real domain is all numbers, the range is `[1, ∞)`, and the function is even and
+strictly increasing for positive `u`. Targets below one therefore return a
+complete no-solution proof; target one maps only `u = 0`; targets above one
+are bracketed on the positive branch and mirrored to the complete pair of
+real roots.
+
 The explaining analyzer also has an exact beta path for the common form
 `beta(a*x + b, n) = c` (or the symmetric argument order), and for `logbeta`
 with the same shape, when `n` is a fixed integer from 1 through 8. It rewrites
