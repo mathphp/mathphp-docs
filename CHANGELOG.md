@@ -16,8 +16,9 @@
   `abs(x)`, including nested bars and implicit multiplication.
 - Documented domain-checked general real roots through `root(value, degree)`
   and the `nthroot` alias.
-- Documented exact explaining-package inversion for affine `root()` and
-  `nthroot()` equations, including odd/even real-domain behavior.
+- Documented exact explaining-package inversion for polynomial and
+  rational-polynomial `root()`/`nthroot()` equations, including odd/even
+  real-domain behavior and residual validation.
 - Documented Unicode floor and ceiling brackets (`⌊x⌋`, `⌈x⌉`) as parser-level
   aliases for `floor()` and `ceil()`.
 
