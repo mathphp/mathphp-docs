@@ -14,7 +14,8 @@ $analysis->iterations; // midpoint evidence for each step
 Always label the result as approximate and retain the original bracket so users
 can understand convergence. The analyzer requires a finite, increasing
 interval whose endpoint values have opposite signs (an endpoint at zero is
-valid).
+valid). Exact zero endpoints are returned immediately as certified roots and
+recorded as a single endpoint observation rather than iterated by bisection.
 
 ## Partial results are explicit
 
