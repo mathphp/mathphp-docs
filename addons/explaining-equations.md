@@ -332,6 +332,22 @@ and reports complete no-real-solution results when the real argument is below
 `−1/e`. More complicated products, multiple independent logarithms, and
 complex branches remain separate analyzer families.
 
+The complementary variable-base form is exact when the logarithm value is a
+positive constant and the base is affine:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('log(2, 2*x + 1) = 0.5');
+
+// solutions['method'] === 'exact-log-variable-base'
+// solutions['roots'] === [1.5]
+// solutions['complete'] === true
+```
+
+The solver maps the target to the required base, enforces `base > 0` and
+`base != 1`, handles either equation orientation, and reports the `log(1, …) =
+0` identity separately. Non-affine variable bases remain on the bounded
+numerical path.
+
 ## Unique-zero fixed-point equations
 
 The generic entry point recognizes fixed-point equalities whose supported real
