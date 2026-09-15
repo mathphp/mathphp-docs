@@ -27,6 +27,8 @@
   equations.
 - Documented constant-scale normalization for zeta and zeta-derivative
   equations.
+- Documented constant-scale normalization for integer-order Bessel equations,
+  including the complete positive `besselk()` branch.
 - Documented Unicode floor and ceiling brackets (`⌊x⌋`, `⌈x⌉`) as parser-level
   aliases for `floor()` and `ceil()`.
 

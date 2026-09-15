@@ -1299,6 +1299,11 @@ analyzer returns `partial` rather than claiming a proof beyond its numerical
 range. `bessely` remains branch-safe and partial because its positive branch is
 oscillatory.
 
+Constant multiples and divisions are normalized for all four Bessel families.
+For example, `2 * besselk(0, x) = 1` is reduced to `besselk(0, x) = 0.5`,
+while `solutions['scale']` preserves the original factor for the UI and
+step-by-step explanation.
+
 The generic `EquationAnalyzer::analyze()` entry point uses the exact polynomial,
 rational, and elementary strategies first. When none applies but the equality
 is a single-variable Core expression, it now delegates automatically to the
