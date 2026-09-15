@@ -143,6 +143,11 @@ with the same two-branch treatment. Their restricted ranges are enforced:
 Endpoint behavior is retained, so a target of `0` for `erf` or `1` for `erfc`
 returns the single zero-magnitude root.
 
+`erfi(abs(A))` is also inverted on the evaluator's finite real bracket. Common
+finite targets are solved with both absolute-value branches; targets beyond
+that bracket are returned as `partial` with `complete: false`, rather than
+being reported as if no mathematical solution existed.
+
 ## Same-function monotone equalities
 
 For supported strictly monotone functions, equal affine arguments are solved

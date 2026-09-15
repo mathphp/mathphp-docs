@@ -69,6 +69,8 @@
   and `coth`) with singularity-aware range checks.
 - Documented exact `erf(abs(affine))` and `erfc(abs(affine))` inversion with
   endpoint-aware real-domain validation.
+- Documented finite-bracket inversion for `erfi(abs(affine))`, including honest
+  partial results when the evaluator cannot reach the requested target.
 
 ## 2026-09-12
 
