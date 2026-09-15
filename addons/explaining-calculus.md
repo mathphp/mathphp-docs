@@ -35,6 +35,15 @@ The Gaussian identities are also symbolic: `erf′(u) =
 2·exp(−u²)/sqrt(pi)·u′` and `erfc′(u) = −erf′(u)`. Their elementary
 antiderivatives are `u·erf(u) + exp(−u²)/sqrt(pi)` and
 `u·erfc(u) − exp(−u²)/sqrt(pi)`, respectively.
+The imaginary error function uses `erfi′(u) =
+2·exp(u²)/sqrt(pi)·u′`. Its inverse companions use the corresponding
+inverse-function identities:
+`erfinv′(u) = sqrt(pi)/2·exp(erfinv(u)²)·u′` and
+`erfcinv′(u) = −sqrt(pi)/2·exp(erfcinv(u)²)·u′`; these are documented as
+valid only on their open real input domains.
+For fixed integer order, the second-kind Bessel functions use
+`Yₙ′(u) = (Yₙ₋₁(u) − Yₙ₊₁(u))/2` and
+`Kₙ′(u) = −(Kₙ₋₁(u) + Kₙ₊₁(u))/2`. Variable-order derivatives remain partial.
 The stable logarithmic/exponential helpers are covered as well:
 `log2′(u) = u′/(u·ln(2))`, `log1p′(u) = u′/(1+u)`, and
 `expm1′(u) = exp(u)·u′`, with their corresponding affine antiderivatives.
