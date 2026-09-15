@@ -107,6 +107,30 @@ The same exact treatment is available for affine hyperbolic phases:
 `cosh(A) = cosh(B)` uses the two branches `A = B` and `A = −B`. These are
 non-periodic real solution sets and are returned with `complete: true`.
 
+## Hyperbolic functions of an absolute affine value
+
+The explaining add-on also inverts the monotone real branches of a hyperbolic
+function applied to an absolute affine expression. Both signs of the inner
+absolute value are retained, so the result is complete rather than a single
+numeric guess:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('asinh(abs(x - 2)) = 1');
+
+// solutions['method'] === 'exact-absolute-composition'
+// solutions['roots'] === [2 - sinh(1), 2 + sinh(1)]
+// solutions['complete'] === true
+```
+
+The supported outer functions are `sinh`, `asinh`, `cosh`, `acosh`, `tanh`,
+and `atanh`. Their real ranges are checked before inversion: `sinh(abs(A))`
+and `asinh(abs(A))` require a non-negative target, `cosh(abs(A))` requires a
+target of at least one, and `tanh(abs(A))` requires a target in `[0, 1)`.
+`acosh(abs(A))` and `atanh(abs(A))` accept non-negative targets and invert to
+`cosh(target)` and `tanh(target)` respectively. Oscillatory compositions such
+as `sin(abs(x))` remain outside this exact path because they have infinitely
+many periodic branches.
+
 ## Same-function monotone equalities
 
 For supported strictly monotone functions, equal affine arguments are solved

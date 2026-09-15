@@ -63,6 +63,8 @@
   exact integer-index family derivation.
 - Documented Unicode floor and ceiling brackets (`⌊x⌋`, `⌈x⌉`) as parser-level
   aliases for `floor()` and `ceil()`.
+- Documented exact inversion of hyperbolic functions applied to affine absolute
+  values, including real-domain checks and both signed branches.
 
 ## 2026-09-12
 
