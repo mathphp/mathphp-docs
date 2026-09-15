@@ -1185,6 +1185,21 @@ Other target levels are searched on `[-128, 128]` and remain explicitly
 `partial`, because sinc is oscillatory and a finite interval cannot prove the
 global root set.
 
+The complete third-kind integral is supported when exactly one argument is
+affine and the other is fixed:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('ellippi(x, 0.5) = 2.4');
+// solutions['method'] === 'exact-elliptic-third-monotone'
+```
+
+For `ellippi(u, m)` with fixed `m < 1`, or `ellippi(n, u)` with fixed `n < 1`,
+the unknown argument has domain `u < 1`, the value is positive, and the
+integral is strictly increasing with range `(0, ∞)`. Targets at or below zero
+are complete no-solution results; positive targets are bracketed from the
+negative tail to the singular boundary and mapped back through the affine
+argument.
+
 The explaining analyzer also has an exact beta path for the common form
 `beta(a*x + b, n) = c` (or the symmetric argument order), and for `logbeta`
 with the same shape, when `n` is a fixed integer from 1 through 8. It rewrites
