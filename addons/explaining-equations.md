@@ -1245,6 +1245,15 @@ even orders cannot reach negative targets. Those cases are returned as
 complete proofs; remaining targets use a bounded positive-branch search and
 remain `partial`.
 
+Fixed-integer-order `besselk(n, a*x + b) = c` equations use the positive branch
+domain `(0, ∞)`, where `Kₙ` is positive and strictly decreasing from infinity
+to zero. Positive targets therefore produce one complete root after adaptive
+monotone bisection; non-positive targets produce complete no-solution results.
+If the finite Core evaluator cannot bracket an extreme endpoint target, the
+analyzer returns `partial` rather than claiming a proof beyond its numerical
+range. `bessely` remains branch-safe and partial because its positive branch is
+oscillatory.
+
 The generic `EquationAnalyzer::analyze()` entry point uses the exact polynomial,
 rational, and elementary strategies first. When none applies but the equality
 is a single-variable Core expression, it now delegates automatically to the
