@@ -73,6 +73,8 @@ by continuity at those boundaries.
 Complete `ellippi(n, m)` uses the matching characteristic and parameter
 identities, including the chain rule when both arguments vary; its singular
 coincidences likewise require continuity-aware handling.
+Absolute-value expressions use `abs(u)′ = sign(u)·u′` away from the cusp
+`u = 0`; the explaining steps identify that nondifferentiable boundary.
 For a fixed non-negative integer order, `polygamma(n,u)` follows the family
 identity `d/du polygamma(n,u) = polygamma(n+1,u)` and then applies the chain
 rule. A variable order is retained as a partial result.
