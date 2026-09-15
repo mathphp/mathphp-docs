@@ -41,6 +41,11 @@ inverse-function identities:
 `erfinv′(u) = sqrt(pi)/2·exp(erfinv(u)²)·u′` and
 `erfcinv′(u) = −sqrt(pi)/2·exp(erfcinv(u)²)·u′`; these are documented as
 valid only on their open real input domains.
+Their affine antiderivatives are available as well:
+`∫erfi(u)du = u·erfi(u) − exp(u²)/sqrt(pi)`,
+`∫erfinv(u)du = −exp(−erfinv(u)²)/sqrt(pi)`, and
+`∫erfcinv(u)du = exp(−erfcinv(u)²)/sqrt(pi)`. The usual substitution scale
+is included for arguments such as `erfi(2*x + 1)`.
 For fixed integer order, the second-kind Bessel functions use
 `Yₙ′(u) = (Yₙ₋₁(u) − Yₙ₊₁(u))/2` and
 `Kₙ′(u) = −(Kₙ₋₁(u) + Kₙ₊₁(u))/2`. Variable-order derivatives remain partial.
