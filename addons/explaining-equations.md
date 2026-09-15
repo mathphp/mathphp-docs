@@ -1171,6 +1171,20 @@ complete no-solution proof; target one maps only `u = 0`; targets above one
 are bracketed on the positive branch and mirrored to the complete pair of
 real roots.
 
+The normalized cardinal sine has exact branches for its globally identifiable
+levels:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('sinc(2*x + 1) = 0');
+// solutions['method'] === 'exact-sinc-branch'
+```
+
+For `sinc(u) = sin(u)/u` with `sinc(0) = 1`, target zero returns the complete
+family `u = k·π` for integers `k ≠ 0`, while target one returns only `u = 0`.
+Other target levels are searched on `[-128, 128]` and remain explicitly
+`partial`, because sinc is oscillatory and a finite interval cannot prove the
+global root set.
+
 The explaining analyzer also has an exact beta path for the common form
 `beta(a*x + b, n) = c` (or the symmetric argument order), and for `logbeta`
 with the same shape, when `n` is a fixed integer from 1 through 8. It rewrites
