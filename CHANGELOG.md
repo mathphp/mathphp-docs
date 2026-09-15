@@ -77,6 +77,8 @@
   compositions with retained `solutions['scale']` metadata.
 - Documented complete quadrant-aware `atan2()` inversion when one affine
   component is wrapped in `abs()`, including undefined-origin intervals.
+- Documented complete `hypot()` inversion when one affine component is wrapped
+  in `abs()`, including retained absolute-component metadata.
 
 ## 2026-09-12
 

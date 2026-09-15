@@ -1907,6 +1907,10 @@ searches are reported as partial.
 Affine components, empty radius domains, and fixed-component metadata are
 preserved. Use `analyzeHypot()` for the explicit facade.
 
+The complete norm path also accepts one absolute-affine component, for example
+`hypot(abs(x - 1), 3) = 5`. The radicand is solved once and mapped through both
+signed branches; `solutions['absoluteComponent']` records that reduction.
+
 Core’s stable logarithm/exponential variants use exact inverse analysis for
 affine inputs:
 
