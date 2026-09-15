@@ -44,6 +44,9 @@ valid only on their open real input domains.
 For fixed integer order, the second-kind Bessel functions use
 `Yₙ′(u) = (Yₙ₋₁(u) − Yₙ₊₁(u))/2` and
 `Kₙ′(u) = −(Kₙ₋₁(u) + Kₙ₊₁(u))/2`. Variable-order derivatives remain partial.
+For a fixed non-negative integer order, `polygamma(n,u)` follows the family
+identity `d/du polygamma(n,u) = polygamma(n+1,u)` and then applies the chain
+rule. A variable order is retained as a partial result.
 The stable logarithmic/exponential helpers are covered as well:
 `log2′(u) = u′/(u·ln(2))`, `log1p′(u) = u′/(1+u)`, and
 `expm1′(u) = exp(u)·u′`, with their corresponding affine antiderivatives.
