@@ -59,6 +59,8 @@
   dominance intervals and retained `solutions['scale']` metadata.
 - Documented scaled complementary two-branch `min()`/`max()` identities with
   exact affine reduction and retained `solutions['scale']` metadata.
+- Documented weighted, negative, and fractional discrete-affine terms with
+  exact integer-index family derivation.
 - Documented Unicode floor and ceiling brackets (`⌊x⌋`, `⌈x⌉`) as parser-level
   aliases for `floor()` and `ceil()`.
 

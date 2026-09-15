@@ -1766,6 +1766,11 @@ negative, zero, and positive output boundary families. Negative `floor()` and
 `ceil()` terms remain on the bounded path until their signed output families
 have an equally explicit representation.
 
+The discrete term may have any finite non-zero constant coefficient, including
+negative or fractional coefficients. For example, `2 * floor(x) + x = 6` and
+`-floor(x) + x = 0` are normalized before their integer-index families are
+derived; the coefficient is retained in the solution metadata.
+
 Affine-vs-constant `min()` and `max()` forms also return complete interval
 solutions:
 
