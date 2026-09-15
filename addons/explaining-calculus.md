@@ -53,6 +53,12 @@ Complete elliptic parameter derivatives use
 `dK/dm = (E(m) − (1 − m)K(m))/(2m(1 − m))` and
 `dE/dm = (E(m) − K(m))/(2m)`. The formulas have removable limits at `m = 0`,
 which the explaining steps identify for continuity-based evaluation.
+Incomplete elliptic integrals use the amplitude identities when their
+parameters are constant: `∂F/∂φ = 1/sqrt(1 − m·sin²φ)`,
+`∂E/∂φ = sqrt(1 − m·sin²φ)`, and
+`∂Π/∂φ = 1/((1 − n·sin²φ)·sqrt(1 − m·sin²φ))`. This covers both
+`ellipf`/`ellipkinc`, `ellipeinc`, and `ellippinc`; differentiating with
+respect to a parameter remains partial until its identity is implemented.
 For a fixed non-negative integer order, `polygamma(n,u)` follows the family
 identity `d/du polygamma(n,u) = polygamma(n+1,u)` and then applies the chain
 rule. A variable order is retained as a partial result.
