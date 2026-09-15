@@ -1746,6 +1746,10 @@ Affine `floor`, `ceil`, `round` (PHP half-up ties), and `sign` forms preserve
 open and closed endpoints and report `complete: true`. Use
 `analyzeDiscrete()` to choose the variable or provide known parameters.
 
+Constant multiples and divisions are normalized before discrete range mapping.
+For example, `2 * floor(x) = 6` is solved as `floor(x) = 3`, with the
+original factor retained in `solutions['scale']`.
+
 One `floor()`, `ceil()`, or `sign()` term can also be combined with an affine
 term and solved by its integer output index:
 

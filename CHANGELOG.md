@@ -49,6 +49,8 @@
   retained `solutions['scale']` metadata.
 - Documented scaled binomial and permutation equations with exact integer
   enumeration and retained `solutions['scale']` metadata.
+- Documented scaled `floor()`, `ceil()`, `round()`, and `sign()` equations with
+  complete interval mapping and retained `solutions['scale']` metadata.
 - Documented Unicode floor and ceiling brackets (`⌊x⌋`, `⌈x⌉`) as parser-level
   aliases for `floor()` and `ceil()`.
 
