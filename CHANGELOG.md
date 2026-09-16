@@ -11,6 +11,8 @@
   `beta()` and `logbeta()` equations with positive-domain and pole filtering.
 - Documented complete nonlinear range identities for integer-order modified
   Bessel-I equations, with partial status retained for oscillatory Bessel-J/Y.
+- Documented the global Gamma no-zero identity for nonlinear inputs, including
+  rational pole metadata and explicit partial status for nonzero targets.
 - Documented exact algebraic and rational `hypot()` components with residual
   validation and retained denominator-pole metadata.
 - Documented constant-scale normalization for quadrant-aware `atan2()`

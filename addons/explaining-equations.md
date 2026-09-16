@@ -1967,6 +1967,12 @@ positive integer-order `Iₙ(u)` has its real zero only at `u = 0`. Thus
 non-invertible Bessel-J/Y targets continue to expose bounded numerical roots as
 partial rather than claiming a global solution set.
 
+Gamma’s zero identity is likewise global on its defined real domain. Equations
+such as `gamma(x^2) = 0` are complete empty-domain results, and rational inner
+expressions such as `gamma(1/x) = 0` retain `x = 0` as an excluded pole. Nonzero
+Gamma targets remain branch-separated numerical analyses because their full
+solution set depends on infinitely many pole-separated branches.
+
 Core’s stable logarithm/exponential variants use exact inverse analysis for
 affine inputs:
 
