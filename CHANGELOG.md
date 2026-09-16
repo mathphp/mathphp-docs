@@ -7,6 +7,8 @@
   metadata.
 - Documented non-affine principal Lambert-W inversion through its defining
   identity and real-range validation.
+- Documented algebraic and rational inner arguments for integer-parameter
+  `beta()` and `logbeta()` equations with positive-domain and pole filtering.
 - Documented exact algebraic and rational `hypot()` components with residual
   validation and retained denominator-pole metadata.
 - Documented constant-scale normalization for quadrant-aware `atan2()`

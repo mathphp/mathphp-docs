@@ -1954,6 +1954,12 @@ recorded. For example, `hypot(1/x, 0) = 2` returns `x = ±0.5` and retains
 `solutions['excludedValues'] === [0.0]`. Every candidate is evaluated again in
 the unsquared norm, so extraneous roots introduced by squaring are discarded.
 
+Integer-parameter `beta()` and `logbeta()` equations also accept algebraic or
+rational inner arguments. For example, `beta(x^2, 2) = 1` is rewritten as
+`x²(x² + 1) = 1`, solved as a polynomial, and filtered through the strict
+`x² > 0` beta domain. `beta(1/x, 2) = 1` additionally retains `x = 0` as an
+excluded pole and discards the negative inner-domain branch.
+
 Core’s stable logarithm/exponential variants use exact inverse analysis for
 affine inputs:
 
