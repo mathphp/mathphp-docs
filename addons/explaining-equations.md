@@ -1960,6 +1960,13 @@ rational inner arguments. For example, `beta(x^2, 2) = 1` is rewritten as
 `x² > 0` beta domain. `beta(1/x, 2) = 1` additionally retains `x = 0` as an
 excluded pole and discards the negative inner-domain branch.
 
+The modified Bessel range identities are also applied to nonlinear inputs
+where they are complete: `I₀(u) ≥ 1` with equality only at `u = 0`, and
+positive integer-order `Iₙ(u)` has its real zero only at `u = 0`. Thus
+`besseli(0, x^2) = 1` and `besseli(1, x^2) = 0` are solved exactly, while
+non-invertible Bessel-J/Y targets continue to expose bounded numerical roots as
+partial rather than claiming a global solution set.
+
 Core’s stable logarithm/exponential variants use exact inverse analysis for
 affine inputs:
 

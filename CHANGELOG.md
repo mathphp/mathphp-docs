@@ -9,6 +9,8 @@
   identity and real-range validation.
 - Documented algebraic and rational inner arguments for integer-parameter
   `beta()` and `logbeta()` equations with positive-domain and pole filtering.
+- Documented complete nonlinear range identities for integer-order modified
+  Bessel-I equations, with partial status retained for oscillatory Bessel-J/Y.
 - Documented exact algebraic and rational `hypot()` components with residual
   validation and retained denominator-pole metadata.
 - Documented constant-scale normalization for quadrant-aware `atan2()`
