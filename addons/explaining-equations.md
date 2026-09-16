@@ -1939,6 +1939,21 @@ Constant multiplication and division are normalized first, so
 `2 * hypot(abs(x), 3) = 10` retains `solutions['scale'] === 2` while solving
 the equivalent radius equation.
 
+The same exact path now accepts algebraic components, including two varying
+polynomials:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('hypot(x^2, 3) = 5');
+// solutions['method'] === 'exact-hypot-algebraic'
+// solutions['roots'] === [-2.0, 2.0]
+// solutions['complete'] === true
+```
+
+Rational components are cross-multiplied only after their original domains are
+recorded. For example, `hypot(1/x, 0) = 2` returns `x = ±0.5` and retains
+`solutions['excludedValues'] === [0.0]`. Every candidate is evaluated again in
+the unsquared norm, so extraneous roots introduced by squaring are discarded.
+
 Core’s stable logarithm/exponential variants use exact inverse analysis for
 affine inputs:
 

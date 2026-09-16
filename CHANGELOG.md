@@ -2,6 +2,8 @@
 
 ## 2026-09-15
 
+- Documented exact algebraic and rational `hypot()` components with residual
+  validation and retained denominator-pole metadata.
 - Documented constant-scale normalization for quadrant-aware `atan2()`
   equations, including retained `solutions['scale']` metadata.
 - Documented constant-scale normalization for integer-parameter `beta()` and
