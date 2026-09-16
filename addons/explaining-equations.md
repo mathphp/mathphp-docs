@@ -1857,6 +1857,11 @@ For example, `min(x^2, 4) = 4` returns `(-∞, -2] ∪ [2, ∞)`, while
 preserves endpoint inclusion, and is marked partial if higher-degree root
 isolation cannot certify every crossing.
 
+Rational branches use the same partitioning while retaining denominator poles.
+For example, `min(1/x, 2) = 2` returns `(0, 1/2]`, and
+`max(1/x, 2) = 2` returns `(-∞, 0) ∪ [1/2, ∞)`; the excluded pole at `x = 0`
+is never included through cross-multiplication.
+
 Constant multiples and divisions are normalized before branch dominance checks.
 For example, `2 * min(x, 5) = 6` is solved as `min(x, 5) = 3`, with the
 original factor retained in `solutions['scale']`.
