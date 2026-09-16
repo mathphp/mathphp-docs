@@ -24,6 +24,8 @@
   equations with retained branch and residual validation.
 - Documented constant-scale normalization for deeper nested principal-root
   chains with retained branch and residual validation.
+- Documented exact polynomial sign-chart intervals for `floor()`, `ceil()`,
+  `round()`, and `sign()` equations with retained open and closed boundaries.
 - Documented the explicit `EquationAnalyzer::analyzeNumericalEquation()` facade
   for bounded single-variable equations and its sampling controls.
 - Documented automatic unit conversions such as `25m to km` through the generic

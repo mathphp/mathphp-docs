@@ -1827,6 +1827,15 @@ negative or fractional coefficients. For example, `2 * floor(x) + x = 6` and
 `-floor(x) + x = 0` are normalized before their integer-index families are
 derived; the coefficient is retained in the solution metadata.
 
+Polynomial inner expressions now use exact sign-chart intervals as well. For
+example, `floor(x^2) = 4` returns
+`(-√5, -2] ∪ [2, √5)`, while `round(x^2) = 0` returns the open interval
+`(-√(1/2), √(1/2))`. The analyzer translates each discrete output into its
+polynomial inequalities, intersects the resulting intervals, and preserves
+every boundary. `sign(x^2 - 1) = 0` is represented as the two exact roots
+`x = -1` and `x = 1`; non-polynomial inner expressions remain on their normal
+bounded or unsupported paths.
+
 Affine-vs-constant `min()` and `max()` forms also return complete interval
 solutions:
 
