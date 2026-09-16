@@ -5,6 +5,8 @@
 - Documented exact composed-elementary inversion for non-affine polynomial and
   rational inputs, including domain checks, multi-preimage branches, and pole
   metadata.
+- Documented non-affine principal Lambert-W inversion through its defining
+  identity and real-range validation.
 - Documented exact algebraic and rational `hypot()` components with residual
   validation and retained denominator-pole metadata.
 - Documented constant-scale normalization for quadrant-aware `atan2()`

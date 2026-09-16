@@ -1984,6 +1984,19 @@ negative branch after solving the inner equation. Rational inputs such as
 `exp(1/x) = 2` retain `x = 0` as an excluded pole. Candidates are evaluated
 again in the original outer function before they are returned.
 
+The same composition path handles principal Lambert-W values by applying
+`W(z)·exp(W(z)) = z`:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('lambertw(x^2) = 1');
+// solutions['method'] === 'exact-composed-elementary'
+// solutions['roots'] === [-sqrt(M_E), sqrt(M_E)]
+// solutions['complete'] === true
+```
+
+Targets below `−1` are rejected for the principal real branch before the
+inner algebraic equation is solved.
+
 Affine `erf()` and `erfc()` equalities now use complete monotone inverse
 analysis:
 
