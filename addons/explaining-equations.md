@@ -1973,6 +1973,13 @@ expressions such as `gamma(1/x) = 0` retain `x = 0` as an excluded pole. Nonzero
 Gamma targets remain branch-separated numerical analyses because their full
 solution set depends on infinitely many pole-separated branches.
 
+Integer-order modified Bessel-K is the complementary monotone case: `Kₙ(u)` is
+positive and strictly decreasing for `u > 0`. With a configured Core evaluator,
+`besselk(0, x^2) = 0.5` first finds the unique positive argument preimage and
+then solves `x² = u` exactly; rational inner expressions retain their poles and
+the strict `u > 0` domain. Oscillatory Bessel-J/Y equations remain explicitly
+partial because their global zero sets are infinite and non-elementary.
+
 Core’s stable logarithm/exponential variants use exact inverse analysis for
 affine inputs:
 

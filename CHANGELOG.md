@@ -13,6 +13,9 @@
   Bessel-I equations, with partial status retained for oscillatory Bessel-J/Y.
 - Documented the global Gamma no-zero identity for nonlinear inputs, including
   rational pole metadata and explicit partial status for nonzero targets.
+- Documented complete monotone integer-order Bessel-K composition for
+  algebraic/rational inner expressions, while retaining partial status for
+  oscillatory Bessel-J/Y branches.
 - Documented exact algebraic and rational `hypot()` components with residual
   validation and retained denominator-pole metadata.
 - Documented constant-scale normalization for quadrant-aware `atan2()`
