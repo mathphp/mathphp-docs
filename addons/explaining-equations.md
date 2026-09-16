@@ -1851,6 +1851,12 @@ $analysis = (new EquationAnalyzer())->analyze('max(-x, 5) = 5');
 Use `analyzePiecewiseFunction()` for the explicit facade. Singleton roots,
 closed half-lines, and empty sets retain `complete: true` metadata.
 
+Polynomial branches are partitioned at every branch crossing and target root.
+For example, `min(x^2, 4) = 4` returns `(-∞, -2] ∪ [2, ∞)`, while
+`max(x^2, 4) = 4` returns `[-2, 2]`. The result exposes the branch expressions,
+preserves endpoint inclusion, and is marked partial if higher-degree root
+isolation cannot certify every crossing.
+
 Constant multiples and divisions are normalized before branch dominance checks.
 For example, `2 * min(x, 5) = 6` is solved as `min(x, 5) = 3`, with the
 original factor retained in `solutions['scale']`.
