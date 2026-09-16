@@ -1966,6 +1966,24 @@ $analysis = (new EquationAnalyzer())->analyze('log2(x) = 3');
 `log1p()` retains its `inner > -1` domain and `expm1()` rejects targets at or
 below `-1`.
 
+Invertible elementary functions can also wrap a non-affine algebraic or
+rational input. The explaining dispatcher first inverts the outer function,
+then sends each preimage through the exact polynomial or rational solver:
+
+```php
+$analysis = (new EquationAnalyzer())->analyze('exp(x^2) = 2');
+// solutions['method'] === 'exact-composed-elementary'
+// solutions['roots'] === [-sqrt(log(2)), sqrt(log(2))]
+// solutions['complete'] === true
+```
+
+This includes real-domain-aware inverse pairs such as `asinh`, `acosh`,
+`atanh`, `erf`, `erfc`, `erfinv`, and `erfcinv`. Multi-valued real inverses
+such as `cosh(x^2) = 2` generate both preimages and discard the impossible
+negative branch after solving the inner equation. Rational inputs such as
+`exp(1/x) = 2` retain `x = 0` as an excluded pole. Candidates are evaluated
+again in the original outer function before they are returned.
+
 Affine `erf()` and `erfc()` equalities now use complete monotone inverse
 analysis:
 
