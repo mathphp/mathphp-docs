@@ -1166,12 +1166,15 @@ status and convergence diagnostics.
 The Core evaluator also provides domain-checked special functions such as
 `erf`, `erfc`, `erfi`, `erfinv`, `erfcinv`, `airyai`, `airyaiprime`, `airybi`, `airybiprime`, `ellipk`, `ellipe`, `ellipf`, `ellipeinc`, `ellippi`, `ellippinc`, `gamma`, `lgamma`, `gammainc`, `gammaincc`, `gammaincinv`, `gammainccinv`, `betainc`, `betaincc`, `betaincinv`, `betainccinv`, `beta`, `logbeta`, `zeta`, `zetaprime`, `digamma`,
 `trigamma`, `polygamma`, `besselj`, `besseli`, `bessely`, and `besselk`. Beta arguments must be positive,
-`zeta()` currently requires a real argument greater than one, `digamma()` and
-`trigamma()` reject non-positive integer gamma poles, and Bessel functions
-require finite integer orders. The second-kind `bessely()`/`besselk()` functions
-also require positive arguments because zero is singular. They can be used directly in bounded equation
-searches and in any explaining analyzer that evaluates Core expressions;
-bounded results remain `partial` unless a dedicated global proof exists.
+`zeta()` and `zetaprime()` analytically continue real inputs away from their
+pole at one; the dedicated zeta equation analyzer currently proves solutions
+only on the monotone branch `s > 1`. `digamma()` and `trigamma()` reject
+non-positive integer gamma poles, and Bessel functions require finite integer
+orders. The second-kind `bessely()`/`besselk()` functions also require positive
+arguments because zero is singular. These functions can be used directly in
+bounded equation searches and in any explaining analyzer that evaluates Core
+expressions; bounded results remain `partial` unless a dedicated global proof
+exists.
 
 Special-function equation analyzers also evaluate variable-free target
 expressions through the supplied `EvaluationOptions` registry. For example,
@@ -1356,9 +1359,30 @@ check rather than merely reporting algebraic polynomial roots.
 
 For `zeta(a*x + b) = c`, the explaining analyzer uses the real branch
 `u > 1`, where zeta is continuous and strictly decreasing with range
-`(1, ∞)`. Targets `c ≤ 1` are complete no-solution results; targets above
-one are bracketed numerically and then marked complete only after the unique
-monotone crossing is found and mapped back through the affine input.
+`(1, ∞)`. Targets above one are bracketed numerically and marked complete for
+that monotone branch after the unique crossing is mapped back through the
+affine input. For targets `c ≤ −0.5`, the analyzer also finds a candidate on
+the analytically continued non-negative branch `0 ≤ u < 1`; these results are
+`partial` because negative-argument real roots have not been exhaustively
+searched. Other targets at or below one are likewise not reported as globally
+root-free.
+
+Integer powers of zeta are reduced using all real power-root branches: odd
+powers keep the single signed root, while even powers try both positive and
+negative targets. This can surface critical-strip roots omitted by a
+positive-only inversion, but even-power results remain `partial` whenever the
+negative real argument domain has not been exhaustively searched. Odd powers
+preserve negative targets (for example, `zeta(x)^3 = -1` reduces to the
+`zeta(x) = -1` branch); negative targets for even powers are rejected because
+an even power of a real value cannot be negative.
+
+For target zero, affine inputs return the complete trivial-zero family
+`a*x + b = -2n`, `n ∈ ℕ_{>0}`, as a symbolic family rather than a finite list.
+For recognized nonnegative inputs such as `x^2`, the analyzer proves there
+are no real solutions: ζ is negative on `[0,1)`, undefined at its pole `1`,
+and positive for `u > 1`. The real zero classification and alternating-series
+identity are documented by [NIST DLMF §25.10](https://dlmf.nist.gov/25.10) and
+[§25.2, Eq. 25.2.3](https://dlmf.nist.gov/25.2.E3).
 
 The same domain supports `zetaprime(a*x + b) = c`. On `u > 1`, the zeta
 derivative is strictly increasing with negative range `(-∞, 0)`, so
